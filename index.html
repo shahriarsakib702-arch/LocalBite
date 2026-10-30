@@ -509,8 +509,21 @@ cartBox.innerHTML = `
   <h2 style="margin-bottom:15px">Your Cart 🛒</h2>
   <div id="cart-items"></div>
   <h3 style="margin-top:15px">Total: ৳<span id="cart-total">0</span></h3>
-  <button id="close-cart" style="margin-top:15px;padding:10px 18px;background:#0f3d2e;color:white;border:0;border-radius:7px;">Close</button>
+
+  <hr style="margin:18px 0">
+  <h3>Delivery Details</h3>
+
+  <input id="customer-name" type="text" placeholder="Your Name" style="width:100%;padding:12px;margin-top:12px;border:1px solid #ddd;border-radius:7px;">
+
+  <input id="customer-phone" type="tel" placeholder="Mobile Number" style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:7px;">
+
+  <textarea id="customer-address" placeholder="Full Delivery Address" style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:7px;"></textarea>
+
+  <button id="place-order" style="width:100%;margin-top:12px;padding:13px;background:#ff8a3d;color:white;border:0;border-radius:7px;font-weight:bold;">Place Order</button>
+
+  <button id="close-cart" style="margin-top:12px;padding:10px 18px;background:#0f3d2e;color:white;border:0;border-radius:7px;">Close</button>
 `;
+
 document.body.appendChild(cartBox);
 
 cartButton.onclick = () => {
