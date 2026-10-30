@@ -594,7 +594,13 @@ function updateCart() {
         </div>
       </div>
     `).join("")
-    : "<p>Your cart is empty.</p>";
+    : `
+  <div style="text-align:center;padding:35px 10px">
+    <div style="font-size:55px;margin-bottom:15px">🛒</div>
+    <h3 style="color:#0f3d2e;margin-bottom:8px">Your cart is empty!</h3>
+    <p style="color:#888;font-size:13px">Looks like you haven't added anything yet.</p>
+  </div>
+`;
 
   document.getElementById("cart-total").innerText =
     cart.reduce((sum, item) => sum + item.price * item.qty, 0);
