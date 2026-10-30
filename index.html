@@ -556,34 +556,42 @@ document.querySelectorAll(".order-btn").forEach(button => {
     const name = card.querySelector("h3").innerText;
     const price = Number(card.querySelector(".price").innerText.replace(/[^\d]/g, ""));
 
-    const existing = cart.find(item => item.name === name);
+        const existing = cart.find(item => item.name === name);
 
     if (existing) {
       existing.qty++;
     } else {
-      cart.push({ name, price, qty: 1 });
+      cart.push({
+        name,
+        price,
+        qty: 1,
+        image: card.querySelector("img").src
+      });
     }
 
     updateCart();
   };
 });
-
-
 function updateCart() {
   document.getElementById("cart-count").innerText =
     cart.reduce((sum, item) => sum + item.qty, 0);
 
   document.getElementById("cart-items").innerHTML = cart.length
     ? cart.map((item, index) => `
-      <div style="margin:15px 0;padding-bottom:12px;border-bottom:1px solid #eee">
-        <strong>${item.name}</strong>
-        <p>৳${item.price * item.qty}</p>
+      <div style="display:flex;gap:12px;align-items:center;margin:15px 0;padding-bottom:12px;border-bottom:1px solid #eee">
 
-        <button onclick="changeQty(${index}, -1)" style="padding:5px 12px">−</button>
-        <span style="padding:0 10px">${item.qty}</span>
-        <button onclick="changeQty(${index}, 1)" style="padding:5px 12px">+</button>
+        <img src="${item.image}" style="width:75px;height:75px;object-fit:cover;border-radius:12px">
 
-        <button onclick="removeItem(${index})" style="margin-left:10px;color:red;border:0;background:none">Remove</button>
+        <div style="flex:1">
+          <strong>${item.name}</strong>
+          <p style="margin:6px 0">৳${item.price * item.qty}</p>
+
+          <button onclick="changeQty(${index}, -1)" style="padding:5px 12px">−</button>
+          <span style="padding:0 10px">${item.qty}</span>
+          <button onclick="changeQty(${index}, 1)" style="padding:5px 12px">+</button>
+
+          <button onclick="removeItem(${index})" style="margin-left:8px;color:red;border:0;background:none">Remove</button>
+        </div>
       </div>
     `).join("")
     : "<p>Your cart is empty.</p>";
@@ -591,6 +599,7 @@ function updateCart() {
   document.getElementById("cart-total").innerText =
     cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 }
+  
 
 function changeQty(index, amount) {
   cart[index].qty += amount;
