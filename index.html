@@ -504,7 +504,7 @@ cartButton.style.cssText = "position:fixed;right:20px;bottom:20px;background:#0f
 document.body.appendChild(cartButton);
 
 const cartBox = document.createElement("div");
-cartBox.style.cssText = "display:none;position:fixed;right:15px;bottom:85px;width:320px;max-width:90%;background:white;padding:20px;border-radius:15px;box-shadow:0 5px 30px #0003;z-index:9999;color:#1f1f1f;";
+cartBox.style.cssText = "display:none;position:fixed;right:15px;bottom:85px;width:320px;max-width:90%;max-height:80vh;overflow-y:auto;background:white;padding:20px;border-radius:15px;box-shadow:0 5px 30px #0003;z-index:9999;color:#1f1f1f;box-sizing:border-box;";
 cartBox.innerHTML = `
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
     <div>
