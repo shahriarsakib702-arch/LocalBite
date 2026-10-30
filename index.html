@@ -506,22 +506,38 @@ document.body.appendChild(cartButton);
 const cartBox = document.createElement("div");
 cartBox.style.cssText = "display:none;position:fixed;right:15px;bottom:85px;width:320px;max-width:90%;background:white;padding:20px;border-radius:15px;box-shadow:0 5px 30px #0003;z-index:9999;color:#1f1f1f;";
 cartBox.innerHTML = `
-  <h2 style="margin-bottom:15px">Your Cart 🛒</h2>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+    <div>
+      <h2 style="color:#0f3d2e;font-size:23px">Your Cart 🛒</h2>
+      <p style="color:#888;font-size:12px;margin-top:5px">Your delicious choices</p>
+    </div>
+    <button id="close-cart" style="background:#fff0e7;color:#ff8a3d;border:0;border-radius:50%;width:35px;height:35px;font-size:20px;cursor:pointer">×</button>
+  </div>
+
   <div id="cart-items"></div>
-  <h3 style="margin-top:15px">Total: ৳<span id="cart-total">0</span></h3>
 
-  <hr style="margin:18px 0">
-  <h3>Delivery Details</h3>
+  <div style="background:#f7f0dc;padding:15px;border-radius:12px;margin-top:18px">
+    <div style="display:flex;justify-content:space-between;font-size:17px;font-weight:bold;color:#0f3d2e">
+      <span>Total Amount</span>
+      <span>৳<span id="cart-total">0</span></span>
+    </div>
+  </div>
 
-  <input id="customer-name" type="text" placeholder="Your Name" style="width:100%;padding:12px;margin-top:12px;border:1px solid #ddd;border-radius:7px;">
+  <hr style="margin:22px 0;border:0;border-top:1px solid #eee">
 
-  <input id="customer-phone" type="tel" placeholder="Mobile Number" style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:7px;">
+  <h3 style="color:#0f3d2e;margin-bottom:12px">Delivery Details</h3>
 
-  <textarea id="customer-address" placeholder="Full Delivery Address" style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:7px;"></textarea>
+  <input id="customer-name" type="text" placeholder="Your Name" style="width:100%;padding:13px;margin-bottom:10px;border:1px solid #e5e5e5;border-radius:9px;outline:none">
 
-  <button id="place-order" style="width:100%;margin-top:12px;padding:13px;background:#ff8a3d;color:white;border:0;border-radius:7px;font-weight:bold;">Place Order</button>
+  <input id="customer-phone" type="tel" placeholder="Mobile Number" style="width:100%;padding:13px;margin-bottom:10px;border:1px solid #e5e5e5;border-radius:9px;outline:none">
 
-  <button id="close-cart" style="margin-top:12px;padding:10px 18px;background:#0f3d2e;color:white;border:0;border-radius:7px;">Close</button>
+  <textarea id="customer-address" placeholder="Full Delivery Address" style="width:100%;padding:13px;border:1px solid #e5e5e5;border-radius:9px;outline:none;min-height:85px;resize:vertical"></textarea>
+
+  <button id="place-order" style="width:100%;margin-top:15px;padding:15px;background:#ff8a3d;color:white;border:0;border-radius:10px;font-size:15px;font-weight:bold;cursor:pointer">
+    Place Order →
+  </button>
+
+  <p style="text-align:center;color:#999;font-size:11px;margin-top:10px">GOOD FOOD. RIGHT AROUND YOU.</p>
 `;
 
 document.body.appendChild(cartBox);
