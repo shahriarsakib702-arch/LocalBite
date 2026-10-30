@@ -552,21 +552,45 @@ document.querySelectorAll(".order-btn").forEach(button => {
   };
 });
 
+
 function updateCart() {
   document.getElementById("cart-count").innerText =
     cart.reduce((sum, item) => sum + item.qty, 0);
 
   document.getElementById("cart-items").innerHTML = cart.length
-    ? cart.map(item => `
-      <p style="margin:10px 0">
-        ${item.name} × ${item.qty} — ৳${item.price * item.qty}
-      </p>
+    ? cart.map((item, index) => `
+      <div style="margin:15px 0;padding-bottom:12px;border-bottom:1px solid #eee">
+        <strong>${item.name}</strong>
+        <p>৳${item.price * item.qty}</p>
+
+        <button onclick="changeQty(${index}, -1)" style="padding:5px 12px">−</button>
+        <span style="padding:0 10px">${item.qty}</span>
+        <button onclick="changeQty(${index}, 1)" style="padding:5px 12px">+</button>
+
+        <button onclick="removeItem(${index})" style="margin-left:10px;color:red;border:0;background:none">Remove</button>
+      </div>
     `).join("")
     : "<p>Your cart is empty.</p>";
 
   document.getElementById("cart-total").innerText =
     cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 }
+
+function changeQty(index, amount) {
+  cart[index].qty += amount;
+
+  if (cart[index].qty <= 0) {
+    cart.splice(index, 1);
+  }
+
+  updateCart();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  updateCart();
+}
+
 </script>
 
 </body>
