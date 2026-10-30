@@ -1,1 +1,58 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOCALBITE | Good Food Around You</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#fff8e7;color:#173b2d}
+header{padding:22px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:900;letter-spacing:1px}
+.logo span{color:#ff8a3d}
+nav a{margin-left:18px;text-decoration:none;color:#173b2d;font-size:13px}
+.hero{padding:65px 7% 75px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px}
+.tag{color:#ed7c35;font-size:12px;letter-spacing:3px;font-weight:bold}
+h1{font-size:clamp(42px,7vw,76px);line-height:1.05;margin:20px 0}
+h1 span{color:#ed813e}
+.hero p{color:#68746d;line-height:1.8;max-width:420px}
+.btn{display:inline-block;margin-top:25px;background:#173b2d;color:white;padding:15px 25px;border-radius:7px;text-decoration:none;font-weight:bold}
+.food{width:100%;height:360px;object-fit:cover;border-radius:48% 48% 12px 12px}
+.section{padding:55px 7%;text-align:center}
+.section h2{font-size:32px;margin-bottom:12px}
+.section p{color:#788078}
+.categories{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px}
+.categories span{background:white;padding:15px 22px;border-radius:30px;font-weight:bold}
+footer{background:#173b2d;color:white;padding:35px 7%;text-align:center}
+@media(max-width:650px){nav{display:none}.hero{grid-template-columns:1fr;padding-top:35px}.food{height:260px}header{padding:20px 6%}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">LOCAL<span>BITE.</span></div>
+<nav><a href="#">Home</a><a href="#menu">Explore Food</a><a href="#about">About</a></nav>
+</header>
+<section class="hero">
+<div>
+<div class="tag">YOUR NEIGHBORHOOD FOOD SPOT</div>
+<h1>Good food.<br><span>Good mood.</span></h1>
+<p>Discover delicious local food, made with love and served right around your neighborhood.</p>
+<a class="btn" href="#menu">Explore Local Food →</a>
+</div>
+<img class="food" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900" alt="Delicious food">
+</section>
+<section class="section" id="menu">
+<h2>Explore Your Cravings</h2>
+<p>Something delicious is always around the corner.</p>
+<div class="categories">
+<span>🍔 Burgers</span><span>🍕 Pizza</span><span>🍛 Local Food</span><span>🥤 Drinks</span>
+</div>
+</section>
+<footer id="about">
+<div class="logo">LOCAL<span>BITE.</span></div>
+<p style="margin-top:12px">GOOD FOOD. RIGHT AROUND YOU.</p>
+</footer>
+</body>
+</html>
+
