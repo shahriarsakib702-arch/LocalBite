@@ -523,17 +523,14 @@ document.querySelectorAll(".order-btn").forEach(button => {
 
         const existing = cart.find(item => item.name === name);
 
-    if (existing) {
-      existing.qty++;
-    } else {
-      cart.push({
-        name,
-        price,
-        qty: 1,
-        image: card.querySelector("img").src
-      });
-    }
-
+if (!existing) {
+  cart.push({
+    name,
+    price,
+    qty: 1,
+    image: card.querySelector("img").src
+  });
+}
     updateCart();
   };
 });
