@@ -522,7 +522,6 @@ document.querySelectorAll(".order-btn").forEach(button => {
     const price = Number(card.querySelector(".price").innerText.replace(/[^\d]/g, ""));
 
         const existing = cart.find(item => item.name === name);
-
 if (!existing) {
   cart.push({
     name,
