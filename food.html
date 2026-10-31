@@ -168,6 +168,7 @@
       <div class="details">
         <h2>Chicken Burger</h2>
         <div class="price">৳80</div>
+        <button class="add-to-cart">Add to Cart</button>
       </div>
     </div>
 
@@ -176,6 +177,7 @@
   <div class="details">
     <h2>Chicken Shawarma</h2>
     <div class="price">৳70</div>
+    <button class="add-to-cart">Add to Cart</button>
   </div>
 </div>
 
@@ -184,6 +186,7 @@
       <div class="details">
         <h2>French Fries</h2>
         <div class="price">৳50</div>
+        <button class="add-to-cart">Add to Cart</button>
       </div>
     </div>
 
@@ -192,6 +195,7 @@
   <div class="details">
     <h2>Chicken Roll</h2>
     <div class="price">৳40</div>
+    <button class="add-to-cart">Add to Cart</button>
   </div>
 </div>
     
@@ -200,7 +204,40 @@
   <footer>
     © 2026 LOCALBITE. Good Food. Right Around You.
   </footer>
+<div id="cart-box">
+  <h2>🛒 Your Cart</h2>
+  <div id="cart-items"></div>
+  <h3>Total: ৳<span id="cart-total">0</span></h3>
+</div>
+  <script>
+let cart = [];
 
+document.querySelectorAll(".add-to-cart").forEach((button, index) => {
+  button.addEventListener("click", function () {
+    const card = button.closest(".food-card");
+    const name = card.querySelector("h2").innerText;
+    const price = Number(card.querySelector(".price").innerText.replace("৳", ""));
+
+    cart.push({ name, price });
+    updateCart();
+  });
+});
+
+function updateCart() {
+  const cartItems = document.getElementById("cart-items");
+  const cartTotal = document.getElementById("cart-total");
+
+  cartItems.innerHTML = "";
+  let total = 0;
+
+  cart.forEach(item => {
+    total += item.price;
+    cartItems.innerHTML += `<p>${item.name} — ৳${item.price}</p>`;
+  });
+
+  cartTotal.innerText = total;
+}
+</script>
 </body>
 </html>
 
