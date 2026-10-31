@@ -404,10 +404,10 @@ footer p {
       Pharmacy
     </a>
 
-    <a class="category" href="#food-menu">
-      <span class="category-icon">🍔</span>
-      Food
-    </a>
+    <a class="category" href="#food-menu" onclick="showFood(event)">
+  <span class="category-icon">🍔</span>
+  Food
+</a>
 
   </div>
 
@@ -588,6 +588,18 @@ function removeItem(index) {
 }
 
 </script>
+<script>
+function showFood(event) {
+  event.preventDefault();
 
+  const foodMenu = document.getElementById("food-menu");
+
+  foodMenu.style.display = "block";
+  foodMenu.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+</script>
 </body>
 </html>
