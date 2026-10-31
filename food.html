@@ -402,7 +402,12 @@ document.querySelectorAll(".add-to-cart").forEach(button => {
     if (existing) {
       existing.quantity++;
     } else {
-      cart.push({ name, price, quantity: 1 });
+      cart.push({
+  name,
+  price,
+  quantity: 1,
+  image: card.querySelector("img").src
+});
     }
 
     updateCart();
@@ -447,8 +452,13 @@ function updateCart() {
     count += item.quantity;
 
     items.innerHTML += `
-      <div class="cart-item">
-        <div class="item-info">
+      <div class="cart-item" style="display:flex;align-items:center;gap:12px;">
+
+        <img src="${item.image}"
+             alt="${item.name}"
+             style="width:75px;height:75px;object-fit:cover;border-radius:10px;">
+
+        <div class="item-info" style="flex:1;">
           <strong>${item.name}</strong>
           <span>৳${item.price} × ${item.quantity}</span>
         </div>
@@ -459,6 +469,7 @@ function updateCart() {
           <button onclick="changeQuantity(${index}, 1)">+</button>
           <button class="remove-btn" onclick="removeItem(${index})">×</button>
         </div>
+
       </div>
     `;
   });
