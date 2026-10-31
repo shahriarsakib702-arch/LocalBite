@@ -399,16 +399,14 @@ document.querySelectorAll(".add-to-cart").forEach(button => {
 
     const existing = cart.find(item => item.name === name);
 
-    if (existing) {
-      existing.quantity++;
-    } else {
-      cart.push({
-  name,
-  price,
-  quantity: 1,
-  image: card.querySelector("img").src
-});
-    }
+    if (!existing) {
+  cart.push({
+    name,
+    price,
+    quantity: 1,
+    image: card.querySelector("img").src
+  });
+}
 
     updateCart();
   });
