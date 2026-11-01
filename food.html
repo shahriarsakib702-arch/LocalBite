@@ -828,9 +828,18 @@ function getCurrentLocation() {
       button.disabled = false;
     },
     function(error) {
-      status.innerText = "Could not get location. Please allow permission.";
-      button.disabled = false;
-    },
+  if (error.code === 1) {
+    status.innerText = "Location permission denied. Please allow location access.";
+  } else if (error.code === 2) {
+    status.innerText = "Location unavailable. Please turn on GPS.";
+  } else if (error.code === 3) {
+    status.innerText = "Location request timed out. Please try again.";
+  } else {
+    status.innerText = "Something went wrong. Please try again.";
+  }
+
+  button.disabled = false;
+},
     {
       enableHighAccuracy: true,
       timeout: 15000
