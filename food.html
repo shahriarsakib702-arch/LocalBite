@@ -581,6 +581,18 @@ function updateCart() {
 
   totalElement.innerText = total;
   countElement.innerText = count;
+} 
+  function checkout() {
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  document.getElementById("order-form").style.display = "block";
+}
+
+function closeOrderForm() {
+  document.getElementById("order-form").style.display = "none";
 }
 </script>
 </body>
