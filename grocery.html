@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Groceries | LOCALBITE</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #FFF8E7;
+  color: #1F1F1F;
+}
+
+header {
+  background: #0F3D2E;
+  color: white;
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #FF8A3D;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+  padding: 55px 6%;
+  text-align: center;
+  background: #0F3D2E;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  color: #e5e5e5;
+}
+
+.container {
+  padding: 35px 6%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.container h2 {
+  color: #0F3D2E;
+  margin-bottom: 20px;
+}
+
+.search {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.empty-message {
+  text-align: center;
+  padding: 35px;
+  color: #777;
+  background: white;
+  border-radius: 15px;
+}
+
+footer {
+  background: #0F3D2E;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  margin-top: 50px;
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 27px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">LOCAL<span>BITE.</span></div>
+  <a href="index.html">← Home</a>
+</header>
+
+<section class="hero">
+  <h1>Fresh Groceries 🥬</h1>
+  <p>Everyday essentials, right around you.</p>
+</section>
+
+<main class="container">
+  <h2>Explore Groceries</h2>
+
+  <input
+    type="search"
+    class="search"
+    placeholder="Search groceries..."
+    disabled
+  >
+
+  <div class="empty-message">
+    <h3>Coming Soon!</h3>
+    <p>Fresh groceries will be available here soon.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="logo">LOCAL<span>BITE.</span></div>
+  <p>GOOD FOOD. RIGHT AROUND YOU.</p>
+</footer>
+
+</body>
+</html>
