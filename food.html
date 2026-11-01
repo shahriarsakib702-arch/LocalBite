@@ -721,6 +721,41 @@ function updateCart() {
 function closeOrderForm() {
   document.getElementById("order-form").style.display = "none";
 }
+  let customerLocationLink = "";
+
+function getCurrentLocation() {
+  const status = document.getElementById("location-status");
+  const button = document.getElementById("location-btn");
+
+  if (!navigator.geolocation) {
+    status.innerText = "Location is not supported by your browser.";
+    return;
+  }
+
+  status.innerText = "Getting your location...";
+  button.disabled = true;
+
+  navigator.geolocation.getCurrentPosition(
+    function(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      customerLocationLink =
+        "https://www.google.com/maps?q=" + lat + "," + lon;
+
+      status.innerText = "✓ Location captured successfully!";
+      button.disabled = false;
+    },
+    function(error) {
+      status.innerText = "Could not get location. Please allow permission.";
+      button.disabled = false;
+    },
+    {
+      enableHighAccuracy: true,
+      timeout: 15000
+    }
+  );
+}
   function placeOrder() {
   const name = document.getElementById("customer-name").value.trim();
   const phone = document.getElementById("customer-phone").value.trim();
