@@ -870,8 +870,21 @@ function getCurrentLocation() {
   if (!noResult) {
     noResult = document.createElement("div");
     noResult.id = "no-food-found";
-    noResult.style.cssText =
-      "text-align:center;padding:35px 15px;color:#426354;font-size:16px;font-weight:600;";
+    noResult.style.cssText = `
+  grid-column: 1 / -1;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 45px 20px;
+  margin: 20px 0;
+  color: #0F3D2E;
+  font-size: 17px;
+  font-weight: 700;
+  background: #FFF8E7;
+  border: 1px solid #e8dfc9;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(15,61,46,0.07);
+`;
     noResult.innerHTML =
       "🔍<br><br>No food found!<br><small>Sorry, we couldn't find any matching food.</small>";
 
