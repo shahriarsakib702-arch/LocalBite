@@ -863,7 +863,23 @@ function getCurrentLocation() {
       card.style.display = "none";
     }
   });
-}
+
+  const foodContainer = foodCards[0].parentElement;
+  let noResult = document.getElementById("no-food-found");
+
+  if (!noResult) {
+    noResult = document.createElement("div");
+    noResult.id = "no-food-found";
+    noResult.style.cssText =
+      "text-align:center;padding:35px 15px;color:#426354;font-size:16px;font-weight:600;";
+    noResult.innerHTML =
+      "🔍<br><br>No food found!<br><small>Sorry, we couldn't find any matching food.</small>";
+
+    foodContainer.appendChild(noResult);
+  }
+
+  noResult.style.display = found === 0 ? "block" : "none";
+  }
   function placeOrder() {
   const name = document.getElementById("customer-name").value.trim();
   const phone = document.getElementById("customer-phone").value.trim();
