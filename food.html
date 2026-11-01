@@ -837,6 +837,24 @@ function getCurrentLocation() {
     }
   );
 }
+  function searchFood() {
+  const input = document.getElementById("food-search-input");
+  const searchText = input.value.toLowerCase().trim();
+  const foodCards = document.querySelectorAll(".food-card");
+
+  let found = 0;
+
+  foodCards.forEach(card => {
+    const foodName = card.querySelector("h2").innerText.toLowerCase();
+
+    if (foodName.includes(searchText)) {
+      card.style.display = "";
+      found++;
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
   function placeOrder() {
   const name = document.getElementById("customer-name").value.trim();
   const phone = document.getElementById("customer-phone").value.trim();
