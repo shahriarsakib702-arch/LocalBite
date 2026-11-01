@@ -635,10 +635,23 @@ function closeOrderForm() {
 
   message += "\n💰 *Total: ৳" + total + "*";
 
-  const whatsappURL =
-    "https://wa.me/8801632033787?text=" + encodeURIComponent(message);
-
   window.open(whatsappURL, "_blank");
+
+// Clear cart after sending order
+cart = [];
+updateCart();
+
+// Close order form
+closeOrderForm();
+
+// Close cart panel
+document.getElementById("cart-box").classList.remove("active");
+document.getElementById("cart-overlay").classList.remove("active");
+
+// Reset customer details
+document.getElementById("customer-name").value = "";
+document.getElementById("customer-phone").value = "";
+document.getElementById("customer-address").value = "";
 }
 </script>
 </body>
