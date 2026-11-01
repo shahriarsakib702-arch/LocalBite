@@ -594,6 +594,43 @@ function updateCart() {
 function closeOrderForm() {
   document.getElementById("order-form").style.display = "none";
 }
+  function placeOrder() {
+  const name = document.getElementById("customer-name").value.trim();
+  const phone = document.getElementById("customer-phone").value.trim();
+  const address = document.getElementById("customer-address").value.trim();
+
+  if (!name || !phone || !address) {
+    alert("Please fill in all your details!");
+    return;
+  }
+
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  let message = "🛒 *NEW LOCALBITE ORDER*\n\n";
+  message += "👤 Name: " + name + "\n";
+  message += "📞 Phone: " + phone + "\n";
+  message += "📍 Address: " + address + "\n\n";
+  message += "*ORDER DETAILS*\n";
+
+  cart.forEach(item => {
+    message += item.name + " × " + item.quantity +
+      " = ৳" + (item.price * item.quantity) + "\n";
+  });
+
+  const total = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity, 0
+  );
+
+  message += "\n💰 *Total: ৳" + total + "*";
+
+  const whatsappURL =
+    "https://wa.me/8801632033787?text=" + encodeURIComponent(message);
+
+  window.open(whatsappURL, "_blank");
+}
 </script>
 </body>
 </html>
