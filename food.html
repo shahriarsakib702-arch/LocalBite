@@ -555,24 +555,28 @@ function updateCart() {
   const items = document.getElementById("cart-items");
   const totalElement = document.getElementById("cart-total");
   const countElement = document.getElementById("cart-count");
+  const summaryItems = document.getElementById("summary-items");
 
   items.innerHTML = "";
+  summaryItems.innerHTML = "";
+
   let total = 0;
   let count = 0;
 
   if (cart.length === 0) {
     items.innerHTML = '<p class="empty-cart">Your cart is empty!</p>';
+    summaryItems.innerHTML = '<p>Your order summary is empty.</p>';
   }
 
   cart.forEach((item, index) => {
-    total += item.price * item.quantity;
+    const itemTotal = item.price * item.quantity;
+
+    total += itemTotal;
     count += item.quantity;
 
     items.innerHTML += `
       <div class="cart-item" style="display:flex;align-items:center;gap:12px;">
-
-        <img src="${item.image}"
-             alt="${item.name}"
+        <img src="${item.image}" alt="${item.name}"
              style="width:75px;height:75px;object-fit:cover;border-radius:10px;">
 
         <div class="item-info" style="flex:1;">
@@ -586,14 +590,20 @@ function updateCart() {
           <button onclick="changeQuantity(${index}, 1)">+</button>
           <button class="remove-btn" onclick="removeItem(${index})">×</button>
         </div>
+      </div>
+    `;
 
+    summaryItems.innerHTML += `
+      <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+        <span>${item.name} × ${item.quantity}</span>
+        <strong>৳${itemTotal}</strong>
       </div>
     `;
   });
 
   totalElement.innerText = total;
   countElement.innerText = count;
-} 
+}
   function checkout() {
   if (cart.length === 0) {
     alert("Your cart is empty!");
