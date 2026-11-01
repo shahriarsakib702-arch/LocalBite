@@ -954,7 +954,11 @@ document.getElementById("cart-overlay").classList.remove("active");
 document.getElementById("customer-name").value = "";
 document.getElementById("customer-phone").value = "";
 document.getElementById("customer-address").value = "";
-}updateCart();
+  }
+
+window.addEventListener("load", function() {
+  updateCart();
+});
 </script>
 </body>
 </html>
