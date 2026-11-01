@@ -774,6 +774,9 @@ function clearCart() {
     cart = [];
     saveCart();
     updateCart();
+
+    document.getElementById("cart-box").classList.remove("active");
+    document.getElementById("cart-overlay").classList.remove("active");
   }
 }
 
