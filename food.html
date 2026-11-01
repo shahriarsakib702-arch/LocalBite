@@ -692,7 +692,10 @@
   </button>
 </div>
 <script>
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
+  function saveCart() {
+  localStorage.setItem("localbiteCart", JSON.stringify(cart));
+}
 
 document.querySelectorAll(".add-to-cart").forEach(button => {
   button.addEventListener("click", () => {
@@ -713,7 +716,8 @@ document.querySelectorAll(".add-to-cart").forEach(button => {
   });
 }
 
-    updateCart();
+saveCart();
+updateCart();
   });
 });
 
@@ -729,11 +733,13 @@ function changeQuantity(index, amount) {
     cart.splice(index, 1);
   }
 
+  saveCart();
   updateCart();
 }
 
 function removeItem(index) {
   cart.splice(index, 1);
+  saveCart();
   updateCart();
 }
 
