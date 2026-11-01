@@ -635,7 +635,10 @@ function closeOrderForm() {
 
   message += "\n💰 *Total: ৳" + total + "*";
 
-  window.open(whatsappURL, "_blank");
+  const whatsappURL =
+  "https://wa.me/8801632033787?text=" + encodeURIComponent(message);
+
+window.open(whatsappURL, "_blank");
 
 // Clear cart after sending order
 cart = [];
