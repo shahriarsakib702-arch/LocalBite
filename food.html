@@ -602,7 +602,10 @@
   <input type="tel" id="customer-phone" placeholder="Phone Number">
 
   <textarea id="customer-address" placeholder="Full Delivery Address"></textarea>
-
+<button type="button" id="location-btn" onclick="getCurrentLocation()">
+  📍 Use Current Location
+</button>
+<p id="location-status"></p>
   <button id="place-order-btn" onclick="placeOrder()">
     Place Order
   </button>
