@@ -787,7 +787,9 @@ function getCurrentLocation() {
   );
 
   message += "\n💰 *Total: ৳" + total + "*";
-
+if (customerLocationLink) {
+  message += "\n\n📍 *Customer Location:*\n" + customerLocationLink;
+}
   const whatsappURL =
   "https://wa.me/8801632033787?text=" + encodeURIComponent(message);
 
