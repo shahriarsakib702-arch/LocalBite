@@ -764,7 +764,7 @@ function updateCart() {
     const itemTotal = item.price * item.quantity;
 
     total += itemTotal;
-    count += item.quantity;
+    count += Number(item.quantity) || 0;
 
     items.innerHTML += `
       <div class="cart-item" style="display:flex;align-items:center;gap:12px;">
