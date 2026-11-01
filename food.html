@@ -764,6 +764,19 @@ function removeItem(index) {
   updateCart();
 }
 
+function clearCart() {
+  if (cart.length === 0) {
+    alert("Your cart is already empty!");
+    return;
+  }
+
+  if (confirm("Are you sure you want to clear your cart?")) {
+    cart = [];
+    saveCart();
+    updateCart();
+  }
+}
+
 function updateCart() {
   const items = document.getElementById("cart-items");
   const totalElement = document.getElementById("cart-total");
