@@ -381,14 +381,32 @@
 #order-form textarea {
   width: 100%;
   box-sizing: border-box;
-  padding: 15px;
-  margin-bottom: 14px;
-  border: 1px solid #d8d2c3;
-  border-radius: 10px;
-  background: white;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1.5px solid #e0dacb;
+  border-radius: 14px;
+  background: #ffffff;
   color: #1F1F1F;
   font-size: 16px;
+  font-family: inherit;
   outline: none;
+  transition: all 0.25s ease;
+}
+
+#order-form input:focus,
+#order-form textarea:focus {
+  border-color: #0F3D2E;
+  box-shadow: 0 0 0 3px rgba(15, 61, 46, 0.10);
+}
+
+#order-form input::placeholder,
+#order-form textarea::placeholder {
+  color: #99958b;
+}
+
+#order-form textarea {
+  min-height: 110px;
+  resize: vertical;
 }
 
 #order-form input:focus,
