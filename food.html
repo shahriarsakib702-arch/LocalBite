@@ -643,7 +643,17 @@
   <input type="tel" id="customer-phone" placeholder="Phone Number">
 
   <textarea id="customer-address" placeholder="Full Delivery Address"></textarea>
+
+<p class="location-note">
+  📍 For faster delivery, share your current location.
+  You can also order using your delivery address.
+</p>
+
 <button type="button" id="location-btn" onclick="getCurrentLocation()">
+  📍 Use Current Location
+</button>
+<p id="location-status"></p>
+  <button type="button" id="location-btn" onclick="getCurrentLocation()">
   📍 Use Current Location
 </button>
 <p id="location-status"></p>
