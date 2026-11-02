@@ -567,11 +567,12 @@ function addGroceryToCart(productName) {
   if (existingItem) {
     existingItem.quantity += 1;
   } else {
-    cart.push({
-      name: product.name,
-      price: product.price,
-      quantity: 1
-    });
+cart.push({
+  name: product.name,
+  price: product.price,
+  quantity: 1,
+  image: product.image
+});
   }
 
   saveCart();
