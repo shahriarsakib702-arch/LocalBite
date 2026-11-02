@@ -193,15 +193,16 @@ footer p {
 .cart-panel {
   position: fixed;
   top: 0;
-  right: -100%;
+  right: -450px;
   width: 100%;
   max-width: 420px;
   height: 100%;
-  background: white;
+  background: #FFF8E7;
   z-index: 1002;
-  padding: 22px;
+  padding: 25px;
   overflow-y: auto;
-  transition: 0.3s;
+  transition: right 0.3s ease;
+  box-shadow: -5px 0 25px #00000020;
 }
 
 .cart-panel.active {
