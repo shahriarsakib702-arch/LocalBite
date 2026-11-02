@@ -337,9 +337,13 @@ const groceryProducts = [
 ];
 
 const groceryGrid = document.getElementById("grocery-grid");
-function addGroceryToCart(productName) {
-  let cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
+let cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
 
+function saveCart() {
+  localStorage.setItem("localbiteCart", JSON.stringify(cart));
+}
+
+function addGroceryToCart(productName) {
   const product = groceryProducts.find(
     item => item.name === productName
   );
@@ -361,32 +365,8 @@ function addGroceryToCart(productName) {
     });
   }
 
-  localStorage.setItem("localbiteCart", JSON.stringify(cart));
-
-  alert(product.name + " added to your cart!");
-}
-function displayGroceries(products) {
-  groceryGrid.innerHTML = "";
-
-  if (products.length === 0) {
-    groceryGrid.innerHTML = "<p>কোনো পণ্য পাওয়া যায়নি।</p>";
-    return;
-  }
-
-  products.forEach((product, index) => {
-    groceryGrid.innerHTML += `
-      <div class="grocery-card">
-        <img src="${product.image}" alt="${product.name}">
-        <h3>${product.name}</h3>
-        <p class="price">৳${product.price} / ${product.unit}</p>
-
-        <button onclick='addGroceryToCart("${product.name}")'
-          class="grocery-add-btn">
-          + Add to Cart
-        </button>
-      </div>
-    `;
-  });
+  saveCart();
+  updateCart();
 }
 
 displayGroceries(groceryProducts);
