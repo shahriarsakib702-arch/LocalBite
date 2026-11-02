@@ -267,21 +267,25 @@ footer p {
 .quantity-controls {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-top: 10px;
-  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
 }
 
 .quantity-controls button {
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: 9px;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 7px;
   background: #0F3D2E;
-  color: #FFF8E7;
+  color: white;
   font-size: 20px;
-  font-weight: bold;
   cursor: pointer;
+  flex-shrink: 0;
+}
+
+.quantity-controls span {
+  min-width: 15px;
+  text-align: center;
 }
 
 .remove-item {
