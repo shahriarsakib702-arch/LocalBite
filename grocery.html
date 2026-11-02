@@ -650,9 +650,12 @@ function clearCart() {
 
   cart = [];
   saveCart();
-  document.getElementById("order-form").classList.remove("active");
-}
+  updateCart();
 
+  document.getElementById("order-form").classList.remove("active");
+  document.getElementById("cart-panel").classList.remove("active");
+  document.getElementById("cart-overlay").classList.remove("active");
+}
 function checkout() {
   if (cart.length === 0) {
     alert("Your cart is empty!");
