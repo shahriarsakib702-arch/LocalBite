@@ -368,7 +368,47 @@ function addGroceryToCart(productName) {
   saveCart();
   updateCart();
 }
+function updateCart() {
+  const items = document.getElementById("cart-items");
+  const totalElement = document.getElementById("cart-total");
+  const countElement = document.getElementById("cart-count");
+  const summaryItems = document.getElementById("summary-items");
 
+  items.innerHTML = "";
+  summaryItems.innerHTML = "";
+
+  let total = 0;
+  let count = 0;
+
+  if (cart.length === 0) {
+    items.innerHTML = '<p class="empty-cart">Your cart is empty!</p>';
+    summaryItems.innerHTML = '<p>Your order summary is empty.</p>';
+  }
+
+  cart.forEach((item, index) => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+    count += Number(item.quantity) || 0;
+
+    items.innerHTML += `
+      <div style="margin:15px 0;">
+        <strong>${item.name}</strong>
+        <p>৳${item.price} × ${item.quantity}</p>
+        <button onclick="changeQuantity(${index}, -1)">−</button>
+        ${item.quantity}
+        <button onclick="changeQuantity(${index}, 1)">+</button>
+        <button onclick="removeItem(${index})">×</button>
+      </div>
+    `;
+
+    summaryItems.innerHTML += `
+      <div>${item.name} × ${item.quantity} — ৳${itemTotal}</div>
+    `;
+  });
+
+  totalElement.innerText = total;
+  countElement.textContent = count;
+}
 displayGroceries(groceryProducts);
 
 document.getElementById("grocery-search").addEventListener("input", function() {
