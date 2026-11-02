@@ -323,20 +323,36 @@ footer p {
   font-weight: 800;
 }
 
-.cart-action {
+#checkout-btn {
+  display: block;
   width: 100%;
-  padding: 13px;
-  border: none;
-  border-radius: 9px;
-  margin-bottom: 10px;
+  padding: 16px;
+  background: #FF8A3D;
+  color: #1F1F1F;
+  border: 0;
+  border-radius: 12px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 800;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255,138,61,.25);
 }
 
-.checkout-btn {
-  background: var(--green);
-  color: white;
+#checkout-btn:active {
+  transform: scale(.98);
+}
+
+#clear-cart-btn {
+  width: 100%;
+  padding: 13px;
+  margin: 15px 0;
+  background: #fff1eb;
+  color: #e45d35;
+  border: 1px solid #ffd6c5;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .clear-btn {
