@@ -737,6 +737,10 @@ document.querySelectorAll(".add-to-cart").forEach(button => {
   });
 }
 
+button.innerHTML = "✓ Added to Cart";
+button.style.background = "#198754";
+button.disabled = true;
+
 saveCart();
 updateCart();
   });
