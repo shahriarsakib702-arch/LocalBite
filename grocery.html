@@ -703,7 +703,10 @@ function checkout() {
   document.getElementById("order-form").classList.add("active");
   document.getElementById("order-overlay").classList.add("active");
 }
-
+function closeOrderForm() {
+  document.getElementById("order-form").classList.remove("active");
+  document.getElementById("order-overlay").classList.remove("active");
+}
 function getCurrentLocation() {
   const status = document.getElementById("location-status");
 
