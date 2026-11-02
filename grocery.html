@@ -447,6 +447,9 @@ function removeItem(index) {
 
   document.getElementById("order-form").style.display = "block";
 }
+    function closeOrderForm() {
+  document.getElementById("order-form").style.display = "none";
+}
 displayGroceries(groceryProducts);
 
 document.getElementById("grocery-search").addEventListener("input", function() {
