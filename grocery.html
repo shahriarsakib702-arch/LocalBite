@@ -580,8 +580,11 @@ function updateCart() {
       count += item.quantity;
 
       return `
-        <div class="cart-item">
-          <div class="cart-item-info">
+  <div class="cart-item">
+    <img src="${item.image}" alt="${item.name}"
+         class="cart-item-image">
+
+    <div class="cart-item-info">
             <strong>${item.name}</strong>
             <span>৳${item.price} × ${item.quantity}</span>
             <div class="quantity-controls">
