@@ -265,7 +265,7 @@ function displayGroceries(products) {
         <h3>${product.name}</h3>
         <p class="price">৳${product.price} / ${product.unit}</p>
 
-        <button onclick="addGroceryToCart(${index})"
+        <button onclick='addGroceryToCart("${product.name}")'
           class="grocery-add-btn">
           + Add to Cart
         </button>
