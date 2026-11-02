@@ -409,6 +409,16 @@ function updateCart() {
   totalElement.innerText = total;
   countElement.textContent = count;
 }
+  function changeQuantity(index, amount) {
+  cart[index].quantity += amount;
+
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
+
+  saveCart();
+  updateCart();
+}
 displayGroceries(groceryProducts);
 
 document.getElementById("grocery-search").addEventListener("input", function() {
