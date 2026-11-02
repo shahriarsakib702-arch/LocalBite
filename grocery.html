@@ -194,6 +194,69 @@ footer {
 </main>
 
 <footer>
+  <!-- Floating Cart Button -->
+<button id="floating-cart" onclick="toggleCart()">
+  🛒 My Cart
+  <span id="cart-count">0</span>
+</button>
+
+<!-- Cart Overlay -->
+<div id="cart-overlay" onclick="toggleCart()"></div>
+
+<!-- Cart Panel -->
+<div id="cart-box">
+  <div class="cart-header">
+    <h2>🛒 Your Cart</h2>
+    <button class="close-cart" onclick="toggleCart()">×</button>
+  </div>
+
+  <div id="cart-items">
+    <p class="empty-cart">Your cart is empty!</p>
+  </div>
+
+  <button onclick="clearCart()" id="clear-cart-btn">
+    🗑️ Clear Cart
+  </button>
+
+  <div id="order-summary">
+    <h3>Order Summary</h3>
+    <div id="summary-items"></div>
+  </div>
+
+  <div class="cart-footer">
+    <h3>Total: <span>৳<span id="cart-total">0</span></span></h3>
+    <button id="checkout-btn" onclick="checkout()">
+      Proceed to Checkout →
+    </button>
+  </div>
+</div>
+
+<!-- Order Form -->
+<div id="order-form">
+  <div class="order-form-header">
+    <h2>Complete Your Order</h2>
+    <button onclick="closeOrderForm()">×</button>
+  </div>
+
+  <input type="text" id="customer-name" placeholder="Your Name">
+  <input type="tel" id="customer-phone" placeholder="Phone Number">
+  <textarea id="customer-address" placeholder="Full Delivery Address"></textarea>
+
+  <p class="location-note">
+    📍 For faster delivery, share your current location.
+    You can also order using your delivery address.
+  </p>
+
+  <button type="button" id="location-btn" onclick="getCurrentLocation()">
+    📍 Use Current Location
+  </button>
+
+  <p id="location-status"></p>
+
+  <button id="place-order-btn" onclick="placeOrder()">
+    Place Order
+  </button>
+</div>
   <div class="logo">LOCAL<span>BITE.</span></div>
   <p>GOOD FOOD. RIGHT AROUND YOU.</p>
 </footer>
