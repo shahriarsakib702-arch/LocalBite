@@ -473,25 +473,26 @@ footer p {
   </div>
 
   <div id="cart-items"></div>
-<div id="order-summary">
-  <h3>Order Summary</h3>
-  <div id="summary-items"></div>
-</div>
-  <div class="cart-total">
-    <span>Total</span>
-    <span id="cart-total">৳0</span>
-  </div>
 
-  <button class="cart-action checkout-btn" onclick="checkout()">
-    Proceed to Checkout →
-  </button>
-
-  <button class="cart-action clear-btn" onclick="clearCart()">
+  <button id="clear-cart-btn" onclick="clearCart()">
     🗑️ Clear Cart
   </button>
 
-  
-<!-- Checkout Popup will go here -->
+  <div id="order-summary">
+    <h3>Order Summary</h3>
+    <div id="summary-items"></div>
+  </div>
+
+  <div class="cart-footer">
+    <h3>
+      Total:
+      <span>৳<span id="cart-total">0</span></span>
+    </h3>
+
+    <button id="checkout-btn" onclick="checkout()">
+      Proceed to Checkout →
+    </button>
+  </div>
 </div>
 <div class="order-form" id="order-form">
     <h3>Complete Your Order</h3>
