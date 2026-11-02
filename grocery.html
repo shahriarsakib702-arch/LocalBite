@@ -719,9 +719,10 @@ function displayGroceries(products) {
         <h3>${product.name}</h3>
         <p class="grocery-price">৳${product.price} / ${product.unit}</p>
         <button class="grocery-add-btn"
-          onclick="addGroceryToCart('${product.name}')">
-          + Add to Cart
-        </button>
+  id="add-btn-${product.name}"
+  onclick="addGroceryToCart('${product.name}')">
+  + Add to Cart
+</button>
       </div>
     </div>
   `).join("");
