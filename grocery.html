@@ -4,9 +4,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Groceries | LOCALBITE</title>
+<title>LOCALBITE | Grocery Store</title>
 
 <style>
+:root {
+  --green: #0F3D2E;
+  --orange: #FF8A3D;
+  --cream: #FFF8E7;
+  --dark: #1F1F1F;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -15,12 +22,12 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: #FFF8E7;
-  color: #1F1F1F;
+  background: var(--cream);
+  color: var(--dark);
 }
 
 header {
-  background: #0F3D2E;
+  background: var(--green);
   color: white;
   padding: 18px 6%;
   display: flex;
@@ -34,7 +41,7 @@ header {
 }
 
 .logo span {
-  color: #FF8A3D;
+  color: var(--orange);
 }
 
 header a {
@@ -44,10 +51,10 @@ header a {
 }
 
 .hero {
-  padding: 55px 6%;
-  text-align: center;
-  background: #0F3D2E;
+  background: var(--green);
   color: white;
+  text-align: center;
+  padding: 55px 20px;
 }
 
 .hero h1 {
@@ -56,112 +63,304 @@ header a {
 }
 
 .hero p {
-  color: #e5e5e5;
+  color: #e7eee9;
 }
 
-.container {
-  padding: 35px 6%;
-  max-width: 1100px;
-  margin: auto;
+.search-box {
+  max-width: 600px;
+  margin: 25px auto;
+  padding: 0 15px;
 }
 
-.container h2 {
-  color: #0F3D2E;
-  margin-bottom: 20px;
-}
-
-.search {
+.search-box input {
   width: 100%;
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 12px;
-  font-size: 15px;
+  font-size: 16px;
+  outline: none;
+}
+
+.section {
+  padding: 30px 6% 100px;
+}
+
+.section h2 {
+  color: var(--green);
+  margin-bottom: 8px;
+  font-size: 26px;
+}
+
+.section-subtitle {
+  color: #666;
   margin-bottom: 25px;
 }
 
-.empty-message {
-  text-align: center;
-  padding: 35px;
-  color: #777;
-  background: white;
-  border-radius: 15px;
-}
-
-footer {
-  background: #0F3D2E;
-  color: white;
-  text-align: center;
-  padding: 25px;
-  margin-top: 50px;
-}
-
-@media (max-width: 600px) {
-  .hero h1 {
-    font-size: 27px;
-  }
-}
-  .grocery-grid {
+.grocery-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  margin-top: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 18px;
 }
 
 .grocery-card {
   background: white;
   border-radius: 15px;
-  padding: 12px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
 }
 
 .grocery-card img {
   width: 100%;
-  height: 125px;
+  height: 145px;
   object-fit: cover;
-  border-radius: 10px;
 }
 
-.grocery-card h3 {
-  color: #0F3D2E;
-  font-size: 15px;
-  margin: 10px 0 5px;
+.grocery-info {
+  padding: 13px;
 }
 
-.grocery-card .price {
-  color: #FF8A3D;
+.grocery-info h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.grocery-price {
+  color: var(--green);
   font-weight: bold;
+  margin-bottom: 12px;
 }
 
-@media (max-width: 360px) {
-  .grocery-grid {
-    gap: 10px;
-  }
-}
-  .grocery-add-btn {
+.grocery-add-btn {
   width: 100%;
   padding: 11px;
-  margin-top: 12px;
-  background: #0F3D2E;
-  color: white;
   border: none;
-  border-radius: 10px;
-  font-size: 14px;
+  border-radius: 9px;
+  background: var(--green);
+  color: white;
   font-weight: bold;
   cursor: pointer;
 }
 
 .grocery-add-btn:active {
   transform: scale(0.97);
-  background: #FF8A3D;
-}
-  .grocery-add-btn:active {
-  transform: scale(0.97);
-  background: #FF8A3D;
+  background: var(--orange);
 }
 
-/* এখানে আমার দেওয়া Cart CSS বসবে */
+footer {
+  background: var(--green);
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
 
-</style>
+footer p {
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* Cart Button */
+.cart-button {
+  position: fixed;
+  right: 18px;
+  bottom: 20px;
+  z-index: 1000;
+  background: var(--orange);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+/* Cart Overlay */
+.cart-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1001;
+}
+
+.cart-overlay.active {
+  display: block;
+}
+
+/* Cart Panel */
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  background: white;
+  z-index: 1002;
+  padding: 22px;
+  overflow-y: auto;
+  transition: 0.3s;
+}
+
+.cart-panel.active {
+  right: 0;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-header h2 {
+  color: var(--green);
+}
+
+.close-cart {
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-info strong {
+  display: block;
+  margin-bottom: 7px;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.quantity-controls button {
+  width: 27px;
+  height: 27px;
+  border: none;
+  border-radius: 6px;
+  background: var(--cream);
+  color: var(--green);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.remove-item {
+  border: none;
+  background: none;
+  color: #d33;
+  cursor: pointer;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 19px;
+  font-weight: bold;
+  color: var(--green);
+  margin: 22px 0;
+}
+
+.cart-action {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 9px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.checkout-btn {
+  background: var(--green);
+  color: white;
+}
+
+.clear-btn {
+  background: #fff1eb;
+  color: #d44;
+}
+
+/* Order Form */
+.order-form {
+  display: none;
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.order-form.active {
+  display: block;
+}
+
+.order-form h3 {
+  color: var(--green);
+  margin-bottom: 15px;
+}
+
+.order-form input,
+.order-form textarea {
+  width: 100%;
+  padding: 13px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.location-btn {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  background: white;
+  color: var(--green);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.place-order-btn {
+  background: var(--orange);
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 27px;
+  }
+
+  .section {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .grocery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .grocery-card img {
+    height: 125px;
+  }
+}
 </style>
 </head>
 
@@ -169,97 +368,75 @@ footer {
 
 <header>
   <div class="logo">LOCAL<span>BITE.</span></div>
-  <a href="index.html">← Home</a>
+  <a href="index.html">← Back to Home</a>
 </header>
 
 <section class="hero">
-  <h1>Fresh Groceries 🥬</h1>
-  <p>Everyday essentials, right around you.</p>
+  <h1>Fresh Groceries Near You</h1>
+  <p>Your Daily Essentials, Delivered to You.</p>
 </section>
 
-<main class="container">
-  <h2>Explore Groceries 🛒</h2>
-  <p>Daily essentials at affordable prices.</p>
+<div class="search-box">
+  <input type="text" id="grocery-search" placeholder="Search groceries...">
+</div>
 
-  <input
-    type="search"
-    id="grocery-search"
-    class="search"
-    placeholder="Search groceries..."
-  >
-
-  <div id="grocery-grid" class="grocery-grid">
-    <p>Loading groceries...</p>
-  </div>
-</main>
+<section class="section">
+  <h2>Daily Grocery</h2>
+  <p class="section-subtitle">Everyday essentials at your doorstep.</p>
+  <div class="grocery-grid" id="grocery-list"></div>
+</section>
 
 <footer>
-  <!-- Floating Cart Button -->
-<button id="floating-cart" onclick="toggleCart()">
-  🛒 My Cart
-  <span id="cart-count">0</span>
+  <div class="logo">LOCAL<span>BITE.</span></div>
+  <p>GOOD FOOD. RIGHT AROUND YOU.</p>
+</footer>
+
+<button class="cart-button" onclick="toggleCart()">
+  🛒 Cart (<span id="cart-count">0</span>)
 </button>
 
-<!-- Cart Overlay -->
-<div id="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
 
-<!-- Cart Panel -->
-<div id="cart-box">
+<div class="cart-panel" id="cart-panel">
   <div class="cart-header">
-    <h2>🛒 Your Cart</h2>
+    <h2>Your Cart 🛒</h2>
     <button class="close-cart" onclick="toggleCart()">×</button>
   </div>
 
-  <div id="cart-items">
-    <p class="empty-cart">Your cart is empty!</p>
+  <div id="cart-items"></div>
+
+  <div class="cart-total">
+    <span>Total</span>
+    <span id="cart-total">৳0</span>
   </div>
 
-  <button onclick="clearCart()" id="clear-cart-btn">
+  <button class="cart-action checkout-btn" onclick="checkout()">
+    Proceed to Checkout →
+  </button>
+
+  <button class="cart-action clear-btn" onclick="clearCart()">
     🗑️ Clear Cart
   </button>
 
-  <div id="order-summary">
-    <h3>Order Summary</h3>
-    <div id="summary-items"></div>
-  </div>
+  <div class="order-form" id="order-form">
+    <h3>Complete Your Order</h3>
 
-  <div class="cart-footer">
-    <h3>Total: <span>৳<span id="cart-total">0</span></span></h3>
-    <button id="checkout-btn" onclick="checkout()">
-      Proceed to Checkout →
+    <input type="text" id="customer-name" placeholder="Your Name">
+    <input type="tel" id="customer-phone" placeholder="Phone Number">
+    <textarea id="customer-address" rows="3" placeholder="Full Delivery Address"></textarea>
+
+    <button class="location-btn" onclick="getCurrentLocation()">
+      📍 Share My Location (Optional)
+    </button>
+
+    <p id="location-status" style="font-size:13px;margin-bottom:12px;color:#555;"></p>
+
+    <button class="cart-action place-order-btn" onclick="placeOrder()">
+      Place Order on WhatsApp
     </button>
   </div>
 </div>
 
-<!-- Order Form -->
-<div id="order-form">
-  <div class="order-form-header">
-    <h2>Complete Your Order</h2>
-    <button onclick="closeOrderForm()">×</button>
-  </div>
-
-  <input type="text" id="customer-name" placeholder="Your Name">
-  <input type="tel" id="customer-phone" placeholder="Phone Number">
-  <textarea id="customer-address" placeholder="Full Delivery Address"></textarea>
-
-  <p class="location-note">
-    📍 For faster delivery, share your current location.
-    You can also order using your delivery address.
-  </p>
-
-  <button type="button" id="location-btn" onclick="getCurrentLocation()">
-    📍 Use Current Location
-  </button>
-
-  <p id="location-status"></p>
-
-  <button id="place-order-btn" onclick="placeOrder()">
-    Place Order
-  </button>
-</div>
-  <div class="logo">LOCAL<span>BITE.</span></div>
-  <p>GOOD FOOD. RIGHT AROUND YOU.</p>
-</footer>
 <script>
 const groceryProducts = [
   {
@@ -298,7 +475,7 @@ const groceryProducts = [
     unit: "কেজি",
     image: "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=500"
   },
-    {
+  {
     name: "রসুন",
     price: 160,
     unit: "কেজি",
@@ -336,80 +513,96 @@ const groceryProducts = [
   }
 ];
 
-const groceryGrid = document.getElementById("grocery-grid");
 let cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
+let customerLocation = "";
 
 function saveCart() {
   localStorage.setItem("localbiteCart", JSON.stringify(cart));
+  updateCart();
+}
+
+function displayGroceries(products) {
+  const groceryList = document.getElementById("grocery-list");
+
+  if (products.length === 0) {
+    groceryList.innerHTML = "<p>No Products Found.</p>";
+    return;
+  }
+
+  groceryList.innerHTML = products.map(product => `
+    <div class="grocery-card">
+      <img src="${product.image}" alt="${product.name}"
+        onerror="this.src='https://placehold.co/500x350?text=Grocery'">
+      <div class="grocery-info">
+        <h3>${product.name}</h3>
+        <p class="grocery-price">৳${product.price} / ${product.unit}</p>
+        <button class="grocery-add-btn"
+          onclick="addGroceryToCart('${product.name}')">
+          + Add to Cart
+        </button>
+      </div>
+    </div>
+  `).join("");
 }
 
 function addGroceryToCart(productName) {
-  const product = groceryProducts.find(
-    item => item.name === productName
-  );
-
+  const product = groceryProducts.find(item => item.name === productName);
   if (!product) return;
 
-  const existing = cart.find(
-    item => item.name === product.name
-  );
+  const existingItem = cart.find(item => item.name === product.name);
 
-  if (existing) {
-    existing.quantity += 1;
+  if (existingItem) {
+    existingItem.quantity += 1;
   } else {
     cart.push({
       name: product.name,
       price: product.price,
-      quantity: 1,
-      image: product.image
+      quantity: 1
     });
   }
 
   saveCart();
-  updateCart();
 }
-function updateCart() {
-  const items = document.getElementById("cart-items");
-  const totalElement = document.getElementById("cart-total");
-  const countElement = document.getElementById("cart-count");
-  const summaryItems = document.getElementById("summary-items");
 
-  items.innerHTML = "";
-  summaryItems.innerHTML = "";
+function updateCart() {
+  const cartItems = document.getElementById("cart-items");
+  const cartCount = document.getElementById("cart-count");
+  const cartTotal = document.getElementById("cart-total");
 
   let total = 0;
   let count = 0;
 
   if (cart.length === 0) {
-    items.innerHTML = '<p class="empty-cart">Your cart is empty!</p>';
-    summaryItems.innerHTML = '<p>Your order summary is empty.</p>';
+    cartItems.innerHTML = "<p>Your cart is empty!</p>";
+  } else {
+    cartItems.innerHTML = cart.map((item, index) => {
+      total += item.price * item.quantity;
+      count += item.quantity;
+
+      return `
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <strong>${item.name}</strong>
+            <span>৳${item.price} × ${item.quantity}</span>
+            <div class="quantity-controls">
+              <button onclick="changeQuantity(${index}, -1)">−</button>
+              <span>${item.quantity}</span>
+              <button onclick="changeQuantity(${index}, 1)">+</button>
+            </div>
+          </div>
+          <button class="remove-item" onclick="removeItem(${index})">
+            Remove
+          </button>
+        </div>
+      `;
+    }).join("");
   }
 
-  cart.forEach((item, index) => {
-    const itemTotal = item.price * item.quantity;
-    total += itemTotal;
-    count += Number(item.quantity) || 0;
-
-    items.innerHTML += `
-      <div style="margin:15px 0;">
-        <strong>${item.name}</strong>
-        <p>৳${item.price} × ${item.quantity}</p>
-        <button onclick="changeQuantity(${index}, -1)">−</button>
-        ${item.quantity}
-        <button onclick="changeQuantity(${index}, 1)">+</button>
-        <button onclick="removeItem(${index})">×</button>
-      </div>
-    `;
-
-    summaryItems.innerHTML += `
-      <div>${item.name} × ${item.quantity} — ৳${itemTotal}</div>
-    `;
-  });
-
-  totalElement.innerText = total;
-  countElement.textContent = count;
+  cartCount.textContent = count;
+  cartTotal.textContent = "৳" + total;
 }
-  function changeQuantity(index, amount) {
+
+function changeQuantity(index, amount) {
   if (!cart[index]) return;
 
   cart[index].quantity += amount;
@@ -419,82 +612,71 @@ function updateCart() {
   }
 
   saveCart();
-  updateCart();
 }
+
 function removeItem(index) {
   cart.splice(index, 1);
   saveCart();
-  updateCart();
 }
-    function toggleCart() {
-  document.getElementById("cart-box").classList.toggle("active");
+
+function toggleCart() {
+  document.getElementById("cart-panel").classList.toggle("active");
   document.getElementById("cart-overlay").classList.toggle("active");
 }
-    function clearCart() {
+
+function clearCart() {
   if (cart.length === 0) {
     alert("Your cart is already empty!");
     return;
   }
 
-  if (confirm("Are you sure you want to clear your cart?")) {
-    cart = [];
-    saveCart();
-    updateCart();
+  if (!confirm("Are you sure you want to clear your cart?")) return;
 
-    document.getElementById("cart-box").classList.remove("active");
-    document.getElementById("cart-overlay").classList.remove("active");
-  }
+  cart = [];
+  saveCart();
+  document.getElementById("order-form").classList.remove("active");
 }
-     function checkout() {
+
+function checkout() {
   if (cart.length === 0) {
     alert("Your cart is empty!");
     return;
   }
 
-  document.getElementById("order-form").style.display = "block";
+  document.getElementById("order-form").classList.add("active");
 }
-    function closeOrderForm() {
-  document.getElementById("order-form").style.display = "none";
-}
-     let customerLocationLink = "";
 
 function getCurrentLocation() {
   const status = document.getElementById("location-status");
-  const button = document.getElementById("location-btn");
 
   if (!navigator.geolocation) {
-    status.innerText = "Location is not supported by your browser.";
+    status.textContent = "Location is not supported by your browser.";
     return;
   }
 
-  status.innerText = "Getting your location...";
-  button.disabled = true;
+  status.textContent = "Getting your location...";
 
   navigator.geolocation.getCurrentPosition(
-    function(position) {
+    position => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
 
-      customerLocationLink =
-        "https://www.google.com/maps?q=" + lat + "," + lon;
-
-      status.innerText = "✓ Location captured successfully!";
-      button.disabled = false;
+      customerLocation = `https://www.google.com/maps?q=${lat},${lon}`;
+      status.textContent = "Location added successfully.";
     },
-    function(error) {
-      status.innerText = "Could not get location. Please check permission and GPS.";
-      button.disabled = false;
-    },
-    { enableHighAccuracy: true, timeout: 15000 }
+    () => {
+      status.textContent = "Location unavailable. You can still order using your address.";
+    }
   );
 }
-    function placeOrder() {
+
+function placeOrder() {
   const name = document.getElementById("customer-name").value.trim();
   const phone = document.getElementById("customer-phone").value.trim();
   const address = document.getElementById("customer-address").value.trim();
 
   if (!name || !phone || !address) {
-    alert("Please fill in all your details!");
+    alert("Please fill in your name, phone number and address.");
     return;
   }
 
@@ -503,55 +685,66 @@ function getCurrentLocation() {
     return;
   }
 
-  let message = "🛒 *NEW LOCALBITE ORDER*\n\n";
-  message += "👤 Name: " + name + "\n";
-  message += "📞 Phone: " + phone + "\n";
-  message += "📍 Address: " + address + "\n\n";
-  message += "*ORDER DETAILS*\n";
+  let total = 0;
+  let orderText = "🛒 *LOCALBITE GROCERY ORDER*\n\n";
+
+  orderText += `Name: ${name}\n`;
+  orderText += `Phone: ${phone}\n`;
+  orderText += `Address: ${address}\n\n`;
+  orderText += "*Order Items:*\n";
 
   cart.forEach(item => {
-    message += item.name + " × " + item.quantity +
-      " = ৳" + (item.price * item.quantity) + "\n";
+    const subtotal = item.price * item.quantity;
+    total += subtotal;
+
+    orderText += `${item.name} × ${item.quantity} = ৳${subtotal}\n`;
   });
 
-  const total = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity, 0
-  );
+  orderText += `\n*Total: ৳${total}*\n`;
 
-  message += "\n💰 *Total: ৳" + total + "*";
-
-  if (customerLocationLink) {
-    message += "\n\n📍 *Customer Location:*\n" + customerLocationLink;
+  if (customerLocation) {
+    orderText += `\nCustomer Location: ${customerLocation}\n`;
   }
 
+  orderText += "\nThank you for ordering from LOCALBITE!";
+
   const whatsappURL =
-    "https://wa.me/8801632033787?text=" + encodeURIComponent(message);
+    "https://wa.me/8801632033787?text=" + encodeURIComponent(orderText);
 
   window.open(whatsappURL, "_blank");
 
   cart = [];
   saveCart();
-  updateCart();
-  closeOrderForm();
-
-  document.getElementById("cart-box").classList.remove("active");
-  document.getElementById("cart-overlay").classList.remove("active");
 
   document.getElementById("customer-name").value = "";
   document.getElementById("customer-phone").value = "";
   document.getElementById("customer-address").value = "";
+  document.getElementById("location-status").textContent = "";
+
+  customerLocation = "";
+
+  document.getElementById("order-form").classList.remove("active");
+  document.getElementById("cart-panel").classList.remove("active");
+  document.getElementById("cart-overlay").classList.remove("active");
 }
-displayGroceries(groceryProducts);
-updateCart();
+
 document.getElementById("grocery-search").addEventListener("input", function() {
-  const searchText = this.value.toLowerCase();
+  const searchValue = this.value.toLowerCase();
 
   const filteredProducts = groceryProducts.filter(product =>
-    product.name.toLowerCase().includes(searchText)
+    product.name.toLowerCase().includes(searchValue)
   );
 
   displayGroceries(filteredProducts);
 });
+
+window.addEventListener("load", function() {
+  updateCart();
+});
+
+displayGroceries(groceryProducts);
+updateCart();
 </script>
+
 </body>
 </html>
