@@ -595,8 +595,9 @@ function updateCart() {
 
       return `
   <div class="cart-item">
-    <img src="${item.image}" alt="${item.name}"
-         class="cart-item-image">
+    <img src="${item.image || (groceryProducts.find(p => p.name === item.name) || {}).image || 'https://placehold.co/100x100?text=Grocery'}"
+     alt="${item.name}"
+     class="cart-item-image">
 
     <div class="cart-item-info">
             <strong>${item.name}</strong>
