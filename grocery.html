@@ -482,6 +482,59 @@ function getCurrentLocation() {
     { enableHighAccuracy: true, timeout: 15000 }
   );
 }
+    function placeOrder() {
+  const name = document.getElementById("customer-name").value.trim();
+  const phone = document.getElementById("customer-phone").value.trim();
+  const address = document.getElementById("customer-address").value.trim();
+
+  if (!name || !phone || !address) {
+    alert("Please fill in all your details!");
+    return;
+  }
+
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  let message = "🛒 *NEW LOCALBITE ORDER*\n\n";
+  message += "👤 Name: " + name + "\n";
+  message += "📞 Phone: " + phone + "\n";
+  message += "📍 Address: " + address + "\n\n";
+  message += "*ORDER DETAILS*\n";
+
+  cart.forEach(item => {
+    message += item.name + " × " + item.quantity +
+      " = ৳" + (item.price * item.quantity) + "\n";
+  });
+
+  const total = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity, 0
+  );
+
+  message += "\n💰 *Total: ৳" + total + "*";
+
+  if (customerLocationLink) {
+    message += "\n\n📍 *Customer Location:*\n" + customerLocationLink;
+  }
+
+  const whatsappURL =
+    "https://wa.me/8801632033787?text=" + encodeURIComponent(message);
+
+  window.open(whatsappURL, "_blank");
+
+  cart = [];
+  saveCart();
+  updateCart();
+  closeOrderForm();
+
+  document.getElementById("cart-box").classList.remove("active");
+  document.getElementById("cart-overlay").classList.remove("active");
+
+  document.getElementById("customer-name").value = "";
+  document.getElementById("customer-phone").value = "";
+  document.getElementById("customer-address").value = "";
+}
 displayGroceries(groceryProducts);
 
 document.getElementById("grocery-search").addEventListener("input", function() {
