@@ -420,6 +420,10 @@ function removeItem(index) {
   saveCart();
   updateCart();
 }
+    function toggleCart() {
+  document.getElementById("cart-box").classList.toggle("active");
+  document.getElementById("cart-overlay").classList.toggle("active");
+}
 displayGroceries(groceryProducts);
 
 document.getElementById("grocery-search").addEventListener("input", function() {
