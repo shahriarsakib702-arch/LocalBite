@@ -172,6 +172,78 @@ footer {
   <div class="logo">LOCAL<span>BITE.</span></div>
   <p>GOOD FOOD. RIGHT AROUND YOU.</p>
 </footer>
+<script>
+const groceryProducts = [
+  {
+    name: "চাল (মোটা)",
+    price: 50,
+    unit: "কেজি",
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500"
+  },
+  {
+    name: "আলু",
+    price: 22,
+    unit: "কেজি",
+    image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500"
+  },
+  {
+    name: "পেঁয়াজ",
+    price: 55,
+    unit: "কেজি",
+    image: "https://images.unsplash.com/photo-1508747703725-719777637510?w=500"
+  },
+  {
+    name: "ডিম",
+    price: 42,
+    unit: "৪টি",
+    image: "https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?w=500"
+  },
+  {
+    name: "মসুর ডাল",
+    price: 90,
+    unit: "কেজি",
+    image: "https://images.unsplash.com/photo-1515543904379-3d757afe72e4?w=500"
+  },
+  {
+    name: "টমেটো",
+    price: 110,
+    unit: "কেজি",
+    image: "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=500"
+  }
+];
 
+const groceryGrid = document.getElementById("grocery-grid");
+
+function displayGroceries(products) {
+  groceryGrid.innerHTML = "";
+
+  if (products.length === 0) {
+    groceryGrid.innerHTML = "<p>কোনো পণ্য পাওয়া যায়নি।</p>";
+    return;
+  }
+
+  products.forEach(product => {
+    groceryGrid.innerHTML += `
+      <div class="grocery-card">
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p class="price">৳${product.price} / ${product.unit}</p>
+      </div>
+    `;
+  });
+}
+
+displayGroceries(groceryProducts);
+
+document.getElementById("grocery-search").addEventListener("input", function() {
+  const searchText = this.value.toLowerCase();
+
+  const filteredProducts = groceryProducts.filter(product =>
+    product.name.toLowerCase().includes(searchText)
+  );
+
+  displayGroceries(filteredProducts);
+});
+</script>
 </body>
 </html>
