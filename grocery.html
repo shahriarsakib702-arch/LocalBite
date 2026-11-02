@@ -713,18 +713,21 @@ function updateCart() {
 
       return `
         <div class="cart-item">
-          <img src="${item.image || (groceryProducts.find(p => p.name === item.name) || {}).image || 'https://placehold.co/100x100?text=Grocery'}"
-               alt="${item.name}" class="cart-item-image">
+  <img src="${item.image || (groceryProducts.find(p => p.name === item.name) || {}).image || 'https://placehold.co/100x100?text=Grocery'}"
+       alt="${item.name}">
 
-          <div class="cart-item-info">
-            <strong>${item.name}</strong>
-            <span>৳${item.price} × ${item.quantity}</span>
-            <div class="quantity-controls">
-              <button onclick="changeQuantity(${index}, -1)">−</button>
-              <span>${item.quantity}</span>
-              <button onclick="changeQuantity(${index}, 1)">+</button>
-            </div>
-          </div>
+  <div class="item-info">
+    <strong>${item.name}</strong>
+    <span>৳${item.price} × ${item.quantity}</span>
+  </div>
+
+  <div class="item-actions">
+    <button onclick="changeQuantity(${index}, -1)">−</button>
+    <span>${item.quantity}</span>
+    <button onclick="changeQuantity(${index}, 1)">+</button>
+    <button class="remove-btn" onclick="removeItem(${index})">×</button>
+  </div>
+</div>
 
           <button class="remove-item" onclick="removeItem(${index})">
   ×
