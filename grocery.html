@@ -734,9 +734,9 @@ function addGroceryToCart(productName) {
 
   const existingItem = cart.find(item => item.name === product.name);
 
-  if (existingItem) {
-    existingItem.quantity += 1;
-  } else {
+if (existingItem) {
+  return;
+} else {
 cart.push({
   name: product.name,
   price: product.price,
