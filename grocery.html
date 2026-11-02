@@ -439,6 +439,14 @@ function removeItem(index) {
     document.getElementById("cart-overlay").classList.remove("active");
   }
 }
+     function checkout() {
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  document.getElementById("order-form").style.display = "block";
+}
 displayGroceries(groceryProducts);
 
 document.getElementById("grocery-search").addEventListener("input", function() {
