@@ -719,22 +719,17 @@ let cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
 }
 
 document.querySelectorAll(".add-to-cart").forEach(button => {
-  button.addEventListener("click", () => {
-    const card = button.closest(".food-card");
-    const name = card.querySelector("h2").innerText;
-    const price = Number(
-      card.querySelector(".price").innerText.replace("৳", "")
-    );
+  const card = button.closest(".food-card");
+  const name = card.querySelector("h2").innerText;
 
-    const existing = cart.find(item => item.name === name);
+  const existing = cart.find(item => item.name === name);
 
-    if (!existing) {
-  cart.push({
-    name,
-    price,
-    quantity: 1,
-    image: card.querySelector("img").src
-  });
+  if (existing) {
+    button.innerHTML = "✓ Added to Cart";
+    button.style.background = "#198754";
+    button.disabled = true;
+  }
+});
 }
 
 button.innerHTML = "✓ Added to Cart";
