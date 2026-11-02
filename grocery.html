@@ -536,7 +536,7 @@ function getCurrentLocation() {
   document.getElementById("customer-address").value = "";
 }
 displayGroceries(groceryProducts);
-
+updateCart();
 document.getElementById("grocery-search").addEventListener("input", function() {
   const searchText = this.value.toLowerCase();
 
