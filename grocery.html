@@ -415,7 +415,8 @@ function updateCart() {
   if (cart[index].quantity <= 0) {
     cart.splice(index, 1);
   }
-
+function removeItem(index) {
+  cart.splice(index, 1);
   saveCart();
   updateCart();
 }
