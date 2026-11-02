@@ -746,6 +746,12 @@ cart.push({
   }
 
   saveCart();
+  const button = document.getElementById(`add-btn-${product.name}`);
+
+if (button) {
+  button.innerHTML = "✓ Added to Cart";
+  button.style.background = "#198754";
+}
 }
 
 function updateCart() {
