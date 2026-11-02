@@ -722,6 +722,7 @@ document.querySelectorAll(".add-to-cart").forEach(button => {
   const card = button.closest(".food-card");
   const name = card.querySelector("h2").innerText;
 
+  // Check saved cart when page loads
   const existing = cart.find(item => item.name === name);
 
   if (existing) {
@@ -729,16 +730,30 @@ document.querySelectorAll(".add-to-cart").forEach(button => {
     button.style.background = "#198754";
     button.disabled = true;
   }
-});
-  
-button.innerHTML = "✓ Added to Cart";
-button.style.background = "#198754";
-button.disabled = true;
 
-saveCart();
-updateCart();
+  button.addEventListener("click", () => {
+    const price = Number(
+      card.querySelector(".price").innerText.replace("৳", "")
+    );
+
+    const alreadyAdded = cart.find(item => item.name === name);
+
+    if (alreadyAdded) return;
+
+    cart.push({
+      name,
+      price,
+      quantity: 1,
+      image: card.querySelector("img").src
+    });
+
+    button.innerHTML = "✓ Added to Cart";
+    button.style.background = "#198754";
+    button.disabled = true;
+
+    saveCart();
+    updateCart();
   });
-});
 
 function toggleCart() {
   document.getElementById("cart-box").classList.toggle("active");
