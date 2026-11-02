@@ -258,12 +258,17 @@ function displayGroceries(products) {
     return;
   }
 
-  products.forEach(product => {
+  products.forEach((product, index) => {
     groceryGrid.innerHTML += `
       <div class="grocery-card">
         <img src="${product.image}" alt="${product.name}">
         <h3>${product.name}</h3>
         <p class="price">৳${product.price} / ${product.unit}</p>
+
+        <button onclick="addGroceryToCart(${index})"
+          class="grocery-add-btn">
+          + Add to Cart
+        </button>
       </div>
     `;
   });
