@@ -630,24 +630,26 @@ function updateCart() {
   const cartItems = document.getElementById("cart-items");
   const cartCount = document.getElementById("cart-count");
   const cartTotal = document.getElementById("cart-total");
+  const summaryItems = document.getElementById("summary-items");
 
   let total = 0;
   let count = 0;
 
   if (cart.length === 0) {
     cartItems.innerHTML = "<p>Your cart is empty!</p>";
+    summaryItems.innerHTML = "<p>No items added yet.</p>";
   } else {
     cartItems.innerHTML = cart.map((item, index) => {
-      total += item.price * item.quantity;
+      const subtotal = item.price * item.quantity;
+      total += subtotal;
       count += item.quantity;
 
       return `
-  <div class="cart-item">
-    <img src="${item.image || (groceryProducts.find(p => p.name === item.name) || {}).image || 'https://placehold.co/100x100?text=Grocery'}"
-     alt="${item.name}"
-     class="cart-item-image">
+        <div class="cart-item">
+          <img src="${item.image || (groceryProducts.find(p => p.name === item.name) || {}).image || 'https://placehold.co/100x100?text=Grocery'}"
+               alt="${item.name}" class="cart-item-image">
 
-    <div class="cart-item-info">
+          <div class="cart-item-info">
             <strong>${item.name}</strong>
             <span>৳${item.price} × ${item.quantity}</span>
             <div class="quantity-controls">
@@ -656,14 +658,25 @@ function updateCart() {
               <button onclick="changeQuantity(${index}, 1)">+</button>
             </div>
           </div>
+
           <button class="remove-item" onclick="removeItem(${index})">
             Remove
           </button>
         </div>
       `;
     }).join("");
+
+    summaryItems.innerHTML = cart.map(item => `
+      <div>
+        <span>${item.name} × ${item.quantity}</span>
+        <strong>৳${item.price * item.quantity}</strong>
+      </div>
+    `).join("");
   }
 
+  cartCount.textContent = count;
+  cartTotal.textContent = "৳" + total;
+}
   cartCount.textContent = count;
   cartTotal.textContent = "৳" + total;
 }
