@@ -249,7 +249,34 @@ const groceryProducts = [
 ];
 
 const groceryGrid = document.getElementById("grocery-grid");
+function addGroceryToCart(productName) {
+  let cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
 
+  const product = groceryProducts.find(
+    item => item.name === productName
+  );
+
+  if (!product) return;
+
+  const existing = cart.find(
+    item => item.name === product.name
+  );
+
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({
+      name: product.name,
+      price: product.price,
+      quantity: 1,
+      image: product.image
+    });
+  }
+
+  localStorage.setItem("localbiteCart", JSON.stringify(cart));
+
+  alert(product.name + " added to your cart!");
+}
 function displayGroceries(products) {
   groceryGrid.innerHTML = "";
 
