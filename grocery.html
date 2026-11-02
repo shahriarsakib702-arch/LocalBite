@@ -424,6 +424,21 @@ function removeItem(index) {
   document.getElementById("cart-box").classList.toggle("active");
   document.getElementById("cart-overlay").classList.toggle("active");
 }
+    function clearCart() {
+  if (cart.length === 0) {
+    alert("Your cart is already empty!");
+    return;
+  }
+
+  if (confirm("Are you sure you want to clear your cart?")) {
+    cart = [];
+    saveCart();
+    updateCart();
+
+    document.getElementById("cart-box").classList.remove("active");
+    document.getElementById("cart-overlay").classList.remove("active");
+  }
+}
 displayGroceries(groceryProducts);
 
 document.getElementById("grocery-search").addEventListener("input", function() {
