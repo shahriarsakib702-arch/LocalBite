@@ -1179,23 +1179,23 @@ function placeOrder() {
   const whatsappURL =
     "https://wa.me/8801632033787?text=" + encodeURIComponent(orderText);
 
-  window.open(whatsappURL, "_blank");
+  sessionStorage.setItem("localbitePendingGroceryOrder", "yes");
 
-  cart = [];
-saveCart();
-displayGroceries(groceryProducts);
+window.open(whatsappURL, "_blank");
 
-document.getElementById("customer-name").value = "";
-document.getElementById("customer-phone").value = "";
-document.getElementById("customer-address").value = "";
-document.getElementById("location-status").textContent = "";
+// Wait until customer returns from WhatsApp
+function checkGroceryOrderStatus() {
+  if (document.visibilityState !== "visible") return;
 
-customerLocation = "";
+  if (sessionStorage.getItem("localbitePendingGroceryOrder") !== "yes") return;
 
-document.getElementById("order-form").classList.remove("active");
-document.getElementById("cart-panel").classList.remove("active");
-document.getElementById("cart-overlay").classList.remove("active");
-document.getElementById("order-overlay").classList.remove("active");
+  sessionStorage.removeItem("localbitePendingGroceryOrder");
+  document.removeEventListener("visibilitychange", checkGroceryOrderStatus);
+
+  document.getElementById("order-confirm-popup").style.display = "flex";
+}
+
+document.addEventListener("visibilitychange", checkGroceryOrderStatus);
 }
 
 document.getElementById("grocery-search").addEventListener("input", function() {
