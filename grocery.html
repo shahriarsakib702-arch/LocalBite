@@ -1069,10 +1069,10 @@ function clearCart() {
   cart = [];
   saveCart();
   displayGroceries(groceryProducts);
-}
-function closeOrderForm() {
-  document.getElementById("order-form").classList.remove("active");
-  document.getElementById("order-overlay").classList.remove("active");
+  updateCart();
+
+  document.getElementById("cart-panel").classList.remove("active");
+  document.getElementById("cart-overlay").classList.remove("active");
 }
   function checkout() {
   if (cart.length === 0) {
