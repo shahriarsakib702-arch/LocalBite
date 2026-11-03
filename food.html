@@ -1046,32 +1046,7 @@ function checkOrderStatus() {
   sessionStorage.removeItem("localbitePendingOrder");
   document.removeEventListener("visibilitychange", checkOrderStatus);
 
-  const sent = confirm(
-    "আপনি কি WhatsApp-এ অর্ডার মেসেজটি পাঠিয়েছেন?"
-  );
-
-  if (sent) {
-    cart = [];
-    saveCart();
-    updateCart();
-
-    document.querySelectorAll(".add-to-cart").forEach(button => {
-      button.innerHTML = "Add to Cart";
-      button.style.background = "#0F3D2E";
-      button.disabled = false;
-    });
-
-    closeOrderForm();
-
-    document.getElementById("cart-box").classList.remove("active");
-    document.getElementById("cart-overlay").classList.remove("active");
-
-    document.getElementById("customer-name").value = "";
-    document.getElementById("customer-phone").value = "";
-    document.getElementById("customer-address").value = "";
-
-    customerLocationLink = "";
-  }
+  document.getElementById("order-confirm-popup").style.display = "flex";
 }
 
 document.addEventListener("visibilitychange", checkOrderStatus);
