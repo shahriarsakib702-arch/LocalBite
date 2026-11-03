@@ -847,8 +847,9 @@ function clearCart() {
   if (!confirm("Are you sure you want to clear your cart?")) return;
 
   cart = [];
-  saveCart();
-  updateCart();
+saveCart();
+displayGroceries(groceryProducts);
+updateCart();
 
   document.getElementById("order-form").classList.remove("active");
   document.getElementById("cart-panel").classList.remove("active");
