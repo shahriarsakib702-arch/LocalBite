@@ -1137,7 +1137,28 @@ function openLocationSettings() {
 function closeLocationPopup() {
   document.getElementById("location-popup").style.display = "none";
 }
+function confirmOrderSent(sent) {
+  document.getElementById("order-confirm-popup").style.display = "none";
 
+  if (sent) {
+    cart = [];
+    saveCart();
+    displayGroceries(groceryProducts);
+    updateCart();
+
+    document.getElementById("customer-name").value = "";
+    document.getElementById("customer-phone").value = "";
+    document.getElementById("customer-address").value = "";
+    document.getElementById("location-status").textContent = "";
+
+    customerLocation = "";
+
+    document.getElementById("order-form").classList.remove("active");
+    document.getElementById("cart-panel").classList.remove("active");
+    document.getElementById("cart-overlay").classList.remove("active");
+    document.getElementById("order-overlay").classList.remove("active");
+  }
+}
 function placeOrder() {
   const name = document.getElementById("customer-name").value.trim();
   const phone = document.getElementById("customer-phone").value.trim();
