@@ -995,31 +995,45 @@ if (customerLocationLink) {
 
 window.open(whatsappURL, "_blank");
 
-// Clear cart after sending order
-cart = [];
-saveCart();
-updateCart();
+// Open WhatsApp and wait for customer confirmation
+sessionStorage.setItem("localbitePendingOrder", "yes");
 
-// Reset all Add to Cart buttons
-document.querySelectorAll(".add-to-cart").forEach(button => {
-  button.innerHTML = "Add to Cart";
-  button.style.background = "#0F3D2E";
-  button.disabled = false;
-});
+window.open(whatsappURL, "_blank");
 
-// Close order form
-closeOrderForm();
+// Wait until customer returns to the website
+window.addEventListener("focus", function checkOrderStatus() {
+  if (sessionStorage.getItem("localbitePendingOrder") !== "yes") return;
 
-// Close cart panel
-document.getElementById("cart-box").classList.remove("active");
-document.getElementById("cart-overlay").classList.remove("active");
+  sessionStorage.removeItem("localbitePendingOrder");
 
-// Reset customer details
-document.getElementById("customer-name").value = "";
-document.getElementById("customer-phone").value = "";
-document.getElementById("customer-address").value = "";
+  const sent = confirm(
+    "আপনি কি WhatsApp-এ অর্ডার মেসেজটি পাঠিয়েছেন?"
+  );
+
+  if (sent) {
+    cart = [];
+    saveCart();
+    updateCart();
+
+    document.querySelectorAll(".add-to-cart").forEach(button => {
+      button.innerHTML = "Add to Cart";
+      button.style.background = "#0F3D2E";
+      button.disabled = false;
+    });
+
+    closeOrderForm();
+
+    document.getElementById("cart-box").classList.remove("active");
+    document.getElementById("cart-overlay").classList.remove("active");
+
+    document.getElementById("customer-name").value = "";
+    document.getElementById("customer-phone").value = "";
+    document.getElementById("customer-address").value = "";
+
     customerLocationLink = "";
   }
+
+}, { once: true });
 
 window.addEventListener("load", function() {
   updateCart();
