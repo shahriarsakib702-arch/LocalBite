@@ -870,42 +870,43 @@ function closeOrderForm() {
   document.getElementById("order-overlay").classList.remove("active");
 }
 function getCurrentLocation() {
-  const status = document.getElementById("location-status");
-
-  if (!navigator.geolocation) {
-    status.textContent = "Your browser does not support location.";
-    return;
-  }
-
-  status.textContent = "Getting your location...";
+  if (!navigator.geolocation) return;
 
   navigator.geolocation.getCurrentPosition(
-    position => {
+    async position => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
 
       customerLocation = `https://www.google.com/maps?q=${lat},${lon}`;
-      status.textContent = "Location added successfully.";
-    },
-    error => {
-      if (error.code === 1) {
-        status.innerHTML = `
-          <strong>Location permission denied!</strong><br>
-          1. Turn ON Location/GPS from your phone settings.<br>
-          2. Allow Location permission for your browser.<br>
-          3. Come back and try again.
-        `;
-      } else if (error.code === 2) {
-        status.textContent =
-          "Location unavailable. Please turn ON your phone's GPS and try again.";
-      } else {
-        status.textContent =
-          "Location request timed out. Please try again.";
+
+      try {
+        const response = await fetch(
+          `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`
+        );
+
+        if (!response.ok) throw new Error("Address lookup failed");
+
+        const data = await response.json();
+
+        const address = [
+          data.locality,
+          data.city,
+          data.principalSubdivision,
+          data.countryName
+        ].filter(Boolean);
+
+        document.getElementById("customer-address").value =
+          [...new Set(address)].join(", ");
+
+      } catch (error) {
+        document.getElementById("customer-address").value =
+          `Google Maps Location: ${customerLocation}`;
       }
     },
+    () => {},
     {
       enableHighAccuracy: true,
-      timeout: 15000
+      timeout: 20000
     }
   );
 }
