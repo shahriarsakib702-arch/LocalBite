@@ -1029,16 +1029,22 @@ function clearCart() {
   if (!confirm("Are you sure you want to clear your cart?")) return;
 
   cart = [];
+cart = [];
 saveCart();
 displayGroceries(groceryProducts);
-updateCart();
 
-  document.getElementById("order-form").classList.remove("active");
+document.getElementById("customer-name").value = "";
+document.getElementById("customer-phone").value = "";
+document.getElementById("customer-address").value = "";
+document.getElementById("location-status").textContent = "";
+
+customerLocation = "";
+
+document.getElementById("order-form").classList.remove("active");
 document.getElementById("cart-panel").classList.remove("active");
 document.getElementById("cart-overlay").classList.remove("active");
 document.getElementById("order-overlay").classList.remove("active");
 }
-
 function closeOrderForm() {
   document.getElementById("order-form").classList.remove("active");
   document.getElementById("order-overlay").classList.remove("active");
