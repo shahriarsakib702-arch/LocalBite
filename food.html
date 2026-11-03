@@ -785,8 +785,15 @@ function clearCart() {
 
   if (confirm("Are you sure you want to clear your cart?")) {
     cart = [];
-    saveCart();
-    updateCart();
+saveCart();
+
+document.querySelectorAll(".add-to-cart").forEach(button => {
+  button.innerHTML = "Add to Cart";
+  button.style.background = "#0F3D2E";
+  button.disabled = false;
+});
+
+updateCart();
 
     document.getElementById("cart-box").classList.remove("active");
     document.getElementById("cart-overlay").classList.remove("active");
