@@ -965,6 +965,14 @@ function getCurrentLocation() {
           `Google Maps Location: ${customerLocation}`;
       }
     },
+    function openLocationSettings() {
+  window.location.href =
+    "intent://settings/location#Intent;scheme=android-app;end";
+}
+
+function closeLocationPopup() {
+  document.getElementById("location-popup").style.display = "none";
+}
     error => {
       if (error.code === 1) {
         alert("Please allow Location permission for LOCALBITE.");
