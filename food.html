@@ -1000,10 +1000,16 @@ cart = [];
 saveCart();
 updateCart();
 
+// Reset all Add to Cart buttons
+document.querySelectorAll(".add-to-cart").forEach(button => {
+  button.innerHTML = "Add to Cart";
+  button.style.background = "#0F3D2E";
+  button.disabled = false;
+});
+
 // Close order form
 closeOrderForm();
-// Close order overlay
-document.getElementById("order-overlay").classList.remove("active");
+
 // Close cart panel
 document.getElementById("cart-box").classList.remove("active");
 document.getElementById("cart-overlay").classList.remove("active");
