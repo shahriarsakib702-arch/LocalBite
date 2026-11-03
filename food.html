@@ -999,11 +999,14 @@ sessionStorage.setItem("localbitePendingOrder", "yes");
 
 window.open(whatsappURL, "_blank");
 
-// Wait until customer returns to the website
-window.addEventListener("focus", function checkOrderStatus() {
+// Wait until customer returns from WhatsApp
+function checkOrderStatus() {
+  if (document.visibilityState !== "visible") return;
+
   if (sessionStorage.getItem("localbitePendingOrder") !== "yes") return;
 
   sessionStorage.removeItem("localbitePendingOrder");
+  document.removeEventListener("visibilitychange", checkOrderStatus);
 
   const sent = confirm(
     "আপনি কি WhatsApp-এ অর্ডার মেসেজটি পাঠিয়েছেন?"
@@ -1031,8 +1034,9 @@ window.addEventListener("focus", function checkOrderStatus() {
 
     customerLocationLink = "";
   }
+}
 
-}, { once: true });
+document.addEventListener("visibilitychange", checkOrderStatus);
 
 } // End of placeOrder function
 
