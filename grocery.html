@@ -1163,7 +1163,7 @@ function placeOrder() {
   document.getElementById("cart-panel").classList.remove("active");
   document.getElementById("cart-overlay").classList.remove("active");
 }
-
+document.getElementById("order-overlay").classList.remove("active");
 document.getElementById("grocery-search").addEventListener("input", function() {
   const searchValue = this.value.toLowerCase();
 
