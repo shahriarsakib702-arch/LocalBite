@@ -633,6 +633,76 @@ footer p {
   font-weight: bold;
   cursor: pointer;
 }
+  /* Food-style Order Form Header */
+.order-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e8dfc9;
+}
+
+.order-form-header h3 {
+  color: #0F3D2E;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+/* Food-style Close Button */
+.order-form-header button {
+  background: #0F3D2E;
+  color: #FFF8E7;
+  border: none;
+  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.order-form-header button:hover {
+  background: #FF8A3D;
+  color: #1F1F1F;
+  transform: rotate(90deg);
+}
+
+/* Food-style Name, Phone and Address Boxes */
+#order-form input,
+#order-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1.5px solid #e0dacb;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #1F1F1F;
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+#order-form input:focus,
+#order-form textarea:focus {
+  border-color: #0F3D2E;
+  box-shadow: 0 0 0 3px rgba(15, 61, 46, 0.10);
+}
+
+#order-form input::placeholder,
+#order-form textarea::placeholder {
+  color: #99958b;
+}
+
+#order-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
 </style>
 </head>
 
