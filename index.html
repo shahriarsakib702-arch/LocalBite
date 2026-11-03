@@ -420,6 +420,81 @@ footer p {
     font-size: 29px;
   }
 }
+  /* HOW LOCALBITE WORKS */
+.how-section {
+  background: #ffffff;
+  text-align: center;
+  padding: 75px 7%;
+}
+
+.how-section h2 {
+  color: #173b2d;
+  font-size: 36px;
+  font-weight: 800;
+  margin: 12px 0;
+}
+
+.how-subtitle {
+  color: #777;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.how-card {
+  position: relative;
+  background: #fff8e7;
+  padding: 35px 25px;
+  border-radius: 22px;
+  border: 1px solid #eee8d9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.how-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(23, 59, 45, 0.10);
+}
+
+.how-number {
+  color: #ff8a3d;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.how-icon {
+  font-size: 38px;
+  margin: 18px 0;
+}
+
+.how-card h3 {
+  color: #173b2d;
+  font-size: 21px;
+  margin-bottom: 12px;
+}
+
+.how-card p {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .how-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .how-section h2 {
+    font-size: 29px;
+  }
+}
 </style>
 </head>
 
