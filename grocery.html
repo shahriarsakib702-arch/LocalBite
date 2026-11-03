@@ -964,36 +964,12 @@ function checkout() {
   button.disabled = true;
 
   navigator.geolocation.getCurrentPosition(
-    async position => {
+    position => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
 
       customerLocation =
         `https://www.google.com/maps?q=${lat},${lon}`;
-
-      try {
-        const response = await fetch(
-          `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`
-        );
-
-        if (!response.ok) throw new Error("Address lookup failed");
-
-        const data = await response.json();
-
-        const address = [
-          data.locality,
-          data.city,
-          data.principalSubdivision,
-          data.countryName
-        ].filter(Boolean);
-
-        document.getElementById("customer-address").value =
-          [...new Set(address)].join(", ");
-
-      } catch (error) {
-        document.getElementById("customer-address").value =
-          `Google Maps Location: ${customerLocation}`;
-      }
 
       status.innerText = "✓ Location captured successfully!";
       button.disabled = false;
