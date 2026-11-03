@@ -1002,7 +1002,8 @@ updateCart();
 
 // Close order form
 closeOrderForm();
-
+// Close order overlay
+document.getElementById("order-overlay").classList.remove("active");
 // Close cart panel
 document.getElementById("cart-box").classList.remove("active");
 document.getElementById("cart-overlay").classList.remove("active");
@@ -1011,6 +1012,7 @@ document.getElementById("cart-overlay").classList.remove("active");
 document.getElementById("customer-name").value = "";
 document.getElementById("customer-phone").value = "";
 document.getElementById("customer-address").value = "";
+    customerLocationLink = "";
   }
 
 window.addEventListener("load", function() {
