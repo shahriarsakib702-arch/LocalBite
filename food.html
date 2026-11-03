@@ -712,6 +712,44 @@
     Place Order
   </button>
 </div>
+  <!-- Order Confirmation Popup -->
+<div id="order-confirm-popup" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#00000080;
+  z-index:2000;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+">
+  <div style="
+    background:#FFF8E7;
+    width:100%;
+    max-width:360px;
+    padding:28px;
+    border-radius:20px;
+    text-align:center;
+  ">
+    <div style="font-size:45px;">🛒</div>
+    <h2 style="color:#0F3D2E;margin:15px 0;">
+      Order Confirmation
+    </h2>
+    <p style="color:#555;margin-bottom:22px;">
+      আপনি কি WhatsApp-এ অর্ডার মেসেজটি পাঠিয়েছেন?
+    </p>
+    <button onclick="confirmOrderSent(true)" style="
+      width:100%;padding:14px;background:#0F3D2E;
+      color:white;border:0;border-radius:10px;
+      font-size:16px;font-weight:bold;
+    ">হ্যাঁ, পাঠিয়েছি</button>
+    <button onclick="confirmOrderSent(false)" style="
+      width:100%;padding:14px;margin-top:10px;
+      background:#eee;color:#333;border:0;
+      border-radius:10px;font-size:15px;
+    ">না, এখনো পাঠাইনি</button>
+  </div>
+</div>
 <script>
 let cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
   function saveCart() {
