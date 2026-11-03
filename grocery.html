@@ -968,7 +968,11 @@ updateCart();
   document.getElementById("order-overlay").classList.remove("active");
   document.getElementById("cart-overlay").classList.remove("active");
 }
-function checkout() {
+function closeOrderForm() {
+  document.getElementById("order-form").classList.remove("active");
+  document.getElementById("order-overlay").classList.remove("active");
+}
+  function checkout() {
   if (cart.length === 0) {
     alert("Your cart is empty!");
     return;
