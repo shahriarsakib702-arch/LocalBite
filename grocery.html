@@ -870,7 +870,10 @@ function closeOrderForm() {
   document.getElementById("order-overlay").classList.remove("active");
 }
 function getCurrentLocation() {
-  if (!navigator.geolocation) return;
+  if (!navigator.geolocation) {
+    alert("Your browser does not support location.");
+    return;
+  }
 
   navigator.geolocation.getCurrentPosition(
     async position => {
@@ -903,7 +906,19 @@ function getCurrentLocation() {
           `Google Maps Location: ${customerLocation}`;
       }
     },
-    () => {},
+    error => {
+      if (error.code === 1) {
+        alert("Please allow Location permission for LOCALBITE.");
+      } else {
+        const turnOn = confirm(
+          "Your phone Location may be OFF. Open Location Settings?"
+        );
+
+        if (turnOn) {
+          window.location.href = "intent://settings/location#Intent;scheme=android-app;end";
+        }
+      }
+    },
     {
       enableHighAccuracy: true,
       timeout: 20000
