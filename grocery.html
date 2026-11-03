@@ -923,16 +923,8 @@ function checkout() {
 
   document.getElementById("order-form").classList.add("active");
   document.getElementById("order-overlay").classList.add("active");
-}
-function closeOrderForm() {
-  document.getElementById("order-form").classList.remove("active");
-  document.getElementById("order-overlay").classList.remove("active");
-}
-function getCurrentLocation() {
-  if (!navigator.geolocation) {
-    alert("Your browser does not support location.");
-    return;
-  }
+}function getCurrentLocation() {
+  if (!navigator.geolocation) return;
 
   navigator.geolocation.getCurrentPosition(
     async position => {
@@ -964,8 +956,27 @@ function getCurrentLocation() {
         document.getElementById("customer-address").value =
           `Google Maps Location: ${customerLocation}`;
       }
+
+      closeLocationPopup();
     },
-    function openLocationSettings() {
+
+    error => {
+      if (error.code === 1) {
+        alert("Please allow location permission for LOCALBITE.");
+      } else {
+        document.getElementById("location-popup").style.display = "flex";
+      }
+    },
+
+    {
+      enableHighAccuracy: true,
+      timeout: 20000,
+      maximumAge: 0
+    }
+  );
+}
+
+function openLocationSettings() {
   window.location.href =
     "intent://settings/location#Intent;scheme=android-app;end";
 }
@@ -973,19 +984,6 @@ function getCurrentLocation() {
 function closeLocationPopup() {
   document.getElementById("location-popup").style.display = "none";
 }
-    error => {
-      if (error.code === 1) {
-        alert("Please allow Location permission for LOCALBITE.");
-      } else {
-        const turnOn = confirm(
-          "Your phone Location may be OFF. Open Location Settings?"
-        );
-
-        if (turnOn) {
-          window.location.href = "intent://settings/location#Intent;scheme=android-app;end";
-        }
-      }
-    },
     {
       enableHighAccuracy: true,
       timeout: 20000
