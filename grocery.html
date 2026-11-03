@@ -384,15 +384,28 @@ footer p {
 }
 
 .location-btn {
+  display: block;
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   margin-bottom: 12px;
-  border: 1px solid var(--green);
-  border-radius: 8px;
-  background: white;
-  color: var(--green);
-  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  background: #0F3D2E;
+  color: #FFF8E7;
+  font-size: 15px;
+  font-weight: 700;
   cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.location-btn:active {
+  transform: scale(0.98);
+  background: #FF8A3D;
+}
+
+.location-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .place-order-btn {
