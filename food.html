@@ -994,6 +994,32 @@ function getCurrentLocation() {
 
   noResult.style.display = found === 0 ? "block" : "none";
   }
+  function confirmOrderSent(sent) {
+  document.getElementById("order-confirm-popup").style.display = "none";
+
+  if (sent) {
+    cart = [];
+    saveCart();
+    updateCart();
+
+    document.querySelectorAll(".add-to-cart").forEach(button => {
+      button.innerHTML = "Add to Cart";
+      button.style.background = "#0F3D2E";
+      button.disabled = false;
+    });
+
+    closeOrderForm();
+
+    document.getElementById("cart-box").classList.remove("active");
+    document.getElementById("cart-overlay").classList.remove("active");
+
+    document.getElementById("customer-name").value = "";
+    document.getElementById("customer-phone").value = "";
+    document.getElementById("customer-address").value = "";
+
+    customerLocationLink = "";
+  }
+}
   function placeOrder() {
   const name = document.getElementById("customer-name").value.trim();
   const phone = document.getElementById("customer-phone").value.trim();
