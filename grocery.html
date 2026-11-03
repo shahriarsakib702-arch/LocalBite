@@ -677,7 +677,10 @@ footer p {
   </div>
 </div>
 <div class="order-form" id="order-form">
-    <h3>Complete Your Order</h3>
+    <div class="order-form-header">
+  <h3>Complete Your Order</h3>
+  <button type="button" class="close-order-btn" onclick="closeOrderForm()">✕</button>
+</div>
 
     <input type="text" id="customer-name" placeholder="Your Name">
     <input type="tel" id="customer-phone" placeholder="Phone Number">
