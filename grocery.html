@@ -1034,10 +1034,11 @@ displayGroceries(groceryProducts);
 updateCart();
 
   document.getElementById("order-form").classList.remove("active");
-  document.getElementById("cart-panel").classList.remove("active");
-  document.getElementById("order-overlay").classList.remove("active");
-  document.getElementById("cart-overlay").classList.remove("active");
+document.getElementById("cart-panel").classList.remove("active");
+document.getElementById("cart-overlay").classList.remove("active");
+document.getElementById("order-overlay").classList.remove("active");
 }
+
 function closeOrderForm() {
   document.getElementById("order-form").classList.remove("active");
   document.getElementById("order-overlay").classList.remove("active");
