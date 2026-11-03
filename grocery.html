@@ -711,21 +711,30 @@ function displayGroceries(products) {
     return;
   }
 
-  groceryList.innerHTML = products.map(product => `
-    <div class="grocery-card">
-      <img src="${product.image}" alt="${product.name}"
-        onerror="this.src='https://placehold.co/500x350?text=Grocery'">
-      <div class="grocery-info">
-        <h3>${product.name}</h3>
-        <p class="grocery-price">৳${product.price} / ${product.unit}</p>
-        <button class="grocery-add-btn"
-  id="add-btn-${product.name}"
-  onclick="addGroceryToCart('${product.name}')">
-  + Add to Cart
-</button>
+  groceryList.innerHTML = products.map(product => {
+    const existingItem = cart.find(item => item.name === product.name);
+    const added = Boolean(existingItem);
+
+    return `
+      <div class="grocery-card">
+        <img src="${product.image}" alt="${product.name}"
+          onerror="this.src='https://placehold.co/500x350?text=Grocery'">
+
+        <div class="grocery-info">
+          <h3>${product.name}</h3>
+          <p class="grocery-price">৳${product.price} / ${product.unit}</p>
+
+          <button class="grocery-add-btn"
+            id="add-btn-${product.name}"
+            onclick="addGroceryToCart('${product.name}')"
+            ${added ? "disabled" : ""}
+            style="${added ? "background:#198754;" : ""}">
+            ${added ? "✓ Added to Cart" : "+ Add to Cart"}
+          </button>
+        </div>
       </div>
-    </div>
-  `).join("");
+    `;
+  }).join("");
 }
 
 function addGroceryToCart(productName) {
