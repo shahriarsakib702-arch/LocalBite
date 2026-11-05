@@ -950,9 +950,14 @@ function updateCart() {
   countElement.textContent = count;
 }
 
-  function checkout() {
+function checkout() {
   if (cart.length === 0) {
     alert("Your cart is empty!");
+    return;
+  }
+
+  if (!deliveryChargeConfirmed) {
+    alert("Please enable your location first!");
     return;
   }
 
