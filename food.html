@@ -840,6 +840,7 @@ updateCart();
   }
 }
 
+
 function updateCart() {
   const items = document.getElementById("cart-items");
   const totalElement = document.getElementById("cart-total");
@@ -890,9 +891,32 @@ function updateCart() {
     `;
   });
 
-  totalElement.innerText = total;
-  countElement.textContent = cart.reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
+  summaryItems.innerHTML += `
+    <hr>
+    <div style="display:flex;justify-content:space-between;margin:10px 0;">
+      <strong>Subtotal</strong>
+      <strong>৳${total}</strong>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin:10px 0;">
+      <span>Delivery Charge</span>
+      <strong>${
+        deliveryCharge === null
+          ? "To Be Confirmed"
+          : deliveryCharge === 0
+            ? "FREE"
+            : "৳" + deliveryCharge
+      }</strong>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin:10px 0;">
+      <strong>Final Total</strong>
+      <strong>৳${total + (deliveryCharge || 0)}</strong>
+    </div>
+  `;
+
+  totalElement.innerText = total + (deliveryCharge || 0);
+  countElement.textContent = count;
 }
+
   function checkout() {
   if (cart.length === 0) {
     alert("Your cart is empty!");
