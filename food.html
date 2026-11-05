@@ -975,6 +975,7 @@ function calculateDeliveryCharge(customerLat, customerLon) {
       : deliveryCharge === 0
         ? "Delivery Charge: FREE"
         : "Delivery Charge: ৳" + deliveryCharge;
+updateCart();
 }
 function getCurrentLocation() {
   const status = document.getElementById("location-status");
