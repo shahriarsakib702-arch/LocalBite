@@ -970,7 +970,7 @@ function getCurrentLocation() {
     function(position) {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
-
+calculateDeliveryCharge(lat, lon);
       customerLocationLink =
         "https://www.google.com/maps?q=" + lat + "," + lon;
 
