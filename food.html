@@ -972,7 +972,7 @@ function calculateDeliveryCharge(customerLat, customerLon) {
 
   deliveryDistance = distance;
   deliveryCharge = null;
-
+deliveryChargeConfirmed = false;
   if (distance <= 1) deliveryCharge = 0;
   else if (distance <= 2) deliveryCharge = 15;
   else if (distance <= 5) deliveryCharge = 20;
