@@ -908,7 +908,52 @@ function closeOrderForm() {
   document.getElementById("order-form").style.display = "none";
 }
   let customerLocationLink = "";
+const deliveryHubLat = 22.147609;
+const deliveryHubLon = 92.040137;
 
+let deliveryCharge = null;
+let deliveryDistance = null;
+
+function calculateDeliveryCharge(customerLat, customerLon) {
+  const R = 6371;
+  const toRad = value => value * Math.PI / 180;
+
+  const dLat = toRad(customerLat - deliveryHubLat);
+  const dLon = toRad(customerLon - deliveryHubLon);
+
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(deliveryHubLat)) *
+    Math.cos(toRad(customerLat)) *
+    Math.sin(dLon / 2) ** 2;
+
+  const distance = 2 * R * Math.atan2(
+    Math.sqrt(a),
+    Math.sqrt(1 - a)
+  );
+
+  deliveryDistance = distance;
+  deliveryCharge = null;
+
+  if (distance <= 1) deliveryCharge = 0;
+  else if (distance <= 2) deliveryCharge = 15;
+  else if (distance <= 5) deliveryCharge = 20;
+  else if (distance <= 8) deliveryCharge = 30;
+  else if (distance <= 12) deliveryCharge = 40;
+  else if (distance <= 15) deliveryCharge = 50;
+
+  document.getElementById("delivery-info").style.display = "block";
+
+  document.getElementById("delivery-distance").innerText =
+    "Distance: " + distance.toFixed(2) + " km";
+
+  document.getElementById("delivery-charge").innerText =
+    deliveryCharge === null
+      ? "Delivery charge: Please contact us for confirmation."
+      : deliveryCharge === 0
+        ? "Delivery Charge: FREE"
+        : "Delivery Charge: ৳" + deliveryCharge;
+}
 function getCurrentLocation() {
   const status = document.getElementById("location-status");
   const button = document.getElementById("location-btn");
