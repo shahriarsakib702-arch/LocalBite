@@ -707,13 +707,26 @@
   <h3>Order Summary</h3>
   <div id="summary-items"></div>
 </div>
-
-<div class="cart-footer" style="display:flex; flex-direction:column; gap:18px;">
+<div class="cart-footer" style="
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  background:transparent;
+  padding:0;
+">
 
   <!-- Delivery Location Box -->
-  <div class="cart-location" style="background:#0F3D2E; padding:25px; border-radius:24px; color:#fff;">
+  <div class="cart-location" style="
+    background:#0F3D2E;
+    padding:22px;
+    border-radius:20px;
+    color:#fff;
+    border:1px solid #315d4d;
+  ">
 
-    <h3>📍 Delivery Location</h3>
+    <h3 style="margin-bottom:15px;">
+      📍 Delivery Location
+    </h3>
 
     <button type="button" id="location-btn" onclick="getCurrentLocation()">
       📍 Use Current Location
@@ -721,22 +734,49 @@
 
     <p id="location-status"></p>
 
-    <div id="delivery-info" style="display:none; margin:15px 0; padding:15px; background:#edf4ed; color:#173b2d; border-radius:12px;">
+    <div id="delivery-info" style="
+      display:none;
+      margin-top:15px;
+      padding:15px;
+      background:#edf4ed;
+      color:#173b2d;
+      border-radius:12px;
+    ">
       <p id="delivery-distance"></p>
       <p id="delivery-charge"></p>
     </div>
 
   </div>
 
-  <!-- Total & Checkout Box -->
-  <div class="checkout-box" style="background:#0F3D2E; padding:25px; border-radius:24px; color:#fff;">
 
-    <h3 style="display:flex; justify-content:space-between; align-items:center;">
+  <!-- Total & Checkout Box -->
+  <div class="checkout-box" style="
+    background:#0F3D2E;
+    padding:22px;
+    border-radius:20px;
+    color:#fff;
+    border:1px solid #315d4d;
+  ">
+
+    <h3 style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:18px;
+    ">
       <span>Total:</span>
-      <span style="color:#FF8A3D;">৳<span id="cart-total">0</span></span>
+
+      <span style="color:#FF8A3D;">
+        ৳<span id="cart-total">0</span>
+      </span>
     </h3>
 
-<button id="checkout-btn" onclick="checkout()" class="checkout-locked">
+    <button
+      id="checkout-btn"
+      onclick="checkout()"
+      class="checkout-locked"
+      style="width:100%;"
+    >
       Proceed to Checkout →
     </button>
 
