@@ -979,7 +979,9 @@ deliveryChargeConfirmed = false;
   else if (distance <= 8) deliveryCharge = 30;
   else if (distance <= 12) deliveryCharge = 40;
   else if (distance <= 15) deliveryCharge = 50;
-
+if (deliveryCharge !== null) {
+  deliveryChargeConfirmed = true;
+}
   document.getElementById("delivery-info").style.display = "block";
 
   document.getElementById("delivery-distance").innerText =
