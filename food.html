@@ -981,7 +981,8 @@ deliveryChargeConfirmed = false;
   else if (distance <= 5) deliveryCharge = 20;
   else if (distance <= 8) deliveryCharge = 30;
   else if (distance <= 12) deliveryCharge = 40;
-  else if (distance <= 15) deliveryCharge = 50;
+else if (distance <= 15) deliveryCharge = 50;
+else deliveryCharge = 50 + Math.ceil((distance - 15) / 3) * 10;
 if (deliveryCharge !== null) {
   deliveryChargeConfirmed = true;
 }
