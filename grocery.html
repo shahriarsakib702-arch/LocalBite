@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,699 +12,206 @@
   --cream: #FFF8E7;
   --dark: #1F1F1F;
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: var(--cream);
-  color: var(--dark);
-}
-
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:Arial,sans-serif; background:var(--cream); color:var(--dark); }
 header {
-  background: var(--green);
-  color: white;
-  padding: 18px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background:var(--green); color:white; padding:18px 6%;
+  display:flex; justify-content:space-between; align-items:center;
 }
-
-.logo {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.logo span {
-  color: var(--orange);
-}
-
-header a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.hero {
-  background: var(--green);
-  color: white;
-  text-align: center;
-  padding: 55px 20px;
-}
-
-.hero h1 {
-  font-size: 34px;
-  margin-bottom: 12px;
-}
-
-.hero p {
-  color: #e7eee9;
-}
-
-.search-box {
-  max-width: 600px;
-  margin: 25px auto;
-  padding: 0 15px;
-}
-
+.logo { font-size:25px; font-weight:bold; }
+.logo span { color:var(--orange); }
+header a { color:white; text-decoration:none; font-weight:bold; }
+.hero { background:var(--green); color:white; text-align:center; padding:55px 20px; }
+.hero h1 { font-size:34px; margin-bottom:12px; }
+.hero p { color:#e7eee9; }
+.search-box { max-width:600px; margin:25px auto; padding:0 15px; }
 .search-box input {
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  font-size: 16px;
-  outline: none;
+  width:100%; padding:15px; border:1px solid #ddd; border-radius:12px;
+  font-size:16px; outline:none;
 }
-
-.section {
-  padding: 30px 6% 100px;
-}
-
-.section h2 {
-  color: var(--green);
-  margin-bottom: 8px;
-  font-size: 26px;
-}
-
-.section-subtitle {
-  color: #666;
-  margin-bottom: 25px;
-}
-
-.grocery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 18px;
-}
-
-.grocery-card {
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-}
-
-.grocery-card img {
-  width: 100%;
-  height: 145px;
-  object-fit: cover;
-}
-
-.grocery-info {
-  padding: 13px;
-}
-
-.grocery-info h3 {
-  font-size: 17px;
-  margin-bottom: 8px;
-}
-
-.grocery-price {
-  color: var(--green);
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-
+.section { padding:30px 6% 100px; }
+.section h2 { color:var(--green); margin-bottom:8px; font-size:26px; }
+.section-subtitle { color:#666; margin-bottom:25px; }
+.grocery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:18px; }
+.grocery-card { background:white; border-radius:15px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,.07); }
+.grocery-card img { width:100%; height:145px; object-fit:cover; }
+.grocery-info { padding:13px; }
+.grocery-info h3 { font-size:17px; margin-bottom:8px; }
+.grocery-price { color:var(--green); font-weight:bold; margin-bottom:12px; }
 .grocery-add-btn {
-  width: 100%;
-  padding: 11px;
-  border: none;
-  border-radius: 9px;
-  background: var(--green);
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
+  width:100%; padding:11px; border:none; border-radius:9px;
+  background:var(--green); color:white; font-weight:bold; cursor:pointer;
 }
+.grocery-add-btn:active { transform:scale(.97); background:var(--orange); }
+.grocery-add-btn:disabled { cursor:default; opacity:1; }
+footer { background:var(--green); color:white; text-align:center; padding:30px 15px; }
+footer p { margin-top:8px; font-size:12px; letter-spacing:1px; }
 
-.grocery-add-btn:active {
-  transform: scale(0.97);
-  background: var(--orange);
-}
-
-footer {
-  background: var(--green);
-  color: white;
-  text-align: center;
-  padding: 30px 15px;
-}
-
-footer p {
-  margin-top: 8px;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-/* Cart Button */
 .cart-button {
-  position: fixed;
-  right: 18px;
-  bottom: 20px;
-  z-index: 1000;
-  background: var(--orange);
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 14px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  cursor: pointer;
+  position:fixed; right:18px; bottom:20px; z-index:1000; background:var(--orange);
+  color:white; border:none; border-radius:30px; padding:14px 20px;
+  font-size:16px; font-weight:bold; box-shadow:0 4px 15px rgba(0,0,0,.2); cursor:pointer;
 }
-
-/* Cart Overlay */
-.cart-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 1001;
+.cart-overlay,.order-overlay {
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:1001;
 }
-
-.cart-overlay.active {
-  display: block;
-}
-
-/* Cart Panel */
+.cart-overlay.active,.order-overlay.active { display:block; }
 .cart-panel {
-  position: fixed;
-  top: 0;
-  right: -450px;
-  width: 100%;
-  max-width: 420px;
-  height: 100%;
-  background: #FFF8E7;
-  z-index: 1002;
-  padding: 25px;
-  overflow-y: auto;
-  transition: right 0.3s ease;
-  box-shadow: -5px 0 25px #00000020;
+  position:fixed; top:0; right:-450px; width:100%; max-width:420px; height:100%;
+  background:var(--cream); z-index:1002; padding:25px; overflow-y:auto;
+  transition:right .3s ease; box-shadow:-5px 0 25px #00000020;
 }
-
-.cart-panel.active {
-  right: 0;
-}
-
+.cart-panel.active { right:0; }
 .cart-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 18px;
-  margin-bottom: 20px;
+  display:flex; justify-content:space-between; align-items:center;
+  border-bottom:1px solid #ddd; padding-bottom:18px; margin-bottom:20px;
 }
-
-.cart-header h2 {
-  color: #0F3D2E;
-}
-
-.close-cart {
-  border: none;
-  background: none;
-  font-size: 28px;
-  cursor: pointer;
-}
-.close-cart {
-  border: none;
-  background: none;
-  font-size: 28px;
-  cursor: pointer;
-}
-
+.cart-header h2 { color:var(--green); }
+.close-cart { border:none; background:none; font-size:28px; cursor:pointer; }
 .cart-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 18px 0;
-  border-bottom: 1px solid #ddd;
-  width: 100%;
+  display:flex; align-items:center; gap:10px; padding:18px 0;
+  border-bottom:1px solid #ddd; width:100%;
 }
-
-.cart-item img {
-  width: 75px;
-  height: 75px;
-  object-fit: cover;
-  border-radius: 10px;
-  flex-shrink: 0;
+.cart-item img { width:65px; height:65px; object-fit:cover; border-radius:10px; flex-shrink:0; }
+.item-info { display:flex; flex-direction:column; flex:1; min-width:0; gap:6px; color:var(--green); }
+.item-info strong { font-weight:700; }
+.item-actions { display:flex; align-items:center; gap:7px; flex-shrink:0; }
+.item-actions button {
+  width:30px; height:32px; border:0; border-radius:7px;
+  background:var(--green); color:white; font-size:19px; cursor:pointer;
 }
-
-.item-info {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 12px;
-  color: #0F3D2E;
-}
-
-.item-info strong {
-  font-weight: 700;
-}
-
-.quantity-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.quantity-controls button {
-  width: 34px;
-  height: 34px;
-  border: 0;
-  border-radius: 7px;
-  background: #0F3D2E;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.quantity-controls span {
-  min-width: 15px;
-  text-align: center;
-}
-
-.remove-item {
-  width: 34px;
-  height: 34px;
-  border: 0;
-  border-radius: 7px;
-  background: #d93636;
-  color: #fff;
-  font-size: 22px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.cart-footer {
-  background: #0F3D2E;
-  padding: 20px;
-  border-radius: 16px;
-  margin-top: 15px;
-}
-
-.cart-footer h3 {
-  color: #FFF8E7;
-  font-size: 20px;
-  font-weight: 700;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 0 18px;
-}
-
-#cart-total {
-  color: #FF8A3D;
-  font-size: 25px;
-  font-weight: 800;
-}
-
-#checkout-btn {
-  display: block;
-  width: 100%;
-  padding: 16px;
-  background: #FF8A3D;
-  color: #1F1F1F;
-  border: 0;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 800;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255,138,61,.25);
-}
-
-#checkout-btn:active {
-  transform: scale(.98);
-}
-
+.item-actions .remove-btn { background:#d93636; }
 #clear-cart-btn {
-  width: 100%;
-  padding: 13px;
-  margin: 15px 0;
-  background: #fff1eb;
-  color: #e45d35;
-  border: 1px solid #ffd6c5;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
+  width:100%; padding:13px; margin:15px 0; background:#fff1eb; color:#e45d35;
+  border:1px solid #ffd6c5; border-radius:12px; font-size:15px; font-weight:700; cursor:pointer;
 }
-
-
-/* Order Form */
-.order-form {
-  display: none;
-  margin-top: 20px;
-  border-top: 1px solid #ddd;
-  padding-top: 20px;
+.cart-footer {
+  display:flex; flex-direction:column; gap:20px; background:transparent;
+  padding:0; margin-top:15px;
 }
-
-.order-form.active {
-  display: block;
+.cart-location,.checkout-box {
+  background:var(--green); padding:22px; border-radius:20px; color:white;
+  border:1px solid #315d4d;
 }
-
-.order-form h3 {
-  color: var(--green);
-  margin-bottom: 15px;
+.cart-location h3 { font-size:20px; font-weight:700; margin-bottom:12px; color:white; }
+.location-note {
+  background:rgba(255,255,255,.10); border-left:4px solid var(--orange);
+  padding:13px; border-radius:10px; margin-bottom:18px;
 }
-
-.order-form input,
-.order-form textarea {
-  width: 100%;
-  padding: 13px;
-  margin-bottom: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 15px;
+.location-note p { font-size:13px; line-height:1.6; color:white; }
+#location-btn {
+  width:100%; padding:15px; background:var(--orange); color:white; border:none;
+  border-radius:12px; font-size:15px; font-weight:700; cursor:pointer;
+  box-shadow:0 5px 12px rgba(0,0,0,.18);
 }
-
-.location-btn {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 12px;
-  border: none;
-  border-radius: 12px;
-  background: #0F3D2E;
-  color: #FFF8E7;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.3s ease;
+#location-btn:disabled { opacity:.65; cursor:wait; }
+#location-status { color:#fff; font-size:13px; line-height:1.5; margin-top:12px; }
+#delivery-info {
+  display:none; margin-top:15px; padding:15px; background:#edf4ed;
+  color:var(--green); border-radius:12px; line-height:1.7; font-size:14px;
 }
-
-.location-btn:active {
-  transform: scale(0.98);
-  background: #FF8A3D;
+.checkout-box h3 {
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom:18px; color:white; font-size:20px;
 }
-
-.location-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+#cart-total { color:var(--orange); font-size:25px; font-weight:800; }
+#checkout-btn {
+  display:block; width:100%; padding:16px; background:var(--orange); color:white;
+  border:0; border-radius:12px; font-size:16px; font-weight:800; cursor:pointer;
+  transition:all .3s ease;
 }
-
-.place-order-btn {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  margin-top: 12px;
-  border: none;
-  border-radius: 12px;
-  background: var(--orange);
-  color: white;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.3s ease;
+#checkout-btn:active { transform:scale(.98); }
+#checkout-btn.checkout-locked {
+  background:#777 !important; color:#ddd !important; opacity:.7;
+  cursor:not-allowed; box-shadow:none; transform:none;
 }
+#checkout-btn:not(.checkout-locked) { background:var(--orange) !important; color:white !important; cursor:pointer; }
 
-.place-order-btn:active {
-  transform: scale(0.98);
-  opacity: 0.9;
+#order-summary {
+  background:white; border:1px solid #e8dfc9; border-radius:16px;
+  padding:18px; margin:18px 0; box-shadow:0 4px 15px rgba(15,61,46,.07);
 }
-
-@media (max-width: 480px) {
-  .hero h1 {
-    font-size: 27px;
-  }
-
-  .section {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  .grocery-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .grocery-card img {
-    height: 125px;
-  }
-}
-
-  /* Checkout Floating Popup */
-.order-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 2000;
-}
-
-.order-overlay.active {
-  display: block;
-}
-
-.order-form {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: calc(100% - 30px);
-  max-width: 420px;
-  max-height: 85vh;
-  overflow-y: auto;
-  background: white;
-  padding: 25px;
-  border-radius: 18px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-  z-index: 2001;
-  margin: 0;
-}
-
-.order-form.active {
-  display: block;
-}
-  #order-summary {
-  background: #FFF8E7;
-  border: 1px solid #e8dfc9;
-  border-radius: 16px;
-  padding: 18px;
-  margin: 18px 0;
-  box-shadow: 0 4px 15px rgba(15,61,46,.07);
-}
-
 #order-summary h3 {
-  color: #0F3D2E;
-  font-size: 18px;
-  font-weight: 800;
-  margin: 0 0 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #e8dfc9;
+  color:var(--green); font-size:18px; font-weight:800; margin-bottom:16px;
+  padding-bottom:12px; border-bottom:1px solid #e8dfc9;
 }
-
 #summary-items > div {
-  color: #1F1F1F;
-  font-size: 14px;
-  padding: 10px 0;
-  border-bottom: 1px dashed #d8d2c3;
+  color:var(--dark); font-size:14px; padding:10px 0;
+  border-bottom:1px dashed #d8d2c3; display:flex; justify-content:space-between; gap:10px;
 }
+#summary-items strong { color:var(--green); font-weight:800; }
+.summary-total-line {
+  display:flex; justify-content:space-between; gap:10px;
+  padding-top:12px; margin-top:5px; font-weight:bold; color:var(--green);
+}
+.summary-total-line.final { font-size:17px; color:var(--orange); }
 
-#summary-items strong {
-  color: #0F3D2E;
-  font-weight: 800;
+.order-form {
+  display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:calc(100% - 30px); max-width:420px; max-height:85vh; overflow-y:auto;
+  background:white; padding:25px; border-radius:18px;
+  box-shadow:0 10px 40px rgba(0,0,0,.25); z-index:2001;
 }
-  .item-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.item-actions button {
-  width: 34px;
-  height: 34px;
-  border: 0;
-  border-radius: 7px;
-  background: #0F3D2E;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.item-actions .remove-btn {
-  background: #d93636;
-  margin-left: auto;
-}
-  .cart-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 18px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.item-info {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 0;
-  gap: 6px;
-}
-
-.item-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-  flex-wrap: nowrap;
-}
-
-.item-actions button {
-  width: 34px;
-  height: 34px;
-}
-
-.item-actions .remove-btn {
-  margin-left: 0;
-}
-  .location-popup {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 9999;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.location-popup-content {
-  background: #fff8e7;
-  padding: 25px;
-  border-radius: 18px;
-  width: 100%;
-  max-width: 340px;
-  text-align: center;
-}
-
-.location-popup-content h3 {
-  color: #0f3d2e;
-  margin-bottom: 10px;
-}
-
-.location-popup-content p {
-  color: #555;
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-
-.location-popup-content button {
-  width: 100%;
-  padding: 13px;
-  border: none;
-  border-radius: 10px;
-  background: #0f3d2e;
-  color: white;
-  font-weight: bold;
-  margin-top: 8px;
-}
-
-.location-popup-content .cancel-btn {
-  background: #ddd;
-  color: #333;
-}
-  .order-form-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 18px;
-}
-
-.order-form-header h3 {
-  margin: 0;
-}
-
-.close-order-btn {
-  width: 34px;
-  height: 34px;
-  border: none;
-  border-radius: 50%;
-  background: #f1f1f1;
-  color: #333;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-}
-  /* Food-style Order Form Header */
+.order-form.active { display:block; }
 .order-form-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 26px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #e8dfc9;
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom:26px; padding-bottom:16px; border-bottom:1px solid #e8dfc9;
 }
-
-.order-form-header h3 {
-  color: #0F3D2E;
-  font-size: 23px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  margin: 0;
+.order-form-header h3 { color:var(--green); font-size:23px; font-weight:800; margin:0; }
+.close-order-btn {
+  background:var(--green); color:var(--cream); border:none; border-radius:12px;
+  width:40px; height:40px; font-size:24px; cursor:pointer;
 }
-
-/* Food-style Close Button */
-.order-form-header button {
-  background: #0F3D2E;
-  color: #FFF8E7;
-  border: none;
-  border-radius: 12px;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease;
+#order-form input,#order-form textarea {
+  width:100%; padding:16px; margin-bottom:16px; border:1.5px solid #e0dacb;
+  border-radius:14px; background:white; color:var(--dark); font-size:16px;
+  font-family:inherit; outline:none;
 }
-
-.order-form-header button:hover {
-  background: #FF8A3D;
-  color: #1F1F1F;
-  transform: rotate(90deg);
+#order-form input:focus,#order-form textarea:focus {
+  border-color:var(--green); box-shadow:0 0 0 3px rgba(15,61,46,.10);
 }
-
-/* Food-style Name, Phone and Address Boxes */
-#order-form input,
-#order-form textarea {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 16px;
-  margin-bottom: 16px;
-  border: 1.5px solid #e0dacb;
-  border-radius: 14px;
-  background: #ffffff;
-  color: #1F1F1F;
-  font-size: 16px;
-  font-family: inherit;
-  outline: none;
-  transition: all 0.25s ease;
+#order-form textarea { min-height:100px; resize:vertical; }
+.place-order-btn {
+  display:block; width:100%; padding:15px; margin-top:5px; border:none;
+  border-radius:12px; background:var(--orange); color:white;
+  font-size:16px; font-weight:700; cursor:pointer;
 }
-
-#order-form input:focus,
-#order-form textarea:focus {
-  border-color: #0F3D2E;
-  box-shadow: 0 0 0 3px rgba(15, 61, 46, 0.10);
+.location-popup {
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,.6);
+  z-index:9999; justify-content:center; align-items:center; padding:20px;
 }
-
-#order-form input::placeholder,
-#order-form textarea::placeholder {
-  color: #99958b;
+.location-popup-content {
+  background:var(--cream); padding:25px; border-radius:18px;
+  width:100%; max-width:340px; text-align:center;
 }
-
-#order-form textarea {
-  min-height: 110px;
-  resize: vertical;
+.location-popup-content h3 { color:var(--green); margin-bottom:10px; }
+.location-popup-content p { color:#555; font-size:14px; margin-bottom:20px; }
+.location-popup-content button {
+  width:100%; padding:13px; border:none; border-radius:10px;
+  background:var(--green); color:white; font-weight:bold; margin-top:8px;
+}
+.location-popup-content .cancel-btn { background:#ddd; color:#333; }
+#order-confirm-popup {
+  display:none; position:fixed; inset:0; background:#00000080; z-index:99999;
+  align-items:center; justify-content:center; padding:20px;
+}
+.confirm-content {
+  background:var(--cream); width:100%; max-width:360px; padding:28px;
+  border-radius:20px; text-align:center;
+}
+.confirm-content button {
+  width:100%; padding:14px; border:0; border-radius:10px;
+  font-size:16px; font-weight:bold; margin-top:10px;
+}
+@media(max-width:480px) {
+  .hero h1 { font-size:27px; }
+  .section { padding-left:15px; padding-right:15px; }
+  .grocery-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .grocery-card img { height:125px; }
+  .cart-panel { padding:18px; }
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -733,190 +239,102 @@ footer p {
   <p>GOOD FOOD. RIGHT AROUND YOU.</p>
 </footer>
 
-<button class="cart-button" onclick="toggleCart()">
-  🛒 Cart (<span id="cart-count">0</span>)
-</button>
-
+<button class="cart-button" onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</button>
 <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
-<div class="order-overlay" id="order-overlay"
-     onclick="closeOrderForm()"></div>
+<div class="order-overlay" id="order-overlay" onclick="closeOrderForm()"></div>
+
 <div class="cart-panel" id="cart-panel">
   <div class="cart-header">
     <h2>Your Cart 🛒</h2>
     <button class="close-cart" onclick="toggleCart()">×</button>
   </div>
-
   <div id="cart-items"></div>
-
-  <button id="clear-cart-btn" onclick="clearCart()">
-    🗑️ Clear Cart
-  </button>
+  <button id="clear-cart-btn" onclick="clearCart()">🗑️ Clear Cart</button>
 
   <div id="order-summary">
     <h3>Order Summary</h3>
     <div id="summary-items"></div>
+    <div class="summary-total-line"><span>Subtotal</span><span id="summary-subtotal">৳0</span></div>
+    <div class="summary-total-line"><span>Delivery Charge</span><span id="summary-delivery">৳0</span></div>
+    <div class="summary-total-line final"><span>Final Total</span><span id="summary-final">৳0</span></div>
   </div>
 
   <div class="cart-footer">
-    <h3>
-      Total:
-      <span>৳<span id="cart-total">0</span></span>
-    </h3>
+    <div class="cart-location">
+      <h3>📍 Delivery Location</h3>
+      <div class="location-note">
+        <p>⚠️ To place your order, please confirm your delivery location first.</p>
+      </div>
+      <button type="button" id="location-btn" onclick="getCurrentLocation()">📍 Confirm My Location</button>
+      <p id="location-status"></p>
+      <div id="delivery-info">
+        <p id="delivery-distance"></p>
+        <p id="delivery-charge"></p>
+      </div>
+    </div>
 
-    <button id="checkout-btn" onclick="checkout()">
-      Proceed to Checkout →
-    </button>
+    <div class="checkout-box">
+      <h3><span>Total:</span><span>৳<span id="cart-total">0</span></span></h3>
+      <button id="checkout-btn" onclick="checkout()" class="checkout-locked">Proceed to Checkout →</button>
+    </div>
   </div>
 </div>
+
 <div class="order-form" id="order-form">
-    <div class="order-form-header">
-  <h3>Complete Your Order</h3>
-  <button type="button" class="close-order-btn" onclick="closeOrderForm()">✕</button>
+  <div class="order-form-header">
+    <h3>Complete Your Order</h3>
+    <button type="button" class="close-order-btn" onclick="closeOrderForm()">✕</button>
+  </div>
+  <input type="text" id="customer-name" placeholder="Your Name">
+  <input type="tel" id="customer-phone" placeholder="Phone Number">
+  <textarea id="customer-address" rows="3" placeholder="Full Delivery Address"></textarea>
+  <button class="place-order-btn" onclick="placeOrder()">Place Order on WhatsApp →</button>
 </div>
 
-    <input type="text" id="customer-name" placeholder="Your Name">
-    <input type="tel" id="customer-phone" placeholder="Phone Number">
-    <textarea id="customer-address" rows="3" placeholder="Full Delivery Address"></textarea>
-
-    <button class="location-btn" onclick="getCurrentLocation()">
-      📍 Share My Location (Optional)
-    </button>
-
-    <p id="location-status" style="font-size:13px;margin-bottom:12px;color:#555;"></p>
 <div class="location-popup" id="location-popup">
   <div class="location-popup-content">
     <h3>📍 Location is OFF</h3>
-    <p>Please turn on your phone location to share your delivery address.</p>
-
-    <button onclick="openLocationSettings()">
-      Turn On Location
-    </button>
-
-    <button class="cancel-btn" onclick="closeLocationPopup()">
-      Cancel
-    </button>
+    <p>Please turn on your phone location and allow browser location access, then try again.</p>
+    <button onclick="openLocationSettings()">Turn On Location</button>
+    <button class="cancel-btn" onclick="closeLocationPopup()">Cancel</button>
   </div>
 </div>
-    <button class="cart-action place-order-btn" onclick="placeOrder()">
-      Place Order on WhatsApp
-    </button>
-</div>
-  <!-- Order Confirmation Popup -->
-<div id="order-confirm-popup" style="
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#00000080;
-  z-index:99999;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-">
-  <div style="
-    background:#FFF8E7;
-    width:100%;
-    max-width:360px;
-    padding:28px;
-    border-radius:20px;
-    text-align:center;
-  ">
+
+<div id="order-confirm-popup">
+  <div class="confirm-content">
     <div style="font-size:45px;">🛒</div>
-    <h2 style="color:#0F3D2E;margin:15px 0;">
-      Order Confirmation
-    </h2>
-    <p style="color:#555;margin-bottom:22px;">
-      আপনি কি WhatsApp-এ অর্ডার মেসেজটি পাঠিয়েছেন?
-    </p>
-    <button onclick="confirmOrderSent(true)" style="
-      width:100%;padding:14px;background:#0F3D2E;
-      color:white;border:0;border-radius:10px;
-      font-size:16px;font-weight:bold;
-    ">হ্যাঁ, পাঠিয়েছি</button>
-    <button onclick="confirmOrderSent(false)" style="
-      width:100%;padding:14px;margin-top:10px;
-      background:#eee;color:#333;border:0;
-      border-radius:10px;font-size:15px;
-    ">না, এখনো পাঠাইনি</button>
+    <h2 style="color:#0F3D2E;margin:15px 0;">Order Confirmation</h2>
+    <p style="color:#555;margin-bottom:12px;">আপনি কি WhatsApp-এ অর্ডার মেসেজটি পাঠিয়েছেন?</p>
+    <button onclick="confirmOrderSent(true)" style="background:#0F3D2E;color:white;">হ্যাঁ, পাঠিয়েছি</button>
+    <button onclick="confirmOrderSent(false)" style="background:#eee;color:#333;">না, এখনো পাঠাইনি</button>
   </div>
 </div>
+
 <script>
 const groceryProducts = [
-  {
-    name: "চাল (মোটা)",
-    price: 50,
-    unit: "কেজি",
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500"
-  },
-  {
-    name: "আলু",
-    price: 22,
-    unit: "কেজি",
-    image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500"
-  },
-  {
-    name: "পেঁয়াজ",
-    price: 55,
-    unit: "কেজি",
-    image: "https://images.unsplash.com/photo-1508747703725-719777637510?w=500"
-  },
-  {
-    name: "ডিম",
-    price: 42,
-    unit: "৪টি",
-    image: "https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?w=500"
-  },
-  {
-    name: "মসুর ডাল",
-    price: 90,
-    unit: "কেজি",
-    image: "https://images.unsplash.com/photo-1515543904379-3d757afe72e4?w=500"
-  },
-  {
-    name: "টমেটো",
-    price: 110,
-    unit: "কেজি",
-    image: "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=500"
-  },
-  {
-    name: "রসুন",
-    price: 160,
-    unit: "কেজি",
-    image: "https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?w=500"
-  },
-  {
-    name: "কাঁচা মরিচ",
-    price: 80,
-    unit: "কেজি",
-    image: "https://images.unsplash.com/photo-1588252303782-cb80119abd6d?w=500"
-  },
-  {
-    name: "বেগুন",
-    price: 60,
-    unit: "কেজি",
-    image: "cropped-freepik__upload__86592.png"
-  },
-  {
-    name: "গাজর",
-    price: 100,
-    unit: "কেজি",
-    image: "https://images.unsplash.com/photo-1445282768818-728615cc910a?w=500"
-  },
-  {
-    name: "আটা",
-    price: 50,
-    unit: "কেজি",
-    image: "https://images.unsplash.com/photo-1627485937980-221c88ac04f9?w=500"
-  },
-  {
-    name: "চিনি",
-    price: 110,
-    unit: "কেজি",
-    image: "world-diabetes-day-sugar-wooden-bowl-dark-surface_1150-26666.jpg"
-  }
+  { name:"চাল (মোটা)", price:50, unit:"কেজি", image:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500" },
+  { name:"আলু", price:22, unit:"কেজি", image:"https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500" },
+  { name:"পেঁয়াজ", price:55, unit:"কেজি", image:"https://images.unsplash.com/photo-1508747703725-719777637510?w=500" },
+  { name:"ডিম", price:42, unit:"৪টি", image:"https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?w=500" },
+  { name:"মসুর ডাল", price:90, unit:"কেজি", image:"https://images.unsplash.com/photo-1515543904379-3d757afe72e4?w=500" },
+  { name:"টমেটো", price:110, unit:"কেজি", image:"https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=500" },
+  { name:"রসুন", price:160, unit:"কেজি", image:"https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?w=500" },
+  { name:"কাঁচা মরিচ", price:80, unit:"কেজি", image:"https://images.unsplash.com/photo-1588252303782-cb80119abd6d?w=500" },
+  { name:"বেগুন", price:60, unit:"কেজি", image:"cropped-freepik__upload__86592.png" },
+  { name:"গাজর", price:100, unit:"কেজি", image:"https://images.unsplash.com/photo-1445282768818-728615cc910a?w=500" },
+  { name:"আটা", price:50, unit:"কেজি", image:"https://images.unsplash.com/photo-1627485937980-221c88ac04f9?w=500" },
+  { name:"চিনি", price:110, unit:"কেজি", image:"world-diabetes-day-sugar-wooden-bowl-dark-surface_1150-26666.jpg" }
 ];
+
+// Delivery hub: Maid Para Jame Masjid, Khagaria, Satkania
+const HUB_LAT = 22.147609;
+const HUB_LON = 92.040137;
 
 let cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
 let customerLocation = "";
+let deliveryDistance = null;
+let deliveryCharge = null;
+let deliveryChargeConfirmed = false;
 
 function saveCart() {
   localStorage.setItem("localbiteCart", JSON.stringify(cart));
@@ -925,132 +343,98 @@ function saveCart() {
 
 function displayGroceries(products) {
   const groceryList = document.getElementById("grocery-list");
-
-  if (products.length === 0) {
+  if (!products.length) {
     groceryList.innerHTML = "<p>No Products Found.</p>";
     return;
   }
-
   groceryList.innerHTML = products.map(product => {
-    const existingItem = cart.find(item => item.name === product.name);
-    const added = Boolean(existingItem);
-
+    const added = cart.some(item => item.name === product.name);
     return `
       <div class="grocery-card">
         <img src="${product.image}" alt="${product.name}"
           onerror="this.src='https://placehold.co/500x350?text=Grocery'">
-
         <div class="grocery-info">
           <h3>${product.name}</h3>
           <p class="grocery-price">৳${product.price} / ${product.unit}</p>
-
-          <button class="grocery-add-btn"
-            id="add-btn-${product.name}"
-            onclick="addGroceryToCart('${product.name}')"
-            ${added ? "disabled" : ""}
+          <button class="grocery-add-btn" id="add-btn-${product.name}"
+            onclick="addGroceryToCart('${product.name}')" ${added ? "disabled" : ""}
             style="${added ? "background:#198754;" : ""}">
             ${added ? "✓ Added to Cart" : "+ Add to Cart"}
           </button>
         </div>
-      </div>
-    `;
+      </div>`;
   }).join("");
 }
 
 function addGroceryToCart(productName) {
   const product = groceryProducts.find(item => item.name === productName);
-  if (!product) return;
-
-  const existingItem = cart.find(item => item.name === product.name);
-
-if (existingItem) {
-  return;
-} else {
-cart.push({
-  name: product.name,
-  price: product.price,
-  quantity: 1,
-  image: product.image
-});
-  }
-
+  if (!product || cart.some(item => item.name === product.name)) return;
+  cart.push({ name:product.name, price:product.price, quantity:1, image:product.image });
   saveCart();
-  const button = document.getElementById(`add-btn-${product.name}`);
-
-if (button) {
-  button.innerHTML = "✓ Added to Cart";
-  button.style.background = "#198754";
-}
+  displayGroceries(groceryProducts);
 }
 
 function updateCart() {
   const cartItems = document.getElementById("cart-items");
   const cartCount = document.getElementById("cart-count");
-  const cartTotal = document.getElementById("cart-total");
   const summaryItems = document.getElementById("summary-items");
-
-  let total = 0;
+  let subtotal = 0;
   let count = 0;
 
-  if (cart.length === 0) {
+  if (!cart.length) {
     cartItems.innerHTML = "<p>Your cart is empty!</p>";
     summaryItems.innerHTML = "<p>No items added yet.</p>";
   } else {
-    cartItems.innerHTML = cart.map((item, index) => {
-      const subtotal = item.price * item.quantity;
-      total += subtotal;
-      count += item.quantity;
-
+    cartItems.innerHTML = cart.map((item,index) => {
+      const quantity = Number(item.quantity) || 1;
+      const price = Number(item.price) || 0;
+      const itemTotal = price * quantity;
+      subtotal += itemTotal;
+      count += quantity;
       return `
         <div class="cart-item">
-  <img src="${item.image || (groceryProducts.find(p => p.name === item.name) || {}).image || 'https://placehold.co/100x100?text=Grocery'}"
-       alt="${item.name}">
-
-  <div class="item-info">
-    <strong>${item.name}</strong>
-    <span>৳${item.price} × ${item.quantity}</span>
-  </div>
-
-  <div class="item-actions">
-    <button onclick="changeQuantity(${index}, -1)">−</button>
-    <span>${item.quantity}</span>
-    <button onclick="changeQuantity(${index}, 1)">+</button>
-    <button class="remove-btn" onclick="removeItem(${index})">×</button>
-  </div>
-</div>
-
-          
-      `;
+          <img src="${item.image || 'https://placehold.co/100x100?text=Item'}" alt="${item.name}">
+          <div class="item-info">
+            <strong>${item.name}</strong>
+            <span>৳${price} × ${quantity}</span>
+          </div>
+          <div class="item-actions">
+            <button onclick="changeQuantity(${index},-1)">−</button>
+            <span>${quantity}</span>
+            <button onclick="changeQuantity(${index},1)">+</button>
+            <button class="remove-btn" onclick="removeItem(${index})">×</button>
+          </div>
+        </div>`;
     }).join("");
 
     summaryItems.innerHTML = cart.map(item => `
-      <div>
-        <span>${item.name} × ${item.quantity}</span>
-        <strong>৳${item.price * item.quantity}</strong>
-      </div>
+      <div><span>${item.name} × ${item.quantity}</span>
+      <strong>৳${Number(item.price) * Number(item.quantity)}</strong></div>
     `).join("");
   }
 
-  
+  const charge = deliveryChargeConfirmed ? deliveryCharge : 0;
+  const finalTotal = subtotal + charge;
   cartCount.textContent = count;
-  cartTotal.textContent = total;
+  document.getElementById("summary-subtotal").textContent = "৳" + subtotal;
+  document.getElementById("summary-delivery").textContent =
+    deliveryChargeConfirmed ? "৳" + charge : "লোকেশন নিশ্চিত হয়নি";
+  document.getElementById("summary-final").textContent = "৳" + finalTotal;
+  document.getElementById("cart-total").textContent = finalTotal;
 }
 
-function changeQuantity(index, amount) {
+function changeQuantity(index,amount) {
   if (!cart[index]) return;
-
-  cart[index].quantity += amount;
-
-  if (cart[index].quantity <= 0) {
-    cart.splice(index, 1);
-  }
-
+  cart[index].quantity = (Number(cart[index].quantity) || 1) + amount;
+  if (cart[index].quantity <= 0) cart.splice(index,1);
   saveCart();
+  displayGroceries(groceryProducts);
 }
 
 function removeItem(index) {
-  cart.splice(index, 1);
+  cart.splice(index,1);
   saveCart();
+  displayGroceries(groceryProducts);
 }
 
 function toggleCart() {
@@ -1059,106 +443,118 @@ function toggleCart() {
 }
 
 function clearCart() {
-  if (cart.length === 0) {
+  if (!cart.length) {
     alert("Your cart is already empty!");
     return;
   }
-
   if (!confirm("Are you sure you want to clear your cart?")) return;
-
   cart = [];
   saveCart();
   displayGroceries(groceryProducts);
-  updateCart();
-
   document.getElementById("cart-panel").classList.remove("active");
   document.getElementById("cart-overlay").classList.remove("active");
 }
-  function checkout() {
-  if (cart.length === 0) {
-    alert("Your cart is empty!");
-    return;
-  }
 
-  document.getElementById("order-form").classList.add("active");
-  document.getElementById("order-overlay").classList.add("active");
-}function getCurrentLocation() {
-  const status = document.getElementById("location-status");
-  const button = document.querySelector(".location-btn");
+function calculateDistance(lat1,lon1,lat2,lon2) {
+  const earthRadius = 6371;
+  const toRadians = value => value * Math.PI / 180;
+  const dLat = toRadians(lat2-lat1);
+  const dLon = toRadians(lon2-lon1);
+  const a = Math.sin(dLat/2)**2 +
+    Math.cos(toRadians(lat1))*Math.cos(toRadians(lat2))*Math.sin(dLon/2)**2;
+  return earthRadius * 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
 
-  if (!navigator.geolocation) {
-    status.innerText = "আপনার ব্রাউজারে Location সাপোর্ট নেই।";
-    return;
-  }
+function calculateDeliveryCharge(distance) {
+  if (distance <= 1) return 0;
+  if (distance <= 2) return 15;
+  if (distance <= 5) return 20;
+  if (distance <= 8) return 30;
+  if (distance <= 12) return 40;
+  if (distance <= 15) return 50;
+  return 50 + Math.ceil((distance-15)/3)*10;
+}
 
-  status.innerText = "Getting your location...";
-  button.disabled = true;
-
-  navigator.geolocation.getCurrentPosition(
-    position => {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
-
-      customerLocation =
-        `https://www.google.com/maps?q=${lat},${lon}`;
-
-      status.innerText = "✓ Location captured successfully!";
-      button.disabled = false;
-      closeLocationPopup();
-    },
-
-    error => {
-      if (error.code === 1) {
-        status.innerText =
-          "আপনার ফোনের লোকেশন চালু করে আবার Share My Location-এ চাপ দিন।";
-      } else if (error.code === 2) {
-        status.innerText = "লোকেশন পাওয়া যাচ্ছে না। ফোনের GPS চালু করুন।";
-      } else if (error.code === 3) {
-        status.innerText = "সময় শেষ হয়েছে। আবার চেষ্টা করুন।";
-      } else {
-        status.innerText = "লোকেশন পাওয়া যায়নি। আবার চেষ্টা করুন।";
-      }
-
-      button.disabled = false;
-    },
-
-    {
-      enableHighAccuracy: true,
-      timeout: 15000
-    }
+function updateCheckoutState() {
+  document.getElementById("checkout-btn").classList.toggle(
+    "checkout-locked", !deliveryChargeConfirmed
   );
 }
 
-function openLocationSettings() {
-  window.location.href =
-    "intent://settings/location#Intent;scheme=android-app;end";
+function getCurrentLocation() {
+  const status = document.getElementById("location-status");
+  const button = document.getElementById("location-btn");
+
+  if (!navigator.geolocation) {
+    status.textContent = "আপনার ব্রাউজারে Location সাপোর্ট নেই।";
+    return;
+  }
+
+  status.textContent = "আপনার লোকেশন নেওয়া হচ্ছে...";
+  button.disabled = true;
+  button.textContent = "Getting Location...";
+
+  navigator.geolocation.getCurrentPosition(position => {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    deliveryDistance = calculateDistance(HUB_LAT,HUB_LON,lat,lon);
+    deliveryCharge = calculateDeliveryCharge(deliveryDistance);
+    deliveryChargeConfirmed = true;
+    customerLocation = `https://www.google.com/maps?q=${lat},${lon}`;
+
+    status.textContent = "✓ Location confirmed successfully!";
+    document.getElementById("delivery-info").style.display = "block";
+    document.getElementById("delivery-distance").textContent =
+      "Distance from delivery point: " + deliveryDistance.toFixed(2) + " km";
+    document.getElementById("delivery-charge").textContent =
+      "Delivery Charge: ৳" + deliveryCharge;
+    button.disabled = false;
+    button.textContent = "✓ Location Confirmed";
+    updateCheckoutState();
+    updateCart();
+    closeLocationPopup();
+  }, error => {
+    button.disabled = false;
+    button.textContent = "📍 Confirm My Location";
+    if (error.code === 1) {
+      status.textContent = "লোকেশন permission Allow করুন এবং ফোনের GPS চালু করুন।";
+      document.getElementById("location-popup").style.display = "flex";
+    } else if (error.code === 2) {
+      status.textContent = "লোকেশন পাওয়া যাচ্ছে না। ফোনের GPS চালু করে আবার চেষ্টা করুন।";
+      document.getElementById("location-popup").style.display = "flex";
+    } else if (error.code === 3) {
+      status.textContent = "সময় শেষ হয়েছে। আবার চেষ্টা করুন।";
+    } else {
+      status.textContent = "লোকেশন পাওয়া যায়নি। আবার চেষ্টা করুন।";
+    }
+  }, { enableHighAccuracy:true, timeout:15000, maximumAge:0 });
 }
 
+function openLocationSettings() {
+  window.location.href = "intent://settings/location#Intent;scheme=android-app;end";
+}
 function closeLocationPopup() {
   document.getElementById("location-popup").style.display = "none";
 }
-function confirmOrderSent(sent) {
-  document.getElementById("order-confirm-popup").style.display = "none";
 
-  if (sent) {
-    cart = [];
-    saveCart();
-    displayGroceries(groceryProducts);
-    updateCart();
-
-    document.getElementById("customer-name").value = "";
-    document.getElementById("customer-phone").value = "";
-    document.getElementById("customer-address").value = "";
-    document.getElementById("location-status").textContent = "";
-
-    customerLocation = "";
-
-    document.getElementById("order-form").classList.remove("active");
-    document.getElementById("cart-panel").classList.remove("active");
-    document.getElementById("cart-overlay").classList.remove("active");
-    document.getElementById("order-overlay").classList.remove("active");
+function checkout() {
+  if (!cart.length) {
+    alert("Your cart is empty!");
+    return;
   }
+  if (!deliveryChargeConfirmed) {
+    alert("Please confirm your delivery location first!");
+    return;
+  }
+  document.getElementById("order-form").classList.add("active");
+  document.getElementById("order-overlay").classList.add("active");
 }
+
+function closeOrderForm() {
+  document.getElementById("order-form").classList.remove("active");
+  document.getElementById("order-overlay").classList.remove("active");
+}
+
 function placeOrder() {
   const name = document.getElementById("customer-name").value.trim();
   const phone = document.getElementById("customer-phone").value.trim();
@@ -1168,74 +564,94 @@ function placeOrder() {
     alert("Please fill in your name, phone number and address.");
     return;
   }
-
-  if (cart.length === 0) {
+  if (!cart.length) {
     alert("Your cart is empty!");
     return;
   }
+  if (!deliveryChargeConfirmed || deliveryCharge === null || !customerLocation) {
+    alert("Please confirm your delivery location first!");
+    closeOrderForm();
+    return;
+  }
 
-  let total = 0;
+  let subtotal = 0;
   let orderText = "🛒 *LOCALBITE GROCERY ORDER*\n\n";
-
-  orderText += `Name: ${name}\n`;
-  orderText += `Phone: ${phone}\n`;
-  orderText += `Address: ${address}\n\n`;
+  orderText += `Name: ${name}\nPhone: ${phone}\nAddress: ${address}\n\n`;
   orderText += "*Order Items:*\n";
 
   cart.forEach(item => {
-    const subtotal = item.price * item.quantity;
-    total += subtotal;
-
-    orderText += `${item.name} × ${item.quantity} = ৳${subtotal}\n`;
+    const itemTotal = Number(item.price) * Number(item.quantity);
+    subtotal += itemTotal;
+    orderText += `${item.name} × ${item.quantity} = ৳${itemTotal}\n`;
   });
 
-  orderText += `\n*Total: ৳${total}*\n`;
-
-  if (customerLocation) {
-    orderText += `\nCustomer Location: ${customerLocation}\n`;
-  }
-
+  const finalTotal = subtotal + deliveryCharge;
+  orderText += `\nSubtotal: ৳${subtotal}\n`;
+  orderText += `Delivery Charge: ৳${deliveryCharge}\n`;
+  orderText += `*Final Total: ৳${finalTotal}*\n`;
+  orderText += `\nCustomer Location: ${customerLocation}\n`;
   orderText += "\nThank you for ordering from LOCALBITE!";
 
-  const whatsappURL =
-    "https://wa.me/8801632033787?text=" + encodeURIComponent(orderText);
+  const whatsappURL = "https://wa.me/8801632033787?text=" + encodeURIComponent(orderText);
+  sessionStorage.setItem("localbitePendingGroceryOrder","yes");
+  window.open(whatsappURL,"_blank");
 
-  sessionStorage.setItem("localbitePendingGroceryOrder", "yes");
-
-window.open(whatsappURL, "_blank");
-
-// Wait until customer returns from WhatsApp
-function checkGroceryOrderStatus() {
-  if (document.visibilityState !== "visible") return;
-
-  if (sessionStorage.getItem("localbitePendingGroceryOrder") !== "yes") return;
-
-  sessionStorage.removeItem("localbitePendingGroceryOrder");
-  document.removeEventListener("visibilitychange", checkGroceryOrderStatus);
-
-  document.getElementById("order-confirm-popup").style.display = "flex";
+  function checkGroceryOrderStatus() {
+    if (document.visibilityState !== "visible") return;
+    if (sessionStorage.getItem("localbitePendingGroceryOrder") !== "yes") return;
+    sessionStorage.removeItem("localbitePendingGroceryOrder");
+    document.removeEventListener("visibilitychange",checkGroceryOrderStatus);
+    document.getElementById("order-confirm-popup").style.display = "flex";
+  }
+  document.addEventListener("visibilitychange",checkGroceryOrderStatus);
 }
 
-document.addEventListener("visibilitychange", checkGroceryOrderStatus);
+function confirmOrderSent(sent) {
+  document.getElementById("order-confirm-popup").style.display = "none";
+  if (!sent) return;
+
+  cart = [];
+  saveCart();
+  displayGroceries(groceryProducts);
+  document.getElementById("customer-name").value = "";
+  document.getElementById("customer-phone").value = "";
+  document.getElementById("customer-address").value = "";
+
+  customerLocation = "";
+  deliveryDistance = null;
+  deliveryCharge = null;
+  deliveryChargeConfirmed = false;
+  document.getElementById("location-status").textContent = "";
+  document.getElementById("delivery-info").style.display = "none";
+  document.getElementById("location-btn").disabled = false;
+  document.getElementById("location-btn").textContent = "📍 Confirm My Location";
+  updateCheckoutState();
+  updateCart();
+
+  document.getElementById("order-form").classList.remove("active");
+  document.getElementById("cart-panel").classList.remove("active");
+  document.getElementById("cart-overlay").classList.remove("active");
+  document.getElementById("order-overlay").classList.remove("active");
 }
 
-document.getElementById("grocery-search").addEventListener("input", function() {
+document.getElementById("grocery-search").addEventListener("input",function() {
   const searchValue = this.value.toLowerCase();
-
-  const filteredProducts = groceryProducts.filter(product =>
+  displayGroceries(groceryProducts.filter(product =>
     product.name.toLowerCase().includes(searchValue)
-  );
-
-  displayGroceries(filteredProducts);
+  ));
 });
 
-window.addEventListener("load", function() {
-  updateCart();
+window.addEventListener("storage",function(event) {
+  if (event.key === "localbiteCart") {
+    cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
+    updateCart();
+    displayGroceries(groceryProducts);
+  }
 });
 
 displayGroceries(groceryProducts);
 updateCart();
+updateCheckoutState();
 </script>
-
 </body>
 </html>
