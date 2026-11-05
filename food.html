@@ -985,6 +985,8 @@ else if (distance <= 15) deliveryCharge = 50;
 else deliveryCharge = 50 + Math.ceil((distance - 15) / 3) * 10;
 if (deliveryCharge !== null) {
   deliveryChargeConfirmed = true;
+} else {
+  deliveryChargeConfirmed = false;
 }
   document.getElementById("delivery-info").style.display = "block";
 
