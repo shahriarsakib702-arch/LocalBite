@@ -680,6 +680,20 @@
   <div id="summary-items"></div>
 </div>
   <div class="cart-footer">
+    <div class="cart-location">
+  <h3>📍 Delivery Location</h3>
+
+  <button type="button" id="location-btn" onclick="getCurrentLocation()">
+    📍 Use Current Location
+  </button>
+
+  <p id="location-status"></p>
+
+  <div id="delivery-info" style="display:none; margin:15px 0; padding:15px; background:#edf4ed; border-radius:12px;">
+    <p id="delivery-distance"></p>
+    <p id="delivery-charge"></p>
+  </div>
+</div>
   <h3>Total: <span>৳<span id="cart-total">0</span></span></h3>
 
   <button id="checkout-btn" onclick="checkout()">
