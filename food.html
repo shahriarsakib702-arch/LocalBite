@@ -1018,8 +1018,10 @@ if (deliveryCharge !== null) {
       : deliveryCharge === 0
         ? "Delivery Charge: FREE"
         : "Delivery Charge: ৳" + deliveryCharge;
-document.getElementById("checkout-btn").disabled =
-  !deliveryChargeConfirmed;
+document.getElementById("checkout-btn").classList.toggle(
+  "checkout-locked",
+  !deliveryChargeConfirmed
+);
   updateCart();
 }
 function getCurrentLocation() {
