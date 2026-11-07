@@ -326,7 +326,16 @@ const groceryProducts = [
   { name:"আটা", price:50, unit:"কেজি", stock:10, image:"https://images.unsplash.com/photo-1627485937980-221c88ac04f9?w=500" },
   { name:"চিনি", price:110, unit:"কেজি", stock:10, image:"world-diabetes-day-sugar-wooden-bowl-dark-surface_1150-26666.jpg" }
 ];
+// Save and restore grocery stock
+const savedGroceryStock = JSON.parse(
+  localStorage.getItem("localbiteGroceryStock") || "{}"
+);
 
+groceryProducts.forEach(product => {
+  if (savedGroceryStock[product.name] !== undefined) {
+    product.stock = savedGroceryStock[product.name];
+  }
+});
 // Delivery hub: Maid Para Jame Masjid, Khagaria, Satkania
 const HUB_LAT = 22.147609;
 const HUB_LON = 92.040137;
