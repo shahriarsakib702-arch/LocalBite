@@ -67,12 +67,11 @@ header {
   line-height: 1.6;
 }
 
-/* Pharmacy Notice */
 .pharmacy-notice {
-  max-width: 1000px;
-  margin: 10px auto 25px;
-  padding: 15px 18px;
+  max-width: 650px;
   width: 90%;
+  margin: 10px auto 25px;
+  padding: 16px;
   background: #edf4ed;
   border-left: 4px solid #0F3D2E;
   border-radius: 10px;
@@ -81,335 +80,112 @@ header {
   line-height: 1.7;
 }
 
-/* Search */
-.food-search {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.order-container {
+  max-width: 650px;
+  width: 90%;
+  margin: 25px auto 60px;
   background: white;
-  border: 1px solid #e8dfc9;
-  border-radius: 16px;
-  box-shadow: 0 5px 18px #0f3d2e12;
-}
-
-.food-search span {
-  font-size: 20px;
-}
-
-.food-search input {
-  width: 100%;
-  padding: 16px 0;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-size: 15px;
-}
-
-/* Categories */
-.category-section {
-  max-width: 1100px;
-  margin: 25px auto;
-  padding: 0 5%;
-}
-
-.category-section h2 {
-  color: #0F3D2E;
-  font-size: 20px;
-  margin-bottom: 15px;
-}
-
-.categories {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding: 5px 0 12px;
-}
-
-.category-btn {
-  flex-shrink: 0;
-  padding: 11px 18px;
-  border: 1px solid #0F3D2E;
-  border-radius: 25px;
-  background: white;
-  color: #0F3D2E;
-  font-size: 13px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.category-btn.active,
-.category-btn:hover {
-  background: #0F3D2E;
-  color: white;
-}
-
-/* Products */
-.menu {
-  max-width: 1100px;
-  margin: auto;
-  padding: 15px 6% 65px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 22px;
-}
-
-.food-card {
-  background: white;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 5px 22px #00000010;
-  transition: 0.3s;
-}
-
-.food-card:hover {
-  transform: translateY(-4px);
-}
-
-.food-card img {
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  display: block;
-  background: #f1f1f1;
-}
-
-.details {
-  padding: 16px;
-}
-
-.product-category {
-  display: inline-block;
-  color: #0F3D2E;
-  background: #edf4ed;
-  padding: 5px 9px;
+  padding: 25px;
   border-radius: 20px;
-  font-size: 11px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  box-shadow: 0 8px 30px #00000012;
 }
 
-.details h2 {
-  font-size: 17px;
+.order-container h2 {
   color: #0F3D2E;
-  margin-bottom: 10px;
+  font-size: 23px;
+  margin-bottom: 8px;
 }
 
-.price {
-  color: #FF8A3D;
-  font-size: 21px;
-  font-weight: bold;
-}
-
-.add-to-cart {
-  width: 100%;
-  margin-top: 14px;
-  padding: 12px;
-  background: #0F3D2E;
-  color: white;
-  border: none;
-  border-radius: 9px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.add-to-cart:disabled {
-  background: #198754;
-  cursor: default;
-}
-
-/* Footer */
-footer {
-  background: #0F3D2E;
-  color: white;
-  text-align: center;
-  padding: 22px;
-  font-size: 13px;
-}
-
-/* Floating Cart */
-#floating-cart {
-  position: fixed;
-  bottom: 20px;
-  right: 18px;
-  z-index: 1000;
-  background: #0F3D2E;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 15px 22px;
-  font-size: 16px;
-  font-weight: bold;
-  box-shadow: 0 5px 20px #00000035;
-  cursor: pointer;
-}
-
-#cart-count {
-  background: #FF8A3D;
-  color: white;
-  padding: 3px 8px;
-  border-radius: 20px;
-  margin-left: 5px;
-}
-
-/* Cart */
-#cart-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: #00000070;
-  z-index: 1001;
-}
-
-#cart-overlay.active {
-  display: block;
-}
-
-#cart-box {
-  position: fixed;
-  z-index: 1002;
-  top: 0;
-  right: -450px;
-  width: 100%;
-  max-width: 420px;
-  height: 100%;
-  background: #FFF8E7;
-  padding: 22px;
-  box-shadow: -5px 0 25px #00000020;
-  transition: right 0.3s ease;
-  overflow-y: auto;
-}
-
-#cart-box.active {
-  right: 0;
-}
-
-.cart-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 18px;
-}
-
-.cart-header h2 {
-  color: #0F3D2E;
-}
-
-.close-cart {
-  background: none;
-  border: none;
-  font-size: 32px;
-  cursor: pointer;
-}
-
-.cart-item {
-  padding: 18px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.item-info {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 12px;
-  color: #0F3D2E;
-}
-
-.item-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.item-actions button {
-  width: 32px;
-  height: 32px;
-  border: none;
-  border-radius: 7px;
-  background: #0F3D2E;
-  color: white;
-  font-size: 19px;
-  cursor: pointer;
-}
-
-.item-actions .remove-btn {
-  background: #d93636;
-  margin-left: auto;
-}
-
-.empty-cart {
-  text-align: center;
-  padding: 40px 10px;
+.subtitle {
   color: #777;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 22px;
 }
 
-#clear-cart-btn {
-  width: 100%;
-  padding: 13px;
-  margin: 15px 0;
-  background: #fff1eb;
-  color: #e45d35;
-  border: 1px solid #ffd6c5;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-#order-summary {
-  background: #FFF8E7;
-  border: 1px solid #e8dfc9;
-  border-radius: 16px;
-  padding: 18px;
-  margin: 18px 0;
-}
-
-#order-summary h3 {
+.form-label {
+  display: block;
   color: #0F3D2E;
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-
-#summary-items > div {
+  font-weight: bold;
   font-size: 14px;
-  padding: 9px 0;
-  border-bottom: 1px dashed #d8d2c3;
+  margin-bottom: 9px;
 }
 
-.cart-footer {
-  background: #0F3D2E;
-  padding: 20px;
-  border-radius: 16px;
-  margin-top: 15px;
-}
-
-.cart-footer h3 {
-  color: white;
-  font-size: 20px;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 18px;
-}
-
-#cart-total {
-  color: #FF8A3D;
-  font-size: 25px;
-}
-
-/* Location */
-#location-btn {
+.order-container input,
+.order-container textarea {
   width: 100%;
   padding: 15px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+  border: 1.5px solid #e0dacb;
+  border-radius: 12px;
+  background: #fff;
+  color: #1F1F1F;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+}
+
+.order-container input:focus,
+.order-container textarea:focus {
+  border-color: #0F3D2E;
+}
+
+.order-container textarea {
+  min-height: 125px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+#medicine-list {
+  min-height: 155px;
+}
+
+.field-hint {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.6;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.price-notice {
+  background: #fff4e9;
+  border: 1px solid #ffd8bd;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  color: #86502e;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.location-box {
+  background: #0F3D2E;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.location-box h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.location-box p {
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 13px;
+}
+
+#location-btn {
+  width: 100%;
+  padding: 14px;
   background: #FF8A3D;
   color: white;
   border: none;
-  border-radius: 12px;
-  font-size: 15px;
+  border-radius: 10px;
+  font-size: 14px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -419,112 +195,27 @@ footer {
 }
 
 #location-status {
-  color: white;
-  font-size: 13px;
-  margin: 0 0 14px;
   text-align: center;
+  margin: 12px 0 0;
 }
 
-/* Checkout */
-#checkout-btn {
-  width: 100%;
-  padding: 16px;
-  background: #FF8A3D;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-#checkout-btn.checkout-locked {
-  background: #777 !important;
-  color: #ddd !important;
-  cursor: not-allowed;
-}
-
-/* Order Form */
-#order-form {
+#delivery-info {
   display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: calc(100% - 36px);
-  max-width: 440px;
-  max-height: 85vh;
-  overflow-y: auto;
-  background: #FFF8E7;
-  padding: 24px;
-  border-radius: 20px;
-  border: 1px solid #e8dfc9;
-  box-shadow: 0 20px 60px #0000004d;
-  z-index: 1500;
-}
-
-.order-form-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 22px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #e8dfc9;
-}
-
-.order-form-header h2 {
-  color: #0F3D2E;
-  font-size: 22px;
-}
-
-.order-form-header button {
-  background: #0F3D2E;
-  color: white;
-  border: none;
+  background: #edf4ed;
+  color: #173b2d;
+  padding: 13px;
   border-radius: 10px;
-  width: 38px;
-  height: 38px;
-  font-size: 24px;
-  cursor: pointer;
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.8;
 }
 
-#order-form input,
-#order-form textarea {
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 15px;
-  border: 1.5px solid #e0dacb;
-  border-radius: 12px;
-  background: white;
-  color: #1F1F1F;
-  font-size: 15px;
-  font-family: inherit;
-}
-
-#order-form textarea {
-  min-height: 90px;
-  resize: vertical;
-}
-
-#place-order-btn {
-  width: 100%;
-  padding: 16px;
-  background: #FF8A3D;
-  color: #1F1F1F;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Prescription Upload */
 .prescription-box {
   background: #edf4ed;
   border: 1px solid #cbded0;
   border-radius: 12px;
-  padding: 14px;
-  margin-bottom: 15px;
+  padding: 15px;
+  margin-bottom: 20px;
 }
 
 .prescription-box label {
@@ -535,9 +226,10 @@ footer {
 }
 
 .prescription-box input {
-  background: white !important;
-  padding: 10px !important;
-  font-size: 13px !important;
+  background: white;
+  padding: 10px;
+  font-size: 13px;
+  margin-bottom: 8px;
 }
 
 #prescription-preview {
@@ -556,76 +248,54 @@ footer {
   line-height: 1.6;
 }
 
-/* Confirmation Popup */
-#order-confirm-popup {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: #00000080;
-  z-index: 2000;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.confirm-box {
-  background: #FFF8E7;
+#send-order-btn {
   width: 100%;
-  max-width: 360px;
-  padding: 28px;
-  border-radius: 20px;
-  text-align: center;
-}
-
-.confirm-box h2 {
-  color: #0F3D2E;
-  margin: 15px 0;
-}
-
-.confirm-box p {
-  color: #555;
-  margin-bottom: 22px;
-}
-
-.confirm-box button {
-  width: 100%;
-  padding: 14px;
-  border: 0;
-  border-radius: 10px;
-  font-size: 15px;
+  padding: 17px;
+  background: #0F3D2E;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+#send-order-btn:hover {
+  background: #195b43;
+}
+
+.whatsapp-hint {
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+  line-height: 1.6;
+  margin-top: 13px;
+}
+
+footer {
+  background: #0F3D2E;
+  color: white;
+  text-align: center;
+  padding: 22px;
+  font-size: 13px;
 }
 
 @media (max-width: 600px) {
-  .menu {
-    gap: 13px;
-    padding-left: 4%;
-    padding-right: 4%;
-  }
-
-  .food-card img {
-    height: 135px;
-  }
-
-  .details {
-    padding: 12px;
-  }
-
-  .details h2 {
-    font-size: 14px;
-  }
-
-  .price {
-    font-size: 18px;
-  }
-
   .hero h1 {
     font-size: 28px;
   }
 
-  #cart-box {
-    max-width: 100%;
+  .order-container {
+    padding: 20px 16px;
+  }
+
+  header {
+    padding: 18px 5%;
+  }
+
+  .logo {
+    font-size: 21px;
   }
 }
 </style>
@@ -640,245 +310,119 @@ footer {
 
 <section class="hero">
   <small>YOUR LOCAL PHARMACY</small>
-  <h1>Pharmacy & Healthcare</h1>
-  <p>Healthcare essentials, right around you.</p>
+  <h1>Order Your Medicine</h1>
+  <p>Write your medicine list and order directly through WhatsApp.</p>
 </section>
 
 <div class="pharmacy-notice">
-  💊 Browse healthcare essentials and send your order through WhatsApp.
-  Prescription-required medicines are subject to prescription verification
-  and pharmacist approval. Availability is confirmed before an order is accepted.
+  💊 আপনার প্রয়োজনীয় ওষুধের নাম ও পরিমাণ লিখে অর্ডার পাঠান।
+  আমরা ওষুধের প্রাপ্যতা ও দাম যাচাই করে আপনাকে জানাব।
+  প্রেসক্রিপশন প্রয়োজন এমন ওষুধ ফার্মাসিস্টের যাচাই সাপেক্ষে সরবরাহ করা হবে।
 </div>
 
-<div class="food-search">
-  <span>🔍</span>
-  <input
-    type="text"
-    id="food-search-input"
-    placeholder="Search medicines and healthcare products..."
-    oninput="searchProducts()"
-  >
-</div>
+<div class="order-container">
 
-<section class="category-section">
-  <h2>Browse Categories</h2>
-  <div class="categories">
-    <button class="category-btn active" onclick="filterCategory('all', this)">All</button>
-    <button class="category-btn" onclick="filterCategory('first-aid', this)">First Aid</button>
-    <button class="category-btn" onclick="filterCategory('healthcare', this)">Healthcare</button>
-    <button class="category-btn" onclick="filterCategory('personal-care', this)">Personal Care</button>
-    <button class="category-btn" onclick="filterCategory('baby-care', this)">Baby Care</button>
-  </div>
-</section>
+  <h2>💊 Medicine Order Form</h2>
+  <p class="subtitle">
+    নিচে আপনার প্রয়োজনীয় ওষুধের নাম ও পরিমাণ লিখুন।
+    একসঙ্গে একাধিক ওষুধের নামও দিতে পারবেন।
+  </p>
 
-<section class="menu" id="product-menu">
-
-  <div class="food-card" data-category="first-aid">
-    <img src="https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=700" alt="First Aid Bandage">
-    <div class="details">
-      <span class="product-category">First Aid</span>
-      <h2>Adhesive Bandage</h2>
-      <div class="price">৳30</div>
-      <button class="add-to-cart">Add to Cart</button>
-    </div>
-  </div>
-
-  <div class="food-card" data-category="healthcare">
-    <img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=700" alt="Medical Face Mask">
-    <div class="details">
-      <span class="product-category">Healthcare</span>
-      <h2>Medical Face Mask</h2>
-      <div class="price">৳10</div>
-      <button class="add-to-cart">Add to Cart</button>
-    </div>
-  </div>
-
-  <div class="food-card" data-category="healthcare">
-    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=700" alt="Digital Thermometer">
-    <div class="details">
-      <span class="product-category">Healthcare</span>
-      <h2>Digital Thermometer</h2>
-      <div class="price">৳180</div>
-      <button class="add-to-cart">Add to Cart</button>
-    </div>
-  </div>
-
-  <div class="food-card" data-category="first-aid">
-    <img src="https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=700" alt="Cotton">
-    <div class="details">
-      <span class="product-category">First Aid</span>
-      <h2>Medical Cotton</h2>
-      <div class="price">৳40</div>
-      <button class="add-to-cart">Add to Cart</button>
-    </div>
-  </div>
-
-  <div class="food-card" data-category="healthcare">
-    <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=700" alt="Oral Saline">
-    <div class="details">
-      <span class="product-category">Healthcare</span>
-      <h2>Oral Saline</h2>
-      <div class="price">৳10</div>
-      <button class="add-to-cart">Add to Cart</button>
-    </div>
-  </div>
-
-  <div class="food-card" data-category="personal-care">
-    <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=700" alt="Hand Sanitizer">
-    <div class="details">
-      <span class="product-category">Personal Care</span>
-      <h2>Hand Sanitizer</h2>
-      <div class="price">৳60</div>
-      <button class="add-to-cart">Add to Cart</button>
-    </div>
-  </div>
-
-  <div class="food-card" data-category="baby-care">
-    <img src="https://images.unsplash.com/photo-1604917877934-07d8d248d396?w=700" alt="Baby Care">
-    <div class="details">
-      <span class="product-category">Baby Care</span>
-      <h2>Baby Wipes</h2>
-      <div class="price">৳80</div>
-      <button class="add-to-cart">Add to Cart</button>
-    </div>
-  </div>
-
-  <div class="food-card" data-category="first-aid">
-    <img src="https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=700" alt="Gauze">
-    <div class="details">
-      <span class="product-category">First Aid</span>
-      <h2>Medical Gauze</h2>
-      <div class="price">৳35</div>
-      <button class="add-to-cart">Add to Cart</button>
-    </div>
-  </div>
-
-</section>
-
-<footer>
-  © 2026 LOCALBITE. Good Food. Right Around You.
-</footer>
-
-<button id="floating-cart" onclick="toggleCart()">
-  🛒 My Cart <span id="cart-count">0</span>
-</button>
-
-<div id="cart-overlay" onclick="toggleCart()"></div>
-
-<div id="cart-box">
-  <div class="cart-header">
-    <h2>🛒 Your Cart</h2>
-    <button class="close-cart" onclick="toggleCart()">×</button>
-  </div>
-
-  <div id="cart-items">
-    <p class="empty-cart">Your cart is empty!</p>
-  </div>
-
-  <button onclick="clearCart()" id="clear-cart-btn">🗑️ Clear Cart</button>
-
-  <div id="order-summary">
-    <h3>Order Summary</h3>
-    <div id="summary-items"></div>
-  </div>
-
-  <div style="display:flex;flex-direction:column;gap:20px;">
-
-    <div style="
-      background:#0F3D2E;
-      padding:22px;
-      border-radius:20px;
-      color:white;
-    ">
-
-      <h3 style="font-size:20px;margin-bottom:12px;">
-        📍 Delivery Location
-      </h3>
-
-      <p style="
-        font-size:13px;
-        line-height:1.6;
-        margin-bottom:18px;
-        background:#ffffff1a;
-        padding:12px;
-        border-radius:10px;
-      ">
-        ⚠️ Please confirm your delivery location before checkout.
-      </p>
-
-      <button
-        type="button"
-        id="location-btn"
-        onclick="getCurrentLocation()"
-      >
-        📍 Confirm My Location
-      </button>
-
-      <p id="location-status"></p>
-
-      <div id="delivery-info" style="
-        display:none;
-        margin-top:15px;
-        padding:15px;
-        background:#edf4ed;
-        color:#173b2d;
-        border-radius:12px;
-      ">
-        <p id="delivery-distance"></p>
-        <p id="delivery-charge"></p>
-      </div>
-    </div>
-
-    <div style="
-      background:#0F3D2E;
-      padding:22px;
-      border-radius:20px;
-      color:white;
-    ">
-      <h3 style="
-        display:flex;
-        justify-content:space-between;
-        margin-bottom:18px;
-      ">
-        <span>Total:</span>
-        <span style="color:#FF8A3D;">
-          ৳<span id="cart-total">0</span>
-        </span>
-      </h3>
-
-      <button
-        id="checkout-btn"
-        class="checkout-locked"
-        onclick="checkout()"
-      >
-        Proceed to Checkout →
-      </button>
-    </div>
-
-  </div>
-</div>
-
-<!-- Order Form -->
-<div id="order-form">
-
-  <div class="order-form-header">
-    <h2>Complete Your Order</h2>
-    <button onclick="closeOrderForm()">×</button>
-  </div>
-
-  <input type="text" id="customer-name" placeholder="Your Name">
-
-  <input type="tel" id="customer-phone" placeholder="Phone Number">
-
-  <textarea id="customer-address" placeholder="Full Delivery Address"></textarea>
+  <label class="form-label" for="medicine-list">
+    Medicine Name & Quantity *
+  </label>
 
   <textarea
-    id="delivery-instructions"
-    placeholder="Delivery Instructions (Optional)"
+    id="medicine-list"
+    placeholder="উদাহরণ:
+
+Napa 500 mg - 10 tablets
+Ace 500 mg - 1 strip
+Seclo 20 mg - 1 strip"
+    required
   ></textarea>
 
+  <p class="field-hint">
+    প্রতিটি ওষুধ আলাদা লাইনে লিখুন। Brand name, strength এবং quantity উল্লেখ করুন।
+  </p>
+
+  <div class="price-notice">
+    💰 <strong>দাম ও প্রাপ্যতা:</strong>
+    ওয়েবসাইটে ওষুধের দাম দেখানো হবে না।
+    WhatsApp-এ অর্ডার পাওয়ার পর দাম ও প্রাপ্যতা জানানো হবে।
+    আপনার সম্মতি ছাড়া অর্ডার চূড়ান্ত হবে না।
+  </div>
+
+  <label class="form-label" for="customer-name">
+    Your Name *
+  </label>
+  <input
+    type="text"
+    id="customer-name"
+    placeholder="আপনার নাম"
+    required
+  >
+
+  <label class="form-label" for="customer-phone">
+    Mobile Number *
+  </label>
+  <input
+    type="tel"
+    id="customer-phone"
+    placeholder="01XXXXXXXXX"
+    required
+  >
+
+  <label class="form-label" for="customer-address">
+    Full Delivery Address *
+  </label>
+  <textarea
+    id="customer-address"
+    placeholder="গ্রাম, ইউনিয়ন, উপজেলা এবং বিস্তারিত ঠিকানা"
+    required
+  ></textarea>
+
+  <label class="form-label" for="delivery-instructions">
+    Additional Instructions (Optional)
+  </label>
+  <textarea
+    id="delivery-instructions"
+    placeholder="অতিরিক্ত কোনো নির্দেশনা থাকলে লিখুন..."
+    style="min-height:80px;"
+  ></textarea>
+
+  <div class="location-box">
+
+    <h3>📍 Delivery Location</h3>
+
+    <p>
+      ডেলিভারি চার্জ হিসাব করার জন্য আপনার GPS Location নিশ্চিত করুন।
+    </p>
+
+    <button
+      type="button"
+      id="location-btn"
+      onclick="getCurrentLocation()"
+    >
+      📍 Confirm My Location
+    </button>
+
+    <p id="location-status">
+      Location not confirmed yet.
+    </p>
+
+    <div id="delivery-info">
+      <div id="delivery-distance"></div>
+      <div id="delivery-charge"></div>
+    </div>
+
+  </div>
+
   <div class="prescription-box">
-    <label for="prescription-file">📄 Upload Prescription (Optional)</label>
+
+    <label for="prescription-file">
+      📄 Prescription Image (Optional)
+    </label>
 
     <input
       type="file"
@@ -890,243 +434,44 @@ footer {
     <img id="prescription-preview" alt="Prescription Preview">
 
     <p class="prescription-note">
-      Prescription-required medicines need verification by a licensed
-      pharmacist. If you upload a prescription, attach the image manually
-      in WhatsApp after the order message opens.
+      প্রেসক্রিপশনের ছবি নির্বাচন করলে WhatsApp খোলার পর ছবিটি
+      আলাদাভাবে Attach করে পাঠাতে হবে।
+      Prescription-only ওষুধ ফার্মাসিস্টের যাচাই ছাড়া সরবরাহ করা হবে না।
     </p>
+
   </div>
 
-  <button id="place-order-btn" onclick="placeOrder()">
-    Place Order →
+  <button
+    type="button"
+    id="send-order-btn"
+    onclick="sendMedicineOrder()"
+  >
+    <span>📲 Send Order via WhatsApp</span>
   </button>
 
+  <p class="whatsapp-hint">
+    WhatsApp-এ মেসেজ পাঠানোর পর আমরা দাম ও প্রাপ্যতা নিশ্চিত করব।
+  </p>
+
 </div>
 
-<!-- Order Confirmation -->
-<div id="order-confirm-popup">
-  <div class="confirm-box">
-    <div style="font-size:45px;">🛒</div>
-
-    <h2>Order Confirmation</h2>
-
-    <p>আপনি কি WhatsApp-এ অর্ডার মেসেজটি পাঠিয়েছেন?</p>
-
-    <button
-      onclick="confirmOrderSent(true)"
-      style="background:#0F3D2E;color:white;"
-    >
-      হ্যাঁ, পাঠিয়েছি
-    </button>
-
-    <button
-      onclick="confirmOrderSent(false)"
-      style="background:#eee;color:#333;margin-top:10px;"
-    >
-      না, এখনো পাঠাইনি
-    </button>
-  </div>
-</div>
+<footer>
+  © 2026 LOCALBITE. Good Food. Right Around You.
+</footer>
 
 <script>
-/* Shared Cart */
-let cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
 
-function saveCart() {
-  localStorage.setItem("localbiteCart", JSON.stringify(cart));
-}
-
-/* Add to Cart */
-document.querySelectorAll(".add-to-cart").forEach(button => {
-  const card = button.closest(".food-card");
-  const name = card.querySelector("h2").innerText;
-
-  const existing = cart.find(item => item.name === name);
-
-  if (existing) {
-    button.innerHTML = "✓ Added to Cart";
-    button.style.background = "#198754";
-    button.disabled = true;
-  }
-
-  button.addEventListener("click", () => {
-    const price = Number(
-      card.querySelector(".price").innerText.replace("৳", "")
-    );
-
-    const alreadyAdded = cart.find(item => item.name === name);
-
-    if (alreadyAdded) return;
-
-    cart.push({
-      name,
-      price,
-      quantity: 1,
-      image: card.querySelector("img").src
-    });
-
-    button.innerHTML = "✓ Added to Cart";
-    button.style.background = "#198754";
-    button.disabled = true;
-
-    saveCart();
-    updateCart();
-  });
-});
-
-/* Cart Functions */
-function toggleCart() {
-  document.getElementById("cart-box").classList.toggle("active");
-  document.getElementById("cart-overlay").classList.toggle("active");
-}
-
-function changeQuantity(index, amount) {
-  cart[index].quantity += amount;
-
-  if (cart[index].quantity <= 0) {
-    cart.splice(index, 1);
-  }
-
-  saveCart();
-  updateCart();
-}
-
-function removeItem(index) {
-  cart.splice(index, 1);
-  saveCart();
-  updateCart();
-}
-
-function clearCart() {
-  if (cart.length === 0) {
-    alert("Your cart is already empty!");
-    return;
-  }
-
-  if (confirm("Are you sure you want to clear your cart?")) {
-    cart = [];
-    saveCart();
-
-    document.querySelectorAll(".add-to-cart").forEach(button => {
-      button.innerHTML = "Add to Cart";
-      button.style.background = "#0F3D2E";
-      button.disabled = false;
-    });
-
-    updateCart();
-
-    document.getElementById("cart-box").classList.remove("active");
-    document.getElementById("cart-overlay").classList.remove("active");
-  }
-}
-
-/* Update Cart */
-function updateCart() {
-  const items = document.getElementById("cart-items");
-  const totalElement = document.getElementById("cart-total");
-  const countElement = document.getElementById("cart-count");
-  const summaryItems = document.getElementById("summary-items");
-
-  items.innerHTML = "";
-  summaryItems.innerHTML = "";
-
-  let total = 0;
-  let count = 0;
-
-  if (cart.length === 0) {
-    items.innerHTML = '<p class="empty-cart">Your cart is empty!</p>';
-    summaryItems.innerHTML = '<p>Your order summary is empty.</p>';
-  }
-
-  cart.forEach((item, index) => {
-    const itemTotal = item.price * item.quantity;
-
-    total += itemTotal;
-    count += Number(item.quantity) || 0;
-
-    items.innerHTML += `
-      <div class="cart-item" style="display:flex;align-items:center;gap:10px;">
-        <img src="${item.image}" alt=""
-          style="width:65px;height:65px;object-fit:cover;border-radius:10px;">
-
-        <div class="item-info" style="flex:1;flex-direction:column;">
-          <strong>${item.name}</strong>
-          <span>৳${item.price} × ${item.quantity}</span>
-        </div>
-
-        <div class="item-actions">
-          <button onclick="changeQuantity(${index}, -1)">−</button>
-          <span>${item.quantity}</span>
-          <button onclick="changeQuantity(${index}, 1)">+</button>
-          <button class="remove-btn" onclick="removeItem(${index})">×</button>
-        </div>
-      </div>
-    `;
-
-    summaryItems.innerHTML += `
-      <div style="display:flex;justify-content:space-between;">
-        <span>${item.name} × ${item.quantity}</span>
-        <strong>৳${itemTotal}</strong>
-      </div>
-    `;
-  });
-
-  summaryItems.innerHTML += `
-    <div style="display:flex;justify-content:space-between;margin-top:12px;">
-      <strong>Subtotal</strong>
-      <strong>৳${total}</strong>
-    </div>
-
-    <div style="display:flex;justify-content:space-between;margin-top:10px;">
-      <span>Delivery Charge</span>
-      <strong>${
-        deliveryCharge === null
-          ? "To Be Confirmed"
-          : deliveryCharge === 0
-            ? "FREE"
-            : "৳" + deliveryCharge
-      }</strong>
-    </div>
-
-    <div style="display:flex;justify-content:space-between;margin-top:10px;">
-      <strong>Final Total</strong>
-      <strong>৳${total + (deliveryCharge || 0)}</strong>
-    </div>
-  `;
-
-  totalElement.innerText = total + (deliveryCharge || 0);
-  countElement.textContent = count;
-}
-
-/* Checkout */
-function checkout() {
-  if (cart.length === 0) {
-    alert("Your cart is empty!");
-    return;
-  }
-
-  if (!deliveryChargeConfirmed) {
-    alert("Please confirm your location first!");
-    return;
-  }
-
-  document.getElementById("order-form").style.display = "block";
-}
-
-function closeOrderForm() {
-  document.getElementById("order-form").style.display = "none";
-}
-
-/* Delivery Charge */
-let customerLocationLink = "";
+/* Delivery Location */
 
 const deliveryHubLat = 22.147609;
 const deliveryHubLon = 92.040137;
 
+let customerLocationLink = "";
 let deliveryCharge = null;
 let deliveryDistance = null;
-let deliveryChargeConfirmed = false;
 
 function calculateDeliveryCharge(customerLat, customerLon) {
+
   const R = 6371;
   const toRad = value => value * Math.PI / 180;
 
@@ -1154,8 +499,6 @@ function calculateDeliveryCharge(customerLat, customerLon) {
   else if (distance <= 15) deliveryCharge = 50;
   else deliveryCharge = 50 + Math.ceil((distance - 15) / 3) * 10;
 
-  deliveryChargeConfirmed = true;
-
   document.getElementById("delivery-info").style.display = "block";
 
   document.getElementById("delivery-distance").innerText =
@@ -1165,14 +508,13 @@ function calculateDeliveryCharge(customerLat, customerLon) {
     deliveryCharge === 0
       ? "Delivery Charge: FREE"
       : "Delivery Charge: ৳" + deliveryCharge;
-
-  document.getElementById("checkout-btn").classList.remove("checkout-locked");
-
-  updateCart();
 }
 
+
 /* GPS */
+
 function getCurrentLocation() {
+
   const status = document.getElementById("location-status");
   const button = document.getElementById("location-btn");
 
@@ -1185,7 +527,9 @@ function getCurrentLocation() {
   button.disabled = true;
 
   navigator.geolocation.getCurrentPosition(
+
     function(position) {
+
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
 
@@ -1196,9 +540,11 @@ function getCurrentLocation() {
 
       status.innerText = "✓ Location captured successfully!";
       button.disabled = false;
+
     },
 
     function(error) {
+
       if (error.code === 1) {
         status.innerText = "Location permission denied. Please allow location access.";
       } else if (error.code === 2) {
@@ -1210,6 +556,7 @@ function getCurrentLocation() {
       }
 
       button.disabled = false;
+
     },
 
     {
@@ -1217,73 +564,16 @@ function getCurrentLocation() {
       timeout: 20000,
       maximumAge: 0
     }
+
   );
+
 }
 
-/* Search */
-function searchProducts() {
-  const searchText = document
-    .getElementById("food-search-input")
-    .value.toLowerCase()
-    .trim();
-
-  const cards = document.querySelectorAll(".food-card");
-  let found = 0;
-
-  cards.forEach(card => {
-    const name = card.querySelector("h2").innerText.toLowerCase();
-
-    const matchesSearch = name.includes(searchText);
-    const matchesCategory =
-      selectedCategory === "all" ||
-      card.dataset.category === selectedCategory;
-
-    if (matchesSearch && matchesCategory) {
-      card.style.display = "";
-      found++;
-    } else {
-      card.style.display = "none";
-    }
-  });
-
-  let noResult = document.getElementById("no-food-found");
-
-  if (!noResult) {
-    noResult = document.createElement("div");
-    noResult.id = "no-food-found";
-    noResult.style.cssText = `
-      grid-column:1/-1;
-      text-align:center;
-      padding:40px 15px;
-      color:#0F3D2E;
-      background:#fff;
-      border-radius:15px;
-      font-weight:bold;
-    `;
-    noResult.innerHTML = "🔍<br><br>No product found!";
-    document.getElementById("product-menu").appendChild(noResult);
-  }
-
-  noResult.style.display = found === 0 ? "block" : "none";
-}
-
-/* Category Filter */
-let selectedCategory = "all";
-
-function filterCategory(category, button) {
-  selectedCategory = category;
-
-  document.querySelectorAll(".category-btn").forEach(btn => {
-    btn.classList.remove("active");
-  });
-
-  button.classList.add("active");
-
-  searchProducts();
-}
 
 /* Prescription Preview */
+
 function previewPrescription(event) {
+
   const file = event.target.files[0];
   const preview = document.getElementById("prescription-preview");
 
@@ -1309,137 +599,102 @@ function previewPrescription(event) {
 
   preview.src = URL.createObjectURL(file);
   preview.style.display = "block";
+
 }
 
-/* Confirmation */
-function confirmOrderSent(sent) {
-  document.getElementById("order-confirm-popup").style.display = "none";
 
-  if (sent) {
-    cart = [];
-    saveCart();
-    updateCart();
+/* Send Medicine Order */
 
-    document.querySelectorAll(".add-to-cart").forEach(button => {
-      button.innerHTML = "Add to Cart";
-      button.style.background = "#0F3D2E";
-      button.disabled = false;
-    });
+function sendMedicineOrder() {
 
-    closeOrderForm();
+  const medicines = document
+    .getElementById("medicine-list")
+    .value.trim();
 
-    document.getElementById("cart-box").classList.remove("active");
-    document.getElementById("cart-overlay").classList.remove("active");
+  const name = document
+    .getElementById("customer-name")
+    .value.trim();
 
-    document.getElementById("customer-name").value = "";
-    document.getElementById("customer-phone").value = "";
-    document.getElementById("customer-address").value = "";
-    document.getElementById("delivery-instructions").value = "";
+  const phone = document
+    .getElementById("customer-phone")
+    .value.trim();
 
-    document.getElementById("prescription-file").value = "";
-    document.getElementById("prescription-preview").style.display = "none";
-    document.getElementById("prescription-preview").src = "";
+  const address = document
+    .getElementById("customer-address")
+    .value.trim();
 
-    customerLocationLink = "";
-  }
-}
-
-/* Place Order */
-function placeOrder() {
   const instructions = document
-    .getElementById("delivery-instructions").value.trim();
-
-  const name = document.getElementById("customer-name").value.trim();
-  const phone = document.getElementById("customer-phone").value.trim();
-  const address = document.getElementById("customer-address").value.trim();
+    .getElementById("delivery-instructions")
+    .value.trim();
 
   const prescriptionFile =
     document.getElementById("prescription-file").files[0];
 
-  if (!name || !phone || !address) {
-    alert("Please fill in all your details!");
+  if (!medicines || !name || !phone || !address) {
+    alert("Please fill in all required fields!");
     return;
   }
 
-  if (cart.length === 0) {
-    alert("Your cart is empty!");
+  if (!deliveryChargeConfirmed()) {
+    alert("Please confirm your delivery location first!");
     return;
   }
-
-  const subtotal = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity, 0
-  );
 
   let message = "💊 *NEW LOCALBITE PHARMACY ORDER*\n\n";
 
-  message += "👤 Name: " + name + "\n";
-  message += "📞 Phone: " + phone + "\n";
-  message += "📍 Address: " + address + "\n\n";
+  message += "👤 *Customer Name:* " + name + "\n";
+  message += "📞 *Phone:* " + phone + "\n";
+  message += "📍 *Delivery Address:* " + address + "\n\n";
+
+  message += "*MEDICINE LIST:*\n";
+  message += medicines + "\n\n";
 
   if (instructions) {
-    message += "📝 Delivery Instructions: " + instructions + "\n";
+    message += "📝 *Additional Instructions:*\n";
+    message += instructions + "\n\n";
   }
 
-  message += "\n*ORDER DETAILS*\n";
+  message += "🚚 *Delivery Distance:* " +
+    deliveryDistance.toFixed(2) + " km\n";
 
-  cart.forEach(item => {
-    message += item.name + " × " + item.quantity +
-      " = ৳" + (item.price * item.quantity) + "\n";
-  });
+  message += "🚚 *Delivery Charge:* " +
+    (deliveryCharge === 0 ? "FREE" : "৳" + deliveryCharge) + "\n\n";
 
-  message += "\n🛍️ Subtotal: ৳" + subtotal;
-
-  if (deliveryCharge !== null) {
-    const finalTotal = subtotal + deliveryCharge;
-
-    message += "\n🚚 Delivery Charge: " +
-      (deliveryCharge === 0 ? "FREE" : "৳" + deliveryCharge);
-
-    message += "\n💰 *Final Total: ৳" + finalTotal + "*";
-  } else {
-    message += "\n🚚 Delivery Charge: To Be Confirmed";
-    message += "\n💰 *Subtotal: ৳" + subtotal + "*";
-  }
+  message += "💰 *Medicine Price:* To Be Confirmed\n";
+  message += "⚠️ Please confirm medicine availability and prices before accepting the order.\n";
 
   if (customerLocationLink) {
-    message += "\n\n📍 *Customer Location:*\n" + customerLocationLink;
+    message += "\n📍 *Customer GPS Location:*\n";
+    message += customerLocationLink + "\n";
   }
 
   if (prescriptionFile) {
-    message += "\n\n📄 Prescription selected: " + prescriptionFile.name;
-    message += "\n⚠️ Please attach the prescription image manually in this WhatsApp chat.";
+    message += "\n📄 *Prescription:* Image selected by customer.\n";
+    message += "Please ask customer to attach the image in this WhatsApp chat.\n";
   }
 
-  message += "\n\n⚠️ Prescription-required products are subject to pharmacist verification and approval.";
+  message += "\n⚠️ Prescription-only medicines require pharmacist verification and approval.";
 
   const whatsappURL =
-    "https://wa.me/8801632033787?text=" + encodeURIComponent(message);
-
-  sessionStorage.setItem("localbitePendingOrder", "yes");
+    "https://wa.me/8801632033787?text=" +
+    encodeURIComponent(message);
 
   window.open(whatsappURL, "_blank");
 
-  function checkOrderStatus() {
-    if (document.visibilityState !== "visible") return;
-
-    if (sessionStorage.getItem("localbitePendingOrder") !== "yes") return;
-
-    sessionStorage.removeItem("localbitePendingOrder");
-
-    document.removeEventListener("visibilitychange", checkOrderStatus);
-
-    document.getElementById("order-confirm-popup").style.display = "flex";
-  }
-
-  document.addEventListener("visibilitychange", checkOrderStatus);
 }
 
-/* Load Cart */
-window.addEventListener("load", function() {
-  updateCart();
-});
+
+/* Location Confirmation Check */
+
+function deliveryChargeConfirmed() {
+  return (
+    customerLocationLink !== "" &&
+    deliveryCharge !== null &&
+    deliveryDistance !== null
+  );
+}
+
 </script>
 
 </body>
 </html>
-
