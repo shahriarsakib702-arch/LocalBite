@@ -298,21 +298,19 @@ footer {
     font-size: 21px;
   }
 }
-  /* Fixed Pharmacy Order Button */
+/* Fixed WhatsApp Button Inside Review Popup */
 
-body {
-  padding-bottom: 90px;
+#medicine-review-popup > div {
+  position: relative;
+  padding-bottom: 85px !important;
 }
 
-#send-order-btn {
-  position: fixed;
+#medicine-review-popup button:first-of-type {
+  position: absolute;
   bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 610px;
-  z-index: 1000;
-  box-shadow: 0 5px 20px #00000035;
+  left: 24px;
+  width: calc(100% - 48px);
+  z-index: 5;
 }
 </style>
 </head>
