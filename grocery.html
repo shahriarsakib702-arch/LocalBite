@@ -344,23 +344,34 @@ function saveCart() {
 
 function displayGroceries(products) {
   const groceryList = document.getElementById("grocery-list");
+
   if (!products.length) {
     groceryList.innerHTML = "<p>No Products Found.</p>";
     return;
   }
+
   groceryList.innerHTML = products.map(product => {
     const added = cart.some(item => item.name === product.name);
+    const outOfStock = product.stock <= 0;
+
     return `
       <div class="grocery-card">
         <img src="${product.image}" alt="${product.name}"
           onerror="this.src='https://placehold.co/500x350?text=Grocery'">
+
         <div class="grocery-info">
           <h3>${product.name}</h3>
           <p class="grocery-price">৳${product.price} / ${product.unit}</p>
-          <button class="grocery-add-btn" id="add-btn-${product.name}"
-            onclick="addGroceryToCart('${product.name}')" ${added ? "disabled" : ""}
-            style="${added ? "background:#198754;" : ""}">
-            ${added ? "✓ Added to Cart" : "+ Add to Cart"}
+
+          <p style="font-size:13px;margin-bottom:10px;color:${outOfStock ? '#dc3545' : '#198754'};font-weight:bold;">
+            ${outOfStock ? 'Out of Stock' : 'In Stock: ' + product.stock}
+          </p>
+
+          <button class="grocery-add-btn"
+            onclick="addGroceryToCart('${product.name}')"
+            ${added || outOfStock ? "disabled" : ""}
+            style="${outOfStock ? 'background:#999;' : added ? 'background:#198754;' : ''}">
+            ${outOfStock ? 'Out of Stock' : added ? '✓ Added to Cart' : '+ Add to Cart'}
           </button>
         </div>
       </div>`;
