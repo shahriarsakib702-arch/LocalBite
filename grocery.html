@@ -585,6 +585,9 @@ function placeOrder() {
   let subtotal = 0;
   let orderText = "🛒 *LOCALBITE GROCERY ORDER*\n\n";
   orderText += `Name: ${name}\nPhone: ${phone}\nAddress: ${address}\n\n`;
+  if (instructions) {
+  orderText += `📝 Delivery Instructions: ${instructions}\n`;
+  }
   orderText += "*Order Items:*\n";
 
   cart.forEach(item => {
