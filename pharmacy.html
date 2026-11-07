@@ -720,7 +720,24 @@ function sendMedicineOrder() {
     "https://wa.me/8801632033787?text=" +
     encodeURIComponent(message);
 
+    sessionStorage.setItem("localbitePendingOrder", "yes");
+
   window.open(whatsappURL, "_blank");
+
+  function checkOrderStatus() {
+
+    if (document.visibilityState !== "visible") return;
+
+    if (sessionStorage.getItem("localbitePendingOrder") !== "yes") return;
+
+    sessionStorage.removeItem("localbitePendingOrder");
+
+    document.removeEventListener("visibilitychange", checkOrderStatus);
+
+    document.getElementById("order-confirm-popup").style.display = "flex";
+  }
+
+  document.addEventListener("visibilitychange", checkOrderStatus);
 
 }
 
