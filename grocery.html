@@ -463,16 +463,24 @@ function updateCart() {
   document.getElementById("cart-total").textContent = finalTotal;
 }
 
-function changeQuantity(index,amount) {
+function changeQuantity(index, amount) {
   if (!cart[index]) return;
-  cart[index].quantity = (Number(cart[index].quantity) || 1) + amount;
-  if (cart[index].quantity <= 0) cart.splice(index,1);
-  saveCart();
-  displayGroceries(groceryProducts);
-}
 
-function removeItem(index) {
-  cart.splice(index,1);
+  const item = cart[index];
+  const product = groceryProducts.find(p => p.name === item.name);
+  const newQuantity = (Number(item.quantity) || 1) + amount;
+
+  if (product && newQuantity > product.stock) {
+    alert("Sorry! Only " + product.stock + " units available.");
+    return;
+  }
+
+  item.quantity = newQuantity;
+
+  if (item.quantity <= 0) {
+    cart.splice(index, 1);
+  }
+
   saveCart();
   displayGroceries(groceryProducts);
 }
