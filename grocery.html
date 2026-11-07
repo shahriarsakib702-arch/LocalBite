@@ -649,7 +649,29 @@ function placeOrder() {
 function confirmOrderSent(sent) {
   document.getElementById("order-confirm-popup").style.display = "none";
   if (!sent) return;
+// Reduce stock after order confirmation
+cart.forEach(item => {
+  const product = groceryProducts.find(p => p.name === item.name);
 
+  if (product) {
+    product.stock = Math.max(
+      0,
+      product.stock - Number(item.quantity || 1)
+    );
+  }
+});
+
+// Save updated stock
+const stockToSave = {};
+
+groceryProducts.forEach(product => {
+  stockToSave[product.name] = product.stock;
+});
+
+localStorage.setItem(
+  "localbiteGroceryStock",
+  JSON.stringify(stockToSave)
+);
   cart = [];
   saveCart();
   displayGroceries(groceryProducts);
