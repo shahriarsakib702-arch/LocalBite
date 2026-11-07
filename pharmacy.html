@@ -701,32 +701,16 @@ function previewPrescription(event) {
 }
 
 
-/* Send Medicine Order */
+
+/* Send Medicine Order - Review First */
 
 function sendMedicineOrder() {
 
-  const medicines = document
-    .getElementById("medicine-list")
-    .value.trim();
-
-  const name = document
-    .getElementById("customer-name")
-    .value.trim();
-
-  const phone = document
-    .getElementById("customer-phone")
-    .value.trim();
-
-  const address = document
-    .getElementById("customer-address")
-    .value.trim();
-
-  const instructions = document
-    .getElementById("delivery-instructions")
-    .value.trim();
-
-  const prescriptionFile =
-    document.getElementById("prescription-file").files[0];
+  const medicines = document.getElementById("medicine-list").value.trim();
+  const name = document.getElementById("customer-name").value.trim();
+  const phone = document.getElementById("customer-phone").value.trim();
+  const address = document.getElementById("customer-address").value.trim();
+  const instructions = document.getElementById("delivery-instructions").value.trim();
 
   if (!medicines || !name || !phone || !address) {
     alert("Please fill in all required fields!");
@@ -738,23 +722,69 @@ function sendMedicineOrder() {
     return;
   }
 
+  const reviewDetails = `
+👤 Customer Name:
+${name}
+
+📞 Mobile Number:
+${phone}
+
+📍 Delivery Address:
+${address}
+
+💊 Medicine List:
+${medicines}
+
+📝 Additional Instructions:
+${instructions || "None"}
+
+🚚 Delivery Distance:
+${deliveryDistance.toFixed(2)} km
+
+💰 Delivery Charge:
+${deliveryCharge === 0 ? "FREE" : "৳" + deliveryCharge}
+
+💊 Medicine Price:
+To Be Confirmed
+  `;
+
+  document.getElementById("medicine-review-details").innerText = reviewDetails;
+
+  document.getElementById("medicine-review-popup").style.display = "flex";
+}
+
+
+/* Close Review Popup */
+
+function closeMedicineReview() {
+  document.getElementById("medicine-review-popup").style.display = "none";
+}
+
+
+/* Send Reviewed Order to WhatsApp */
+
+function sendMedicineToWhatsApp() {
+
+  const medicines = document.getElementById("medicine-list").value.trim();
+  const name = document.getElementById("customer-name").value.trim();
+  const phone = document.getElementById("customer-phone").value.trim();
+  const address = document.getElementById("customer-address").value.trim();
+  const instructions = document.getElementById("delivery-instructions").value.trim();
+  const prescriptionFile = document.getElementById("prescription-file").files[0];
+
   let message = "💊 *NEW LOCALBITE PHARMACY ORDER*\n\n";
 
   message += "👤 *Customer Name:* " + name + "\n";
   message += "📞 *Phone:* " + phone + "\n";
   message += "📍 *Delivery Address:* " + address + "\n\n";
 
-  message += "*MEDICINE LIST:*\n";
-  message += medicines + "\n\n";
+  message += "*MEDICINE LIST:*\n" + medicines + "\n\n";
 
   if (instructions) {
-    message += "📝 *Additional Instructions:*\n";
-    message += instructions + "\n\n";
+    message += "📝 *Additional Instructions:*\n" + instructions + "\n\n";
   }
 
-  message += "🚚 *Delivery Distance:* " +
-    deliveryDistance.toFixed(2) + " km\n";
-
+  message += "🚚 *Delivery Distance:* " + deliveryDistance.toFixed(2) + " km\n";
   message += "🚚 *Delivery Charge:* " +
     (deliveryCharge === 0 ? "FREE" : "৳" + deliveryCharge) + "\n\n";
 
@@ -762,8 +792,7 @@ function sendMedicineOrder() {
   message += "⚠️ Please confirm medicine availability and prices before accepting the order.\n";
 
   if (customerLocationLink) {
-    message += "\n📍 *Customer GPS Location:*\n";
-    message += customerLocationLink + "\n";
+    message += "\n📍 *Customer GPS Location:*\n" + customerLocationLink + "\n";
   }
 
   if (prescriptionFile) {
@@ -774,28 +803,26 @@ function sendMedicineOrder() {
   message += "\n⚠️ Prescription-only medicines require pharmacist verification and approval.";
 
   const whatsappURL =
-    "https://wa.me/8801632033787?text=" +
-    encodeURIComponent(message);
+    "https://wa.me/8801632033787?text=" + encodeURIComponent(message);
 
-    sessionStorage.setItem("localbitePendingOrder", "yes");
+  document.getElementById("medicine-review-popup").style.display = "none";
+
+  sessionStorage.setItem("localbitePendingOrder", "yes");
 
   window.open(whatsappURL, "_blank");
 
   function checkOrderStatus() {
 
     if (document.visibilityState !== "visible") return;
-
     if (sessionStorage.getItem("localbitePendingOrder") !== "yes") return;
 
     sessionStorage.removeItem("localbitePendingOrder");
-
     document.removeEventListener("visibilitychange", checkOrderStatus);
 
     document.getElementById("order-confirm-popup").style.display = "flex";
   }
 
   document.addEventListener("visibilitychange", checkOrderStatus);
-
 }
 
 
