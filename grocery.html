@@ -380,12 +380,31 @@ function displayGroceries(products) {
 
 function addGroceryToCart(productName) {
   const product = groceryProducts.find(item => item.name === productName);
-  if (!product || cart.some(item => item.name === product.name)) return;
-  cart.push({ name:product.name, price:product.price, quantity:1, image:product.image });
+
+  if (!product) return;
+
+  if (product.stock <= 0) {
+    alert("Sorry! This product is Out of Stock.");
+    return;
+  }
+
+  const existingItem = cart.find(item => item.name === product.name);
+
+  if (existingItem) {
+    alert("This product is already in your cart.");
+    return;
+  }
+
+  cart.push({
+    name: product.name,
+    price: product.price,
+    quantity: 1,
+    image: product.image
+  });
+
   saveCart();
   displayGroceries(groceryProducts);
 }
-
 function updateCart() {
   const cartItems = document.getElementById("cart-items");
   const cartCount = document.getElementById("cart-count");
