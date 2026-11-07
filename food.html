@@ -1261,6 +1261,9 @@ function placeOrder() {
   message += "👤 Name: " + name + "\n";
   message += "📞 Phone: " + phone + "\n";
   message += "📍 Address: " + address + "\n\n";
+  if (instructions) {
+  message += "📝 Delivery Instructions: " + instructions + "\n";
+  }
   message += "*ORDER DETAILS*\n";
 
   cart.forEach(item => {
