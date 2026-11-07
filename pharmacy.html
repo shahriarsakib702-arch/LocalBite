@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -210,44 +209,6 @@ header {
   line-height: 1.8;
 }
 
-.prescription-box {
-  background: #edf4ed;
-  border: 1px solid #cbded0;
-  border-radius: 12px;
-  padding: 15px;
-  margin-bottom: 20px;
-}
-
-.prescription-box label {
-  display: block;
-  color: #0F3D2E;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.prescription-box input {
-  background: white;
-  padding: 10px;
-  font-size: 13px;
-  margin-bottom: 8px;
-}
-
-#prescription-preview {
-  display: none;
-  width: 100%;
-  max-height: 180px;
-  object-fit: contain;
-  background: white;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-.prescription-note {
-  font-size: 12px;
-  color: #426354;
-  line-height: 1.6;
-}
-
 #send-order-btn {
   width: 100%;
   padding: 17px;
@@ -298,7 +259,6 @@ footer {
     font-size: 21px;
   }
 }
-
 </style>
 </head>
 
@@ -318,7 +278,6 @@ footer {
 <div class="pharmacy-notice">
   💊 আপনার প্রয়োজনীয় ওষুধের নাম ও পরিমাণ লিখে অর্ডার পাঠান।
   আমরা ওষুধের প্রাপ্যতা ও দাম যাচাই করে আপনাকে জানাব।
-  প্রেসক্রিপশন প্রয়োজন এমন ওষুধ ফার্মাসিস্টের যাচাই সাপেক্ষে সরবরাহ করা হবে।
 </div>
 
 <div class="order-container">
@@ -419,29 +378,6 @@ Seclo 20 mg - 1 strip"
 
   </div>
 
-  <div class="prescription-box">
-
-    <label for="prescription-file">
-      📄 Prescription Image (Optional)
-    </label>
-
-    <input
-      type="file"
-      id="prescription-file"
-      accept="image/*"
-      onchange="previewPrescription(event)"
-    >
-
-    <img id="prescription-preview" alt="Prescription Preview">
-
-    <p class="prescription-note">
-      প্রেসক্রিপশনের ছবি নির্বাচন করলে WhatsApp খোলার পর ছবিটি
-      আলাদাভাবে Attach করে পাঠাতে হবে।
-      Prescription-only ওষুধ ফার্মাসিস্টের যাচাই ছাড়া সরবরাহ করা হবে না।
-    </p>
-
-  </div>
-
   <button
     type="button"
     id="send-order-btn"
@@ -459,8 +395,9 @@ Seclo 20 mg - 1 strip"
 <footer>
   © 2026 LOCALBITE. Good Food. Right Around You.
 </footer>
-<!-- Order Confirmation Popup -->
-  <!-- Order Review Popup -->
+
+<!-- Order Review Popup -->
+
 <div id="medicine-review-popup" style="
   display:none;
   position:fixed;
@@ -487,16 +424,16 @@ Seclo 20 mg - 1 strip"
     </h2>
 
     <div id="medicine-review-details" style="
-  background:white;
-  padding:15px;
-  border-radius:12px;
-  font-size:14px;
-  line-height:1.8;
-  overflow-wrap:anywhere;
-  overflow-y:auto;
-  flex:1;
-  min-height:0;
-"></div>
+      background:white;
+      padding:15px;
+      border-radius:12px;
+      font-size:14px;
+      line-height:1.8;
+      overflow-wrap:anywhere;
+      overflow-y:auto;
+      flex:1;
+      min-height:0;
+    "></div>
 
     <button onclick="sendMedicineToWhatsApp()" style="
       width:100%;
@@ -524,6 +461,9 @@ Seclo 20 mg - 1 strip"
     ">Edit করুন</button>
   </div>
 </div>
+
+<!-- Order Confirmation Popup -->
+
 <div id="order-confirm-popup" style="
   display:none;
   position:fixed;
@@ -565,6 +505,7 @@ Seclo 20 mg - 1 strip"
     ">না, এখনো পাঠাইনি</button>
   </div>
 </div>
+
 <script>
 
 /* Delivery Location */
@@ -676,40 +617,6 @@ function getCurrentLocation() {
 }
 
 
-/* Prescription Preview */
-
-function previewPrescription(event) {
-
-  const file = event.target.files[0];
-  const preview = document.getElementById("prescription-preview");
-
-  if (!file) {
-    preview.style.display = "none";
-    preview.src = "";
-    return;
-  }
-
-  if (!file.type.startsWith("image/")) {
-    alert("Please select an image file.");
-    event.target.value = "";
-    preview.style.display = "none";
-    return;
-  }
-
-  if (file.size > 5 * 1024 * 1024) {
-    alert("Image must be smaller than 5 MB.");
-    event.target.value = "";
-    preview.style.display = "none";
-    return;
-  }
-
-  preview.src = URL.createObjectURL(file);
-  preview.style.display = "block";
-
-}
-
-
-
 /* Send Medicine Order - Review First */
 
 function sendMedicineOrder() {
@@ -778,7 +685,6 @@ function sendMedicineToWhatsApp() {
   const phone = document.getElementById("customer-phone").value.trim();
   const address = document.getElementById("customer-address").value.trim();
   const instructions = document.getElementById("delivery-instructions").value.trim();
-  const prescriptionFile = document.getElementById("prescription-file").files[0];
 
   let message = "💊 *NEW LOCALBITE PHARMACY ORDER*\n\n";
 
@@ -802,13 +708,6 @@ function sendMedicineToWhatsApp() {
   if (customerLocationLink) {
     message += "\n📍 *Customer GPS Location:*\n" + customerLocationLink + "\n";
   }
-
-  if (prescriptionFile) {
-    message += "\n📄 *Prescription:* Image selected by customer.\n";
-    message += "Please ask customer to attach the image in this WhatsApp chat.\n";
-  }
-
-  message += "\n⚠️ Prescription-only medicines require pharmacist verification and approval.";
 
   const whatsappURL =
     "https://wa.me/8801632033787?text=" + encodeURIComponent(message);
@@ -843,6 +742,8 @@ function deliveryChargeConfirmed() {
     deliveryDistance !== null
   );
 }
+
+
 /* Order Confirmation */
 
 function confirmOrderSent(sent) {
@@ -851,21 +752,12 @@ function confirmOrderSent(sent) {
 
   if (sent) {
 
-    // Clear customer information
     document.getElementById("medicine-list").value = "";
     document.getElementById("customer-name").value = "";
     document.getElementById("customer-phone").value = "";
     document.getElementById("customer-address").value = "";
     document.getElementById("delivery-instructions").value = "";
 
-    // Clear prescription image
-    document.getElementById("prescription-file").value = "";
-
-    const preview = document.getElementById("prescription-preview");
-    preview.src = "";
-    preview.style.display = "none";
-
-    // Reset location information
     customerLocationLink = "";
     deliveryCharge = null;
     deliveryDistance = null;
@@ -878,6 +770,7 @@ function confirmOrderSent(sent) {
   }
 
 }
+
 </script>
 
 </body>
