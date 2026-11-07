@@ -288,7 +288,14 @@ footer p { margin-top:8px; font-size:12px; letter-spacing:1px; }
   <input type="text" id="customer-name" placeholder="Your Name">
   <input type="tel" id="customer-phone" placeholder="Phone Number">
   <textarea id="customer-address" rows="3" placeholder="Full Delivery Address"></textarea>
-  <button class="place-order-btn" onclick="placeOrder()">Place Order on WhatsApp →</button>
+
+<textarea
+  id="delivery-instructions"
+  rows="2"
+  placeholder="Delivery Instructions (Optional)"
+></textarea>
+
+<button class="place-order-btn" onclick="placeOrder()">Place Order on WhatsApp →</button>
 </div>
 
 <div class="location-popup" id="location-popup">
