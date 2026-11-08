@@ -325,82 +325,17 @@ Seclo 20 mg - 1 strip"
     আপনার সম্মতি ছাড়া অর্ডার চূড়ান্ত হবে না।
   </div>
 
-  <label class="form-label" for="customer-name">
-    Your Name *
-  </label>
-  <input
-    type="text"
-    id="customer-name"
-    placeholder="আপনার নাম"
-    required
-  >
+<button
+  type="button"
+  id="send-order-btn"
+  onclick="openMedicineCheckout()"
+>
+  <span>🛒 Proceed to Checkout</span>
+</button>
 
-  <label class="form-label" for="customer-phone">
-    Mobile Number *
-  </label>
-  <input
-    type="tel"
-    id="customer-phone"
-    placeholder="01XXXXXXXXX"
-    required
-  >
-
-  <label class="form-label" for="customer-address">
-    Full Delivery Address *
-  </label>
-  <textarea
-    id="customer-address"
-    placeholder="গ্রাম, ইউনিয়ন, উপজেলা এবং বিস্তারিত ঠিকানা"
-    required
-  ></textarea>
-
-  <label class="form-label" for="delivery-instructions">
-    Additional Instructions (Optional)
-  </label>
-  <textarea
-    id="delivery-instructions"
-    placeholder="অতিরিক্ত কোনো নির্দেশনা থাকলে লিখুন..."
-    style="min-height:80px;"
-  ></textarea>
-
-  <div class="location-box">
-
-    <h3>📍 Delivery Location</h3>
-
-    <p>
-      ডেলিভারি চার্জ হিসাব করার জন্য আপনার GPS Location নিশ্চিত করুন।
-    </p>
-
-    <button
-      type="button"
-      id="location-btn"
-      onclick="getCurrentLocation()"
-    >
-      📍 Confirm My Location
-    </button>
-
-    <p id="location-status">
-      Location not confirmed yet.
-    </p>
-
-    <div id="delivery-info">
-      <div id="delivery-distance"></div>
-      <div id="delivery-charge"></div>
-    </div>
-
-  </div>
-
-  <button
-    type="button"
-    id="send-order-btn"
-    onclick="sendMedicineOrder()"
-  >
-    <span>📲 Send Order via WhatsApp</span>
-  </button>
-
-  <p class="whatsapp-hint">
-    WhatsApp-এ মেসেজ পাঠানোর পর আমরা দাম ও প্রাপ্যতা নিশ্চিত করব।
-  </p>
+<p class="whatsapp-hint">
+  পরবর্তী ধাপে আপনার Delivery Information দিন।
+</p>
 
 </div>
 
