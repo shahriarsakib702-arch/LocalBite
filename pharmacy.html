@@ -585,7 +585,22 @@ Seclo 20 mg - 1 strip"
 </div>
 
 <script>
+/* Medicine Checkout Popup */
 
+function openMedicineCheckout() {
+  const medicines = document.getElementById("medicine-list").value.trim();
+
+  if (!medicines) {
+    alert("Please enter your medicine list first!");
+    return;
+  }
+
+  document.getElementById("medicine-checkout-popup").style.display = "flex";
+}
+
+function closeMedicineCheckout() {
+  document.getElementById("medicine-checkout-popup").style.display = "none";
+}
 /* Delivery Location */
 
 const deliveryHubLat = 22.147609;
