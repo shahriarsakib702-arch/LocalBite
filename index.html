@@ -820,31 +820,32 @@ footer p {
 .category-name {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   background: #242B2A;
   color: #FFFFFF;
   font-family: Arial, sans-serif;
-  font-size: 19px;
-  font-weight: 800;
-  letter-spacing: 0.3px;
-  padding: 13px 15px;
-  margin-top: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+  padding: 9px 11px;
+  margin-top: 12px;
+  width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
   border: 1px solid #48514E;
-  border-radius: 10px;
-  box-shadow: 0 5px 14px rgba(36,43,42,0.18);
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(36,43,42,0.15);
+  overflow-wrap: anywhere;
 }
-
-/* LIME SIDE ACCENT */
 
 .category-name::before {
   content: "";
   display: block;
-  width: 4px;
-  height: 25px;
+  width: 3px;
+  height: 19px;
   flex-shrink: 0;
   background: #C5F36A;
   border-radius: 5px;
-  box-shadow: 0 0 8px rgba(197,243,106,0.25);
 }
 
 .category-desc {
