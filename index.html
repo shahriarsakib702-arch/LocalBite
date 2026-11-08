@@ -815,25 +815,36 @@ footer p {
   display: block;
 }
 
+/* MODERN CATEGORY NAME DESIGN */
+
 .category-name {
   display: flex;
   align-items: center;
-  gap: 9px;
-  color: #26352F;
-  font-size: 20px;
+  gap: 12px;
+  background: #242B2A;
+  color: #FFFFFF;
+  font-family: Arial, sans-serif;
+  font-size: 19px;
   font-weight: 800;
   letter-spacing: 0.3px;
+  padding: 13px 15px;
   margin-top: 14px;
+  border: 1px solid #48514E;
+  border-radius: 10px;
+  box-shadow: 0 5px 14px rgba(36,43,42,0.18);
 }
+
+/* LIME SIDE ACCENT */
 
 .category-name::before {
   content: "";
-  width: 7px;
-  height: 7px;
+  display: block;
+  width: 4px;
+  height: 25px;
   flex-shrink: 0;
-  background: #0F3D2E;
-  border-radius: 50%;
-  box-shadow: 0 0 0 3px #DCEBDD;
+  background: #C5F36A;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(197,243,106,0.25);
 }
 
 .category-desc {
