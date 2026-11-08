@@ -816,12 +816,24 @@ footer p {
 }
 
 .category-name {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 9px;
   color: #26352F;
   font-size: 20px;
   font-weight: 800;
   letter-spacing: 0.3px;
   margin-top: 14px;
+}
+
+.category-name::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  background: #0F3D2E;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #DCEBDD;
 }
 
 .category-desc {
