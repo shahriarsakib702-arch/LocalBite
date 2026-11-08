@@ -290,6 +290,7 @@ nav a:hover {
 }
 
 .category-name {
+  display: inline-block;
   color: #242B2A;
   font-family: Arial, sans-serif;
   font-size: 16px;
@@ -297,6 +298,21 @@ nav a:hover {
   letter-spacing: 0.3px;
   margin: 0;
   min-width: 0;
+  padding: 5px 12px;
+  border-radius: 10px;
+  box-shadow: 0 3px 9px rgba(15,61,46,0.16);
+}
+
+.category-item:nth-child(1) .category-name {
+  background: #e7f2df;
+}
+
+.category-item:nth-child(2) .category-name {
+  background: #e5efff;
+}
+
+.category-item:nth-child(3) .category-name {
+  background: #ffeadb;
 }
 
 .category-explore {
