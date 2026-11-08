@@ -878,7 +878,7 @@ function confirmOrderSent(sent) {
   document.getElementById("order-confirm-popup").style.display = "none";
 
   if (sent) {
-
+document.getElementById("medicine-checkout-popup").style.display = "none";
     document.getElementById("medicine-list").value = "";
     document.getElementById("customer-name").value = "";
     document.getElementById("customer-phone").value = "";
