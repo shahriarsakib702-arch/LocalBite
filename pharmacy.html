@@ -342,7 +342,138 @@ Seclo 20 mg - 1 strip"
 <footer>
   © 2026 LOCALBITE. Good Food. Right Around You.
 </footer>
+<!-- Medicine Checkout Popup -->
 
+<div id="medicine-checkout-popup" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#00000080;
+  z-index:2000;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+">
+
+  <div style="
+    background:#FFF8E7;
+    width:100%;
+    max-width:500px;
+    max-height:90vh;
+    overflow-y:auto;
+    padding:24px;
+    border-radius:20px;
+  ">
+
+    <h2 style="color:#0F3D2E;margin-bottom:8px;">
+      🛒 Delivery Information
+    </h2>
+
+    <p style="color:#777;font-size:13px;margin-bottom:22px;">
+      অর্ডার সম্পন্ন করতে আপনার তথ্য দিন।
+    </p>
+
+    <label class="form-label" for="customer-name">
+      Your Name *
+    </label>
+    <input
+      type="text"
+      id="customer-name"
+      placeholder="আপনার নাম"
+      required
+    >
+
+    <label class="form-label" for="customer-phone">
+      Mobile Number *
+    </label>
+    <input
+      type="tel"
+      id="customer-phone"
+      placeholder="01XXXXXXXXX"
+      required
+    >
+
+    <label class="form-label" for="customer-address">
+      Full Delivery Address *
+    </label>
+    <textarea
+      id="customer-address"
+      placeholder="গ্রাম, ইউনিয়ন, উপজেলা এবং বিস্তারিত ঠিকানা"
+      required
+    ></textarea>
+
+    <label class="form-label" for="delivery-instructions">
+      Additional Instructions (Optional)
+    </label>
+    <textarea
+      id="delivery-instructions"
+      placeholder="অতিরিক্ত কোনো নির্দেশনা থাকলে লিখুন..."
+      style="min-height:80px;"
+    ></textarea>
+
+    <div class="location-box">
+
+      <h3>📍 Delivery Location</h3>
+
+      <p>
+        ডেলিভারি চার্জ হিসাব করার জন্য আপনার GPS Location নিশ্চিত করুন।
+      </p>
+
+      <button
+        type="button"
+        id="location-btn"
+        onclick="getCurrentLocation()"
+      >
+        📍 Confirm My Location
+      </button>
+
+      <p id="location-status">
+        Location not confirmed yet.
+      </p>
+
+      <div id="delivery-info">
+        <div id="delivery-distance"></div>
+        <div id="delivery-charge"></div>
+      </div>
+
+    </div>
+
+    <button
+      type="button"
+      onclick="sendMedicineOrder()"
+      style="
+        width:100%;
+        padding:16px;
+        background:#0F3D2E;
+        color:white;
+        border:0;
+        border-radius:12px;
+        font-size:16px;
+        font-weight:bold;
+      "
+    >
+      Continue to Review →
+    </button>
+
+    <button
+      type="button"
+      onclick="closeMedicineCheckout()"
+      style="
+        width:100%;
+        padding:13px;
+        margin-top:10px;
+        background:#eee;
+        color:#333;
+        border:0;
+        border-radius:10px;
+        font-size:14px;
+      "
+    >
+      Cancel
+    </button>
+
+  </div>
+</div>
 <!-- Order Review Popup -->
 
 <div id="medicine-review-popup" style="
