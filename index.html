@@ -1093,6 +1093,66 @@ footer p {
 </footer>
 
 <script>
+  /* HERO SLIDER FUNCTION */
+
+const slides = document.querySelectorAll(".hero-slide");
+const dots = document.querySelectorAll(".slider-dot");
+
+let currentSlide = 0;
+let slideTimer;
+
+function showSlide(index) {
+  slides[currentSlide].classList.remove("active");
+  dots[currentSlide].classList.remove("active");
+
+  currentSlide = index;
+
+  slides[currentSlide].classList.add("active");
+  dots[currentSlide].classList.add("active");
+}
+
+function nextSlide() {
+  showSlide((currentSlide + 1) % slides.length);
+}
+
+function startSlider() {
+  clearInterval(slideTimer);
+  slideTimer = setInterval(nextSlide, 4000);
+}
+
+dots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    showSlide(index);
+    startSlider();
+  });
+});
+
+startSlider();
+
+/* SWIPE SUPPORT */
+
+let touchStartX = 0;
+
+const slider = document.querySelector(".hero-slider");
+
+slider.addEventListener("touchstart", (event) => {
+  touchStartX = event.changedTouches[0].screenX;
+}, { passive: true });
+
+slider.addEventListener("touchend", (event) => {
+  const touchEndX = event.changedTouches[0].screenX;
+  const difference = touchStartX - touchEndX;
+
+  if (Math.abs(difference) > 50) {
+    if (difference > 0) {
+      nextSlide();
+    } else {
+      showSlide((currentSlide - 1 + slides.length) % slides.length);
+    }
+
+    startSlider();
+  }
+}, { passive: true });
 function showFood(event) {
   event.preventDefault();
 
