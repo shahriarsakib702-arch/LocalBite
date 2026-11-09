@@ -857,10 +857,14 @@ nav.mobile-menu-open a:hover {
 </div>
 
   <nav>
-  <a href="#">🏠 Home</a>
-  <a href="#menu">🛍️ Categories</a>
-  <a href="#food-menu">🍔 Explore Food</a>
-  <a href="#about">💚 About</a>
+  <button class="menu-close" onclick="closeMobileMenu()">
+    ✕ Close
+  </button>
+
+  <a href="#" onclick="closeMobileMenu()">🏠 Home</a>
+  <a href="#menu" onclick="closeMobileMenu()">🛍️ Categories</a>
+  <a href="#food-menu" onclick="closeMobileMenu()">🍔 Explore Food</a>
+  <a href="#about" onclick="closeMobileMenu()">💚 About</a>
 </nav>
 
   <button
