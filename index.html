@@ -1177,10 +1177,7 @@ nav.mobile-menu-open a:hover {
   </div>
 
 </footer>
-function closeMobileMenu() {
-  document.querySelector("header nav")
-    .classList.remove("mobile-menu-open");
-}
+
 <script>
   /* HERO SLIDER FUNCTION */
 
@@ -1260,6 +1257,10 @@ function toggleMobileMenu() {
 
   nav.classList.toggle("mobile-menu-open");
 }
+  function closeMobileMenu() {
+  document.querySelector("header nav")
+    .classList.remove("mobile-menu-open");
+  }
 </script>
 
 </body>
