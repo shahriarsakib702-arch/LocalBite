@@ -1324,7 +1324,27 @@ function placeOrder() {
   document.addEventListener("visibilitychange", checkOrderStatus);
 
 } // End of placeOrder function
+let favourites = JSON.parse(localStorage.getItem("localbiteFavourites")) || [];
 
+function toggleFavourite(button) {
+  const card = button.closest(".food-card");
+  const name = card.querySelector("h2").innerText;
+
+  if (favourites.includes(name)) {
+    favourites = favourites.filter(item => item !== name);
+    button.innerHTML = "♡";
+    button.style.background = "#fff1eb";
+  } else {
+    favourites.push(name);
+    button.innerHTML = "♥";
+    button.style.background = "#ffd6c5";
+  }
+
+  localStorage.setItem(
+    "localbiteFavourites",
+    JSON.stringify(favourites)
+  );
+}
 window.addEventListener("load", function() {
   updateCart();
 });
