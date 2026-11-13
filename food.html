@@ -1476,6 +1476,7 @@ function toggleFavourite(button) {
 let showingFavourites = false;
 
 
+
 function showFavourites() {
   const popup = document.getElementById("favourite-popup");
   const list = document.getElementById("favourite-list");
@@ -1483,6 +1484,7 @@ function showFavourites() {
   list.innerHTML = "";
 
   if (favourites.length === 0) {
+    popup.style.display = "none";
     alert("You haven't added any favourites yet!");
     return;
   }
@@ -1497,12 +1499,42 @@ function showFavourites() {
         toggleFavouriteByName(name);
       };
 
+      const addButton = clone.querySelector(".add-to-cart");
+      const existing = cart.find(item => item.name === name);
+
+      if (existing) {
+        addButton.innerText = "✓ Added to Cart";
+        addButton.style.background = "#198754";
+        addButton.disabled = true;
+      } else {
+        addButton.addEventListener("click", function() {
+          const price = Number(
+            clone.querySelector(".price").innerText.replace("৳", "")
+          );
+
+          cart.push({
+            name: name,
+            price: price,
+            quantity: 1,
+            image: clone.querySelector("img").src
+          });
+
+          saveCart();
+          updateCart();
+
+          addButton.innerText = "✓ Added to Cart";
+          addButton.style.background = "#198754";
+          addButton.disabled = true;
+        });
+      }
+
       list.appendChild(clone);
     }
   });
 
   popup.style.display = "flex";
 }
+
 
 function closeFavourites() {
   document.getElementById("favourite-popup").style.display = "none";
