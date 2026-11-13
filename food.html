@@ -615,7 +615,18 @@
   color: #fff !important;
   cursor: pointer;
 }
-
+.favourite-btn {
+  float: right;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ffd6c5;
+  border-radius: 50%;
+  background: #fff1eb;
+  color: #e45d35;
+  font-size: 23px;
+  cursor: pointer;
+  line-height: 1;
+}
 </style>
 </head>
 
@@ -645,6 +656,9 @@
     <div class="food-card">
       <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700" alt="Chicken Burger">
       <div class="details">
+       <button class="favourite-btn" onclick="toggleFavourite(this)">
+  ♡
+       </button>
         <h2>Chicken Burger</h2>
         <div class="price">৳80</div>
         <button class="add-to-cart">Add to Cart</button>
