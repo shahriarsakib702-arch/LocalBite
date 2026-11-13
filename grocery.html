@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,7 @@
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:Arial,sans-serif; background:var(--cream); color:var(--dark); }
+
 header {
   background:var(--green); color:white; padding:18px 6%;
   display:flex; justify-content:space-between; align-items:center;
@@ -21,197 +23,620 @@ header {
 .logo { font-size:25px; font-weight:bold; }
 .logo span { color:var(--orange); }
 header a { color:white; text-decoration:none; font-weight:bold; }
+
 .hero { background:var(--green); color:white; text-align:center; padding:55px 20px; }
 .hero h1 { font-size:34px; margin-bottom:12px; }
 .hero p { color:#e7eee9; }
-.search-box { max-width:600px; margin:25px auto; padding:0 15px; }
-.search-box input {
-  width:100%; padding:15px; border:1px solid #ddd; border-radius:12px;
-  font-size:16px; outline:none;
+
+.search-box {
+  max-width:600px;
+  margin:25px auto;
+  padding:0 15px;
 }
+.search-box input {
+  width:100%; padding:16px;
+  border:1px solid #e8dfc9;
+  border-radius:16px;
+  font-size:15px;
+  outline:none;
+  box-shadow:0 5px 18px rgba(15,61,46,.08);
+}
+
 .section { padding:30px 6% 100px; }
 .section h2 { color:var(--green); margin-bottom:8px; font-size:26px; }
 .section-subtitle { color:#666; margin-bottom:25px; }
-.grocery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:18px; }
-.grocery-card { background:white; border-radius:15px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,.07); }
-.grocery-card img { width:100%; height:145px; object-fit:cover; }
-.grocery-info { padding:13px; }
-.grocery-info h3 { font-size:17px; margin-bottom:8px; }
-.grocery-price { color:var(--green); font-weight:bold; margin-bottom:12px; }
-.grocery-add-btn {
-  width:100%; padding:11px; border:none; border-radius:9px;
-  background:var(--green); color:white; font-weight:bold; cursor:pointer;
-}
-.grocery-add-btn:active { transform:scale(.97); background:var(--orange); }
-.grocery-add-btn:disabled { cursor:default; opacity:1; }
-footer { background:var(--green); color:white; text-align:center; padding:30px 15px; }
-footer p { margin-top:8px; font-size:12px; letter-spacing:1px; }
 
+.grocery-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:18px;
+}
+.grocery-card {
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 4px 15px rgba(0,0,0,.07);
+  transition:.3s;
+}
+.grocery-card img {
+  width:100%; height:145px;
+  object-fit:cover;
+  display:block;
+}
+.grocery-info { padding:13px; }
+.grocery-info h3 {
+  font-size:17px;
+  margin-bottom:8px;
+  color:var(--green);
+}
+.grocery-price {
+  color:var(--green);
+  font-weight:bold;
+  margin-bottom:12px;
+}
+.grocery-add-btn {
+  width:100%; padding:11px;
+  border:none; border-radius:9px;
+  background:var(--green);
+  color:white; font-weight:bold;
+  cursor:pointer;
+}
+.grocery-add-btn:active {
+  transform:scale(.97);
+  background:var(--orange);
+}
+.grocery-add-btn:disabled {
+  cursor:default;
+  opacity:1;
+}
+
+/* Favourite Button */
+.favourite-btn {
+  float:right;
+  width:36px;
+  height:36px;
+  border:1px solid #ffd6c5;
+  border-radius:50%;
+  background:#fff1eb;
+  color:#e45d35;
+  font-size:23px;
+  cursor:pointer;
+  line-height:1;
+}
+
+/* Favourite Section */
+.favourite-section {
+  max-width:1100px;
+  margin:10px auto 0;
+  padding:0 6%;
+  text-align:right;
+}
+#show-favourites-btn {
+  padding:11px 18px;
+  background:#fff1eb;
+  color:#e45d35;
+  border:1px solid #ffd6c5;
+  border-radius:12px;
+  font-size:14px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* Favourite Popup */
+.favourite-popup {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+  padding:15px;
+}
+.favourite-popup-content {
+  width:100%;
+  max-width:500px;
+  max-height:85vh;
+  overflow-y:auto;
+  background:var(--cream);
+  border:2px solid var(--orange);
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 12px 35px rgba(0,0,0,.3);
+}
+.favourite-popup-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+  border-bottom:1px solid #ddd;
+  padding-bottom:12px;
+}
+.favourite-popup-header h2 {
+  color:var(--green);
+  font-size:19px;
+  margin:0;
+}
+.favourite-popup-header button {
+  background:var(--orange);
+  color:var(--green);
+  border:none;
+  border-radius:50%;
+  width:34px;
+  height:34px;
+  font-size:18px;
+  cursor:pointer;
+}
+.favourite-list .grocery-card {
+  display:flex;
+  margin-bottom:12px;
+  background:white;
+  border:1px solid #eee;
+  border-radius:12px;
+  overflow:hidden;
+}
+.favourite-list .grocery-card img {
+  width:110px;
+  height:120px;
+  object-fit:cover;
+  flex-shrink:0;
+}
+.favourite-list .grocery-info {
+  flex:1;
+  min-width:0;
+  padding:10px;
+}
+.favourite-list .grocery-info h3 {
+  font-size:16px;
+}
+.favourite-list .grocery-price {
+  font-size:14px;
+}
+.favourite-list .grocery-add-btn {
+  margin-top:5px;
+  padding:9px 5px;
+  font-size:13px;
+}
+.favourite-list .favourite-btn {
+  width:30px;
+  height:30px;
+  font-size:20px;
+}
+
+/* Footer */
+footer {
+  background:var(--green);
+  color:white;
+  text-align:center;
+  padding:30px 15px;
+}
+footer p {
+  margin-top:8px;
+  font-size:12px;
+  letter-spacing:1px;
+}
+
+/* Cart */
 .cart-button {
-  position:fixed; right:18px; bottom:20px; z-index:1000; background:var(--orange);
-  color:white; border:none; border-radius:30px; padding:14px 20px;
-  font-size:16px; font-weight:bold; box-shadow:0 4px 15px rgba(0,0,0,.2); cursor:pointer;
+  position:fixed;
+  right:18px;
+  bottom:20px;
+  z-index:1000;
+  background:var(--orange);
+  color:white;
+  border:none;
+  border-radius:30px;
+  padding:14px 20px;
+  font-size:16px;
+  font-weight:bold;
+  box-shadow:0 4px 15px rgba(0,0,0,.2);
+  cursor:pointer;
 }
 .cart-overlay,.order-overlay {
-  display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:1001;
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:1001;
 }
 .cart-overlay.active,.order-overlay.active { display:block; }
+
 .cart-panel {
-  position:fixed; top:0; right:-450px; width:100%; max-width:420px; height:100%;
-  background:var(--cream); z-index:1002; padding:25px; overflow-y:auto;
-  transition:right .3s ease; box-shadow:-5px 0 25px #00000020;
+  position:fixed;
+  top:0;
+  right:-450px;
+  width:100%;
+  max-width:420px;
+  height:100%;
+  background:var(--cream);
+  z-index:1002;
+  padding:25px;
+  overflow-y:auto;
+  transition:right .3s ease;
+  box-shadow:-5px 0 25px #00000020;
 }
 .cart-panel.active { right:0; }
+
 .cart-header {
-  display:flex; justify-content:space-between; align-items:center;
-  border-bottom:1px solid #ddd; padding-bottom:18px; margin-bottom:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #ddd;
+  padding-bottom:18px;
+  margin-bottom:20px;
 }
 .cart-header h2 { color:var(--green); }
-.close-cart { border:none; background:none; font-size:28px; cursor:pointer; }
-.cart-item {
-  display:flex; align-items:center; gap:10px; padding:18px 0;
-  border-bottom:1px solid #ddd; width:100%;
+.close-cart {
+  border:none;
+  background:none;
+  font-size:28px;
+  cursor:pointer;
 }
-.cart-item img { width:65px; height:65px; object-fit:cover; border-radius:10px; flex-shrink:0; }
-.item-info { display:flex; flex-direction:column; flex:1; min-width:0; gap:6px; color:var(--green); }
+.cart-item {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:18px 0;
+  border-bottom:1px solid #ddd;
+  width:100%;
+}
+.cart-item img {
+  width:65px;
+  height:65px;
+  object-fit:cover;
+  border-radius:10px;
+  flex-shrink:0;
+}
+.item-info {
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  min-width:0;
+  gap:6px;
+  color:var(--green);
+}
 .item-info strong { font-weight:700; }
-.item-actions { display:flex; align-items:center; gap:7px; flex-shrink:0; }
+.item-actions {
+  display:flex;
+  align-items:center;
+  gap:7px;
+  flex-shrink:0;
+}
 .item-actions button {
-  width:30px; height:32px; border:0; border-radius:7px;
-  background:var(--green); color:white; font-size:19px; cursor:pointer;
+  width:30px;
+  height:32px;
+  border:0;
+  border-radius:7px;
+  background:var(--green);
+  color:white;
+  font-size:19px;
+  cursor:pointer;
 }
 .item-actions .remove-btn { background:#d93636; }
+
 #clear-cart-btn {
-  width:100%; padding:13px; margin:15px 0; background:#fff1eb; color:#e45d35;
-  border:1px solid #ffd6c5; border-radius:12px; font-size:15px; font-weight:700; cursor:pointer;
+  width:100%;
+  padding:13px;
+  margin:15px 0;
+  background:#fff1eb;
+  color:#e45d35;
+  border:1px solid #ffd6c5;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
 }
 .cart-footer {
-  display:flex; flex-direction:column; gap:20px; background:transparent;
-  padding:0; margin-top:15px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  background:transparent;
+  padding:0;
+  margin-top:15px;
 }
 .cart-location,.checkout-box {
-  background:var(--green); padding:22px; border-radius:20px; color:white;
+  background:var(--green);
+  padding:22px;
+  border-radius:20px;
+  color:white;
   border:1px solid #315d4d;
 }
-.cart-location h3 { font-size:20px; font-weight:700; margin-bottom:12px; color:white; }
-.location-note {
-  background:rgba(255,255,255,.10); border-left:4px solid var(--orange);
-  padding:13px; border-radius:10px; margin-bottom:18px;
+.cart-location h3 {
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:12px;
+  color:white;
 }
-.location-note p { font-size:13px; line-height:1.6; color:white; }
+.location-note {
+  background:rgba(255,255,255,.10);
+  border-left:4px solid var(--orange);
+  padding:13px;
+  border-radius:10px;
+  margin-bottom:18px;
+}
+.location-note p {
+  font-size:13px;
+  line-height:1.6;
+  color:white;
+}
 #location-btn {
-  width:100%; padding:15px; background:var(--orange); color:white; border:none;
-  border-radius:12px; font-size:15px; font-weight:700; cursor:pointer;
+  width:100%;
+  padding:15px;
+  background:var(--orange);
+  color:white;
+  border:none;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
   box-shadow:0 5px 12px rgba(0,0,0,.18);
 }
-#location-btn:disabled { opacity:.65; cursor:wait; }
-#location-status { color:#fff; font-size:13px; line-height:1.5; margin-top:12px; }
+#location-btn:disabled {
+  opacity:.65;
+  cursor:wait;
+}
+#location-status {
+  color:#fff;
+  font-size:13px;
+  line-height:1.5;
+  margin-top:12px;
+}
 #delivery-info {
-  display:none; margin-top:15px; padding:15px; background:#edf4ed;
-  color:var(--green); border-radius:12px; line-height:1.7; font-size:14px;
+  display:none;
+  margin-top:15px;
+  padding:15px;
+  background:#edf4ed;
+  color:var(--green);
+  border-radius:12px;
+  line-height:1.7;
+  font-size:14px;
 }
 .checkout-box h3 {
-  display:flex; justify-content:space-between; align-items:center;
-  margin-bottom:18px; color:white; font-size:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+  color:white;
+  font-size:20px;
 }
-#cart-total { color:var(--orange); font-size:25px; font-weight:800; }
+#cart-total {
+  color:var(--orange);
+  font-size:25px;
+  font-weight:800;
+}
 #checkout-btn {
-  display:block; width:100%; padding:16px; background:var(--orange); color:white;
-  border:0; border-radius:12px; font-size:16px; font-weight:800; cursor:pointer;
+  display:block;
+  width:100%;
+  padding:16px;
+  background:var(--orange);
+  color:white;
+  border:0;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
   transition:all .3s ease;
 }
 #checkout-btn:active { transform:scale(.98); }
 #checkout-btn.checkout-locked {
-  background:#777 !important; color:#ddd !important; opacity:.7;
-  cursor:not-allowed; box-shadow:none; transform:none;
+  background:#777 !important;
+  color:#ddd !important;
+  opacity:.7;
+  cursor:not-allowed;
+  box-shadow:none;
+  transform:none;
 }
-#checkout-btn:not(.checkout-locked) { background:var(--orange) !important; color:white !important; cursor:pointer; }
+#checkout-btn:not(.checkout-locked) {
+  background:var(--orange) !important;
+  color:white !important;
+  cursor:pointer;
+}
 
+/* Order Summary */
 #order-summary {
-  background:white; border:1px solid #e8dfc9; border-radius:16px;
-  padding:18px; margin:18px 0; box-shadow:0 4px 15px rgba(15,61,46,.07);
+  background:white;
+  border:1px solid #e8dfc9;
+  border-radius:16px;
+  padding:18px;
+  margin:18px 0;
+  box-shadow:0 4px 15px rgba(15,61,46,.07);
 }
 #order-summary h3 {
-  color:var(--green); font-size:18px; font-weight:800; margin-bottom:16px;
-  padding-bottom:12px; border-bottom:1px solid #e8dfc9;
+  color:var(--green);
+  font-size:18px;
+  font-weight:800;
+  margin-bottom:16px;
+  padding-bottom:12px;
+  border-bottom:1px solid #e8dfc9;
 }
 #summary-items > div {
-  color:var(--dark); font-size:14px; padding:10px 0;
-  border-bottom:1px dashed #d8d2c3; display:flex; justify-content:space-between; gap:10px;
+  color:var(--dark);
+  font-size:14px;
+  padding:10px 0;
+  border-bottom:1px dashed #d8d2c3;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
 }
-#summary-items strong { color:var(--green); font-weight:800; }
+#summary-items strong {
+  color:var(--green);
+  font-weight:800;
+}
 .summary-total-line {
-  display:flex; justify-content:space-between; gap:10px;
-  padding-top:12px; margin-top:5px; font-weight:bold; color:var(--green);
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding-top:12px;
+  margin-top:5px;
+  font-weight:bold;
+  color:var(--green);
 }
-.summary-total-line.final { font-size:17px; color:var(--orange); }
+.summary-total-line.final {
+  font-size:17px;
+  color:var(--orange);
+}
 
+/* Order Form */
 .order-form {
-  display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
-  width:calc(100% - 30px); max-width:420px; max-height:85vh; overflow-y:auto;
-  background:white; padding:25px; border-radius:18px;
-  box-shadow:0 10px 40px rgba(0,0,0,.25); z-index:2001;
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:calc(100% - 30px);
+  max-width:420px;
+  max-height:85vh;
+  overflow-y:auto;
+  background:white;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 10px 40px rgba(0,0,0,.25);
+  z-index:2001;
 }
 .order-form.active { display:block; }
 .order-form-header {
-  display:flex; justify-content:space-between; align-items:center;
-  margin-bottom:26px; padding-bottom:16px; border-bottom:1px solid #e8dfc9;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:26px;
+  padding-bottom:16px;
+  border-bottom:1px solid #e8dfc9;
 }
-.order-form-header h3 { color:var(--green); font-size:23px; font-weight:800; margin:0; }
+.order-form-header h3 {
+  color:var(--green);
+  font-size:23px;
+  font-weight:800;
+  margin:0;
+}
 .close-order-btn {
-  background:var(--green); color:var(--cream); border:none; border-radius:12px;
-  width:40px; height:40px; font-size:24px; cursor:pointer;
+  background:var(--green);
+  color:var(--cream);
+  border:none;
+  border-radius:12px;
+  width:40px;
+  height:40px;
+  font-size:24px;
+  cursor:pointer;
 }
 #order-form input,#order-form textarea {
-  width:100%; padding:16px; margin-bottom:16px; border:1.5px solid #e0dacb;
-  border-radius:14px; background:white; color:var(--dark); font-size:16px;
-  font-family:inherit; outline:none;
+  width:100%;
+  padding:16px;
+  margin-bottom:16px;
+  border:1.5px solid #e0dacb;
+  border-radius:14px;
+  background:white;
+  color:var(--dark);
+  font-size:16px;
+  font-family:inherit;
+  outline:none;
 }
 #order-form input:focus,#order-form textarea:focus {
-  border-color:var(--green); box-shadow:0 0 0 3px rgba(15,61,46,.10);
+  border-color:var(--green);
+  box-shadow:0 0 0 3px rgba(15,61,46,.10);
 }
-#order-form textarea { min-height:100px; resize:vertical; }
+#order-form textarea {
+  min-height:100px;
+  resize:vertical;
+}
 .place-order-btn {
-  display:block; width:100%; padding:15px; margin-top:5px; border:none;
-  border-radius:12px; background:var(--orange); color:white;
-  font-size:16px; font-weight:700; cursor:pointer;
+  display:block;
+  width:100%;
+  padding:15px;
+  margin-top:5px;
+  border:none;
+  border-radius:12px;
+  background:var(--orange);
+  color:white;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
 }
+
+/* Location Popup */
 .location-popup {
-  display:none; position:fixed; inset:0; background:rgba(0,0,0,.6);
-  z-index:9999; justify-content:center; align-items:center; padding:20px;
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
 }
 .location-popup-content {
-  background:var(--cream); padding:25px; border-radius:18px;
-  width:100%; max-width:340px; text-align:center;
+  background:var(--cream);
+  padding:25px;
+  border-radius:18px;
+  width:100%;
+  max-width:340px;
+  text-align:center;
 }
-.location-popup-content h3 { color:var(--green); margin-bottom:10px; }
-.location-popup-content p { color:#555; font-size:14px; margin-bottom:20px; }
+.location-popup-content h3 {
+  color:var(--green);
+  margin-bottom:10px;
+}
+.location-popup-content p {
+  color:#555;
+  font-size:14px;
+  margin-bottom:20px;
+}
 .location-popup-content button {
-  width:100%; padding:13px; border:none; border-radius:10px;
-  background:var(--green); color:white; font-weight:bold; margin-top:8px;
+  width:100%;
+  padding:13px;
+  border:none;
+  border-radius:10px;
+  background:var(--green);
+  color:white;
+  font-weight:bold;
+  margin-top:8px;
 }
-.location-popup-content .cancel-btn { background:#ddd; color:#333; }
+.location-popup-content .cancel-btn {
+  background:#ddd;
+  color:#333;
+}
+
+/* Order Confirmation */
 #order-confirm-popup {
-  display:none; position:fixed; inset:0; background:#00000080; z-index:99999;
-  align-items:center; justify-content:center; padding:20px;
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#00000080;
+  z-index:99999;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 .confirm-content {
-  background:var(--cream); width:100%; max-width:360px; padding:28px;
-  border-radius:20px; text-align:center;
+  background:var(--cream);
+  width:100%;
+  max-width:360px;
+  padding:28px;
+  border-radius:20px;
+  text-align:center;
 }
 .confirm-content button {
-  width:100%; padding:14px; border:0; border-radius:10px;
-  font-size:16px; font-weight:bold; margin-top:10px;
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:10px;
+  font-size:16px;
+  font-weight:bold;
+  margin-top:10px;
 }
+
 @media(max-width:480px) {
   .hero h1 { font-size:27px; }
   .section { padding-left:15px; padding-right:15px; }
-  .grocery-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .grocery-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+  }
   .grocery-card img { height:125px; }
   .cart-panel { padding:18px; }
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -228,6 +653,22 @@ footer p { margin-top:8px; font-size:12px; letter-spacing:1px; }
   <input type="text" id="grocery-search" placeholder="Search groceries...">
 </div>
 
+<div class="favourite-section">
+  <button id="show-favourites-btn" onclick="showFavourites()">
+    ♥ My Favourites
+  </button>
+</div>
+
+<div id="favourite-popup" class="favourite-popup">
+  <div class="favourite-popup-content">
+    <div class="favourite-popup-header">
+      <h2>♥ My Favourite Groceries</h2>
+      <button onclick="closeFavourites()">✕</button>
+    </div>
+    <div id="favourite-list" class="favourite-list"></div>
+  </div>
+</div>
+
 <section class="section">
   <h2>Daily Grocery</h2>
   <p class="section-subtitle">Everyday essentials at your doorstep.</p>
@@ -239,7 +680,10 @@ footer p { margin-top:8px; font-size:12px; letter-spacing:1px; }
   <p>GOOD FOOD. RIGHT AROUND YOU.</p>
 </footer>
 
-<button class="cart-button" onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</button>
+<button class="cart-button" onclick="toggleCart()">
+  🛒 Cart (<span id="cart-count">0</span>)
+</button>
+
 <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
 <div class="order-overlay" id="order-overlay" onclick="closeOrderForm()"></div>
 
@@ -248,15 +692,22 @@ footer p { margin-top:8px; font-size:12px; letter-spacing:1px; }
     <h2>Your Cart 🛒</h2>
     <button class="close-cart" onclick="toggleCart()">×</button>
   </div>
+
   <div id="cart-items"></div>
   <button id="clear-cart-btn" onclick="clearCart()">🗑️ Clear Cart</button>
 
   <div id="order-summary">
     <h3>Order Summary</h3>
     <div id="summary-items"></div>
-    <div class="summary-total-line"><span>Subtotal</span><span id="summary-subtotal">৳0</span></div>
-    <div class="summary-total-line"><span>Delivery Charge</span><span id="summary-delivery">৳0</span></div>
-    <div class="summary-total-line final"><span>Final Total</span><span id="summary-final">৳0</span></div>
+    <div class="summary-total-line">
+      <span>Subtotal</span><span id="summary-subtotal">৳0</span>
+    </div>
+    <div class="summary-total-line">
+      <span>Delivery Charge</span><span id="summary-delivery">৳0</span>
+    </div>
+    <div class="summary-total-line final">
+      <span>Final Total</span><span id="summary-final">৳0</span>
+    </div>
   </div>
 
   <div class="cart-footer">
@@ -265,7 +716,9 @@ footer p { margin-top:8px; font-size:12px; letter-spacing:1px; }
       <div class="location-note">
         <p>⚠️ To place your order, please confirm your delivery location first.</p>
       </div>
-      <button type="button" id="location-btn" onclick="getCurrentLocation()">📍 Confirm My Location</button>
+      <button type="button" id="location-btn" onclick="getCurrentLocation()">
+        📍 Confirm My Location
+      </button>
       <p id="location-status"></p>
       <div id="delivery-info">
         <p id="delivery-distance"></p>
@@ -274,8 +727,13 @@ footer p { margin-top:8px; font-size:12px; letter-spacing:1px; }
     </div>
 
     <div class="checkout-box">
-      <h3><span>Total:</span><span>৳<span id="cart-total">0</span></span></h3>
-      <button id="checkout-btn" onclick="checkout()" class="checkout-locked">Proceed to Checkout →</button>
+      <h3>
+        <span>Total:</span>
+        <span>৳<span id="cart-total">0</span></span>
+      </h3>
+      <button id="checkout-btn" onclick="checkout()" class="checkout-locked">
+        Proceed to Checkout →
+      </button>
     </div>
   </div>
 </div>
@@ -285,17 +743,20 @@ footer p { margin-top:8px; font-size:12px; letter-spacing:1px; }
     <h3>Complete Your Order</h3>
     <button type="button" class="close-order-btn" onclick="closeOrderForm()">✕</button>
   </div>
+
   <input type="text" id="customer-name" placeholder="Your Name">
   <input type="tel" id="customer-phone" placeholder="Phone Number">
   <textarea id="customer-address" rows="3" placeholder="Full Delivery Address"></textarea>
 
-<textarea
-  id="delivery-instructions"
-  rows="2"
-  placeholder="Delivery Instructions (Optional)"
-></textarea>
+  <textarea
+    id="delivery-instructions"
+    rows="2"
+    placeholder="Delivery Instructions (Optional)"
+  ></textarea>
 
-<button class="place-order-btn" onclick="placeOrder()">Place Order on WhatsApp →</button>
+  <button class="place-order-btn" onclick="placeOrder()">
+    Place Order on WhatsApp →
+  </button>
 </div>
 
 <div class="location-popup" id="location-popup">
@@ -311,9 +772,15 @@ footer p { margin-top:8px; font-size:12px; letter-spacing:1px; }
   <div class="confirm-content">
     <div style="font-size:45px;">🛒</div>
     <h2 style="color:#0F3D2E;margin:15px 0;">Order Confirmation</h2>
-    <p style="color:#555;margin-bottom:12px;">আপনি কি WhatsApp-এ অর্ডার মেসেজটি পাঠিয়েছেন?</p>
-    <button onclick="confirmOrderSent(true)" style="background:#0F3D2E;color:white;">হ্যাঁ, পাঠিয়েছি</button>
-    <button onclick="confirmOrderSent(false)" style="background:#eee;color:#333;">না, এখনো পাঠাইনি</button>
+    <p style="color:#555;margin-bottom:12px;">
+      আপনি কি WhatsApp-এ অর্ডার মেসেজটি পাঠিয়েছেন?
+    </p>
+    <button onclick="confirmOrderSent(true)" style="background:#0F3D2E;color:white;">
+      হ্যাঁ, পাঠিয়েছি
+    </button>
+    <button onclick="confirmOrderSent(false)" style="background:#eee;color:#333;">
+      না, এখনো পাঠাইনি
+    </button>
   </div>
 </div>
 
@@ -338,6 +805,8 @@ const HUB_LAT = 22.147609;
 const HUB_LON = 92.040137;
 
 let cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
+let favourites = JSON.parse(localStorage.getItem("localbiteFavourites")) || [];
+
 let customerLocation = "";
 let deliveryDistance = null;
 let deliveryCharge = null;
@@ -348,43 +817,164 @@ function saveCart() {
   updateCart();
 }
 
+function saveFavourites() {
+  localStorage.setItem(
+    "localbiteFavourites",
+    JSON.stringify(favourites)
+  );
+}
+
+/* Create Grocery Card */
+function createGroceryCard(product) {
+  const card = document.createElement("div");
+  card.className = "grocery-card";
+
+  const isFavourite = favourites.includes(product.name);
+  const added = cart.some(item => item.name === product.name);
+
+  card.innerHTML = `
+    <img src="${product.image}" alt="${product.name}"
+      onerror="this.src='https://placehold.co/500x350?text=Grocery'">
+
+    <div class="grocery-info">
+      <button class="favourite-btn" onclick="toggleFavourite(this)">
+        ${isFavourite ? "♥" : "♡"}
+      </button>
+
+      <h3>${product.name}</h3>
+
+      <p class="grocery-price">৳${product.price} / ${product.unit}</p>
+
+      <button class="grocery-add-btn"
+        onclick="addGroceryToCart('${product.name}', this)"
+        ${added ? "disabled" : ""}
+        style="${added ? "background:#198754;" : ""}">
+        ${added ? "✓ Added to Cart" : "+ Add to Cart"}
+      </button>
+    </div>
+  `;
+
+  return card;
+}
+
+/* Display Groceries */
 function displayGroceries(products) {
   const groceryList = document.getElementById("grocery-list");
+  groceryList.innerHTML = "";
+
   if (!products.length) {
-    groceryList.innerHTML = "<p>No Products Found.</p>";
+    groceryList.innerHTML = `
+      <div style="
+        grid-column:1 / -1;
+        text-align:center;
+        padding:45px 20px;
+        color:#0F3D2E;
+        font-size:17px;
+        font-weight:700;
+        background:#FFF8E7;
+        border:1px solid #e8dfc9;
+        border-radius:18px;
+      ">
+        🔍<br><br>
+        No Products Found.
+        <br>
+        <small>Sorry, we couldn't find any matching grocery.</small>
+      </div>
+    `;
     return;
   }
-  groceryList.innerHTML = products.map(product => {
-    const added = cart.some(item => item.name === product.name);
-    return `
-      <div class="grocery-card">
-        <img src="${product.image}" alt="${product.name}"
-          onerror="this.src='https://placehold.co/500x350?text=Grocery'">
-        <div class="grocery-info">
-          <h3>${product.name}</h3>
-          <p class="grocery-price">৳${product.price} / ${product.unit}</p>
-          <button class="grocery-add-btn" id="add-btn-${product.name}"
-            onclick="addGroceryToCart('${product.name}')" ${added ? "disabled" : ""}
-            style="${added ? "background:#198754;" : ""}">
-            ${added ? "✓ Added to Cart" : "+ Add to Cart"}
-          </button>
-        </div>
-      </div>`;
-  }).join("");
+
+  products.forEach(product => {
+    groceryList.appendChild(createGroceryCard(product));
+  });
 }
 
-function addGroceryToCart(productName) {
+/* Add Grocery to Cart */
+function addGroceryToCart(productName, button) {
   const product = groceryProducts.find(item => item.name === productName);
+
   if (!product || cart.some(item => item.name === product.name)) return;
-  cart.push({ name:product.name, price:product.price, quantity:1, image:product.image });
+
+  cart.push({
+    name:product.name,
+    price:product.price,
+    quantity:1,
+    image:product.image
+  });
+
   saveCart();
-  displayGroceries(groceryProducts);
+  displayGroceries(
+    groceryProducts.filter(product =>
+      product.name.toLowerCase().includes(
+        document.getElementById("grocery-search").value.toLowerCase().trim()
+      )
+    )
+  );
+
+  if (button) {
+    button.innerText = "✓ Added to Cart";
+    button.style.background = "#198754";
+    button.disabled = true;
+  }
 }
 
+/* Favourite System */
+function toggleFavourite(button) {
+  const card = button.closest(".grocery-card");
+  const name = card.querySelector("h3").innerText;
+
+  if (favourites.includes(name)) {
+    favourites = favourites.filter(item => item !== name);
+    button.innerHTML = "♡";
+    button.style.background = "#fff1eb";
+  } else {
+    favourites.push(name);
+    button.innerHTML = "♥";
+    button.style.background = "#ffd6c5";
+  }
+
+  saveFavourites();
+}
+
+/* Show Favourites */
+function showFavourites() {
+  const popup = document.getElementById("favourite-popup");
+  const list = document.getElementById("favourite-list");
+
+  list.innerHTML = "";
+
+  if (favourites.length === 0) {
+    popup.style.display = "none";
+    alert("You haven't added any favourites yet!");
+    return;
+  }
+
+  groceryProducts.forEach(product => {
+    if (favourites.includes(product.name)) {
+      list.appendChild(createGroceryCard(product));
+    }
+  });
+
+  popup.style.display = "flex";
+}
+
+function closeFavourites() {
+  document.getElementById("favourite-popup").style.display = "none";
+}
+
+/* Remove Favourite from Popup */
+function toggleFavouriteByName(name) {
+  favourites = favourites.filter(item => item !== name);
+  saveFavourites();
+  showFavourites();
+}
+
+/* Cart Update */
 function updateCart() {
   const cartItems = document.getElementById("cart-items");
   const cartCount = document.getElementById("cart-count");
   const summaryItems = document.getElementById("summary-items");
+
   let subtotal = 0;
   let count = 0;
 
@@ -396,8 +986,10 @@ function updateCart() {
       const quantity = Number(item.quantity) || 1;
       const price = Number(item.price) || 0;
       const itemTotal = price * quantity;
+
       subtotal += itemTotal;
       count += quantity;
+
       return `
         <div class="cart-item">
           <img src="${item.image || 'https://placehold.co/100x100?text=Item'}" alt="${item.name}">
@@ -415,33 +1007,57 @@ function updateCart() {
     }).join("");
 
     summaryItems.innerHTML = cart.map(item => `
-      <div><span>${item.name} × ${item.quantity}</span>
-      <strong>৳${Number(item.price) * Number(item.quantity)}</strong></div>
+      <div>
+        <span>${item.name} × ${item.quantity}</span>
+        <strong>৳${Number(item.price) * Number(item.quantity)}</strong>
+      </div>
     `).join("");
   }
 
   const charge = deliveryChargeConfirmed ? deliveryCharge : 0;
   const finalTotal = subtotal + charge;
+
   cartCount.textContent = count;
+
   document.getElementById("summary-subtotal").textContent = "৳" + subtotal;
+
   document.getElementById("summary-delivery").textContent =
     deliveryChargeConfirmed ? "৳" + charge : "লোকেশন নিশ্চিত হয়নি";
+
   document.getElementById("summary-final").textContent = "৳" + finalTotal;
   document.getElementById("cart-total").textContent = finalTotal;
 }
 
 function changeQuantity(index,amount) {
   if (!cart[index]) return;
+
   cart[index].quantity = (Number(cart[index].quantity) || 1) + amount;
-  if (cart[index].quantity <= 0) cart.splice(index,1);
+
+  if (cart[index].quantity <= 0) {
+    cart.splice(index,1);
+  }
+
   saveCart();
-  displayGroceries(groceryProducts);
+  displayGroceries(
+    groceryProducts.filter(product =>
+      product.name.toLowerCase().includes(
+        document.getElementById("grocery-search").value.toLowerCase().trim()
+      )
+    )
+  );
 }
 
 function removeItem(index) {
   cart.splice(index,1);
   saveCart();
-  displayGroceries(groceryProducts);
+
+  displayGroceries(
+    groceryProducts.filter(product =>
+      product.name.toLowerCase().includes(
+        document.getElementById("grocery-search").value.toLowerCase().trim()
+      )
+    )
+  );
 }
 
 function toggleCart() {
@@ -454,21 +1070,35 @@ function clearCart() {
     alert("Your cart is already empty!");
     return;
   }
+
   if (!confirm("Are you sure you want to clear your cart?")) return;
+
   cart = [];
   saveCart();
-  displayGroceries(groceryProducts);
+
+  displayGroceries(
+    groceryProducts.filter(product =>
+      product.name.toLowerCase().includes(
+        document.getElementById("grocery-search").value.toLowerCase().trim()
+      )
+    )
+  );
+
   document.getElementById("cart-panel").classList.remove("active");
   document.getElementById("cart-overlay").classList.remove("active");
 }
 
+/* Delivery Calculation */
 function calculateDistance(lat1,lon1,lat2,lon2) {
   const earthRadius = 6371;
   const toRadians = value => value * Math.PI / 180;
+
   const dLat = toRadians(lat2-lat1);
   const dLon = toRadians(lon2-lon1);
+
   const a = Math.sin(dLat/2)**2 +
     Math.cos(toRadians(lat1))*Math.cos(toRadians(lat2))*Math.sin(dLon/2)**2;
+
   return earthRadius * 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
 }
 
@@ -504,25 +1134,33 @@ function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition(position => {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
+
     deliveryDistance = calculateDistance(HUB_LAT,HUB_LON,lat,lon);
     deliveryCharge = calculateDeliveryCharge(deliveryDistance);
     deliveryChargeConfirmed = true;
     customerLocation = `https://www.google.com/maps?q=${lat},${lon}`;
 
     status.textContent = "✓ Location confirmed successfully!";
+
     document.getElementById("delivery-info").style.display = "block";
+
     document.getElementById("delivery-distance").textContent =
       "Distance from delivery point: " + deliveryDistance.toFixed(2) + " km";
+
     document.getElementById("delivery-charge").textContent =
       "Delivery Charge: ৳" + deliveryCharge;
+
     button.disabled = false;
     button.textContent = "✓ Location Confirmed";
+
     updateCheckoutState();
     updateCart();
     closeLocationPopup();
+
   }, error => {
     button.disabled = false;
     button.textContent = "📍 Confirm My Location";
+
     if (error.code === 1) {
       status.textContent = "লোকেশন permission Allow করুন এবং ফোনের GPS চালু করুন।";
       document.getElementById("location-popup").style.display = "flex";
@@ -534,25 +1172,30 @@ function getCurrentLocation() {
     } else {
       status.textContent = "লোকেশন পাওয়া যায়নি। আবার চেষ্টা করুন।";
     }
+
   }, { enableHighAccuracy:true, timeout:15000, maximumAge:0 });
 }
 
 function openLocationSettings() {
   window.location.href = "intent://settings/location#Intent;scheme=android-app;end";
 }
+
 function closeLocationPopup() {
   document.getElementById("location-popup").style.display = "none";
 }
 
+/* Checkout */
 function checkout() {
   if (!cart.length) {
     alert("Your cart is empty!");
     return;
   }
+
   if (!deliveryChargeConfirmed) {
     alert("Please confirm your delivery location first!");
     return;
   }
+
   document.getElementById("order-form").classList.add("active");
   document.getElementById("order-overlay").classList.add("active");
 }
@@ -562,6 +1205,7 @@ function closeOrderForm() {
   document.getElementById("order-overlay").classList.remove("active");
 }
 
+/* WhatsApp Order */
 function placeOrder() {
   const instructions = document.getElementById("delivery-instructions").value.trim();
   const name = document.getElementById("customer-name").value.trim();
@@ -572,10 +1216,12 @@ function placeOrder() {
     alert("Please fill in your name, phone number and address.");
     return;
   }
+
   if (!cart.length) {
     alert("Your cart is empty!");
     return;
   }
+
   if (!deliveryChargeConfirmed || deliveryCharge === null || !customerLocation) {
     alert("Please confirm your delivery location first!");
     closeOrderForm();
@@ -584,10 +1230,13 @@ function placeOrder() {
 
   let subtotal = 0;
   let orderText = "🛒 *LOCALBITE GROCERY ORDER*\n\n";
+
   orderText += `Name: ${name}\nPhone: ${phone}\nAddress: ${address}\n\n`;
+
   if (instructions) {
-  orderText += `📝 Delivery Instructions: ${instructions}\n`;
+    orderText += `📝 Delivery Instructions: ${instructions}\n`;
   }
+
   orderText += "*Order Items:*\n";
 
   cart.forEach(item => {
@@ -597,45 +1246,66 @@ function placeOrder() {
   });
 
   const finalTotal = subtotal + deliveryCharge;
+
   orderText += `\nSubtotal: ৳${subtotal}\n`;
   orderText += `Delivery Charge: ৳${deliveryCharge}\n`;
   orderText += `*Final Total: ৳${finalTotal}*\n`;
   orderText += `\nCustomer Location: ${customerLocation}\n`;
   orderText += "\nThank you for ordering from LOCALBITE!";
 
-  const whatsappURL = "https://wa.me/8801632033787?text=" + encodeURIComponent(orderText);
+  const whatsappURL =
+    "https://wa.me/8801632033787?text=" + encodeURIComponent(orderText);
+
   sessionStorage.setItem("localbitePendingGroceryOrder","yes");
   window.open(whatsappURL,"_blank");
 
   function checkGroceryOrderStatus() {
     if (document.visibilityState !== "visible") return;
+
     if (sessionStorage.getItem("localbitePendingGroceryOrder") !== "yes") return;
+
     sessionStorage.removeItem("localbitePendingGroceryOrder");
+
     document.removeEventListener("visibilitychange",checkGroceryOrderStatus);
+
     document.getElementById("order-confirm-popup").style.display = "flex";
   }
+
   document.addEventListener("visibilitychange",checkGroceryOrderStatus);
 }
 
+/* Order Confirmation */
 function confirmOrderSent(sent) {
   document.getElementById("order-confirm-popup").style.display = "none";
+
   if (!sent) return;
 
   cart = [];
   saveCart();
-  displayGroceries(groceryProducts);
+
+  displayGroceries(
+    groceryProducts.filter(product =>
+      product.name.toLowerCase().includes(
+        document.getElementById("grocery-search").value.toLowerCase().trim()
+      )
+    )
+  );
+
   document.getElementById("customer-name").value = "";
   document.getElementById("customer-phone").value = "";
   document.getElementById("customer-address").value = "";
+  document.getElementById("delivery-instructions").value = "";
 
   customerLocation = "";
   deliveryDistance = null;
   deliveryCharge = null;
   deliveryChargeConfirmed = false;
+
   document.getElementById("location-status").textContent = "";
   document.getElementById("delivery-info").style.display = "none";
   document.getElementById("location-btn").disabled = false;
   document.getElementById("location-btn").textContent = "📍 Confirm My Location";
+
   updateCheckoutState();
   updateCart();
 
@@ -645,24 +1315,50 @@ function confirmOrderSent(sent) {
   document.getElementById("order-overlay").classList.remove("active");
 }
 
+/* Grocery Search */
 document.getElementById("grocery-search").addEventListener("input",function() {
-  const searchValue = this.value.toLowerCase();
-  displayGroceries(groceryProducts.filter(product =>
-    product.name.toLowerCase().includes(searchValue)
-  ));
+  const searchValue = this.value.toLowerCase().trim();
+
+  displayGroceries(
+    groceryProducts.filter(product =>
+      product.name.toLowerCase().includes(searchValue)
+    )
+  );
 });
 
+/* Storage Sync */
 window.addEventListener("storage",function(event) {
   if (event.key === "localbiteCart") {
     cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
     updateCart();
-    displayGroceries(groceryProducts);
+
+    displayGroceries(
+      groceryProducts.filter(product =>
+        product.name.toLowerCase().includes(
+          document.getElementById("grocery-search").value.toLowerCase().trim()
+        )
+      )
+    );
+  }
+
+  if (event.key === "localbiteFavourites") {
+    favourites = JSON.parse(localStorage.getItem("localbiteFavourites")) || [];
+
+    displayGroceries(
+      groceryProducts.filter(product =>
+        product.name.toLowerCase().includes(
+          document.getElementById("grocery-search").value.toLowerCase().trim()
+        )
+      )
+    );
   }
 });
 
+/* Initial Load */
 displayGroceries(groceryProducts);
 updateCart();
 updateCheckoutState();
 </script>
+
 </body>
-</html
+</html>
