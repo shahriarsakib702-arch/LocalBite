@@ -1221,8 +1221,31 @@ function updateCart() {
     </div>
   `;
 
-  totalElement.innerText = total + (deliveryCharge || 0);
-  countElement.textContent = count;
+  
+totalElement.innerText = total + (deliveryCharge || 0);
+countElement.textContent = count;
+  // Free Delivery Progress
+  const freeDeliveryTarget = 499;
+  const progress = Math.min((total / freeDeliveryTarget) * 100, 100);
+
+  document.getElementById("free-delivery-bar").style.width =
+    progress + "%";
+
+  if (total >= freeDeliveryTarget) {
+    document.getElementById("free-delivery-amount").innerText =
+      "UNLOCKED 🎉";
+
+    document.getElementById("free-delivery-message").innerText =
+      "Congratulations! You have unlocked Free Delivery!";
+  } else {
+    document.getElementById("free-delivery-amount").innerText =
+      "৳499";
+
+    document.getElementById("free-delivery-message").innerText =
+      "আর ৳" + (freeDeliveryTarget - total) +
+      " টাকার অর্ডার করলেই Free Delivery!";
+  }
+
 }
 
 function checkout() {
