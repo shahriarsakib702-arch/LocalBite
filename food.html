@@ -1385,7 +1385,33 @@ function toggleFavourite(button) {
     button.style.background = "#ffd6c5";
   }
 });
-window.addEventListener("load", function() {
+let showingFavourites = false;
+
+function showFavourites() {
+  const cards = document.querySelectorAll(".food-card");
+  const button = document.getElementById("show-favourites-btn");
+
+  if (favourites.length === 0) {
+    alert("You haven't added any favourites yet!");
+    return;
+  }
+
+  showingFavourites = !showingFavourites;
+
+  cards.forEach(card => {
+    const name = card.querySelector("h2").innerText;
+
+    card.style.display =
+      !showingFavourites || favourites.includes(name)
+        ? ""
+        : "none";
+  });
+
+  button.innerText = showingFavourites
+    ? "← All Foods"
+    : "♥ My Favourites";
+}
+  window.addEventListener("load", function() {
   updateCart();
 });
   console.log("Cart loaded:", cart);
