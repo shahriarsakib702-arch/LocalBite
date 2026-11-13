@@ -1345,6 +1345,15 @@ function toggleFavourite(button) {
     JSON.stringify(favourites)
   );
 }
+  document.querySelectorAll(".favourite-btn").forEach(button => {
+  const name = button.closest(".food-card")
+    .querySelector("h2").innerText;
+
+  if (favourites.includes(name)) {
+    button.innerHTML = "♥";
+    button.style.background = "#ffd6c5";
+  }
+});
 window.addEventListener("load", function() {
   updateCart();
 });
