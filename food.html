@@ -1475,30 +1475,50 @@ function toggleFavourite(button) {
 });
 let showingFavourites = false;
 
+
 function showFavourites() {
-  const cards = document.querySelectorAll(".food-card");
-  const button = document.getElementById("show-favourites-btn");
+  const popup = document.getElementById("favourite-popup");
+  const list = document.getElementById("favourite-list");
+
+  list.innerHTML = "";
 
   if (favourites.length === 0) {
     alert("You haven't added any favourites yet!");
     return;
   }
 
-  showingFavourites = !showingFavourites;
-
-  cards.forEach(card => {
+  document.querySelectorAll(".food-card").forEach(card => {
     const name = card.querySelector("h2").innerText;
 
-    card.style.display =
-      !showingFavourites || favourites.includes(name)
-        ? ""
-        : "none";
+    if (favourites.includes(name)) {
+      const clone = card.cloneNode(true);
+
+      clone.querySelector(".favourite-btn").onclick = function() {
+        toggleFavouriteByName(name);
+      };
+
+      list.appendChild(clone);
+    }
   });
 
-  button.innerText = showingFavourites
-    ? "← All Foods"
-    : "♥ My Favourites";
+  popup.style.display = "flex";
 }
+
+function closeFavourites() {
+  document.getElementById("favourite-popup").style.display = "none";
+}
+
+function toggleFavouriteByName(name) {
+  favourites = favourites.filter(item => item !== name);
+
+  localStorage.setItem(
+    "localbiteFavourites",
+    JSON.stringify(favourites)
+  );
+
+  showFavourites();
+}
+
   window.addEventListener("load", function() {
   updateCart();
 });
