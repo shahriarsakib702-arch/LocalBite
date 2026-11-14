@@ -1049,7 +1049,10 @@ function toggleFavourite(button) {
   saveFavourites();
   updateFavouriteCount();
 }
-
+function updateFavouriteCount() {
+  document.getElementById("favourite-count").innerText =
+    favourites.length;
+}
 /* Show Favourites */
 function showFavourites() {
   const popup = document.getElementById("favourite-popup");
