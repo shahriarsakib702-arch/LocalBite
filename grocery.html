@@ -104,15 +104,74 @@ header a { color:white; text-decoration:none; font-weight:bold; }
   line-height:1;
 }
 
-/* Favourite Section */
+/* Favourite + Free Delivery Section */
 .favourite-section {
   max-width:1100px;
   margin:10px auto 0;
   padding:0 6%;
-  text-align:right;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
 }
+
+/* Compact Free Delivery Card */
+#free-delivery-progress {
+  flex:1;
+  min-width:0;
+  max-width:320px;
+  background:#ffffff;
+  border:1px solid #e8dfc9;
+  border-radius:14px;
+  padding:12px;
+  box-shadow:0 4px 12px rgba(15,61,46,.06);
+}
+
+.free-delivery-heading {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:5px;
+  margin-bottom:8px;
+}
+
+.free-delivery-heading strong:first-child {
+  color:#0F3D2E;
+  font-size:13px;
+}
+
+#free-delivery-amount {
+  color:#FF8A3D;
+  font-size:13px;
+  white-space:nowrap;
+}
+
+.free-delivery-track {
+  height:7px;
+  background:#eee;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+#free-delivery-bar {
+  width:0%;
+  height:100%;
+  background:#16A34A;
+  border-radius:20px;
+  transition:width .3s ease;
+}
+
+#free-delivery-message {
+  margin:8px 0 0;
+  color:#426354;
+  font-size:11px;
+  line-height:1.4;
+  text-align:center;
+}
+
+/* My Favourites Button */
 #show-favourites-btn {
-  padding:11px 18px;
+  padding:11px 16px;
   background:#fff1eb;
   color:#e45d35;
   border:1px solid #ffd6c5;
@@ -120,6 +179,8 @@ header a { color:white; text-decoration:none; font-weight:bold; }
   font-size:14px;
   font-weight:bold;
   cursor:pointer;
+  white-space:nowrap;
+  flex-shrink:0;
 }
 
 /* Favourite Popup */
@@ -633,8 +694,21 @@ footer p {
   }
   .grocery-card img { height:125px; }
   .cart-panel { padding:18px; }
+
+  .favourite-section {
+    padding:0 15px;
+    gap:10px;
+  }
+
+  #free-delivery-progress {
+    padding:10px;
+  }
+
+  #show-favourites-btn {
+    padding:11px 12px;
+    font-size:13px;
+  }
 }
- 
 </style>
 </head>
 
@@ -645,19 +719,6 @@ footer p {
   <a href="index.html">← Back to Home</a>
 </header>
 
-  <div style="display:flex;justify-content:space-between;gap:10px;margin-bottom:12px;">
-    <strong style="color:#0F3D2E;">🚚 Free Delivery</strong>
-    <strong id="free-delivery-amount" style="color:#FF8A3D;">৳499</strong>
-  </div>
-
-  <div style="height:10px;background:#eee;border-radius:20px;overflow:hidden;">
-    <div id="free-delivery-bar" style="width:0%;height:100%;background:#16A34A;border-radius:20px;transition:width 0.3s ease;"></div>
-  </div>
-
-  <p id="free-delivery-message" style="margin-top:10px;color:#426354;font-size:13px;line-height:1.5;">
-    আর ৳499 টাকার অর্ডার করলেই Free Delivery!
-  </p>
-</div>
 <section class="hero">
   <h1>Fresh Groceries Near You</h1>
   <p>Your Daily Essentials, Delivered to You.</p>
@@ -667,25 +728,20 @@ footer p {
   <input type="text" id="grocery-search" placeholder="Search groceries...">
 </div>
 
-<div class="favourite-section" style="
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  flex-wrap:wrap;
-">
+<!-- Free Delivery + My Favourites -->
+<div class="favourite-section">
 
-  
-    <div style="display:flex;justify-content:space-between;gap:6px;margin-bottom:6px;">
-      <strong style="color:#0F3D2E;font-size:12px;">🚚 Free Delivery</strong>
-      <strong id="free-delivery-amount" style="color:#FF8A3D;font-size:12px;">৳499</strong>
+  <div id="free-delivery-progress">
+    <div class="free-delivery-heading">
+      <strong>🚚 Free Delivery</strong>
+      <strong id="free-delivery-amount">৳499</strong>
     </div>
 
-    <div style="height:6px;background:#eee;border-radius:20px;overflow:hidden;">
-      <div id="free-delivery-bar" style="width:0%;height:100%;background:#16A34A;border-radius:20px;transition:width 0.3s ease;"></div>
+    <div class="free-delivery-track">
+      <div id="free-delivery-bar"></div>
     </div>
 
-    <p id="free-delivery-message" style="margin:6px 0 0;color:#426354;font-size:11px;line-height:1.4;">
+    <p id="free-delivery-message">
       আর ৳499 টাকার অর্ডার করলেই Free Delivery!
     </p>
   </div>
@@ -940,6 +996,7 @@ function addGroceryToCart(productName, button) {
   });
 
   saveCart();
+
   displayGroceries(
     groceryProducts.filter(product =>
       product.name.toLowerCase().includes(
@@ -947,12 +1004,6 @@ function addGroceryToCart(productName, button) {
       )
     )
   );
-
-  if (button) {
-    button.innerText = "✓ Added to Cart";
-    button.style.background = "#198754";
-    button.disabled = true;
-  }
 }
 
 /* Favourite System */
@@ -1055,27 +1106,29 @@ function updateCart() {
   const finalTotal = subtotal + charge;
 
   cartCount.textContent = count;
-// Free Delivery Progress
-const freeDeliveryTarget = 499;
-const progress = Math.min((subtotal / freeDeliveryTarget) * 100, 100);
 
-document.getElementById("free-delivery-bar").style.width =
-  progress + "%";
+  /* Free Delivery Progress */
+  const freeDeliveryTarget = 499;
+  const progress = Math.min((subtotal / freeDeliveryTarget) * 100, 100);
 
-if (subtotal >= freeDeliveryTarget) {
-  document.getElementById("free-delivery-amount").innerText =
-    "UNLOCKED 🎉";
+  document.getElementById("free-delivery-bar").style.width =
+    progress + "%";
 
-  document.getElementById("free-delivery-message").innerText =
-    "Congratulations! You have unlocked Free Delivery!";
-} else {
-  document.getElementById("free-delivery-amount").innerText =
-    "৳499";
+  if (subtotal >= freeDeliveryTarget) {
+    document.getElementById("free-delivery-amount").innerText =
+      "UNLOCKED 🎉";
 
-  document.getElementById("free-delivery-message").innerText =
-    "আর ৳" + (freeDeliveryTarget - subtotal) +
-    " টাকার অর্ডার করলেই Free Delivery!";
-}
+    document.getElementById("free-delivery-message").innerText =
+      "অভিনন্দন! আপনি Free Delivery আনলক করেছেন!";
+  } else {
+    document.getElementById("free-delivery-amount").innerText =
+      "৳499";
+
+    document.getElementById("free-delivery-message").innerText =
+      "আর ৳" + (freeDeliveryTarget - subtotal) +
+      " টাকার অর্ডার করলেই Free Delivery!";
+  }
+
   document.getElementById("summary-subtotal").textContent = "৳" + subtotal;
 
   document.getElementById("summary-delivery").textContent =
@@ -1095,6 +1148,7 @@ function changeQuantity(index,amount) {
   }
 
   saveCart();
+
   displayGroceries(
     groceryProducts.filter(product =>
       product.name.toLowerCase().includes(
