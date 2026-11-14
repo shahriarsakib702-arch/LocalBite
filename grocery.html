@@ -928,6 +928,7 @@ function getEffectiveDeliveryCharge(subtotal) {
   return subtotal >= FREE_DELIVERY_TARGET ? 0 : deliveryCharge;
 }
 
+
 /* Create Grocery Card */
 function createGroceryCard(product) {
   const card = document.createElement("div");
@@ -951,7 +952,6 @@ function createGroceryCard(product) {
 
       <button class="grocery-add-btn"
         onclick="addGroceryToCart('${product.name}', this)"
-        ${added ? "disabled" : ""}
         style="${added ? "background:#198754;" : ""}">
         ${added ? "✓ Added to Cart" : "+ Add to Cart"}
       </button>
@@ -960,6 +960,7 @@ function createGroceryCard(product) {
 
   return card;
 }
+
 
 /* Display Groceries */
 function displayGroceries(products) {
