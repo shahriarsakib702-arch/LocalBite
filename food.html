@@ -1231,7 +1231,10 @@ function updateCart() {
       </div>
     `;
   });
-
+const effectiveDeliveryCharge =
+    deliveryChargeConfirmed && total >= 499
+      ? 0
+      : deliveryCharge;
   summaryItems.innerHTML += `
     <hr>
     <div style="display:flex;justify-content:space-between;margin:10px 0;">
