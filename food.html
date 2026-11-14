@@ -1255,7 +1255,7 @@ const effectiveDeliveryCharge =
 
     <div style="display:flex;justify-content:space-between;margin:10px 0;">
       <strong>Final Total</strong>
-      <strong>৳${total + (deliveryCharge || 0)}</strong>
+      totalElement.innerText = total + (deliveryCharge || 0);
     </div>
   `;
 
