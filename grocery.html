@@ -897,6 +897,8 @@ const groceryProducts = [
 const HUB_LAT = 22.147609;
 const HUB_LON = 92.040137;
 
+const FREE_DELIVERY_TARGET = 499;
+
 let cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
 let favourites = JSON.parse(localStorage.getItem("localbiteFavourites")) || [];
 
@@ -915,6 +917,15 @@ function saveFavourites() {
     "localbiteFavourites",
     JSON.stringify(favourites)
   );
+}
+
+/* Effective Delivery Charge */
+function getEffectiveDeliveryCharge(subtotal) {
+  if (!deliveryChargeConfirmed || deliveryCharge === null) {
+    return null;
+  }
+
+  return subtotal >= FREE_DELIVERY_TARGET ? 0 : deliveryCharge;
 }
 
 /* Create Grocery Card */
@@ -1102,19 +1113,23 @@ function updateCart() {
     `).join("");
   }
 
-  const charge = deliveryChargeConfirmed ? deliveryCharge : 0;
+  /* Free Delivery Calculation */
+  const effectiveDeliveryCharge = getEffectiveDeliveryCharge(subtotal);
+  const charge = effectiveDeliveryCharge === null ? 0 : effectiveDeliveryCharge;
   const finalTotal = subtotal + charge;
 
   cartCount.textContent = count;
 
   /* Free Delivery Progress */
-  const freeDeliveryTarget = 499;
-  const progress = Math.min((subtotal / freeDeliveryTarget) * 100, 100);
+  const progress = Math.min(
+    (subtotal / FREE_DELIVERY_TARGET) * 100,
+    100
+  );
 
   document.getElementById("free-delivery-bar").style.width =
     progress + "%";
 
-  if (subtotal >= freeDeliveryTarget) {
+  if (subtotal >= FREE_DELIVERY_TARGET) {
     document.getElementById("free-delivery-amount").innerText =
       "UNLOCKED 🎉";
 
@@ -1125,17 +1140,34 @@ function updateCart() {
       "৳499";
 
     document.getElementById("free-delivery-message").innerText =
-      "আর ৳" + (freeDeliveryTarget - subtotal) +
+      "আর ৳" + (FREE_DELIVERY_TARGET - subtotal) +
       " টাকার অর্ডার করলেই Free Delivery!";
   }
 
-  document.getElementById("summary-subtotal").textContent = "৳" + subtotal;
+  document.getElementById("summary-subtotal").textContent =
+    "৳" + subtotal;
 
   document.getElementById("summary-delivery").textContent =
-    deliveryChargeConfirmed ? "৳" + charge : "লোকেশন নিশ্চিত হয়নি";
+    effectiveDeliveryCharge === null
+      ? "লোকেশন নিশ্চিত হয়নি"
+      : effectiveDeliveryCharge === 0
+        ? "FREE"
+        : "৳" + effectiveDeliveryCharge;
 
-  document.getElementById("summary-final").textContent = "৳" + finalTotal;
-  document.getElementById("cart-total").textContent = finalTotal;
+  document.getElementById("summary-final").textContent =
+    "৳" + finalTotal;
+
+  document.getElementById("cart-total").textContent =
+    finalTotal;
+
+  /* Update Delivery Information */
+  if (deliveryChargeConfirmed) {
+    document.getElementById("delivery-charge").textContent =
+      "Delivery Charge: " +
+      (effectiveDeliveryCharge === 0
+        ? "FREE"
+        : "৳" + effectiveDeliveryCharge);
+  }
 }
 
 function changeQuantity(index,amount) {
@@ -1258,9 +1290,6 @@ function getCurrentLocation() {
     document.getElementById("delivery-distance").textContent =
       "Distance from delivery point: " + deliveryDistance.toFixed(2) + " km";
 
-    document.getElementById("delivery-charge").textContent =
-      "Delivery Charge: ৳" + deliveryCharge;
-
     button.disabled = false;
     button.textContent = "✓ Location Confirmed";
 
@@ -1356,10 +1385,19 @@ function placeOrder() {
     orderText += `${item.name} × ${item.quantity} = ৳${itemTotal}\n`;
   });
 
-  const finalTotal = subtotal + deliveryCharge;
+  /* Free Delivery Applied to WhatsApp Order */
+  const effectiveDeliveryCharge = getEffectiveDeliveryCharge(subtotal);
+  const finalTotal = subtotal + effectiveDeliveryCharge;
 
   orderText += `\nSubtotal: ৳${subtotal}\n`;
-  orderText += `Delivery Charge: ৳${deliveryCharge}\n`;
+
+  orderText +=
+    `Delivery Charge: ${
+      effectiveDeliveryCharge === 0
+        ? "FREE"
+        : "৳" + effectiveDeliveryCharge
+    }\n`;
+
   orderText += `*Final Total: ৳${finalTotal}*\n`;
   orderText += `\nCustomer Location: ${customerLocation}\n`;
   orderText += "\nThank you for ordering from LOCALBITE!";
