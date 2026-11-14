@@ -1259,7 +1259,7 @@ const effectiveDeliveryCharge =
     </div>
   `;
 
-  totalElement.innerText = total + (deliveryCharge || 0);
+  totalElement.innerText = total + (effectiveDeliveryCharge || 0);
   countElement.textContent = count;
 
   /* Free Delivery Progress */
