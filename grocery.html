@@ -995,17 +995,24 @@ function displayGroceries(products) {
 }
 
 /* Add Grocery to Cart */
+
 function addGroceryToCart(productName, button) {
   const product = groceryProducts.find(item => item.name === productName);
 
-  if (!product || cart.some(item => item.name === product.name)) return;
+  if (!product) return;
 
-  cart.push({
-    name:product.name,
-    price:product.price,
-    quantity:1,
-    image:product.image
-  });
+  const existingIndex = cart.findIndex(item => item.name === productName);
+
+  if (existingIndex !== -1) {
+    cart.splice(existingIndex, 1);
+  } else {
+    cart.push({
+      name: product.name,
+      price: product.price,
+      quantity: 1,
+      image: product.image
+    });
+  }
 
   saveCart();
 
@@ -1016,6 +1023,11 @@ function addGroceryToCart(productName, button) {
       )
     )
   );
+
+  const popup = document.getElementById("favourites-popup");
+  if (popup && popup.style.display !== "none") {
+    showFavourites();
+  }
 }
 
 /* Favourite System */
