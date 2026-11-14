@@ -1620,6 +1620,7 @@ document.querySelectorAll(".favourite-btn").forEach(button => {
   }
 });
 
+
 function showFavourites() {
   const popup = document.getElementById("favourite-popup");
   const list = document.getElementById("favourite-list");
@@ -1643,33 +1644,21 @@ function showFavourites() {
       };
 
       const addButton = clone.querySelector(".add-to-cart");
-      const existing = cart.find(item => item.name === name);
+      const added = cart.some(item => item.name === name);
 
-      if (existing) {
-        addButton.innerText = "✓ Added to Cart";
-        addButton.style.background = "#198754";
-        addButton.disabled = true;
-      } else {
-        addButton.addEventListener("click", function() {
-          const price = Number(
-            clone.querySelector(".price").innerText.replace("৳", "")
-          );
+      addButton.innerText = added
+        ? "✓ Added to Cart"
+        : "+ Add to Cart";
 
-          cart.push({
-            name: name,
-            price: price,
-            quantity: 1,
-            image: clone.querySelector("img").src
-          });
+      addButton.style.background = added
+        ? "#198754"
+        : "#0F3D2E";
 
-          saveCart();
-          updateCart();
+      addButton.disabled = false;
 
-          addButton.innerText = "✓ Added to Cart";
-          addButton.style.background = "#198754";
-          addButton.disabled = true;
-        });
-      }
+      addButton.addEventListener("click", function() {
+        handleFoodCart(addButton);
+      });
 
       list.appendChild(clone);
     }
@@ -1677,6 +1666,7 @@ function showFavourites() {
 
   popup.style.display = "flex";
 }
+
 
 function closeFavourites() {
   document.getElementById("favourite-popup").style.display = "none";
