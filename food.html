@@ -1534,7 +1534,10 @@ function placeOrder() {
   });
 
   message += "\n🛍️ Subtotal: ৳" + subtotal;
-
+const effectiveDeliveryCharge =
+    deliveryChargeConfirmed && subtotal >= 499
+      ? 0
+      : deliveryCharge;
   if (deliveryCharge !== null) {
     const finalTotal = subtotal + deliveryCharge;
 
