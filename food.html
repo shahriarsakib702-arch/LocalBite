@@ -1098,27 +1098,20 @@ function saveCart() {
   localStorage.setItem("localbiteCart", JSON.stringify(cart));
 }
 
+
 /* Add to Cart */
-document.querySelectorAll(".add-to-cart").forEach(button => {
+function handleFoodCart(button) {
   const card = button.closest(".food-card");
   const name = card.querySelector("h2").innerText;
 
-  const existing = cart.find(item => item.name === name);
+  const existingIndex = cart.findIndex(item => item.name === name);
 
-  if (existing) {
-    button.innerHTML = "✓ Added to Cart";
-    button.style.background = "#198754";
-    button.disabled = true;
-  }
-
-  button.addEventListener("click", () => {
+  if (existingIndex !== -1) {
+    cart.splice(existingIndex, 1);
+  } else {
     const price = Number(
       card.querySelector(".price").innerText.replace("৳", "")
     );
-
-    const alreadyAdded = cart.find(item => item.name === name);
-
-    if (alreadyAdded) return;
 
     cart.push({
       name,
@@ -1126,15 +1119,35 @@ document.querySelectorAll(".add-to-cart").forEach(button => {
       quantity: 1,
       image: card.querySelector("img").src
     });
+  }
 
-    button.innerHTML = "✓ Added to Cart";
-    button.style.background = "#198754";
-    button.disabled = true;
+  saveCart();
+  updateCart();
+  refreshFoodButtons();
+}
 
-    saveCart();
-    updateCart();
+function refreshFoodButtons() {
+  document.querySelectorAll(".add-to-cart").forEach(button => {
+    const card = button.closest(".food-card");
+    const name = card.querySelector("h2").innerText;
+
+    const added = cart.some(item => item.name === name);
+
+    button.innerHTML = added
+      ? "✓ Added to Cart"
+      : "+ Add to Cart";
+
+    button.style.background = added ? "#198754" : "#0F3D2E";
+    button.disabled = false;
   });
+}
+
+document.querySelectorAll(".add-to-cart").forEach(button => {
+  button.addEventListener("click", () => handleFoodCart(button));
 });
+
+refreshFoodButtons();
+
 
 function toggleCart() {
   document.getElementById("cart-box").classList.toggle("active");
