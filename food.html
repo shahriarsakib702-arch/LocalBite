@@ -1698,10 +1698,13 @@ function toggleFavouriteByName(name) {
   showFavourites();
 }
 
-/* Load Cart */
+
+/* Load Cart & Favourites */
 window.addEventListener("load", function() {
   updateCart();
+  updateFavouriteCount();
 });
+
 
 console.log("Cart loaded:", cart);
 console.log("Cart count:", document.getElementById("cart-count")?.textContent);
