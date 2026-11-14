@@ -1606,6 +1606,7 @@ const effectiveDeliveryCharge =
 /* Favourites */
 let favourites = JSON.parse(localStorage.getItem("localbiteFavourites")) || [];
 
+
 function toggleFavourite(button) {
   const card = button.closest(".food-card");
   const name = card.querySelector("h2").innerText;
@@ -1624,17 +1625,15 @@ function toggleFavourite(button) {
     "localbiteFavourites",
     JSON.stringify(favourites)
   );
+
+  updateFavouriteCount();
 }
 
-document.querySelectorAll(".favourite-btn").forEach(button => {
-  const name = button.closest(".food-card")
-    .querySelector("h2").innerText;
+function updateFavouriteCount() {
+  document.getElementById("favourite-count").innerText =
+    favourites.length;
+}
 
-  if (favourites.includes(name)) {
-    button.innerHTML = "♥";
-    button.style.background = "#ffd6c5";
-  }
-});
 
 
 function showFavourites() {
