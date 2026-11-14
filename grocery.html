@@ -50,8 +50,23 @@ header a { color:white; text-decoration:none; font-weight:bold; }
   max-width:600px;
   margin:18px auto;
   padding:0 15px;
+  position:relative;
 }
 
+.search-arrow {
+  position:absolute;
+  right:20px;
+  top:50%;
+  transform:translateY(-50%);
+  width:38px;
+  height:38px;
+  border:none;
+  border-radius:50%;
+  background:#FF8A3D;
+  color:white;
+  font-size:22px;
+  cursor:pointer;
+}
 .search-box input {
   width:100%;
   padding:15px 18px 15px 45px;
@@ -815,6 +830,7 @@ footer p {
 
 <div class="search-box">
   <input type="text" id="grocery-search" placeholder="Search groceries...">
+  <button class="search-arrow">→</button>
 </div>
 
 <!-- Free Delivery + My Favourites -->
