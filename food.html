@@ -1245,11 +1245,11 @@ const effectiveDeliveryCharge =
     <div style="display:flex;justify-content:space-between;margin:10px 0;">
       <span>Delivery Charge</span>
       <strong>${
-        deliveryCharge === null
-          ? "To Be Confirmed"
-          : deliveryCharge === 0
-            ? "FREE"
-            : "৳" + deliveryCharge
+        effectiveDeliveryCharge === null
+  ? "To Be Confirmed"
+  : effectiveDeliveryCharge === 0
+    ? "FREE"
+    : "৳" + effectiveDeliveryCharge
       }</strong>
     </div>
 
