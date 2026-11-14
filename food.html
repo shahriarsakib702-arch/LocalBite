@@ -1538,12 +1538,11 @@ const effectiveDeliveryCharge =
     deliveryChargeConfirmed && subtotal >= 499
       ? 0
       : deliveryCharge;
-  if (deliveryCharge !== null) {
-    const finalTotal = subtotal + deliveryCharge;
+    if (effectiveDeliveryCharge !== null) {
+    const finalTotal = subtotal + effectiveDeliveryCharge;
 
     message += "\n🚚 Delivery Charge: " +
-      (deliveryCharge === 0 ? "FREE" : "৳" + deliveryCharge);
-
+      (effectiveDeliveryCharge === 0 ? "FREE" : "৳" + effectiveDeliveryCharge);
     message += "\n💰 *Final Total: ৳" + finalTotal + "*";
   } else {
     message += "\n🚚 Delivery Charge: To Be Confirmed";
