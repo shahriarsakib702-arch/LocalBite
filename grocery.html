@@ -1047,7 +1047,27 @@ function updateCart() {
   const finalTotal = subtotal + charge;
 
   cartCount.textContent = count;
+// Free Delivery Progress
+const freeDeliveryTarget = 499;
+const progress = Math.min((subtotal / freeDeliveryTarget) * 100, 100);
 
+document.getElementById("free-delivery-bar").style.width =
+  progress + "%";
+
+if (subtotal >= freeDeliveryTarget) {
+  document.getElementById("free-delivery-amount").innerText =
+    "UNLOCKED 🎉";
+
+  document.getElementById("free-delivery-message").innerText =
+    "Congratulations! You have unlocked Free Delivery!";
+} else {
+  document.getElementById("free-delivery-amount").innerText =
+    "৳499";
+
+  document.getElementById("free-delivery-message").innerText =
+    "আর ৳" + (freeDeliveryTarget - subtotal) +
+    " টাকার অর্ডার করলেই Free Delivery!";
+}
   document.getElementById("summary-subtotal").textContent = "৳" + subtotal;
 
   document.getElementById("summary-delivery").textContent =
