@@ -838,6 +838,213 @@ footer {
   font-size:22px;
   cursor:pointer;
 }
+  /* LOCALBITE - Premium Order Button Animation */
+
+#place-order-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.3s ease;
+}
+
+#place-order-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #16834D;
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+#place-order-btn.is-processing {
+  color: transparent !important;
+  pointer-events: none;
+}
+
+#place-order-btn.is-processing::before {
+  animation: orderFill 0.9s ease forwards;
+}
+
+#place-order-btn.is-success {
+  color: transparent !important;
+  pointer-events: none;
+}
+
+#place-order-btn.is-success::before {
+  transform: scaleX(1);
+}
+
+#place-order-btn.is-success::after {
+  content: "✓";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 27px;
+  font-weight: bold;
+  animation: checkReveal 0.55s ease forwards;
+}
+
+@keyframes orderFill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes checkReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-35deg);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.2) rotate(8deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* Premium Success Popup */
+
+#order-success-popup {
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.success-card {
+  background: linear-gradient(145deg, #103D30, #071F19);
+  width: 100%;
+  max-width: 360px;
+  padding: 30px 22px;
+  border-radius: 24px;
+  border: 1px solid #D9B66D;
+  text-align: center;
+  box-shadow: 0 20px 65px #00000065;
+  animation: popupReveal 0.55s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+@keyframes popupReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.success-icon {
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 18px;
+  border: 2px solid #D9B66D;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1B7552;
+  box-shadow: 0 0 25px #16834D55;
+}
+
+.success-icon svg {
+  width: 48px;
+  height: 48px;
+  fill: none;
+  stroke: white;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.success-icon path {
+  stroke-dasharray: 55;
+  stroke-dashoffset: 55;
+  animation: drawCheck 0.65s 0.2s ease forwards;
+}
+
+@keyframes drawCheck {
+  to { stroke-dashoffset: 0; }
+}
+
+.success-card h2 {
+  color: #E8D7A5;
+  font-size: 23px;
+  margin-bottom: 9px;
+}
+
+.success-subtitle {
+  color: #FFFFFF;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.success-divider {
+  height: 1px;
+  background: #47725F;
+  margin-bottom: 19px;
+}
+
+.success-thanks {
+  color: #E8D7A5;
+  font-size: 19px;
+  margin-bottom: 11px;
+}
+
+.success-message {
+  color: #F4DFA5;
+  font-size: 11px;
+  font-weight: bold;
+  white-space: nowrap;
+  margin-bottom: 15px;
+  animation: messageGlow 1.5s ease both;
+}
+
+@keyframes messageGlow {
+  0% {
+    opacity: 0;
+    text-shadow: 0 0 0 transparent;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 12px #F4DFA5;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 3px #F4DFA5;
+  }
+}
+
+.success-description {
+  color: #D3E5D9;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 23px;
+}
+
+.success-continue {
+  width: 100%;
+  padding: 14px;
+  background: #E3C77F;
+  color: #173B2D;
+  border: none;
+  border-radius: 11px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.success-brand {
+  color: #C3D6C9;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  margin-top: 18px;
+  }
 </style>
 </head>
 
