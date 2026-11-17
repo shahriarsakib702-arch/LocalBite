@@ -264,6 +264,72 @@ footer p{margin-top:8px;font-size:12px;letter-spacing:1px}
 }
 .summary-total-line.final{font-size:17px;color:var(--orange)}
 
+/* LOCALBITE - Premium Order Button Animation */
+#place-order-btn{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  transition:color .3s ease;
+}
+#place-order-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#16834D;
+  transform:scaleX(0);
+  transform-origin:left;
+  z-index:0;
+  border-radius:inherit;
+}
+#place-order-btn.is-processing{
+  color:transparent!important;
+  pointer-events:none;
+}
+#place-order-btn.is-processing::after{
+  content:"Placing Your Order...";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:14px;
+  font-weight:600;
+  z-index:2;
+}
+#place-order-btn.is-processing::before{
+  animation:orderFill .9s ease forwards;
+}
+#place-order-btn.is-success{
+  color:transparent!important;
+  pointer-events:none;
+}
+#place-order-btn.is-success::before{
+  transform:scaleX(1);
+}
+#place-order-btn.is-success::after{
+  content:"✓";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:27px;
+  font-weight:bold;
+  z-index:2;
+  animation:checkReveal .55s ease forwards;
+}
+@keyframes orderFill{
+  from{transform:scaleX(0)}
+  to{transform:scaleX(1)}
+}
+@keyframes checkReveal{
+  0%{opacity:0;transform:scale(.3) rotate(-35deg)}
+  65%{opacity:1;transform:scale(1.2) rotate(8deg)}
+  100%{opacity:1;transform:scale(1) rotate(0)}
+}
+
 /* Order Form */
 .order-form{
   display:none;position:fixed;top:50%;left:50%;
@@ -314,18 +380,133 @@ footer p{margin-top:8px;font-size:12px;letter-spacing:1px}
 }
 .location-popup-content .cancel-btn{background:#ddd;color:#333}
 
-/* Order Success Popup */
+/* Emerald Luxury Success Popup */
 #order-success-popup{
-  display:none;position:fixed;inset:0;background:#00000080;
-  z-index:10000;align-items:center;justify-content:center;padding:20px;
+  display:none;
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.75);
+  z-index:99999;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  box-sizing:border-box;
+  backdrop-filter:blur(7px);
+  -webkit-backdrop-filter:blur(7px);
+}
+#order-success-popup.show{
+  display:flex;
 }
 .success-content{
-  background:var(--cream);width:100%;max-width:360px;
-  padding:28px;border-radius:20px;text-align:center;
+  background:linear-gradient(145deg,#103D30,#071F19);
+  width:100%;
+  max-width:360px;
+  padding:30px 22px;
+  border-radius:24px;
+  border:1px solid #D9B66D;
+  text-align:center;
+  box-shadow:0 20px 65px #00000065;
+  animation:popupReveal .55s cubic-bezier(.2,.8,.2,1) forwards;
 }
-.success-content button{
-  width:100%;padding:14px;background:var(--green);color:white;
-  border:0;border-radius:10px;font-size:16px;font-weight:bold;
+@keyframes popupReveal{
+  from{opacity:0;transform:translateY(25px) scale(.85)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.success-icon{
+  width:92px;
+  height:92px;
+  margin:0 auto 18px;
+  border:2px solid #D9B66D;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#1B7552;
+  box-shadow:0 0 25px #16834D55;
+}
+.success-icon svg{
+  width:48px;
+  height:48px;
+  fill:none;
+  stroke:white;
+  stroke-width:4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.success-icon path{
+  stroke-dasharray:55;
+  stroke-dashoffset:55;
+  animation:drawCheck .65s .2s ease forwards;
+}
+@keyframes drawCheck{
+  to{stroke-dashoffset:0}
+}
+.success-content h2{
+  color:#E8D7A5;
+  font-size:23px;
+  margin-bottom:9px;
+}
+.success-subtitle{
+  color:#FFFFFF;
+  font-size:13px;
+  margin-bottom:20px;
+}
+.success-divider{
+  height:1px;
+  background:#47725F;
+  margin-bottom:19px;
+}
+.success-thanks{
+  color:#E8D7A5;
+  font-size:19px;
+  margin-bottom:11px;
+}
+.success-message{
+  color:#F4DFA5;
+  font-size:11px;
+  font-weight:bold;
+  white-space:nowrap;
+  margin-bottom:15px;
+  animation:messageGlow 1.5s ease both;
+}
+@keyframes messageGlow{
+  0%{
+    opacity:0;
+    text-shadow:0 0 0 transparent;
+  }
+  50%{
+    opacity:1;
+    text-shadow:0 0 12px #F4DFA5;
+  }
+  100%{
+    opacity:1;
+    text-shadow:0 0 3px #F4DFA5;
+  }
+}
+.success-description{
+  color:#D3E5D9;
+  font-size:13px;
+  line-height:1.6;
+  margin-bottom:23px;
+}
+.success-continue{
+  width:100%;
+  padding:14px;
+  background:#E3C77F;
+  color:#173B2D;
+  border:none;
+  border-radius:11px;
+  font-size:14px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.success-brand{
+  color:#C3D6C9;
+  font-size:10px;
+  letter-spacing:1.5px;
+  margin-top:18px;
 }
 
 @media(max-width:480px){
@@ -467,14 +648,16 @@ footer p{margin-top:8px;font-size:12px;letter-spacing:1px}
     <button type="button" class="close-order-btn" onclick="closeOrderForm()">✕</button>
   </div>
 
-  <input type="text" id="customer-name" placeholder="Your Name">
-  <input type="tel" id="customer-phone" placeholder="Phone Number">
-  <textarea id="customer-address" rows="3" placeholder="Full Delivery Address"></textarea>
-  <textarea id="delivery-instructions" rows="2" placeholder="Delivery Instructions (Optional)"></textarea>
+  <form id="order-form-fields" onsubmit="event.preventDefault(); placeOrder();">
+    <input type="text" id="customer-name" placeholder="Your Name">
+    <input type="tel" id="customer-phone" placeholder="Phone Number">
+    <textarea id="customer-address" rows="3" placeholder="Full Delivery Address"></textarea>
+    <textarea id="delivery-instructions" rows="2" placeholder="Delivery Instructions (Optional)"></textarea>
 
-  <button class="place-order-btn" id="place-order-btn" onclick="placeOrder()">
-    Place Order →
-  </button>
+    <button type="submit" class="place-order-btn" id="place-order-btn">
+      Place Order →
+    </button>
+  </form>
 </div>
 
 <div class="location-popup" id="location-popup">
@@ -486,16 +669,42 @@ footer p{margin-top:8px;font-size:12px;letter-spacing:1px}
   </div>
 </div>
 
+<!-- Emerald Luxury Success Popup -->
 <div id="order-success-popup">
   <div class="success-content">
-    <div style="font-size:45px;">✅</div>
-    <h2 style="color:#0F3D2E;margin:15px 0;">
-      Order Placed Successfully!
-    </h2>
-    <p style="color:#555;">Order received successfully!</p>
-    <p id="success-order-id" style="color:#0F3D2E;font-weight:bold;margin:10px 0;"></p>
-    <p style="color:#555;margin-bottom:22px;">Payment: Cash on Delivery</p>
-    <button onclick="window.location.reload()">Continue Shopping</button>
+
+    <div class="success-icon">
+      <svg viewBox="0 0 52 52">
+        <path d="M12 27 L22 37 L41 15"/>
+      </svg>
+    </div>
+
+    <h2>Order Confirmed</h2>
+
+    <p class="success-subtitle">
+      Your happiness is on its way!
+    </p>
+
+    <div class="success-divider"></div>
+
+    <h3 class="success-thanks">ধন্যবাদ! 💚</h3>
+
+    <p class="success-message">
+      ✓ আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।
+    </p>
+
+    <p class="success-description">
+      একটু অপেক্ষা করুন, আপনার পছন্দের জিনিসগুলো নিয়ে আমরা আসছি!
+    </p>
+
+    <button class="success-continue" onclick="closeSuccessPopup()">
+      CONTINUE BUYING →
+    </button>
+
+    <p class="success-brand">
+      GOOD FOOD. RIGHT AROUND YOU.
+    </p>
+
   </div>
 </div>
 
@@ -914,9 +1123,16 @@ function closeOrderForm() {
   document.getElementById("order-overlay").classList.remove("active");
 }
 
+/* Success Popup Close */
+function closeSuccessPopup() {
+  document.getElementById("order-success-popup").classList.remove("show");
+}
+
 /* Direct Supabase Ordering */
 async function placeOrder() {
   const button = document.getElementById("place-order-btn");
+
+  if (button.disabled) return;
 
   const instructions = document.getElementById("delivery-instructions").value.trim();
   const name = document.getElementById("customer-name").value.trim();
@@ -972,7 +1188,6 @@ async function placeOrder() {
   };
 
   button.disabled = true;
-  button.textContent = "Placing Order...";
 
   try {
     const {error} = await supabaseClient
@@ -983,27 +1198,54 @@ async function placeOrder() {
       console.error("Supabase Error:",error);
       alert("Order failed: " + error.message);
       button.disabled = false;
-      button.textContent = "Place Order →";
+      button.classList.remove("is-processing","is-success");
       return;
     }
 
+    /* Order saved successfully - now start animation */
+    button.classList.remove("is-success");
+    button.classList.add("is-processing");
+
     cart = [];
     saveCart();
+    displayGroceries(getFilteredGroceries());
 
-    document.getElementById("success-order-id").innerText =
-      "Thank you for ordering from LOCALBITE! 💚";
+    document.getElementById("customer-name").value = "";
+    document.getElementById("customer-phone").value = "";
+    document.getElementById("customer-address").value = "";
+    document.getElementById("delivery-instructions").value = "";
 
-    closeOrderForm();
-    document.getElementById("cart-panel").classList.remove("active");
-    document.getElementById("cart-overlay").classList.remove("active");
-    document.getElementById("order-success-popup").style.display = "flex";
+    customerLocation = "";
+
+    /* Wait for green fill animation */
+    setTimeout(() => {
+
+      button.classList.remove("is-processing");
+      button.classList.add("is-success");
+
+      /* Wait for animated tick */
+      setTimeout(() => {
+
+        closeOrderForm();
+
+        document.getElementById("cart-panel").classList.remove("active");
+        document.getElementById("cart-overlay").classList.remove("active");
+
+        const popup = document.getElementById("order-success-popup");
+        popup.classList.add("show");
+
+        button.disabled = false;
+        button.classList.remove("is-success");
+
+      },600);
+
+    },900);
 
   } catch(error) {
     console.error(error);
     alert("Something went wrong! Please try again.");
-  } finally {
     button.disabled = false;
-    button.textContent = "Place Order →";
+    button.classList.remove("is-processing","is-success");
   }
 }
 
