@@ -1643,7 +1643,7 @@ async function placeOrder() {
     customer_name: name,
     delivery_address: address,
     customer_phone: phone,
-    order_item: cart.map(item => ({
+    order_items: cart.map(item => ({
       name: item.name,
       price: item.price,
       quantity: item.quantity
