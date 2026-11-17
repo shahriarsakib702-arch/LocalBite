@@ -912,8 +912,23 @@ footer {
 /* Premium Success Popup */
 
 #order-success-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
+}
+
+#order-success-popup.show {
+  display: flex;
 }
 
 .success-card {
