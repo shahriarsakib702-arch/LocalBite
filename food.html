@@ -1656,11 +1656,9 @@ async function placeOrder() {
   };
 
   try {
-    const { data, error } = await supabaseClient
+   const { error } = await supabaseClient
   .from("LOCALBITE")
-  .insert([orderData])
-  .select("id")
-  .single();
+  .insert([orderData]);
 
     if (error) {
   console.error("Supabase Error:", error);
