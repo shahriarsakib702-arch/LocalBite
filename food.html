@@ -859,8 +859,21 @@ footer {
 }
 
 #place-order-btn.is-processing {
-  color: transparent !important;
+  color: white !important;
   pointer-events: none;
+}
+
+#place-order-btn.is-processing::after {
+  content: "Placing Your Order...";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 2;
 }
 
 #place-order-btn.is-processing::before {
