@@ -1126,8 +1126,7 @@ footer {
 
 </div>
 
-<!-- Order Confirmation Popup -->
-<div id="order-confirm-popup" style="
+<div id="order-success-popup" style="
   display:none;
   position:fixed;
   inset:0;
@@ -1145,17 +1144,25 @@ footer {
     border-radius:20px;
     text-align:center;
   ">
-    <div style="font-size:45px;">🛒</div>
+    <div style="font-size:45px;">✅</div>
 
     <h2 style="color:#0F3D2E;margin:15px 0;">
-      Order Confirmation
+      Order Placed Successfully!
     </h2>
 
+    <p style="color:#555;">Your Order ID:</p>
+
+    <p id="success-order-id" style="
+      color:#0F3D2E;
+      font-weight:bold;
+      overflow-wrap:anywhere;
+    "></p>
+
     <p style="color:#555;margin-bottom:22px;">
-      আপনি কি WhatsApp-এ অর্ডার মেসেজটি পাঠিয়েছেন?
+      Payment: Cash on Delivery
     </p>
 
-    <button onclick="confirmOrderSent(true)" style="
+    <button onclick="window.location.reload()" style="
       width:100%;
       padding:14px;
       background:#0F3D2E;
@@ -1164,18 +1171,7 @@ footer {
       border-radius:10px;
       font-size:16px;
       font-weight:bold;
-    ">হ্যাঁ, পাঠিয়েছি</button>
-
-    <button onclick="confirmOrderSent(false)" style="
-      width:100%;
-      padding:14px;
-      margin-top:10px;
-      background:#eee;
-      color:#333;
-      border:0;
-      border-radius:10px;
-      font-size:15px;
-    ">না, এখনো পাঠাইনি</button>
+    ">Continue Shopping</button>
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
