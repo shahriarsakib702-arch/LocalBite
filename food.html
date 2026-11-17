@@ -1679,19 +1679,7 @@ document.getElementById("order-success-popup").style.display = "flex";
   }
 }
 
-  function checkOrderStatus() {
-    if (document.visibilityState !== "visible") return;
-
-    if (sessionStorage.getItem("localbitePendingOrder") !== "yes") return;
-
-    sessionStorage.removeItem("localbitePendingOrder");
-    document.removeEventListener("visibilitychange", checkOrderStatus);
-
-    document.getElementById("order-confirm-popup").style.display = "flex";
-  }
-
-  document.addEventListener("visibilitychange", checkOrderStatus);
-}
+ 
 
 /* Favourites */
 let favourites = JSON.parse(localStorage.getItem("localbiteFavourites")) || [];
