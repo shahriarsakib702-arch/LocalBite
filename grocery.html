@@ -8,812 +8,335 @@
 
 <style>
 :root {
-  --green: #0F3D2E;
-  --orange: #FF8A3D;
-  --cream: #FFF8E7;
-  --dark: #1F1F1F;
+  --green:#0F3D2E;
+  --orange:#FF8A3D;
+  --cream:#FFF8E7;
+  --dark:#1F1F1F;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
+*{margin:0;padding:0;box-sizing:border-box}
+body{
   font-family:Arial,sans-serif;
-  background-color:var(--cream);
-  background-image:url("https://www.transparenttextures.com/patterns/food.png");
+  background:var(--cream) url("https://www.transparenttextures.com/patterns/food.png");
   color:var(--dark);
 }
-
-header {
-  background:var(--green); color:white; padding:18px 6%;
-  display:flex; justify-content:space-between; align-items:center;
+header{
+  background:var(--green);color:white;padding:18px 6%;
+  display:flex;justify-content:space-between;align-items:center;
 }
-.logo { font-size:25px; font-weight:bold; }
-.logo span { color:var(--orange); }
-header a { color:white; text-decoration:none; font-weight:bold; }
-
-.hero {
-  background:var(--green);
-  color:white;
-  text-align:center;
-  padding:16px 12px;
+.logo{font-size:25px;font-weight:bold}
+.logo span{color:var(--orange)}
+header a{color:white;text-decoration:none;font-weight:bold}
+.hero{
+  background:var(--green);color:white;text-align:center;padding:16px 12px;
 }
-
-.hero h1 {
-  font-size:21px;
-  margin-bottom:5px;
+.hero h1{
+  background:var(--orange);padding:8px 12px;border-radius:10px;
+  color:white;display:inline-block;font-size:21px;margin:6px 0;
 }
-
-.hero p {
-  color:#e7eee9;
-  font-size:12px;
+.hero p{color:#e7eee9;font-size:12px}
+.hero-categories{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:7px;margin-top:10px;
 }
-
-.search-box {
-  max-width:600px;
-  margin:18px auto;
-  padding:0 15px;
-  position:relative;
+.hero-categories span{
+  background:#ffffff18;border:1px solid #ffffff30;
+  color:white;padding:5px 10px;border-radius:20px;font-size:11px;
 }
-
-.search-arrow {
-  position:absolute;
-  right:20px;
-  top:50%;
-  transform:translateY(-50%);
-  width:38px;
-  height:38px;
-  border:none;
-  border-radius:50%;
-  background:#FF8A3D;
-  color:white;
-  font-size:22px;
-  cursor:pointer;
+.search-box{
+  max-width:600px;margin:18px auto;padding:0 15px;position:relative;
 }
-.search-box input {
-  width:100%;
-  padding:15px 18px 15px 45px;
-  border:1px solid #E7DCC8;
-  border-radius:25px;
-  font-size:14px;
-  outline:none;
-  background:#FFFFFF;
-  box-shadow:0 5px 18px rgba(15,61,46,.10);
-  transition:.3s;
+.search-box input{
+  width:100%;padding:15px 55px 15px 45px;
+  border:1px solid #E7DCC8;border-radius:25px;font-size:14px;
+  outline:none;background:white;box-shadow:0 5px 18px #0f3d2e1a;
 }
-
-.search-box input:focus {
-  border-color:#FF8A3D;
-  box-shadow:0 5px 20px rgba(255,138,61,.18);
+.search-box input:focus{border-color:var(--orange)}
+.search-icon{
+  position:absolute;left:28px;top:50%;transform:translateY(-50%);
+  font-size:17px;pointer-events:none;
 }
-
-.section { padding:30px 6% 100px; }
-.section h2 { color:var(--green); margin-bottom:8px; font-size:26px; }
-.section-subtitle { color:#666; margin-bottom:25px; }
-
-.grocery-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:18px;
+.search-arrow{
+  position:absolute;right:20px;top:50%;transform:translateY(-50%);
+  width:38px;height:38px;border:0;border-radius:50%;
+  background:var(--orange);color:white;font-size:22px;
 }
-.grocery-card {
-  background:white;
-  border-radius:15px;
-  overflow:hidden;
-  box-shadow:0 4px 15px rgba(0,0,0,.07);
-  transition:.3s;
+.section{padding:30px 6% 100px}
+.section h2{color:var(--green);margin-bottom:8px;font-size:26px}
+.section-subtitle{color:#666;margin-bottom:25px}
+.grocery-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;
 }
-.grocery-card img {
-  width:100%; height:145px;
-  object-fit:cover;
-  display:block;
+.grocery-card{
+  background:white;border-radius:15px;overflow:hidden;
+  box-shadow:0 4px 15px #00000012;transition:.3s;
 }
-  /* LOCALBITE - 12 Uncommon Grocery Card Colors */
-
-.grocery-card:nth-child(12n+1) .grocery-info { background:#B5B879; }
-.grocery-card:nth-child(12n+2) .grocery-info { background:#C77B5B; }
-.grocery-card:nth-child(12n+3) .grocery-info { background:#C6A77B; }
-.grocery-card:nth-child(12n+4) .grocery-info { background:#79A6A0; }
-.grocery-card:nth-child(12n+5) .grocery-info { background:#D2AD45; }
-.grocery-card:nth-child(12n+6) .grocery-info { background:#A58A9B; }
-.grocery-card:nth-child(12n+7) .grocery-info { background:#84966B; }
-.grocery-card:nth-child(12n+8) .grocery-info { background:#B97958; }
-.grocery-card:nth-child(12n+9) .grocery-info { background:#7891AE; }
-.grocery-card:nth-child(12n+10) .grocery-info { background:#B58C83; }
-.grocery-card:nth-child(12n+11) .grocery-info { background:#91A68B; }
-.grocery-card:nth-child(12n+12) .grocery-info { background:#9690AE; }
-.grocery-info { padding:13px; }
-.grocery-info h3 {
-  font-size:17px;
-  margin-bottom:8px;
-  color:#FFFFFF;
-
+.grocery-card img{
+  width:100%;height:145px;object-fit:cover;display:block;
 }
-.grocery-price {
-  color:#FFFFFF;
-  font-weight:bold;
-  margin-bottom:12px;
-
+.grocery-card:nth-child(12n+1) .grocery-info{background:#B5B879}
+.grocery-card:nth-child(12n+2) .grocery-info{background:#C77B5B}
+.grocery-card:nth-child(12n+3) .grocery-info{background:#C6A77B}
+.grocery-card:nth-child(12n+4) .grocery-info{background:#79A6A0}
+.grocery-card:nth-child(12n+5) .grocery-info{background:#D2AD45}
+.grocery-card:nth-child(12n+6) .grocery-info{background:#A58A9B}
+.grocery-card:nth-child(12n+7) .grocery-info{background:#84966B}
+.grocery-card:nth-child(12n+8) .grocery-info{background:#B97958}
+.grocery-card:nth-child(12n+9) .grocery-info{background:#7891AE}
+.grocery-card:nth-child(12n+10) .grocery-info{background:#B58C83}
+.grocery-card:nth-child(12n+11) .grocery-info{background:#91A68B}
+.grocery-card:nth-child(12n+12) .grocery-info{background:#9690AE}
+.grocery-info{padding:13px}
+.grocery-info h3{font-size:17px;margin-bottom:8px;color:white}
+.grocery-price{color:white;font-weight:bold;margin-bottom:12px}
+.grocery-add-btn{
+  width:100%;padding:11px;border:0;border-radius:9px;
+  background:var(--green);color:white;font-weight:bold;cursor:pointer;
 }
-.grocery-add-btn {
-  width:100%; padding:11px;
-  border:none; border-radius:9px;
-  background:var(--green);
-  color:white; font-weight:bold;
-  cursor:pointer;
+.grocery-add-btn:active{transform:scale(.97);background:var(--orange)}
+.favourite-btn{
+  float:right;width:36px;height:36px;border:1px solid #ffd6c5;
+  border-radius:50%;background:#fff1eb;color:#e45d35;
+  font-size:23px;cursor:pointer;line-height:1;
 }
-.grocery-add-btn:active {
-  transform:scale(.97);
-  background:var(--orange);
+.favourite-section{
+  max-width:1100px;margin:10px auto 0;padding:0 6%;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
 }
-.grocery-add-btn:disabled {
-  cursor:default;
-  opacity:1;
+#free-delivery-progress{
+  flex:1;min-width:0;max-width:320px;background:white;
+  border:1px solid #e8dfc9;border-radius:14px;padding:12px;
+  box-shadow:0 4px 12px #0f3d2e10;
 }
-
-/* Favourite Button */
-.favourite-btn {
-  float:right;
-  width:36px;
-  height:36px;
-  border:1px solid #ffd6c5;
-  border-radius:50%;
-  background:#fff1eb;
-  color:#e45d35;
-  font-size:23px;
-  cursor:pointer;
-  line-height:1;
+.free-delivery-heading{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:5px;margin-bottom:8px;
 }
-
-/* Favourite + Free Delivery Section */
-.favourite-section {
-  max-width:1100px;
-  margin:10px auto 0;
-  padding:0 6%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
+.free-delivery-heading strong:first-child{color:var(--green);font-size:13px}
+#free-delivery-amount{color:var(--orange);font-size:13px}
+.free-delivery-track{height:7px;background:#eee;border-radius:20px;overflow:hidden}
+#free-delivery-bar{
+  width:0%;height:100%;background:#16A34A;border-radius:20px;transition:.3s;
 }
-
-/* Compact Free Delivery Card */
-#free-delivery-progress {
-  flex:1;
-  min-width:0;
-  max-width:320px;
-  background:#ffffff;
-  border:1px solid #e8dfc9;
-  border-radius:14px;
-  padding:12px;
-  box-shadow:0 4px 12px rgba(15,61,46,.06);
+#free-delivery-message{
+  margin:8px 0 0;color:#426354;font-size:11px;line-height:1.4;text-align:center;
 }
-
-.free-delivery-heading {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:5px;
-  margin-bottom:8px;
+#show-favourites-btn{
+  padding:11px 16px;background:#fff1eb;color:#e45d35;
+  border:1px solid #ffd6c5;border-radius:12px;font-size:14px;
+  font-weight:bold;cursor:pointer;white-space:nowrap;
 }
-
-.free-delivery-heading strong:first-child {
-  color:#0F3D2E;
-  font-size:13px;
+#favourite-count{
+  display:inline-block;background:var(--orange);color:white;
+  min-width:21px;height:21px;line-height:21px;text-align:center;
+  border-radius:50%;font-size:12px;margin-left:5px;
 }
-
-#free-delivery-amount {
-  color:#FF8A3D;
-  font-size:13px;
-  white-space:nowrap;
+.favourite-popup{
+  display:none;position:fixed;inset:0;background:#000000a6;
+  z-index:9999;justify-content:center;align-items:center;padding:15px;
 }
-
-.free-delivery-track {
-  height:7px;
-  background:#eee;
-  border-radius:20px;
-  overflow:hidden;
+.favourite-popup-content{
+  width:100%;max-width:500px;max-height:85vh;overflow-y:auto;
+  background:var(--cream);border:2px solid var(--orange);
+  border-radius:18px;padding:18px;
 }
-
-#free-delivery-bar {
-  width:0%;
-  height:100%;
-  background:#16A34A;
-  border-radius:20px;
-  transition:width .3s ease;
+.favourite-popup-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:18px;border-bottom:1px solid #ddd;padding-bottom:12px;
 }
-
-#free-delivery-message {
-  margin:8px 0 0;
-  color:#426354;
-  font-size:11px;
-  line-height:1.4;
-  text-align:center;
+.favourite-popup-header h2{color:var(--green);font-size:19px}
+.favourite-popup-header button{
+  background:var(--orange);color:var(--green);border:0;
+  border-radius:50%;width:34px;height:34px;font-size:18px;cursor:pointer;
 }
-
-
-/* My Favourites Button */
-#show-favourites-btn {
-  padding:11px 16px;
-  background:#fff1eb;
-  color:#e45d35;
-  border:1px solid #ffd6c5;
-  border-radius:12px;
-  font-size:14px;
-  font-weight:bold;
-  cursor:pointer;
-  white-space:nowrap;
-  flex-shrink:0;
+.favourite-list .grocery-card{
+  display:flex;margin-bottom:12px;background:white;border:1px solid #eee;
 }
-
-#favourite-count {
-  display:inline-block;
-  background:#FF8A3D;
-  color:white;
-  min-width:21px;
-  height:21px;
-  line-height:21px;
-  text-align:center;
-  border-radius:50%;
-  font-size:12px;
-  margin-left:5px;
+.favourite-list .grocery-card img{
+  width:110px;height:120px;object-fit:cover;flex-shrink:0;
 }
-
-/* Favourite Popup */
-.favourite-popup {
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  z-index:9999;
-  justify-content:center;
-  align-items:center;
-  padding:15px;
+.favourite-list .grocery-info{flex:1;min-width:0;padding:10px}
+.favourite-list .grocery-info h3{font-size:16px}
+.favourite-list .grocery-price{font-size:14px}
+.favourite-list .grocery-add-btn{margin-top:5px;padding:9px 5px;font-size:13px}
+.favourite-list .favourite-btn{width:30px;height:30px;font-size:20px}
+footer{
+  background:var(--green);color:white;text-align:center;padding:30px 15px;
 }
-.favourite-popup-content {
-  width:100%;
-  max-width:500px;
-  max-height:85vh;
-  overflow-y:auto;
-  background:var(--cream);
-  border:2px solid var(--orange);
-  border-radius:18px;
-  padding:18px;
-  box-shadow:0 12px 35px rgba(0,0,0,.3);
-}
-.favourite-popup-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:18px;
-  border-bottom:1px solid #ddd;
-  padding-bottom:12px;
-}
-.favourite-popup-header h2 {
-  color:var(--green);
-  font-size:19px;
-  margin:0;
-}
-.favourite-popup-header button {
-  background:var(--orange);
-  color:var(--green);
-  border:none;
-  border-radius:50%;
-  width:34px;
-  height:34px;
-  font-size:18px;
-  cursor:pointer;
-}
-.favourite-list .grocery-card {
-  display:flex;
-  margin-bottom:12px;
-  background:white;
-  border:1px solid #eee;
-  border-radius:12px;
-  overflow:hidden;
-}
-.favourite-list .grocery-card img {
-  width:110px;
-  height:120px;
-  object-fit:cover;
-  flex-shrink:0;
-}
-.favourite-list .grocery-info {
-  flex:1;
-  min-width:0;
-  padding:10px;
-}
-.favourite-list .grocery-info h3 {
-  font-size:16px;
-}
-.favourite-list .grocery-price {
-  font-size:14px;
-}
-.favourite-list .grocery-add-btn {
-  margin-top:5px;
-  padding:9px 5px;
-  font-size:13px;
-}
-.favourite-list .favourite-btn {
-  width:30px;
-  height:30px;
-  font-size:20px;
-}
-
-/* Footer */
-footer {
-  background:var(--green);
-  color:white;
-  text-align:center;
-  padding:30px 15px;
-}
-footer p {
-  margin-top:8px;
-  font-size:12px;
-  letter-spacing:1px;
-}
+footer p{margin-top:8px;font-size:12px;letter-spacing:1px}
 
 /* Cart */
-.cart-button {
-  position:fixed;
-  right:18px;
-  bottom:20px;
-  z-index:1000;
-  background:var(--orange);
-  color:white;
-  border:none;
-  border-radius:30px;
-  padding:14px 20px;
-  font-size:16px;
-  font-weight:bold;
-  box-shadow:0 4px 15px rgba(0,0,0,.2);
+.cart-button{
+  position:fixed;right:18px;bottom:20px;z-index:1000;
+  background:var(--green);color:white;border:0;border-radius:30px;
+  padding:14px 20px;font-size:16px;font-weight:bold;
+  box-shadow:0 4px 15px #0003;cursor:pointer;
+}
+.cart-overlay,.order-overlay{
+  display:none;position:fixed;inset:0;background:#0000008c;z-index:1001;
+}
+.cart-overlay.active,.order-overlay.active{display:block}
+.cart-panel{
+  position:fixed;top:0;right:-450px;width:100%;max-width:420px;
+  height:100%;background:var(--cream);z-index:1002;padding:25px;
+  overflow-y:auto;transition:right .3s ease;box-shadow:-5px 0 25px #00000020;
+}
+.cart-panel.active{right:0}
+.cart-header{
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid #ddd;padding-bottom:18px;margin-bottom:20px;
+}
+.cart-header h2{color:var(--green)}
+.close-cart{border:0;background:none;font-size:28px;cursor:pointer}
+.cart-item{
+  display:flex;align-items:center;gap:10px;padding:18px 0;
+  border-bottom:1px solid #ddd;width:100%;
+}
+.cart-item img{
+  width:65px;height:65px;object-fit:cover;border-radius:10px;flex-shrink:0;
+}
+.item-info{
+  display:flex;flex-direction:column;flex:1;min-width:0;gap:6px;color:var(--green);
+}
+.item-actions{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.item-actions button{
+  width:30px;height:32px;border:0;border-radius:7px;
+  background:var(--green);color:white;font-size:19px;cursor:pointer;
+}
+.item-actions .remove-btn{background:#d93636}
+#clear-cart-btn{
+  width:100%;padding:13px;margin:15px 0;background:#fff1eb;color:#e45d35;
+  border:1px solid #ffd6c5;border-radius:12px;font-size:15px;font-weight:700;
   cursor:pointer;
 }
-.cart-overlay,.order-overlay {
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  z-index:1001;
+.cart-footer{display:flex;flex-direction:column;gap:20px;margin-top:15px}
+.cart-location,.checkout-box{
+  background:var(--green);padding:22px;border-radius:20px;
+  color:white;border:1px solid #315d4d;
 }
-.cart-overlay.active,.order-overlay.active { display:block; }
-
-.cart-panel {
-  position:fixed;
-  top:0;
-  right:-450px;
-  width:100%;
-  max-width:420px;
-  height:100%;
-  background:var(--cream);
-  z-index:1002;
-  padding:25px;
-  overflow-y:auto;
-  transition:right .3s ease;
-  box-shadow:-5px 0 25px #00000020;
+.cart-location h3{
+  font-size:20px;font-weight:700;margin-bottom:12px;color:white;
 }
-.cart-panel.active { right:0; }
-
-.cart-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid #ddd;
-  padding-bottom:18px;
-  margin-bottom:20px;
+.location-note{
+  background:#ffffff1a;border-left:4px solid var(--orange);
+  padding:13px;border-radius:10px;margin-bottom:18px;
 }
-.cart-header h2 { color:var(--green); }
-.close-cart {
-  border:none;
-  background:none;
-  font-size:28px;
-  cursor:pointer;
+.location-note p{font-size:13px;line-height:1.6;color:white}
+#location-btn{
+  width:100%;padding:15px;background:var(--orange);color:white;
+  border:0;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;
 }
-.cart-item {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:18px 0;
-  border-bottom:1px solid #ddd;
-  width:100%;
+#location-btn:disabled{opacity:.65;cursor:wait}
+#location-status{color:white;font-size:13px;line-height:1.5;margin-top:12px}
+#delivery-info{
+  display:none;margin-top:15px;padding:15px;background:#edf4ed;
+  color:var(--green);border-radius:12px;line-height:1.7;font-size:14px;
 }
-.cart-item img {
-  width:65px;
-  height:65px;
-  object-fit:cover;
-  border-radius:10px;
-  flex-shrink:0;
+.checkout-box h3{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:18px;color:white;font-size:20px;
 }
-.item-info {
-  display:flex;
-  flex-direction:column;
-  flex:1;
-  min-width:0;
-  gap:6px;
-  color:var(--green);
+#cart-total{color:var(--orange);font-size:25px;font-weight:800}
+#checkout-btn{
+  display:block;width:100%;padding:16px;background:var(--orange);
+  color:white;border:0;border-radius:12px;font-size:16px;
+  font-weight:800;cursor:pointer;
 }
-.item-info strong { font-weight:700; }
-.item-actions {
-  display:flex;
-  align-items:center;
-  gap:7px;
-  flex-shrink:0;
+#checkout-btn.checkout-locked{
+  background:#777!important;color:#ddd!important;opacity:.7;
+  cursor:not-allowed;box-shadow:none;
 }
-.item-actions button {
-  width:30px;
-  height:32px;
-  border:0;
-  border-radius:7px;
-  background:var(--green);
-  color:white;
-  font-size:19px;
-  cursor:pointer;
+#order-summary{
+  background:white;border:1px solid #e8dfc9;border-radius:16px;
+  padding:18px;margin:18px 0;box-shadow:0 4px 15px #0f3d2e12;
 }
-.item-actions .remove-btn { background:#d93636; }
-
-#clear-cart-btn {
-  width:100%;
-  padding:13px;
-  margin:15px 0;
-  background:#fff1eb;
-  color:#e45d35;
-  border:1px solid #ffd6c5;
-  border-radius:12px;
-  font-size:15px;
-  font-weight:700;
-  cursor:pointer;
+#order-summary h3{
+  color:var(--green);font-size:18px;font-weight:800;
+  margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #e8dfc9;
 }
-.cart-footer {
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  background:transparent;
-  padding:0;
-  margin-top:15px;
+#summary-items>div{
+  color:var(--dark);font-size:14px;padding:10px 0;
+  border-bottom:1px dashed #d8d2c3;display:flex;justify-content:space-between;gap:10px;
 }
-.cart-location,.checkout-box {
-  background:var(--green);
-  padding:22px;
-  border-radius:20px;
-  color:white;
-  border:1px solid #315d4d;
+#summary-items strong{color:var(--green)}
+.summary-total-line{
+  display:flex;justify-content:space-between;gap:10px;
+  padding-top:12px;margin-top:5px;font-weight:bold;color:var(--green);
 }
-.cart-location h3 {
-  font-size:20px;
-  font-weight:700;
-  margin-bottom:12px;
-  color:white;
-}
-.location-note {
-  background:rgba(255,255,255,.10);
-  border-left:4px solid var(--orange);
-  padding:13px;
-  border-radius:10px;
-  margin-bottom:18px;
-}
-.location-note p {
-  font-size:13px;
-  line-height:1.6;
-  color:white;
-}
-#location-btn {
-  width:100%;
-  padding:15px;
-  background:var(--orange);
-  color:white;
-  border:none;
-  border-radius:12px;
-  font-size:15px;
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:0 5px 12px rgba(0,0,0,.18);
-}
-#location-btn:disabled {
-  opacity:.65;
-  cursor:wait;
-}
-#location-status {
-  color:#fff;
-  font-size:13px;
-  line-height:1.5;
-  margin-top:12px;
-}
-#delivery-info {
-  display:none;
-  margin-top:15px;
-  padding:15px;
-  background:#edf4ed;
-  color:var(--green);
-  border-radius:12px;
-  line-height:1.7;
-  font-size:14px;
-}
-.checkout-box h3 {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:18px;
-  color:white;
-  font-size:20px;
-}
-#cart-total {
-  color:var(--orange);
-  font-size:25px;
-  font-weight:800;
-}
-#checkout-btn {
-  display:block;
-  width:100%;
-  padding:16px;
-  background:var(--orange);
-  color:white;
-  border:0;
-  border-radius:12px;
-  font-size:16px;
-  font-weight:800;
-  cursor:pointer;
-  transition:all .3s ease;
-}
-#checkout-btn:active { transform:scale(.98); }
-#checkout-btn.checkout-locked {
-  background:#777 !important;
-  color:#ddd !important;
-  opacity:.7;
-  cursor:not-allowed;
-  box-shadow:none;
-  transform:none;
-}
-#checkout-btn:not(.checkout-locked) {
-  background:var(--orange) !important;
-  color:white !important;
-  cursor:pointer;
-}
-
-/* Order Summary */
-#order-summary {
-  background:white;
-  border:1px solid #e8dfc9;
-  border-radius:16px;
-  padding:18px;
-  margin:18px 0;
-  box-shadow:0 4px 15px rgba(15,61,46,.07);
-}
-#order-summary h3 {
-  color:var(--green);
-  font-size:18px;
-  font-weight:800;
-  margin-bottom:16px;
-  padding-bottom:12px;
-  border-bottom:1px solid #e8dfc9;
-}
-#summary-items > div {
-  color:var(--dark);
-  font-size:14px;
-  padding:10px 0;
-  border-bottom:1px dashed #d8d2c3;
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-}
-#summary-items strong {
-  color:var(--green);
-  font-weight:800;
-}
-.summary-total-line {
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding-top:12px;
-  margin-top:5px;
-  font-weight:bold;
-  color:var(--green);
-}
-.summary-total-line.final {
-  font-size:17px;
-  color:var(--orange);
-}
+.summary-total-line.final{font-size:17px;color:var(--orange)}
 
 /* Order Form */
-.order-form {
-  display:none;
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:calc(100% - 30px);
-  max-width:420px;
-  max-height:85vh;
-  overflow-y:auto;
-  background:white;
-  padding:25px;
-  border-radius:18px;
-  box-shadow:0 10px 40px rgba(0,0,0,.25);
-  z-index:2001;
+.order-form{
+  display:none;position:fixed;top:50%;left:50%;
+  transform:translate(-50%,-50%);width:calc(100% - 30px);
+  max-width:420px;max-height:85vh;overflow-y:auto;
+  background:var(--cream);padding:25px;border-radius:18px;
+  box-shadow:0 10px 40px #0004;z-index:2001;
 }
-.order-form.active { display:block; }
-.order-form-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:26px;
-  padding-bottom:16px;
-  border-bottom:1px solid #e8dfc9;
+.order-form.active{display:block}
+.order-form-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:26px;padding-bottom:16px;border-bottom:1px solid #e8dfc9;
 }
-.order-form-header h3 {
-  color:var(--green);
-  font-size:23px;
-  font-weight:800;
-  margin:0;
+.order-form-header h3{color:var(--green);font-size:23px;font-weight:800}
+.close-order-btn{
+  background:var(--green);color:var(--cream);border:0;
+  border-radius:12px;width:40px;height:40px;font-size:24px;cursor:pointer;
 }
-.close-order-btn {
-  background:var(--green);
-  color:var(--cream);
-  border:none;
-  border-radius:12px;
-  width:40px;
-  height:40px;
-  font-size:24px;
-  cursor:pointer;
+#order-form input,#order-form textarea{
+  width:100%;padding:16px;margin-bottom:16px;
+  border:1.5px solid #e0dacb;border-radius:14px;
+  background:white;color:var(--dark);font-size:16px;font-family:inherit;outline:none;
 }
-#order-form input,#order-form textarea {
-  width:100%;
-  padding:16px;
-  margin-bottom:16px;
-  border:1.5px solid #e0dacb;
-  border-radius:14px;
-  background:white;
-  color:var(--dark);
-  font-size:16px;
-  font-family:inherit;
-  outline:none;
+#order-form input:focus,#order-form textarea:focus{
+  border-color:var(--green);box-shadow:0 0 0 3px #0f3d2e1a;
 }
-#order-form input:focus,#order-form textarea:focus {
-  border-color:var(--green);
-  box-shadow:0 0 0 3px rgba(15,61,46,.10);
+#order-form textarea{min-height:100px;resize:vertical}
+.place-order-btn{
+  width:100%;padding:15px;margin-top:5px;border:0;border-radius:12px;
+  background:var(--orange);color:white;font-size:16px;font-weight:700;cursor:pointer;
 }
-#order-form textarea {
-  min-height:100px;
-  resize:vertical;
-}
-.place-order-btn {
-  display:block;
-  width:100%;
-  padding:15px;
-  margin-top:5px;
-  border:none;
-  border-radius:12px;
-  background:var(--orange);
-  color:white;
-  font-size:16px;
-  font-weight:700;
-  cursor:pointer;
-}
+.place-order-btn:disabled{opacity:.6;cursor:wait}
 
 /* Location Popup */
-.location-popup {
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.6);
-  z-index:9999;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
+.location-popup{
+  display:none;position:fixed;inset:0;background:#0009;z-index:9999;
+  justify-content:center;align-items:center;padding:20px;
 }
-.location-popup-content {
-  background:var(--cream);
-  padding:25px;
-  border-radius:18px;
-  width:100%;
-  max-width:340px;
-  text-align:center;
+.location-popup-content{
+  background:var(--cream);padding:25px;border-radius:18px;
+  width:100%;max-width:340px;text-align:center;
 }
-.location-popup-content h3 {
-  color:var(--green);
-  margin-bottom:10px;
+.location-popup-content h3{color:var(--green);margin-bottom:10px}
+.location-popup-content p{color:#555;font-size:14px;margin-bottom:20px}
+.location-popup-content button{
+  width:100%;padding:13px;border:0;border-radius:10px;
+  background:var(--green);color:white;font-weight:bold;margin-top:8px;
 }
-.location-popup-content p {
-  color:#555;
-  font-size:14px;
-  margin-bottom:20px;
+.location-popup-content .cancel-btn{background:#ddd;color:#333}
+
+/* Order Success Popup */
+#order-success-popup{
+  display:none;position:fixed;inset:0;background:#00000080;
+  z-index:10000;align-items:center;justify-content:center;padding:20px;
 }
-.location-popup-content button {
-  width:100%;
-  padding:13px;
-  border:none;
-  border-radius:10px;
-  background:var(--green);
-  color:white;
-  font-weight:bold;
-  margin-top:8px;
+.success-content{
+  background:var(--cream);width:100%;max-width:360px;
+  padding:28px;border-radius:20px;text-align:center;
 }
-.location-popup-content .cancel-btn {
-  background:#ddd;
-  color:#333;
+.success-content button{
+  width:100%;padding:14px;background:var(--green);color:white;
+  border:0;border-radius:10px;font-size:16px;font-weight:bold;
 }
 
-/* Order Confirmation */
-#order-confirm-popup {
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#00000080;
-  z-index:99999;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-.confirm-content {
-  background:var(--cream);
-  width:100%;
-  max-width:360px;
-  padding:28px;
-  border-radius:20px;
-  text-align:center;
-}
-.confirm-content button {
-  width:100%;
-  padding:14px;
-  border:0;
-  border-radius:10px;
-  font-size:16px;
-  font-weight:bold;
-  margin-top:10px;
-}
-
-@media(max-width:480px) {
-  .hero h1 { font-size:27px; }
-  .section { padding-left:15px; padding-right:15px; }
-  .grocery-grid {
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:12px;
-  }
-  .grocery-card img { height:125px; }
-  .cart-panel { padding:18px; }
-
-  .favourite-section {
-    padding:0 15px;
-    gap:10px;
-  }
-
-  #free-delivery-progress {
-    padding:10px;
-  }
-
-  #show-favourites-btn {
-    padding:11px 12px;
-    font-size:13px;
-  }
-}
-  .hero-categories {
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:7px;
-  margin-top:10px;
-}
-
-.hero-categories span {
-  background:#ffffff18;
-  border:1px solid #ffffff30;
-  color:white;
-  padding:5px 10px;
-  border-radius:20px;
-  font-size:11px;
-}
-  .hero h1 {
-  background:#FF8A3D;
-  padding:8px 12px;
-  border-radius:10px;
-  color:#FFFFFF;
-  display:inline-block;
-  font-size:21px;
-  margin:6px 0;
-  }
-.search-icon {
-  position:absolute;
-  left:28px;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:17px;
-  z-index:2;
-  pointer-events:none;
+@media(max-width:480px){
+  .hero h1{font-size:27px}
+  .section{padding-left:15px;padding-right:15px}
+  .grocery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .grocery-card img{height:125px}
+  .cart-panel{padding:18px}
+  .favourite-section{padding:0 15px;gap:10px}
+  #free-delivery-progress{padding:10px}
+  #show-favourites-btn{padding:11px 12px;font-size:13px}
 }
 </style>
 </head>
@@ -826,9 +349,8 @@ footer p {
 </header>
 
 <section class="hero">
-<h1>সব ধরনের বাজার এখন ঘরে বসেই</h1>
-<p>প্রতিদিনের প্রয়োজনীয় পণ্য, পৌঁছে যাবে আপনার ঘরে।</p>
-
+  <h1>সব ধরনের বাজার এখন ঘরে বসেই</h1>
+  <p>প্রতিদিনের প্রয়োজনীয় পণ্য, পৌঁছে যাবে আপনার ঘরে।</p>
   <div class="hero-categories">
     <span>🥬 Vegetables</span>
     <span>🍎 Fruits</span>
@@ -839,35 +361,25 @@ footer p {
 
 <div class="search-box">
   <span class="search-icon">🔍</span>
-
   <input type="text" id="grocery-search" placeholder="Search groceries...">
-
-  <button class="search-arrow">→</button>
+  <button class="search-arrow" type="button">→</button>
 </div>
 
-<!-- Free Delivery + My Favourites -->
 <div class="favourite-section">
-
   <div id="free-delivery-progress">
     <div class="free-delivery-heading">
       <strong>🚚 Free Delivery</strong>
       <strong id="free-delivery-amount">৳499</strong>
     </div>
-
     <div class="free-delivery-track">
       <div id="free-delivery-bar"></div>
     </div>
-
-    <p id="free-delivery-message">
-      আর ৳499 টাকার অর্ডার করলেই Free Delivery!
-    </p>
+    <p id="free-delivery-message">আর ৳499 টাকার অর্ডার করলেই Free Delivery!</p>
   </div>
 
   <button id="show-favourites-btn" onclick="showFavourites()">
-  ♥ My Favourites
-  <span id="favourite-count">0</span>
-</button>
-
+    ♥ My Favourites <span id="favourite-count">0</span>
+  </button>
 </div>
 
 <div id="favourite-popup" class="favourite-popup">
@@ -958,15 +470,10 @@ footer p {
   <input type="text" id="customer-name" placeholder="Your Name">
   <input type="tel" id="customer-phone" placeholder="Phone Number">
   <textarea id="customer-address" rows="3" placeholder="Full Delivery Address"></textarea>
+  <textarea id="delivery-instructions" rows="2" placeholder="Delivery Instructions (Optional)"></textarea>
 
-  <textarea
-    id="delivery-instructions"
-    rows="2"
-    placeholder="Delivery Instructions (Optional)"
-  ></textarea>
-
-  <button class="place-order-btn" onclick="placeOrder()">
-    Place Order on WhatsApp →
+  <button class="place-order-btn" id="place-order-btn" onclick="placeOrder()">
+    Place Order →
   </button>
 </div>
 
@@ -979,42 +486,46 @@ footer p {
   </div>
 </div>
 
-<div id="order-confirm-popup">
-  <div class="confirm-content">
-    <div style="font-size:45px;">🛒</div>
-    <h2 style="color:#0F3D2E;margin:15px 0;">Order Confirmation</h2>
-    <p style="color:#555;margin-bottom:12px;">
-      আপনি কি WhatsApp-এ অর্ডার মেসেজটি পাঠিয়েছেন?
-    </p>
-    <button onclick="confirmOrderSent(true)" style="background:#0F3D2E;color:white;">
-      হ্যাঁ, পাঠিয়েছি
-    </button>
-    <button onclick="confirmOrderSent(false)" style="background:#eee;color:#333;">
-      না, এখনো পাঠাইনি
-    </button>
+<div id="order-success-popup">
+  <div class="success-content">
+    <div style="font-size:45px;">✅</div>
+    <h2 style="color:#0F3D2E;margin:15px 0;">
+      Order Placed Successfully!
+    </h2>
+    <p style="color:#555;">Order received successfully!</p>
+    <p id="success-order-id" style="color:#0F3D2E;font-weight:bold;margin:10px 0;"></p>
+    <p style="color:#555;margin-bottom:22px;">Payment: Cash on Delivery</p>
+    <button onclick="window.location.reload()">Continue Shopping</button>
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+/* Supabase Connection */
+const supabaseClient = window.supabase.createClient(
+  "https://gjbfcnwbzbossaqywobq.supabase.co",
+  "sb_publishable_3-6l5wzu43fEC6JalqzhPg_m_31oBQf"
+);
+
+/* Grocery Products */
 const groceryProducts = [
-  { name:"চাল (মোটা)", price:50, unit:"কেজি", image:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500" },
-  { name:"আলু", price:22, unit:"কেজি", image:"https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500" },
-  { name:"পেঁয়াজ", price:55, unit:"কেজি", image:"https://images.unsplash.com/photo-1508747703725-719777637510?w=500" },
-  { name:"ডিম", price:42, unit:"৪টি", image:"https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?w=500" },
-  { name:"মসুর ডাল", price:90, unit:"কেজি", image:"https://images.unsplash.com/photo-1515543904379-3d757afe72e4?w=500" },
-  { name:"টমেটো", price:110, unit:"কেজি", image:"https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=500" },
-  { name:"রসুন", price:160, unit:"কেজি", image:"https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?w=500" },
-  { name:"কাঁচা মরিচ", price:80, unit:"কেজি", image:"https://images.unsplash.com/photo-1588252303782-cb80119abd6d?w=500" },
-  { name:"বেগুন", price:60, unit:"কেজি", image:"cropped-freepik__upload__86592.png" },
-  { name:"গাজর", price:100, unit:"কেজি", image:"https://images.unsplash.com/photo-1445282768818-728615cc910a?w=500" },
-  { name:"আটা", price:50, unit:"কেজি", image:"https://images.unsplash.com/photo-1627485937980-221c88ac04f9?w=500" },
-  { name:"চিনি", price:110, unit:"কেজি", image:"world-diabetes-day-sugar-wooden-bowl-dark-surface_1150-26666.jpg" }
+  {name:"চাল (মোটা)",price:50,unit:"কেজি",image:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500"},
+  {name:"আলু",price:22,unit:"কেজি",image:"https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500"},
+  {name:"পেঁয়াজ",price:55,unit:"কেজি",image:"https://images.unsplash.com/photo-1508747703725-719777637510?w=500"},
+  {name:"ডিম",price:42,unit:"৪টি",image:"https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?w=500"},
+  {name:"মসুর ডাল",price:90,unit:"কেজি",image:"https://images.unsplash.com/photo-1515543904379-3d757afe72e4?w=500"},
+  {name:"টমেটো",price:110,unit:"কেজি",image:"https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=500"},
+  {name:"রসুন",price:160,unit:"কেজি",image:"https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?w=500"},
+  {name:"কাঁচা মরিচ",price:80,unit:"কেজি",image:"https://images.unsplash.com/photo-1588252303782-cb80119abd6d?w=500"},
+  {name:"বেগুন",price:60,unit:"কেজি",image:"cropped-freepik__upload__86592.png"},
+  {name:"গাজর",price:100,unit:"কেজি",image:"https://images.unsplash.com/photo-1445282768818-728615cc910a?w=500"},
+  {name:"আটা",price:50,unit:"কেজি",image:"https://images.unsplash.com/photo-1627485937980-221c88ac04f9?w=500"},
+  {name:"চিনি",price:110,unit:"কেজি",image:"world-diabetes-day-sugar-wooden-bowl-dark-surface_1150-26666.jpg"}
 ];
 
-// Delivery hub: Maid Para Jame Masjid, Khagaria, Satkania
+/* Delivery Settings */
 const HUB_LAT = 22.147609;
 const HUB_LON = 92.040137;
-
 const FREE_DELIVERY_TARGET = 499;
 
 let cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
@@ -1026,28 +537,20 @@ let deliveryCharge = null;
 let deliveryChargeConfirmed = false;
 
 function saveCart() {
-  localStorage.setItem("localbiteCart", JSON.stringify(cart));
+  localStorage.setItem("localbiteCart",JSON.stringify(cart));
   updateCart();
 }
 
 function saveFavourites() {
-  localStorage.setItem(
-    "localbiteFavourites",
-    JSON.stringify(favourites)
-  );
+  localStorage.setItem("localbiteFavourites",JSON.stringify(favourites));
 }
 
-/* Effective Delivery Charge */
 function getEffectiveDeliveryCharge(subtotal) {
-  if (!deliveryChargeConfirmed || deliveryCharge === null) {
-    return null;
-  }
-
+  if (!deliveryChargeConfirmed || deliveryCharge === null) return null;
   return subtotal >= FREE_DELIVERY_TARGET ? 0 : deliveryCharge;
 }
 
-
-/* Create Grocery Card */
+/* Grocery Cards */
 function createGroceryCard(product) {
   const card = document.createElement("div");
   card.className = "grocery-card";
@@ -1058,126 +561,103 @@ function createGroceryCard(product) {
   card.innerHTML = `
     <img src="${product.image}" alt="${product.name}"
       onerror="this.src='https://placehold.co/500x350?text=Grocery'">
-
     <div class="grocery-info">
       <button class="favourite-btn" onclick="toggleFavourite(this)">
         ${isFavourite ? "♥" : "♡"}
       </button>
-
       <h3>${product.name}</h3>
-
       <p class="grocery-price">৳${product.price} / ${product.unit}</p>
-
       <button class="grocery-add-btn"
-        onclick="addGroceryToCart('${product.name}', this)"
+        onclick="addGroceryToCart('${product.name}')"
         style="${added ? "background:#198754;" : ""}">
         ${added ? "✓ Added to Cart" : "+ Add to Cart"}
       </button>
     </div>
   `;
-
   return card;
 }
 
+function getFilteredGroceries() {
+  const search = document.getElementById("grocery-search").value.toLowerCase().trim();
+  return groceryProducts.filter(product =>
+    product.name.toLowerCase().includes(search)
+  );
+}
 
-/* Display Groceries */
 function displayGroceries(products) {
-  const groceryList = document.getElementById("grocery-list");
-  groceryList.innerHTML = "";
+  const list = document.getElementById("grocery-list");
+  list.innerHTML = "";
 
   if (!products.length) {
-    groceryList.innerHTML = `
-      <div style="
-        grid-column:1 / -1;
-        text-align:center;
-        padding:45px 20px;
-        color:#0F3D2E;
-        font-size:17px;
-        font-weight:700;
-        background:#FFF8E7;
-        border:1px solid #e8dfc9;
-        border-radius:18px;
-      ">
-        🔍<br><br>
-        No Products Found.
-        <br>
+    list.innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:45px 20px;
+        color:#0F3D2E;font-size:17px;font-weight:700;background:#FFF8E7;
+        border:1px solid #e8dfc9;border-radius:18px;">
+        🔍<br><br>No Products Found.<br>
         <small>Sorry, we couldn't find any matching grocery.</small>
-      </div>
-    `;
+      </div>`;
     return;
   }
 
-  products.forEach(product => {
-    groceryList.appendChild(createGroceryCard(product));
-  });
+  products.forEach(product => list.appendChild(createGroceryCard(product)));
 }
 
-/* Add Grocery to Cart */
-
-function addGroceryToCart(productName, button) {
+/* Add / Remove Grocery from Shared Cart */
+function addGroceryToCart(productName) {
   const product = groceryProducts.find(item => item.name === productName);
-
   if (!product) return;
 
-  const existingIndex = cart.findIndex(item => item.name === productName);
+  const index = cart.findIndex(item => item.name === productName);
 
-  if (existingIndex !== -1) {
-    cart.splice(existingIndex, 1);
+  if (index !== -1) {
+    cart.splice(index,1);
   } else {
     cart.push({
-      name: product.name,
-      price: product.price,
-      quantity: 1,
-      image: product.image
+      name:product.name,
+      price:product.price,
+      quantity:1,
+      image:product.image
     });
   }
 
   saveCart();
+  displayGroceries(getFilteredGroceries());
 
-  displayGroceries(
-    groceryProducts.filter(product =>
-      product.name.toLowerCase().includes(
-        document.getElementById("grocery-search").value.toLowerCase().trim()
-      )
-    )
-  );
-
-  const popup = document.getElementById("favourites-popup");
-  if (popup && popup.style.display !== "none") {
+  if (document.getElementById("favourite-popup").style.display === "flex") {
     showFavourites();
   }
 }
 
-/* Favourite System */
+/* Favourites */
 function toggleFavourite(button) {
   const card = button.closest(".grocery-card");
   const name = card.querySelector("h3").innerText;
 
   if (favourites.includes(name)) {
     favourites = favourites.filter(item => item !== name);
-    button.innerHTML = "♡";
-    button.style.background = "#fff1eb";
   } else {
     favourites.push(name);
-    button.innerHTML = "♥";
-    button.style.background = "#ffd6c5";
   }
 
   saveFavourites();
   updateFavouriteCount();
+  displayGroceries(getFilteredGroceries());
+
+  if (document.getElementById("favourite-popup").style.display === "flex") {
+    showFavourites();
+  }
 }
+
 function updateFavouriteCount() {
-  document.getElementById("favourite-count").innerText =
-    favourites.length;
+  document.getElementById("favourite-count").innerText = favourites.length;
 }
-/* Show Favourites */
+
 function showFavourites() {
   const popup = document.getElementById("favourite-popup");
   const list = document.getElementById("favourite-list");
-
   list.innerHTML = "";
 
-  if (favourites.length === 0) {
+  if (!favourites.length) {
     popup.style.display = "none";
     alert("You haven't added any favourites yet!");
     return;
@@ -1185,35 +665,38 @@ function showFavourites() {
 
   groceryProducts.forEach(product => {
     if (favourites.includes(product.name)) {
-      list.appendChild(createGroceryCard(product));
+      const card = createGroceryCard(product);
+      const favButton = card.querySelector(".favourite-btn");
+      favButton.onclick = () => toggleFavouriteByName(product.name);
+      list.appendChild(card);
     }
   });
 
   popup.style.display = "flex";
 }
 
-function closeFavourites() {
-  document.getElementById("favourite-popup").style.display = "none";
-}
-
-/* Remove Favourite from Popup */
 function toggleFavouriteByName(name) {
   favourites = favourites.filter(item => item !== name);
   saveFavourites();
+  updateFavouriteCount();
   showFavourites();
+  displayGroceries(getFilteredGroceries());
+}
+
+function closeFavourites() {
+  document.getElementById("favourite-popup").style.display = "none";
 }
 
 /* Cart Update */
 function updateCart() {
   const cartItems = document.getElementById("cart-items");
-  const cartCount = document.getElementById("cart-count");
   const summaryItems = document.getElementById("summary-items");
 
   let subtotal = 0;
   let count = 0;
 
   if (!cart.length) {
-    cartItems.innerHTML = "<p>Your cart is empty!</p>";
+    cartItems.innerHTML = '<p class="empty-cart">Your cart is empty!</p>';
     summaryItems.innerHTML = "<p>No items added yet.</p>";
   } else {
     cartItems.innerHTML = cart.map((item,index) => {
@@ -1248,94 +731,55 @@ function updateCart() {
     `).join("");
   }
 
-  /* Free Delivery Calculation */
   const effectiveDeliveryCharge = getEffectiveDeliveryCharge(subtotal);
   const charge = effectiveDeliveryCharge === null ? 0 : effectiveDeliveryCharge;
   const finalTotal = subtotal + charge;
 
-  cartCount.textContent = count;
+  document.getElementById("cart-count").textContent = count;
 
-  /* Free Delivery Progress */
-  const progress = Math.min(
-    (subtotal / FREE_DELIVERY_TARGET) * 100,
-    100
-  );
-
-  document.getElementById("free-delivery-bar").style.width =
-    progress + "%";
+  const progress = Math.min((subtotal / FREE_DELIVERY_TARGET) * 100,100);
+  document.getElementById("free-delivery-bar").style.width = progress + "%";
 
   if (subtotal >= FREE_DELIVERY_TARGET) {
-    document.getElementById("free-delivery-amount").innerText =
-      "UNLOCKED 🎉";
-
+    document.getElementById("free-delivery-amount").innerText = "UNLOCKED 🎉";
     document.getElementById("free-delivery-message").innerText =
       "অভিনন্দন! আপনি Free Delivery আনলক করেছেন!";
   } else {
-    document.getElementById("free-delivery-amount").innerText =
-      "৳499";
-
+    document.getElementById("free-delivery-amount").innerText = "৳499";
     document.getElementById("free-delivery-message").innerText =
       "আর ৳" + (FREE_DELIVERY_TARGET - subtotal) +
       " টাকার অর্ডার করলেই Free Delivery!";
   }
 
-  document.getElementById("summary-subtotal").textContent =
-    "৳" + subtotal;
-
+  document.getElementById("summary-subtotal").textContent = "৳" + subtotal;
   document.getElementById("summary-delivery").textContent =
-    effectiveDeliveryCharge === null
-      ? "লোকেশন নিশ্চিত হয়নি"
-      : effectiveDeliveryCharge === 0
-        ? "FREE"
-        : "৳" + effectiveDeliveryCharge;
+    effectiveDeliveryCharge === null ? "লোকেশন নিশ্চিত হয়নি" :
+    effectiveDeliveryCharge === 0 ? "FREE" : "৳" + effectiveDeliveryCharge;
 
-  document.getElementById("summary-final").textContent =
-    "৳" + finalTotal;
+  document.getElementById("summary-final").textContent = "৳" + finalTotal;
+  document.getElementById("cart-total").textContent = finalTotal;
 
-  document.getElementById("cart-total").textContent =
-    finalTotal;
-
-  /* Update Delivery Information */
   if (deliveryChargeConfirmed) {
     document.getElementById("delivery-charge").textContent =
-      "Delivery Charge: " +
-      (effectiveDeliveryCharge === 0
-        ? "FREE"
-        : "৳" + effectiveDeliveryCharge);
+      "Delivery Charge: " + (effectiveDeliveryCharge === 0
+        ? "FREE" : "৳" + effectiveDeliveryCharge);
   }
 }
 
 function changeQuantity(index,amount) {
   if (!cart[index]) return;
-
   cart[index].quantity = (Number(cart[index].quantity) || 1) + amount;
 
-  if (cart[index].quantity <= 0) {
-    cart.splice(index,1);
-  }
+  if (cart[index].quantity <= 0) cart.splice(index,1);
 
   saveCart();
-
-  displayGroceries(
-    groceryProducts.filter(product =>
-      product.name.toLowerCase().includes(
-        document.getElementById("grocery-search").value.toLowerCase().trim()
-      )
-    )
-  );
+  displayGroceries(getFilteredGroceries());
 }
 
 function removeItem(index) {
   cart.splice(index,1);
   saveCart();
-
-  displayGroceries(
-    groceryProducts.filter(product =>
-      product.name.toLowerCase().includes(
-        document.getElementById("grocery-search").value.toLowerCase().trim()
-      )
-    )
-  );
+  displayGroceries(getFilteredGroceries());
 }
 
 function toggleCart() {
@@ -1353,29 +797,22 @@ function clearCart() {
 
   cart = [];
   saveCart();
-
-  displayGroceries(
-    groceryProducts.filter(product =>
-      product.name.toLowerCase().includes(
-        document.getElementById("grocery-search").value.toLowerCase().trim()
-      )
-    )
-  );
+  displayGroceries(getFilteredGroceries());
 
   document.getElementById("cart-panel").classList.remove("active");
   document.getElementById("cart-overlay").classList.remove("active");
 }
 
-/* Delivery Calculation */
+/* Delivery Distance */
 function calculateDistance(lat1,lon1,lat2,lon2) {
   const earthRadius = 6371;
   const toRadians = value => value * Math.PI / 180;
-
   const dLat = toRadians(lat2-lat1);
   const dLon = toRadians(lon2-lon1);
 
   const a = Math.sin(dLat/2)**2 +
-    Math.cos(toRadians(lat1))*Math.cos(toRadians(lat2))*Math.sin(dLon/2)**2;
+    Math.cos(toRadians(lat1))*Math.cos(toRadians(lat2))*
+    Math.sin(dLon/2)**2;
 
   return earthRadius * 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
 }
@@ -1392,7 +829,7 @@ function calculateDeliveryCharge(distance) {
 
 function updateCheckoutState() {
   document.getElementById("checkout-btn").classList.toggle(
-    "checkout-locked", !deliveryChargeConfirmed
+    "checkout-locked",!deliveryChargeConfirmed
   );
 }
 
@@ -1419,9 +856,7 @@ function getCurrentLocation() {
     customerLocation = `https://www.google.com/maps?q=${lat},${lon}`;
 
     status.textContent = "✓ Location confirmed successfully!";
-
     document.getElementById("delivery-info").style.display = "block";
-
     document.getElementById("delivery-distance").textContent =
       "Distance from delivery point: " + deliveryDistance.toFixed(2) + " km";
 
@@ -1432,7 +867,7 @@ function getCurrentLocation() {
     updateCart();
     closeLocationPopup();
 
-  }, error => {
+  },error => {
     button.disabled = false;
     button.textContent = "📍 Confirm My Location";
 
@@ -1447,8 +882,7 @@ function getCurrentLocation() {
     } else {
       status.textContent = "লোকেশন পাওয়া যায়নি। আবার চেষ্টা করুন।";
     }
-
-  }, { enableHighAccuracy:true, timeout:15000, maximumAge:0 });
+  },{enableHighAccuracy:true,timeout:15000,maximumAge:0});
 }
 
 function openLocationSettings() {
@@ -1480,8 +914,10 @@ function closeOrderForm() {
   document.getElementById("order-overlay").classList.remove("active");
 }
 
-/* WhatsApp Order */
-function placeOrder() {
+/* Direct Supabase Ordering */
+async function placeOrder() {
+  const button = document.getElementById("place-order-btn");
+
   const instructions = document.getElementById("delivery-instructions").value.trim();
   const name = document.getElementById("customer-name").value.trim();
   const phone = document.getElementById("customer-phone").value.trim();
@@ -1497,144 +933,97 @@ function placeOrder() {
     return;
   }
 
-  if (!deliveryChargeConfirmed || deliveryCharge === null || !customerLocation) {
+  if (!deliveryChargeConfirmed || deliveryCharge === null) {
     alert("Please confirm your delivery location first!");
     closeOrderForm();
     return;
   }
 
-  let subtotal = 0;
-  let orderText = "🛒 *LOCALBITE GROCERY ORDER*\n\n";
-
-  orderText += `Name: ${name}\nPhone: ${phone}\nAddress: ${address}\n\n`;
-
-  if (instructions) {
-    orderText += `📝 Delivery Instructions: ${instructions}\n`;
-  }
-
-  orderText += "*Order Items:*\n";
-
-  cart.forEach(item => {
-    const itemTotal = Number(item.price) * Number(item.quantity);
-    subtotal += itemTotal;
-    orderText += `${item.name} × ${item.quantity} = ৳${itemTotal}\n`;
-  });
-
-  /* Free Delivery Applied to WhatsApp Order */
-  const effectiveDeliveryCharge = getEffectiveDeliveryCharge(subtotal);
-  const finalTotal = subtotal + effectiveDeliveryCharge;
-
-  orderText += `\nSubtotal: ৳${subtotal}\n`;
-
-  orderText +=
-    `Delivery Charge: ${
-      effectiveDeliveryCharge === 0
-        ? "FREE"
-        : "৳" + effectiveDeliveryCharge
-    }\n`;
-
-  orderText += `*Final Total: ৳${finalTotal}*\n`;
-  orderText += `\nCustomer Location: ${customerLocation}\n`;
-  orderText += "\nThank you for ordering from LOCALBITE!";
-
-  const whatsappURL =
-    "https://wa.me/8801632033787?text=" + encodeURIComponent(orderText);
-
-  sessionStorage.setItem("localbitePendingGroceryOrder","yes");
-  window.open(whatsappURL,"_blank");
-
-  function checkGroceryOrderStatus() {
-    if (document.visibilityState !== "visible") return;
-
-    if (sessionStorage.getItem("localbitePendingGroceryOrder") !== "yes") return;
-
-    sessionStorage.removeItem("localbitePendingGroceryOrder");
-
-    document.removeEventListener("visibilitychange",checkGroceryOrderStatus);
-
-    document.getElementById("order-confirm-popup").style.display = "flex";
-  }
-
-  document.addEventListener("visibilitychange",checkGroceryOrderStatus);
-}
-
-/* Order Confirmation */
-function confirmOrderSent(sent) {
-  document.getElementById("order-confirm-popup").style.display = "none";
-
-  if (!sent) return;
-
-  cart = [];
-  saveCart();
-
-  displayGroceries(
-    groceryProducts.filter(product =>
-      product.name.toLowerCase().includes(
-        document.getElementById("grocery-search").value.toLowerCase().trim()
-      )
-    )
+  const subtotal = cart.reduce(
+    (sum,item) => sum + Number(item.price) * Number(item.quantity),0
   );
 
-  document.getElementById("customer-name").value = "";
-  document.getElementById("customer-phone").value = "";
-  document.getElementById("customer-address").value = "";
-  document.getElementById("delivery-instructions").value = "";
+  const effectiveDeliveryCharge =
+    subtotal >= FREE_DELIVERY_TARGET ? 0 : deliveryCharge;
 
-  customerLocation = "";
-  deliveryDistance = null;
-  deliveryCharge = null;
-  deliveryChargeConfirmed = false;
+  const finalTotal = subtotal + effectiveDeliveryCharge;
 
-  document.getElementById("location-status").textContent = "";
-  document.getElementById("delivery-info").style.display = "none";
-  document.getElementById("location-btn").disabled = false;
-  document.getElementById("location-btn").textContent = "📍 Confirm My Location";
+  let customerNote = instructions;
 
-  updateCheckoutState();
-  updateCart();
+  if (customerLocation) {
+    customerNote += (customerNote ? "\n" : "") +
+      "Customer Location: " + customerLocation;
+  }
 
-  document.getElementById("order-form").classList.remove("active");
-  document.getElementById("cart-panel").classList.remove("active");
-  document.getElementById("cart-overlay").classList.remove("active");
-  document.getElementById("order-overlay").classList.remove("active");
+  const orderData = {
+    customer_name:name,
+    delivery_address:address,
+    customer_phone:phone,
+    order_items:cart.map(item => ({
+      name:item.name,
+      price:Number(item.price),
+      quantity:Number(item.quantity)
+    })),
+    order_status:"pending",
+    total_amount:finalTotal,
+    delivery_charge:effectiveDeliveryCharge,
+    payment_method:"Cash on Delivery",
+    customer_note:customerNote
+  };
+
+  button.disabled = true;
+  button.textContent = "Placing Order...";
+
+  try {
+    const {error} = await supabaseClient
+      .from("LOCALBITE")
+      .insert([orderData]);
+
+    if (error) {
+      console.error("Supabase Error:",error);
+      alert("Order failed: " + error.message);
+      button.disabled = false;
+      button.textContent = "Place Order →";
+      return;
+    }
+
+    cart = [];
+    saveCart();
+
+    document.getElementById("success-order-id").innerText =
+      "Thank you for ordering from LOCALBITE! 💚";
+
+    closeOrderForm();
+    document.getElementById("cart-panel").classList.remove("active");
+    document.getElementById("cart-overlay").classList.remove("active");
+    document.getElementById("order-success-popup").style.display = "flex";
+
+  } catch(error) {
+    console.error(error);
+    alert("Something went wrong! Please try again.");
+  } finally {
+    button.disabled = false;
+    button.textContent = "Place Order →";
+  }
 }
 
 /* Grocery Search */
 document.getElementById("grocery-search").addEventListener("input",function() {
-  const searchValue = this.value.toLowerCase().trim();
-
-  displayGroceries(
-    groceryProducts.filter(product =>
-      product.name.toLowerCase().includes(searchValue)
-    )
-  );
+  displayGroceries(getFilteredGroceries());
 });
 
-/* Storage Sync */
+/* Shared Cart & Favourite Storage Sync */
 window.addEventListener("storage",function(event) {
   if (event.key === "localbiteCart") {
     cart = JSON.parse(localStorage.getItem("localbiteCart")) || [];
     updateCart();
-
-    displayGroceries(
-      groceryProducts.filter(product =>
-        product.name.toLowerCase().includes(
-          document.getElementById("grocery-search").value.toLowerCase().trim()
-        )
-      )
-    );
+    displayGroceries(getFilteredGroceries());
   }
 
   if (event.key === "localbiteFavourites") {
     favourites = JSON.parse(localStorage.getItem("localbiteFavourites")) || [];
-
-    displayGroceries(
-      groceryProducts.filter(product =>
-        product.name.toLowerCase().includes(
-          document.getElementById("grocery-search").value.toLowerCase().trim()
-        )
-      )
-    );
+    updateFavouriteCount();
+    displayGroceries(getFilteredGroceries());
   }
 });
 
@@ -1643,7 +1032,7 @@ displayGroceries(groceryProducts);
 updateCart();
 updateCheckoutState();
 updateFavouriteCount();
-</script>
 
+</script>
 </body>
 </html>
