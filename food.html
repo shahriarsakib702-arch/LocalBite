@@ -1671,7 +1671,7 @@ async function placeOrder() {
     cart = [];
     saveCart();
 
-    document.getElementById("success-order-id").innerText = orderId;
+    document.getElementById("success-order-id").innerText = data.id;
 
 document.getElementById("order-success-popup").style.display = "flex";
 
