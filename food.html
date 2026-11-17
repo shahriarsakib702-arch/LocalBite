@@ -2056,6 +2056,12 @@ window.addEventListener("load", function() {
 
 console.log("Cart loaded:", cart);
 console.log("Cart count:", document.getElementById("cart-count")?.textContent);
+function closeSuccessPopup() {
+  const popup = document.getElementById("order-success-popup");
+
+  popup.classList.remove("show");
+  popup.style.display = "none";
+}
 </script>
 
 </body>
