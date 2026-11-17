@@ -1333,54 +1333,46 @@ footer {
 
 </div>
 
-<div id="order-success-popup" style="
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#00000080;
-  z-index:2000;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-">
-  <div style="
-    background:#FFF8E7;
-    width:100%;
-    max-width:360px;
-    padding:28px;
-    border-radius:20px;
-    text-align:center;
-  ">
-    <div style="font-size:45px;">✅</div>
 
-    <h2 style="color:#0F3D2E;margin:15px 0;">
-      Order Placed Successfully!
-    </h2>
+<div id="order-success-popup">
+  <div class="success-card">
 
-    <p style="color:#555;">Order received successfully!</p>
+    <div class="success-icon">
+      <svg viewBox="0 0 52 52">
+        <path d="M12 27 L22 37 L41 15"/>
+      </svg>
+    </div>
 
-    <p id="success-order-id" style="
-      color:#0F3D2E;
-      font-weight:bold;
-      overflow-wrap:anywhere;
-    "></p>
+    <h2>Order Confirmed</h2>
 
-    <p style="color:#555;margin-bottom:22px;">
-      Payment: Cash on Delivery
+    <p class="success-subtitle">
+      Your happiness is on its way!
     </p>
 
-    <button onclick="window.location.reload()" style="
-      width:100%;
-      padding:14px;
-      background:#0F3D2E;
-      color:white;
-      border:0;
-      border-radius:10px;
-      font-size:16px;
-      font-weight:bold;
-    ">Continue Shopping</button>
+    <div class="success-divider"></div>
+
+    <h3 class="success-thanks">ধন্যবাদ! 💚</h3>
+
+    <p class="success-message">
+      ✓ আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।
+    </p>
+
+    <p class="success-description">
+      একটু অপেক্ষা করুন, আপনার পছন্দের জিনিসগুলো নিয়ে আমরা আসছি!
+    </p>
+
+    <button class="success-continue"
+      onclick="window.location.reload()">
+      CONTINUE SHOPPING →
+    </button>
+
+    <p class="success-brand">
+      GOOD FOOD. RIGHT AROUND YOU.
+    </p>
+
   </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const supabaseClient = window.supabase.createClient(
