@@ -1669,13 +1669,9 @@ async function placeOrder() {
     cart = [];
     saveCart();
 
-    alert(
-      "Your order has been placed successfully!\n\nOrder ID: " +
-      orderId +
-      "\n\nPayment: Cash on Delivery"
-    );
+    document.getElementById("success-order-id").innerText = orderId;
 
-    window.location.reload();
+document.getElementById("order-success-popup").style.display = "flex";
 
   } catch (error) {
     console.error(error);
