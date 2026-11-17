@@ -1901,34 +1901,42 @@ async function placeOrder() {
       return;
     }
 
-    // Start button success animation
-    button.classList.remove("is-processing");
-    button.classList.add("is-success");
+// Start button success animation
+cart = [];
+saveCart();
+updateCart();
+refreshFoodButtons();
 
-    cart = [];
-    saveCart();
-    updateCart();
-    refreshFoodButtons();
+document.getElementById("customer-name").value = "";
+document.getElementById("customer-phone").value = "";
+document.getElementById("customer-address").value = "";
+document.getElementById("delivery-instructions").value = "";
 
-    document.getElementById("customer-name").value = "";
-    document.getElementById("customer-phone").value = "";
-    document.getElementById("customer-address").value = "";
-    document.getElementById("delivery-instructions").value = "";
+customerLocationLink = "";
 
-    customerLocationLink = "";
+// Wait for green fill animation
+setTimeout(() => {
 
-    setTimeout(() => {
-      closeOrderForm();
+  button.classList.remove("is-processing");
+  button.classList.add("is-success");
 
-      document.getElementById("cart-box").classList.remove("active");
-      document.getElementById("cart-overlay").classList.remove("active");
+  // Wait for tick animation
+  setTimeout(() => {
 
-      document.getElementById("order-success-popup").style.display = "flex";
+    closeOrderForm();
 
-      button.disabled = false;
-      button.classList.remove("is-success");
+    document.getElementById("cart-box").classList.remove("active");
+    document.getElementById("cart-overlay").classList.remove("active");
 
-    }, 1450);
+    const popup = document.getElementById("order-success-popup");
+    popup.classList.add("show");
+
+    button.disabled = false;
+    button.classList.remove("is-success");
+
+  }, 600);
+
+}, 900);
 
   } catch (error) {
     console.error(error);
