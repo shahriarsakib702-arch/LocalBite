@@ -1798,7 +1798,10 @@ function confirmOrderSent(sent) {
 
 /* Place Order */
 
+
 async function placeOrder() {
+  const button = document.getElementById("place-order-btn");
+
   const instructions = document.getElementById("delivery-instructions").value.trim();
   const name = document.getElementById("customer-name").value.trim();
   const phone = document.getElementById("customer-phone").value.trim();
@@ -1828,8 +1831,6 @@ async function placeOrder() {
 
   const finalTotal = subtotal + effectiveDeliveryCharge;
 
-  
-
   let customerNote = instructions;
 
   if (customerLocationLink) {
@@ -1838,7 +1839,6 @@ async function placeOrder() {
   }
 
   const orderData = {
-    
     customer_name: name,
     delivery_address: address,
     customer_phone: phone,
@@ -1854,30 +1854,64 @@ async function placeOrder() {
     customer_note: customerNote
   };
 
+  button.disabled = true;
+  button.classList.remove("is-success");
+  button.classList.add("is-processing");
+
   try {
-   const { error } = await supabaseClient
-  .from("LOCALBITE")
-  .insert([orderData]);
+    const { error } = await supabaseClient
+      .from("LOCALBITE")
+      .insert([orderData]);
 
     if (error) {
-  console.error("Supabase Error:", error);
-  alert("Order failed: " + error.message);
-  return;
-}
+      console.error("Supabase Error:", error);
+
+      button.classList.remove("is-processing");
+      button.disabled = false;
+
+      alert("Order failed: " + error.message);
+      return;
+    }
+
+    // Start button success animation
+    button.classList.remove("is-processing");
+    button.classList.add("is-success");
 
     cart = [];
     saveCart();
+    updateCart();
+    refreshFoodButtons();
 
-    document.getElementById("success-order-id").innerText =
-  "Thank you for ordering from LOCALBITE! 💚";
+    document.getElementById("customer-name").value = "";
+    document.getElementById("customer-phone").value = "";
+    document.getElementById("customer-address").value = "";
+    document.getElementById("delivery-instructions").value = "";
 
-document.getElementById("order-success-popup").style.display = "flex";
+    customerLocationLink = "";
+
+    setTimeout(() => {
+      closeOrderForm();
+
+      document.getElementById("cart-box").classList.remove("active");
+      document.getElementById("cart-overlay").classList.remove("active");
+
+      document.getElementById("order-success-popup").style.display = "flex";
+
+      button.disabled = false;
+      button.classList.remove("is-success");
+
+    }, 1450);
 
   } catch (error) {
     console.error(error);
+
+    button.classList.remove("is-processing");
+    button.disabled = false;
+
     alert("Something went wrong! Please try again.");
   }
 }
+
 
  
 
