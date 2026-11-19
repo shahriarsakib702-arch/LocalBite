@@ -1916,7 +1916,7 @@ async function placeOrder() {
       alert("Order failed: " + error.message);
       return;
     }
-
+window.lastOrderDetails = orderData;
 // Start button success animation
 cart = [];
 saveCart();
