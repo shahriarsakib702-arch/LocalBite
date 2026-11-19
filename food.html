@@ -2322,7 +2322,8 @@ function closeOrderDetails() {
   );
 
   const button = document.getElementById("floating-tracking");
-
+const icon = button.querySelector(".tracking-icon");
+const label = button.querySelector(".tracking-label");
   if (!button) return;
 
   if (savedOrders.length === 0) {
