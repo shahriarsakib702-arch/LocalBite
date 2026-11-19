@@ -2346,8 +2346,11 @@ function closeOrderDetails() {
     );
 
     if (!error && data && data.order_status !== "Delivered") {
-      activeOrders.push(order);
-    }
+  activeOrders.push({
+    ...order,
+    current_status: data.order_status
+  });
+}
   }
 
   localStorage.setItem(
