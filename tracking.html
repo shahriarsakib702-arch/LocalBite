@@ -87,6 +87,8 @@ const supabaseClient = window.supabase.createClient(
   
 <script>
 async function loadOrderTracking() {
+  const detailsBox = document.getElementById("order-details");
+if (detailsBox) detailsBox.textContent = "";
   const savedOrders = JSON.parse(
     localStorage.getItem("localbiteActiveOrders") || "[]"
   );
