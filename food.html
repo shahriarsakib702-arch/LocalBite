@@ -2345,9 +2345,10 @@ function closeOrderDetails() {
     localStorage.getItem("localbiteActiveOrders") || "[]"
   );
 
-  const button = document.getElementById("floating-tracking");
+  const container = document.getElementById("floating-tracking");
+const button = container?.querySelector("button");
 
-  if (!button) return;
+if (!container || !button) return;
 
   const icon = button.querySelector(".tracking-icon");
   const label = button.querySelector(".tracking-label");
