@@ -1423,13 +1423,15 @@ color: transparent !important;
 <div id="order-success-popup">
   <div class="success-card">
 
+    <button class="success-close" onclick="closeSuccessPopup()">×</button>
+
     <div class="success-icon">
       <svg viewBox="0 0 52 52">
         <path d="M12 27 L22 37 L41 15"/>
       </svg>
     </div>
 
-    <h2>Order Confirmed</h2>
+    <h2>Order <span>Confirmed</span></h2>
 
     <p class="success-subtitle">
       Your happiness is on its way!
@@ -1437,37 +1439,36 @@ color: transparent !important;
 
     <div class="success-divider"></div>
 
-    <h3 class="success-thanks">ধন্যবাদ! 💚</h3>
-
-    <p class="success-message">
-      ✓ আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।
+    <p id="success-order-code" class="success-order-code">
+      Order ID: —
     </p>
+
+    <div class="success-thanks-box">
+      <h3>ধন্যবাদ! 💚</h3>
+      <p>✓ আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।</p>
+    </div>
 
     <p class="success-description">
       একটু অপেক্ষা করুন, আপনার পছন্দের জিনিসগুলো নিয়ে আমরা আসছি!
     </p>
-<p id="success-order-code" class="success-message">
-  Order ID: —
-</p>
 
-<button class="success-continue"
-  onclick="viewOrderDetails()">
-  VIEW YOUR ORDER DETAILS →
-</button>
+    <button class="success-details-btn"
+      onclick="viewOrderDetails()">
+      VIEW YOUR ORDER DETAILS →
+    </button>
 
-<button class="success-continue"
-  onclick="closeSuccessPopup()">
-  CONTINUE BUYING →
-</button>
-    
+    <button class="success-continue"
+      onclick="closeSuccessPopup()">
+      CONTINUE BUYING →
+    </button>
 
     <p class="success-brand">
-      GOOD FOOD. RIGHT AROUND YOU.
+      💚 GOOD FOOD. RIGHT AROUND YOU.
+      <strong>LOCAL<span>BITE</span></strong>
     </p>
 
   </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const supabaseClient = window.supabase.createClient(
