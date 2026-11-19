@@ -2140,7 +2140,62 @@ window.addEventListener("load", function() {
 
 console.log("Cart loaded:", cart);
 console.log("Cart count:", document.getElementById("cart-count")?.textContent);
-function closeSuccessPopup() {
+function viewOrderDetails() {
+  const order = window.lastOrderDetails;
+
+  if (!order) {
+    alert("Order details not found!");
+    return;
+  }
+
+  document.getElementById("details-order-code").textContent =
+    "Order ID: " + order.order_code;
+
+  const content = document.getElementById("order-details-content");
+  content.replaceChildren();
+
+  function addLine(label, value) {
+    const p = document.createElement("p");
+    const strong = document.createElement("strong");
+
+    strong.textContent = label + ": ";
+    p.append(strong, document.createTextNode(String(value ?? "None")));
+
+    content.appendChild(p);
+  }
+
+  addLine("Customer", order.customer_name);
+  addLine("Phone", order.customer_phone);
+  addLine("Address", order.delivery_address);
+
+  content.appendChild(document.createElement("hr"));
+
+  const heading = document.createElement("h3");
+  heading.textContent = "Ordered Products";
+  content.appendChild(heading);
+
+  order.order_items.forEach(item => {
+    addLine(
+      item.name,
+      `${item.quantity} × ৳${item.price} = ৳${item.price * item.quantity}`
+    );
+  });
+
+  content.appendChild(document.createElement("hr"));
+
+  addLine("Delivery Charge", "৳" + order.delivery_charge);
+  addLine("Total", "৳" + order.total_amount);
+  addLine("Payment", order.payment_method);
+  addLine("Note", order.customer_note || "None");
+  addLine("Status", "Order Placed");
+
+  document.getElementById("order-details-popup").classList.add("show");
+}
+
+function closeOrderDetails() {
+  document.getElementById("order-details-popup").classList.remove("show");
+}
+  function closeSuccessPopup() {
   const popup = document.getElementById("order-success-popup");
 
   popup.classList.remove("show");
