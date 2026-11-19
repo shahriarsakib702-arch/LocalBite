@@ -1388,11 +1388,20 @@ color: transparent !important;
     <p class="success-description">
       একটু অপেক্ষা করুন, আপনার পছন্দের জিনিসগুলো নিয়ে আমরা আসছি!
     </p>
+<p id="success-order-code" class="success-message">
+  Order ID: —
+</p>
 
-    <button class="success-continue"
+<button class="success-continue"
+  onclick="viewOrderDetails()">
+  VIEW YOUR ORDER DETAILS →
+</button>
+
+<button class="success-continue"
   onclick="closeSuccessPopup()">
   CONTINUE BUYING →
 </button>
+    
 
     <p class="success-brand">
       GOOD FOOD. RIGHT AROUND YOU.
