@@ -2316,16 +2316,47 @@ function closeOrderDetails() {
   const popup = document.getElementById("order-success-popup");
   popup.classList.remove("show");
 }
-  function refreshFloatingTrackingButton() {
+  async function refreshFloatingTrackingButton() {
   const savedOrders = JSON.parse(
     localStorage.getItem("localbiteActiveOrders") || "[]"
   );
 
   const button = document.getElementById("floating-tracking");
 
-  if (button) {
-    button.style.display = savedOrders.length > 0 ? "block" : "none";
+  if (!button) return;
+
+  if (savedOrders.length === 0) {
+    button.style.display = "none";
+    return;
   }
+
+  const activeOrders = [];
+
+  for (const order of savedOrders) {
+    if (!order || !order.order_code || !order.tracking_token) {
+      continue;
+    }
+
+    const { data, error } = await supabaseClient.rpc(
+      "get_order_tracking",
+      {
+        p_order_code: order.order_code,
+        p_tracking_token: order.tracking_token
+      }
+    );
+
+    if (!error && data && data.order_status !== "Delivered") {
+      activeOrders.push(order);
+    }
+  }
+
+  localStorage.setItem(
+    "localbiteActiveOrders",
+    JSON.stringify(activeOrders)
+  );
+
+  button.style.display =
+    activeOrders.length > 0 ? "block" : "none";
 }
 
 function openOrderTracking() {
