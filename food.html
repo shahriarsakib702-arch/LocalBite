@@ -2036,7 +2036,16 @@ async function placeOrder() {
       return;
     }
 window.lastOrderDetails = orderData;
-// Start button success animation
+ const savedOrders = JSON.parse(
+  localStorage.getItem("localbiteActiveOrders") || "[]"
+);
+
+savedOrders.push(orderData.order_code);
+
+localStorage.setItem(
+  "localbiteActiveOrders",
+  JSON.stringify([...new Set(savedOrders)])
+);/ Start button success animation
 cart = [];
 saveCart();
 updateCart();
