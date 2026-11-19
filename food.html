@@ -2368,19 +2368,36 @@ function closeOrderDetails() {
       activeOrders[activeOrders.length - 1].current_status;
 
     if (latestStatus === "On the Way") {
-      icon.textContent = "🛵";
-      label.textContent = "On the Way";
-    } else if (latestStatus === "Rider at Your Location") {
-      icon.textContent = "🛵";
-      label.textContent = "Rider Waiting";
-    } else {
-      icon.textContent = "🍳";
-      label.textContent = "Preparing";
-    }
-  }
+  icon.textContent = "🛵";
+  label.textContent = "On the Way";
+  button.style.background = `
+    linear-gradient(#0F3D2E, #0F3D2E) padding-box,
+    conic-gradient(#FF8A3D 0deg 180deg, #ffffff35 180deg 360deg) border-box
+  `;
 
-  button.style.display =
-    activeOrders.length > 0 ? "block" : "none";
+} else if (latestStatus === "Rider at Your Location") {
+  icon.textContent = "🛵";
+  label.textContent = "Rider Waiting";
+  button.style.background = `
+    linear-gradient(#0F3D2E, #0F3D2E) padding-box,
+    conic-gradient(#FF8A3D 0deg 270deg, #ffffff35 270deg 360deg) border-box
+  `;
+
+} else if (latestStatus === "Delivered") {
+  icon.textContent = "✅";
+  label.textContent = "Delivered";
+  button.style.background = `
+    linear-gradient(#0F3D2E, #0F3D2E) padding-box,
+    conic-gradient(#FF8A3D 0deg 360deg) border-box
+  `;
+
+} else {
+  icon.textContent = "🍳";
+  label.textContent = "Preparing";
+  button.style.background = `
+    linear-gradient(#0F3D2E, #0F3D2E) padding-box,
+    conic-gradient(#FF8A3D 0deg 90deg, #ffffff35 90deg 360deg) border-box
+  `;
 }
 
 function openOrderTracking() {
