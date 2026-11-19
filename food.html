@@ -2280,6 +2280,25 @@ function closeOrderDetails() {
   const popup = document.getElementById("order-success-popup");
   popup.classList.remove("show");
 }
+  function refreshFloatingTrackingButton() {
+  const savedOrders = JSON.parse(
+    localStorage.getItem("localbiteActiveOrders") || "[]"
+  );
+
+  const button = document.getElementById("floating-tracking");
+
+  if (button) {
+    button.style.display = savedOrders.length > 0 ? "block" : "none";
+  }
+}
+
+function openOrderTracking() {
+  window.location.href = "tracking.html";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  refreshFloatingTrackingButton();
+});
 </script>
 <!-- ORDER DETAILS POPUP -->
 <div id="order-details-popup" class="order-details-popup">
