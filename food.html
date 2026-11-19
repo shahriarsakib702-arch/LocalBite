@@ -2063,12 +2063,25 @@ window.lastOrderDetails = orderData;
   localStorage.getItem("localbiteActiveOrders") || "[]"
 );
 
-savedOrders.push(orderData.order_code);
+savedOrders.push({
+  order_code: orderData.order_code,
+  tracking_token: orderData.tracking_token
+});
+
+const uniqueOrders = [
+  ...new Map(
+    savedOrders.map(order => [
+      order.order_code || order,
+      order
+    ])
+  ).values()
+];
 
 localStorage.setItem(
   "localbiteActiveOrders",
-  JSON.stringify([...new Set(savedOrders)])
-);/ Start button success animation
+  JSON.stringify(uniqueOrders)
+);
+    / Start button success animation
 cart = [];
 saveCart();
 updateCart();
