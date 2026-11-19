@@ -2249,7 +2249,10 @@ function closeOrderDetails() {
 }
   function closeSuccessPopup() {
   const popup = document.getElementById("order-success-popup");
-  popup.classList.remove("show");
+
+popup.classList.remove("show");
+void popup.offsetWidth;
+popup.classList.add("show");
 }
 </script>
 <!-- ORDER DETAILS POPUP -->
