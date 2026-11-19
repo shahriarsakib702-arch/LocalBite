@@ -1882,6 +1882,7 @@ async function placeOrder() {
   }
 
   const orderData = {
+   order_code: generateOrderCode(),
     customer_name: name,
     delivery_address: address,
     customer_phone: phone,
