@@ -2089,6 +2089,23 @@ function closeSuccessPopup() {
   popup.style.display = "none";
 }
 </script>
+<!-- ORDER DETAILS POPUP -->
+<div id="order-details-popup" class="order-details-popup">
+  <div class="order-details-box">
 
+    <button onclick="closeOrderDetails()" class="details-close">×</button>
+
+    <h2>YOUR ORDER DETAILS</h2>
+
+    <p id="details-order-code">Order ID: —</p>
+
+    <div id="order-details-content"></div>
+
+    <button onclick="closeOrderDetails()" class="success-continue">
+      CLOSE
+    </button>
+
+  </div>
+</div>
 </body>
 </html>
