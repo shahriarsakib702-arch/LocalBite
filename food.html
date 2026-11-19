@@ -2336,8 +2336,9 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
 <!-- FLOATING ORDER TRACKING BUTTON -->
 <div id="floating-tracking">
-  <button onclick="openOrderTracking()">
-    📦 VIEW ORDER STATUS
+  <button onclick="openOrderTracking()" aria-label="Track Order">
+    <span class="tracking-icon">🍳</span>
+    <span class="tracking-label">Preparing</span>
   </button>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
