@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOCALBITE | Order Tracking</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #FFF8E7;
+  color: #0F3D2E;
+  padding: 20px;
+}
+
+.tracking-container {
+  max-width: 450px;
+  margin: 40px auto;
+  background: white;
+  padding: 25px 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px #00000012;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.order-id {
+  background: #F1F6F2;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.status {
+  font-weight: bold;
+  color: #FF8A3D;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="tracking-container">
+
+  <h2>Track Your Order</h2>
+
+  <p class="subtitle">
+    Your LOCALBITE order journey
+  </p>
+
+  <div class="order-id">
+    <p>ORDER ID</p>
+    <h3 id="tracking-order-id">Loading...</h3>
+  </div>
+
+  <div id="tracking-status">
+    <p class="status">Checking Order Status...</p>
+  </div>
+
+</div>
+
+</body>
+</html>
