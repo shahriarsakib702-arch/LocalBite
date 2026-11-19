@@ -2020,8 +2020,11 @@ async function placeOrder() {
       "Customer Location: " + customerLocationLink;
   }
 
+  
   const orderData = {
-   order_code: generateOrderCode(),
+  order_code: generateOrderCode(),
+  tracking_token: crypto.randomUUID(),
+  
     customer_name: name,
     delivery_address: address,
     customer_phone: phone,
