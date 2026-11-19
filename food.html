@@ -2322,9 +2322,11 @@ function closeOrderDetails() {
   );
 
   const button = document.getElementById("floating-tracking");
-const icon = button.querySelector(".tracking-icon");
-const label = button.querySelector(".tracking-label");
+
   if (!button) return;
+
+  const icon = button.querySelector(".tracking-icon");
+  const label = button.querySelector(".tracking-label");
 
   if (savedOrders.length === 0) {
     button.style.display = "none";
@@ -2347,17 +2349,33 @@ const label = button.querySelector(".tracking-label");
     );
 
     if (!error && data && data.order_status !== "Delivered") {
-  activeOrders.push({
-    ...order,
-    current_status: data.order_status
-  });
-}
+      activeOrders.push({
+        ...order,
+        current_status: data.order_status
+      });
+    }
   }
 
   localStorage.setItem(
     "localbiteActiveOrders",
     JSON.stringify(activeOrders)
   );
+
+  if (activeOrders.length > 0) {
+    const latestStatus =
+      activeOrders[activeOrders.length - 1].current_status;
+
+    if (latestStatus === "On the Way") {
+      icon.textContent = "🛵";
+      label.textContent = "On the Way";
+    } else if (latestStatus === "Rider at Your Location") {
+      icon.textContent = "🛵";
+      label.textContent = "Rider Waiting";
+    } else {
+      icon.textContent = "🍳";
+      label.textContent = "Preparing";
+    }
+  }
 
   button.style.display =
     activeOrders.length > 0 ? "block" : "none";
