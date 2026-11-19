@@ -1952,7 +1952,8 @@ setTimeout(() => {
 
     document.getElementById("cart-box").classList.remove("active");
     document.getElementById("cart-overlay").classList.remove("active");
-
+document.getElementById("success-order-code").textContent =
+  "Order ID: " + orderData.order_code;
     const popup = document.getElementById("order-success-popup");
     popup.classList.add("show");
 
