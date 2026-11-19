@@ -944,15 +944,19 @@ color: transparent !important;
   display: flex;
 }
 
+/* PREMIUM LOCALBITE ORDER CONFIRMATION */
+
 .success-card {
-  background: linear-gradient(145deg, #103D30, #071F19);
+  background: linear-gradient(160deg, #FFF8E7, #FFFFFF);
   width: 100%;
-  max-width: 360px;
-  padding: 30px 22px;
-  border-radius: 24px;
-  border: 1px solid #D9B66D;
+  max-width: 370px;
+  padding: 30px 23px 24px;
+  border-radius: 26px;
+  border: 1px solid #E8DCC4;
   text-align: center;
-  box-shadow: 0 20px 65px #00000065;
+  box-shadow: 0 22px 65px #00000045;
+  position: relative;
+  overflow: hidden;
   animation: popupReveal 0.55s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
@@ -967,17 +971,31 @@ color: transparent !important;
   }
 }
 
+.success-close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: #E9F0E8;
+  color: #0F3D2E;
+  font-size: 23px;
+  cursor: pointer;
+}
+
 .success-icon {
   width: 92px;
   height: 92px;
   margin: 0 auto 18px;
-  border: 2px solid #D9B66D;
+  border: 2px solid #FF8A3D;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #1B7552;
-  box-shadow: 0 0 25px #16834D55;
+  background: #0F3D2E;
+  box-shadow: 0 0 25px #0F3D2E35;
 }
 
 .success-icon svg {
@@ -1001,78 +1019,111 @@ color: transparent !important;
 }
 
 .success-card h2 {
-  color: #E8D7A5;
-  font-size: 23px;
-  margin-bottom: 9px;
+  color: #0F3D2E;
+  font-size: 25px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.success-card h2 span {
+  color: #FF8A3D;
 }
 
 .success-subtitle {
-  color: #FFFFFF;
+  color: #61746A;
   font-size: 13px;
   margin-bottom: 20px;
 }
 
 .success-divider {
   height: 1px;
-  background: #47725F;
+  background: #E5DDCE;
   margin-bottom: 19px;
 }
 
+.success-order-code {
+  background: #EAF1E9;
+  color: #0F3D2E;
+  border: 1px dashed #0F3D2E;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 17px;
+  overflow-wrap: anywhere;
+}
+
+.success-thanks-box {
+  background: #F3F6EE;
+  border-radius: 15px;
+  padding: 14px 10px;
+  margin-bottom: 16px;
+}
+
 .success-thanks {
-  color: #E8D7A5;
-  font-size: 19px;
-  margin-bottom: 11px;
+  color: #0F3D2E;
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 
-.success-message {
-  color: #F4DFA5;
-  font-size: 11px;
-  font-weight: bold;
-  white-space: nowrap;
-  margin-bottom: 15px;
-  animation: messageGlow 1.5s ease both;
-}
-
-@keyframes messageGlow {
-  0% {
-    opacity: 0;
-    text-shadow: 0 0 0 transparent;
-  }
-  50% {
-    opacity: 1;
-    text-shadow: 0 0 12px #F4DFA5;
-  }
-  100% {
-    opacity: 1;
-    text-shadow: 0 0 3px #F4DFA5;
-  }
+.success-thanks-box p {
+  color: #425D4D;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .success-description {
-  color: #D3E5D9;
+  color: #61746A;
   font-size: 13px;
-  line-height: 1.6;
-  margin-bottom: 23px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.success-details-btn {
+  width: 100%;
+  padding: 15px 10px;
+  background: linear-gradient(135deg, #FF9B4A, #FF8A3D);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #FF8A3D35;
+  margin-bottom: 11px;
 }
 
 .success-continue {
   width: 100%;
   padding: 14px;
-  background: #E3C77F;
-  color: #173B2D;
-  border: none;
-  border-radius: 11px;
-  font-size: 14px;
-  font-weight: bold;
+  background: #0F3D2E;
+  color: #FFF8E7;
+  border: 1px solid #0F3D2E;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 800;
   cursor: pointer;
 }
 
 .success-brand {
-  color: #C3D6C9;
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  margin-top: 18px;
-  }
+  color: #61746A;
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  line-height: 2;
+  margin-top: 20px;
+}
+
+.success-brand strong {
+  display: block;
+  color: #0F3D2E;
+  font-size: 17px;
+  letter-spacing: 2px;
+}
+
+.success-brand strong span {
+  color: #FF8A3D;
+}
+
 /* ORDER DETAILS POPUP */
 .order-details-popup {
   display: none;
