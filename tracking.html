@@ -84,5 +84,54 @@ const supabaseClient = window.supabase.createClient(
   "sb_publishable_3-6l5wzu43fEC6JalqzhPg_m_31oBQf"
 );
 </script>
+  
+<script>
+async function loadOrderTracking() {
+  const savedOrders = JSON.parse(
+    localStorage.getItem("localbiteActiveOrders") || "[]"
+  );
+
+  const activeOrders = savedOrders.filter(
+    order => order && typeof order === "object"
+      && order.order_code && order.tracking_token
+  );
+
+  if (activeOrders.length === 0) {
+    document.getElementById("tracking-order-id").textContent =
+      "No Active Order";
+
+    document.getElementById("tracking-status").textContent =
+      "No active order found.";
+
+    return;
+  }
+
+  const order = activeOrders[activeOrders.length - 1];
+
+  document.getElementById("tracking-order-id").textContent =
+    order.order_code;
+
+  const { data, error } = await supabaseClient.rpc(
+    "get_order_tracking",
+    {
+      p_order_code: order.order_code,
+      p_tracking_token: order.tracking_token
+    }
+  );
+
+  if (error || !data) {
+    document.getElementById("tracking-status").textContent =
+      "Unable to load order status. Please try again.";
+
+    return;
+  }
+
+  document.getElementById("tracking-status").textContent =
+    "Order Status: " + data.order_status;
+}
+
+loadOrderTracking();
+</script>
+
 </body>
 </html>
