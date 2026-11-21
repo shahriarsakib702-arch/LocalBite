@@ -2450,24 +2450,9 @@ async function refreshFloatingTrackingButton() {
     `;
   }
 }
-} else if (latestStatus === "Delivered") {
-  icon.textContent = "✅";
-  label.textContent = "Delivered";
-  button.style.background = `
-    linear-gradient(#A9CDBB, #A9CDBB) padding-box,
-    conic-gradient(#FF8A3D 0deg 360deg) border-box
-  `;
 
-} else {
-  icon.textContent = "🍳";
-  label.textContent = "Preparing";
-  button.style.background = `
-    linear-gradient(#A9CDBB, #A9CDBB) padding-box,
-    conic-gradient(#FF8A3D 0deg 90deg, #ffffff35 90deg 360deg) border-box
-  `;
-}
-  }
-  }
+
+
 function openOrderTracking() {
   window.location.href = "tracking.html";
 }
