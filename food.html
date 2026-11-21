@@ -2340,15 +2340,15 @@ function closeOrderDetails() {
   const popup = document.getElementById("order-success-popup");
   popup.classList.remove("show");
 }
-  async function refreshFloatingTrackingButton() {
+async function refreshFloatingTrackingButton() {
   const savedOrders = JSON.parse(
     localStorage.getItem("localbiteActiveOrders") || "[]"
   );
 
   const container = document.getElementById("floating-tracking");
-const button = container?.querySelector("button");
+  const button = container?.querySelector("button");
 
-if (!container || !button) return;
+  if (!container || !button) return;
 
   const icon = button.querySelector(".tracking-icon");
   const label = button.querySelector(".tracking-label");
@@ -2373,39 +2373,83 @@ if (!container || !button) return;
       }
     );
 
-    if (!error && data && data.order_status !== "Delivered") {
+    if (!error && data) {
       activeOrders.push({
         ...order,
-        current_status: data.order_status
+        current_status: data.order_status,
+        delivered_at: data.order_status === "Delivered"
+          ? (order.delivered_at || Date.now())
+          : null
       });
     }
   }
 
-  localStorage.setItem(
-    "localbiteActiveOrders",
-    JSON.stringify(activeOrders)
+  const visibleOrders = activeOrders.filter(order =>
+    order.current_status !== "Delivered" ||
+    Date.now() - order.delivered_at < 30000
   );
 
-  if (activeOrders.length > 0) {
-    const latestStatus =
-      activeOrders[activeOrders.length - 1].current_status;
+  if (visibleOrders.length === 0) {
+    container.style.display = "none";
+    localStorage.setItem("localbiteActiveOrders", "[]");
+    return;
+  }
 
-    if (latestStatus === "On the Way") {
-  icon.textContent = "🛵";
-  label.textContent = "On the Way";
-  button.style.background = `
-    linear-gradient(#A9CDBB, #A9CDBB) padding-box,
-    conic-gradient(#FF8A3D 0deg 180deg, #ffffff35 180deg 360deg) border-box
-  `;
+  container.style.display = "block";
 
-} else if (latestStatus === "Rider at Your Location") {
-  icon.textContent = "🛵";
-  label.textContent = "Rider Waiting";
-  button.style.background = `
-    linear-gradient(#A9CDBB, #A9CDBB) padding-box,
-    conic-gradient(#FF8A3D 0deg 270deg, #ffffff35 270deg 360deg) border-box
-  `;
+  localStorage.setItem(
+    "localbiteActiveOrders",
+    JSON.stringify(visibleOrders)
+  );
 
+  const deliveredOrder = visibleOrders.find(
+    order => order.current_status === "Delivered"
+  );
+
+  if (deliveredOrder) {
+    const remaining = 30000 - (Date.now() - deliveredOrder.delivered_at);
+
+    setTimeout(() => {
+      refreshFloatingTrackingButton();
+    }, Math.max(remaining, 0));
+  }
+
+  const latestStatus =
+    visibleOrders[visibleOrders.length - 1].current_status;
+
+  if (latestStatus === "On the Way") {
+    icon.textContent = "🛵";
+    label.textContent = "On the Way";
+    button.style.background = `
+      linear-gradient(#A9CDBB, #A9CDBB) padding-box,
+      conic-gradient(#FF8A3D 0deg 180deg, #ffffff35 180deg 360deg) border-box
+    `;
+
+  } else if (latestStatus === "Rider at Your Location") {
+    icon.textContent = "🛵";
+    label.textContent = "Rider Waiting";
+    button.style.background = `
+      linear-gradient(#A9CDBB, #A9CDBB) padding-box,
+      conic-gradient(#FF8A3D 0deg 270deg, #ffffff35 270deg 360deg) border-box
+    `;
+
+  } else if (latestStatus === "Delivered") {
+    icon.textContent = "✅";
+    label.textContent = "Delivered";
+    button.style.background = `
+      linear-gradient(#A9CDBB, #A9CDBB) padding-box,
+      conic-gradient(#FF8A3D 0deg 360deg) border-box
+    `;
+
+  } else {
+    icon.textContent = "🍳";
+    label.textContent = "Preparing";
+    button.style.background = `
+      linear-gradient(#A9CDBB, #A9CDBB) padding-box,
+      conic-gradient(#FF8A3D 0deg 90deg, #ffffff35 90deg 360deg) border-box
+    `;
+  }
+}
 } else if (latestStatus === "Delivered") {
   icon.textContent = "✅";
   label.textContent = "Delivered";
